@@ -1,0 +1,977 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Нёндро · ДЧЖ</title>
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="6.4" y="0"  fill="%232E5C8A"/><rect width="32" height="6.4" y="6.4" fill="%23F5F1E8"/><rect width="32" height="6.4" y="12.8" fill="%23E8B83C"/><rect width="32" height="6.4" y="19.2" fill="%23C84B3C"/><rect width="32" height="6.4" y="25.6" fill="%235A8C3F"/></svg>'>
+<style>
+  /* === reset / base === */
+  *,*::before,*::after { box-sizing: border-box }
+  html, body { margin: 0; padding: 0 }
+  :root {
+    --c-blue:   #2E5C8A;
+    --c-white:  #F5F1E8;
+    --c-yellow: #E8B83C;
+    --c-red:    #C84B3C;
+    --c-green:  #5A8C3F;
+    --bg:       #FBF8F1;
+    --bg-2:     #F2EDE0;
+    --ink:      #1F1A14;
+    --ink-2:    #5A4F3F;
+    --ink-3:    #8A7E69;
+    --line:     #E2D9C4;
+    --gold:     #B68B2F;
+    --accent:   var(--c-blue);
+    --shadow:   0 1px 2px rgba(31,26,20,.06), 0 8px 24px rgba(31,26,20,.06);
+    --r:        14px;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  h1, h2, h3, h4 { font-family: "Iowan Old Style", "Charter", "Georgia", serif; font-weight: 600; letter-spacing: -.01em; }
+  h1 { font-size: 22px; margin: 0 }
+  h2 { font-size: 18px; margin: 0 0 8px }
+  h3 { font-size: 15px; margin: 0 0 4px }
+  button { font-family: inherit; cursor: pointer; }
+  input, select, textarea, button { font-size: 14px; font-family: inherit; color: inherit; }
+
+  /* === layout === */
+  .app { max-width: 720px; margin: 0 auto; padding: 16px 16px 96px; }
+  header.top {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 4px 14px; border-bottom: 1px solid var(--line); margin-bottom: 14px;
+  }
+  .logo {
+    width: 32px; height: 32px; border-radius: 8px; overflow: hidden;
+    flex: 0 0 32px; box-shadow: var(--shadow);
+  }
+  .title { flex: 1 1 auto }
+  .title small { color: var(--ink-3); font-size: 12px; display: block; }
+
+  /* === stats card === */
+  .stats {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 14px 16px; box-shadow: var(--shadow);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    margin-bottom: 14px;
+  }
+  .stats .stat { text-align: center }
+  .stats .num { font-family: "Iowan Old Style", "Charter", "Georgia", serif; font-size: 22px; font-weight: 600; color: var(--accent); }
+  .stats .lbl { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+  .progress-bar { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-top: 8px; }
+  .progress-bar > div { height: 100%; background: linear-gradient(90deg, var(--c-blue), var(--c-green) 35%, var(--c-yellow) 65%, var(--c-red)); border-radius: 999px; transition: width .3s; }
+
+  /* === big CTA === */
+  .cta {
+    width: 100%; padding: 14px 16px; border: 0; border-radius: var(--r);
+    background: var(--ink); color: var(--bg);
+    font-size: 15px; font-weight: 600; letter-spacing: .01em;
+    box-shadow: var(--shadow);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-bottom: 14px;
+  }
+  .cta:hover { background: #000; }
+  .cta svg { display: block }
+
+  /* === tabs === */
+  .tabs {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 4px; margin-bottom: 14px;
+  }
+  .tabs button {
+    background: transparent; border: 0; padding: 8px; border-radius: 10px;
+    color: var(--ink-2); font-size: 13px; font-weight: 500;
+  }
+  .tabs button.active { background: var(--bg); color: var(--ink); box-shadow: var(--shadow); }
+
+  /* === panes === */
+  .pane { display: none }
+  .pane.active { display: block }
+
+  /* === tun card === */
+  .tun-card {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 12px 14px; margin-bottom: 10px; box-shadow: var(--shadow);
+    display: grid; grid-template-columns: 8px 1fr auto; gap: 12px;
+  }
+  .tun-card .stripe { border-radius: 4px; align-self: stretch; }
+  .tun-card .meta { font-size: 12px; color: var(--ink-3); }
+  .tun-card .name { font-weight: 600; font-size: 14px; margin: 2px 0 4px; }
+  .tun-card .row { display: flex; flex-wrap: wrap; gap: 10px; font-size: 12px; color: var(--ink-2); }
+  .tun-card .row b { color: var(--ink); font-weight: 600 }
+  .tun-card .note { color: var(--ink-2); font-size: 13px; margin-top: 6px; font-style: italic; }
+  .tun-card .actions { display: flex; flex-direction: column; gap: 4px; align-items: end; }
+  .tun-card .feel { display: flex; gap: 1px; color: var(--c-yellow); font-size: 12px }
+  .icon-btn {
+    background: transparent; border: 0; color: var(--ink-3); padding: 4px;
+    font-size: 12px; cursor: pointer;
+  }
+  .icon-btn:hover { color: var(--c-red) }
+
+  .empty {
+    padding: 32px 16px; text-align: center; color: var(--ink-3); font-size: 14px;
+    background: var(--bg-2); border: 1px dashed var(--line); border-radius: var(--r);
+  }
+
+  /* === progress (attributes) === */
+  .group { margin-bottom: 18px }
+  .group h3 {
+    color: var(--ink-2); font-size: 12px; text-transform: uppercase;
+    letter-spacing: .08em; margin-bottom: 8px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block }
+
+  .attr {
+    display: grid; grid-template-columns: 24px 1fr auto; gap: 10px; align-items: center;
+    padding: 8px 12px; border-bottom: 1px solid var(--line);
+    cursor: pointer;
+  }
+  .attr:hover { background: var(--bg-2); }
+  .attr .num { color: var(--ink-3); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .attr .text { font-size: 14px; }
+  .attr .text small { color: var(--ink-3); display: block; font-size: 11px; margin-top: 2px; }
+  .attr .pct { font-variant-numeric: tabular-nums; font-size: 12px; color: var(--ink-2); min-width: 56px; text-align: right; }
+  .attr .pct b { color: var(--ink); font-weight: 600 }
+  .attr .mini-bar { grid-column: 1 / -1; height: 3px; background: var(--line); border-radius: 999px; overflow: hidden; margin-top: 4px; }
+  .attr .mini-bar > div { height: 100%; background: var(--accent); transition: width .3s; }
+  .attr.done .mini-bar > div { background: var(--c-green); }
+  .attr.done .num::before { content: "✓ "; color: var(--c-green); }
+
+  /* === text viewer === */
+  .reader {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 16px 18px; box-shadow: var(--shadow);
+  }
+  .reader-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 10px }
+  .reader-head select {
+    border: 1px solid var(--line); background: var(--bg); border-radius: 8px;
+    padding: 6px 10px; max-width: 100%;
+  }
+  .reader-body { font-size: 14px; line-height: 1.65; color: var(--ink); }
+  .reader-body p { margin: 0 0 10px; }
+  .reader-body .quote {
+    border-left: 3px solid var(--c-yellow); padding: 6px 12px; color: var(--ink-2);
+    background: rgba(232,184,60,.08); border-radius: 0 8px 8px 0;
+    margin: 8px 0;
+  }
+
+  /* === settings === */
+  .settings { display: grid; gap: 14px }
+  .row-set {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 12px 14px; box-shadow: var(--shadow);
+  }
+  .row-set label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px }
+  .row-set p { margin: 0 0 10px; color: var(--ink-3); font-size: 12px }
+  .row-set input[type="number"], .row-set select {
+    border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px;
+    background: var(--bg); width: 100%;
+  }
+  .row-set .strategy {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .row-set .strategy button {
+    border: 1px solid var(--line); background: var(--bg); border-radius: 10px;
+    padding: 10px; text-align: left;
+  }
+  .row-set .strategy button.active {
+    border-color: var(--accent); background: var(--bg-2); box-shadow: 0 0 0 2px rgba(46,92,138,.12) inset;
+  }
+  .row-set .strategy small { color: var(--ink-3); display: block; font-weight: 400; font-size: 11px; margin-top: 2px }
+  .danger { color: var(--c-red); }
+  .btn-line {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 14px; font-size: 13px;
+  }
+  .btn-line:hover { background: var(--bg-2) }
+
+  /* === modal === */
+  .modal-back {
+    position: fixed; inset: 0; background: rgba(31,26,20,.45);
+    display: none; align-items: flex-end; justify-content: center; z-index: 100;
+  }
+  .modal-back.show { display: flex }
+  .modal {
+    width: 100%; max-width: 720px; background: var(--bg);
+    border-radius: 18px 18px 0 0; padding: 18px 18px 22px;
+    max-height: 92vh; overflow-y: auto; box-shadow: 0 -8px 32px rgba(0,0,0,.2);
+  }
+  .modal h2 { display: flex; align-items: center; gap: 10px }
+  .modal .x {
+    margin-left: auto; background: transparent; border: 0; font-size: 22px;
+    color: var(--ink-3); cursor: pointer;
+  }
+  .modal label { display: block; font-size: 12px; color: var(--ink-3); margin: 12px 0 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em }
+  .modal input, .modal select, .modal textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--line);
+    border-radius: 10px; background: var(--bg-2); color: var(--ink);
+  }
+  .modal textarea { resize: vertical; min-height: 60px; font-family: inherit }
+  .modal .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+  .modal .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px }
+  .modal .feel-pick { display: flex; gap: 4px }
+  .modal .feel-pick button {
+    flex: 1; padding: 10px; border: 1px solid var(--line); background: var(--bg-2);
+    border-radius: 10px; font-size: 18px; color: var(--ink-3);
+  }
+  .modal .feel-pick button.active { background: var(--c-yellow); color: var(--ink); border-color: var(--c-yellow) }
+  .modal .save {
+    width: 100%; padding: 14px; margin-top: 18px; border: 0; border-radius: 12px;
+    background: var(--ink); color: var(--bg); font-size: 15px; font-weight: 600;
+  }
+  .modal .hint { color: var(--ink-3); font-size: 12px; margin-top: 6px }
+
+  /* === Техника 1 — структура === */
+  details.tech1 {
+    margin-top: 12px; border: 1px solid var(--line); border-radius: 12px;
+    background: var(--bg-2); overflow: hidden;
+  }
+  details.tech1 summary {
+    cursor: pointer; padding: 10px 14px; font-size: 13px; font-weight: 600;
+    color: var(--ink-2); display: flex; align-items: center; gap: 8px;
+    list-style: none;
+  }
+  details.tech1 summary::-webkit-details-marker { display: none }
+  details.tech1 summary::before {
+    content: "▸"; color: var(--ink-3); transition: transform .15s; display: inline-block;
+  }
+  details.tech1[open] summary::before { transform: rotate(90deg) }
+  .tech1-body { padding: 8px 14px 12px; font-size: 12px; color: var(--ink-2); }
+  .tech1-cols { display: grid; grid-template-columns: 22px 1fr 80px 90px; gap: 6px; padding: 4px 0; border-bottom: 1px solid var(--line); margin-bottom: 4px; font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .04em }
+  .tech1-step {
+    display: grid; grid-template-columns: 22px 1fr 80px 90px; gap: 6px; align-items: center;
+    padding: 5px 0; border-bottom: 1px dashed var(--line); font-size: 12px;
+  }
+  .tech1-step:last-of-type { border-bottom: 0 }
+  .t1-num {
+    width: 18px; height: 18px; border-radius: 50%; background: var(--c-yellow);
+    color: var(--ink); font-weight: 700; font-size: 11px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .t1-c { font-variant-numeric: tabular-nums; color: var(--ink); }
+  .tech1-total {
+    display: grid; grid-template-columns: 22px 1fr 80px 90px; gap: 6px;
+    padding: 8px 0 0; margin-top: 4px; border-top: 1px solid var(--line);
+    font-size: 12px;
+  }
+
+  @media (min-width: 480px) {
+    .modal-back { align-items: center }
+    .modal { border-radius: 18px; max-height: 86vh }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Header -->
+  <header class="top">
+    <div class="logo" aria-hidden="true">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <rect width="32" height="6.4" y="0"    fill="#2E5C8A"/>
+        <rect width="32" height="6.4" y="6.4"  fill="#F5F1E8"/>
+        <rect width="32" height="6.4" y="12.8" fill="#E8B83C"/>
+        <rect width="32" height="6.4" y="19.2" fill="#C84B3C"/>
+        <rect width="32" height="6.4" y="25.6" fill="#5A8C3F"/>
+      </svg>
+    </div>
+    <div class="title">
+      <h1>Нёндро · ДЧЖ</h1>
+      <small>Драгоценная человеческая жизнь</small>
+    </div>
+    <button class="icon-btn" id="btn-settings-shortcut" title="Настройки" aria-label="Настройки">⚙</button>
+  </header>
+
+  <!-- Stats -->
+  <section class="stats" id="stats">
+    <div class="stat">
+      <div class="num" id="stat-week">0/3</div>
+      <div class="lbl">Эта неделя</div>
+    </div>
+    <div class="stat">
+      <div class="num" id="stat-total">0</div>
+      <div class="lbl">Всего тунов</div>
+    </div>
+    <div class="stat">
+      <div class="num" id="stat-pct">0%</div>
+      <div class="lbl">Прогресс ДЧЖ</div>
+    </div>
+    <div style="grid-column: 1 / -1">
+      <div class="progress-bar"><div id="bar-overall" style="width:0%"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--ink-3);margin-top:4px">
+        <span id="circles-text">0 / 1000 кругов</span>
+        <span id="forecast">—</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <button class="cta" id="btn-add">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    Записать тун
+  </button>
+
+  <!-- Tabs -->
+  <nav class="tabs" role="tablist">
+    <button class="active" data-pane="journal">Журнал</button>
+    <button data-pane="progress">Прогресс</button>
+    <button data-pane="text">Текст</button>
+    <button data-pane="settings">Настройки</button>
+  </nav>
+
+  <!-- Pane: journal -->
+  <section class="pane active" id="pane-journal">
+    <div id="journal-list"></div>
+  </section>
+
+  <!-- Pane: progress -->
+  <section class="pane" id="pane-progress">
+    <div id="progress-list"></div>
+  </section>
+
+  <!-- Pane: text -->
+  <section class="pane" id="pane-text">
+    <div class="reader">
+      <div class="reader-head">
+        <h2 style="margin:0">Перед туном</h2>
+        <select id="text-pick"></select>
+      </div>
+      <div class="reader-body" id="text-body"></div>
+    </div>
+  </section>
+
+  <!-- Pane: settings -->
+  <section class="pane" id="pane-settings">
+    <div class="settings">
+      <div class="row-set">
+        <label>Стратегия</label>
+        <p>Стратегия 1 — классическая (1000 кругов подряд по разделу). Стратегия 2 — 25/75: сначала 7 кругов на каждый признак, потом 21 на повторе.</p>
+        <div class="strategy">
+          <button data-strategy="1" class="active">Классическая<small>28 кр./признак, 16 кр./причина</small></button>
+          <button data-strategy="2">25/75<small>7 кр. + 21 кр. за два прохода</small></button>
+        </div>
+      </div>
+      <div class="row-set">
+        <label>Стандартная длина туна (минут)</label>
+        <p>Тибетский «час» = 24 ч / 30 = 48 мин. Можно ставить меньше — например 30 мин для возобновления.</p>
+        <input type="number" id="set-length" min="5" max="120" value="48">
+      </div>
+      <div class="row-set">
+        <label>Целевой темп (тунов в неделю)</label>
+        <p>Рекомендуется 2–3 туна в неделю. При 3 тун/нед раздел ДЧЖ закрывается за ~3,5 месяца.</p>
+        <input type="number" id="set-week" min="1" max="14" value="3">
+      </div>
+      <div class="row-set">
+        <label>Данные</label>
+        <p>Всё хранится в этом браузере (localStorage). Скачайте JSON, если меняете устройство.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn-line" id="btn-export">Экспорт JSON</button>
+          <button class="btn-line" id="btn-import">Импорт JSON</button>
+          <input type="file" id="import-file" accept="application/json" style="display:none">
+          <button class="btn-line danger" id="btn-reset">Сбросить всё</button>
+        </div>
+      </div>
+      <div class="row-set" style="font-size:12px;color:var(--ink-3)">
+        Источник данных: гайд раздела ДЧЖ (Дзогчен Шри Сингха) и фрагменты из «Слов моего всеблагого учителя» Патрула Ринпоче.
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Add Tun Modal -->
+<div class="modal-back" id="modal-back">
+  <div class="modal" id="modal">
+    <h2>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span id="modal-title">Записать тун</span>
+      <button class="x" id="modal-close" aria-label="Закрыть">×</button>
+    </h2>
+
+    <div class="grid-2">
+      <div>
+        <label>Дата</label>
+        <input type="date" id="f-date">
+      </div>
+      <div>
+        <label>Длительность, мин</label>
+        <input type="number" id="f-length" min="1" max="180" value="48">
+      </div>
+    </div>
+
+    <label>Признак / причина</label>
+    <select id="f-attr"></select>
+
+    <details class="tech1" id="tech1-guide">
+      <summary>Техника 1 — структура из 3 заходов</summary>
+      <div class="tech1-body">
+        <div class="tech1-cols">
+          <div></div>
+          <div><b>Шаг</b></div>
+          <div><b>Стр. 25/75</b></div>
+          <div><b>Стр. классич.</b></div>
+        </div>
+        <div class="tech1-step"><span class="t1-num">1</span><span>Размышление о признаке (30–40 сек)</span></div>
+        <div class="tech1-step"><span class="t1-num">2</span><span>Опорная строка «Я так благодарен…»</span><span class="t1-c">1 круг</span><span class="t1-c">1 круг</span></div>
+        <div class="tech1-step"><span class="t1-num">3</span><span>Строки о драгоценности</span><span class="t1-c">1 круг</span><span class="t1-c">1 круг</span></div>
+        <div class="tech1-step"><span class="t1-num">4</span><span>Медитация «А»</span></div>
+        <div class="tech1-step"><span class="t1-num">5</span><span>Все строки абзаца (1-й и 2-й заход)</span><span class="t1-c">¼ круга</span><span class="t1-c">1 круг</span></div>
+        <div class="tech1-step"><span class="t1-num">5</span><span>Все строки абзаца (3-й заход)</span><span class="t1-c">½ круга</span><span class="t1-c">2 круга</span></div>
+        <div class="tech1-total">
+          <span></span>
+          <span><b>Итого за тун:</b></span>
+          <span><b>7 кругов</b></span>
+          <span><b>10 кругов</b></span>
+        </div>
+      </div>
+    </details>
+
+    <input type="hidden" id="f-tech" value="1">
+
+    <div class="grid-3">
+      <div>
+        <label>Кругов</label>
+        <input type="number" id="f-circles" min="0" max="50" value="10">
+      </div>
+      <div>
+        <label>Простирания</label>
+        <input type="number" id="f-prostr" min="0" max="100" value="3">
+      </div>
+      <div>
+        <label>Чувство</label>
+        <div class="feel-pick" id="f-feel">
+          <button type="button" data-v="1">★</button>
+          <button type="button" data-v="2">★</button>
+          <button type="button" data-v="3">★</button>
+          <button type="button" data-v="4">★</button>
+          <button type="button" data-v="5">★</button>
+        </div>
+      </div>
+    </div>
+
+    <label>Заметка</label>
+    <textarea id="f-note" placeholder="Что шло, что не шло, какую опорную строку выбирал…"></textarea>
+
+    <div class="hint" id="f-hint"></div>
+
+    <button class="save" id="f-save">Сохранить тун</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+ *  ДАННЫЕ — структура раздела ДЧЖ
+ * ========================================================== */
+const ATTRS = {
+  freedoms: {
+    title: "8 свобод",
+    color: "var(--c-blue)",
+    items: [
+      "Я не существо ада",
+      "Я не голодный дух",
+      "Я не животное",
+      "Я не следую пути насилия",
+      "Я не бог-долгожитель",
+      "Я не придерживаюсь ложных воззрений",
+      "Я не родился в тёмный временной цикл",
+      "Я не родился умственно неполноценным",
+    ],
+  },
+  advantagesOwn: {
+    title: "5 собственных преимуществ",
+    color: "var(--c-yellow)",
+    items: [
+      "Я родился человеком",
+      "Я родился в центральной области Дхармы",
+      "Я обладаю функциональными органами способностей",
+      "Я не сошёл с пути Дхармы",
+      "Я обладаю верой в Дхарму",
+    ],
+  },
+  advantagesOther: {
+    title: "5 преимуществ, зависящих от других",
+    color: "var(--c-red)",
+    items: [
+      "Будда появился в этом мире",
+      "Будда преподал Дхарму",
+      "Дхарма всё ещё есть в мире",
+      "Есть дхарма-центр, и я вошёл во врата",
+      "Я принят в ученики учителем",
+    ],
+  },
+  unfavSpontaneous: {
+    title: "8 неподходящих состояний (внезапные условия)",
+    color: "var(--c-green)",
+    items: [
+      "Я не подчиняюсь пагубному мышлению",
+      "Я не пребываю в отупении",
+      "Я не следую пагубному учителю",
+      "Я не ленюсь в практике Дхармы",
+      "Я не подавлен созреванием пагубной кармы",
+      "Я не нахожусь под властью других",
+      "Во мне нет эгоистичных намерений",
+      "Я не являюсь фальшивым практиком Дхармы",
+    ],
+  },
+  unfavAttachments: {
+    title: "8 неподходящих состояний (несовместимые пристрастия)",
+    color: "#7C5BB7",
+    items: [
+      "Я не отвлечён цеплянием за мирские цели",
+      "Я не обладаю пагубным характером",
+      "Я не безразличен к страданиям Самсары",
+      "Я не лишён веры в Дхарму",
+      "Мне не нравятся пагубные действия",
+      "Я не теряю интерес к Дхарме",
+      "Я не нарушаю свои добродетельные обещания (обеты)",
+      "Я не нарушаю свои самаи",
+    ],
+  },
+  reasons: {
+    title: "3 причины ДЧЖ",
+    color: "var(--gold)",
+    items: [
+      "Добродетельная нравственность прошлых жизней",
+      "Добродетельная щедрость прошлых жизней",
+      "Добродетельные устремления прошлых жизней",
+    ],
+    isReason: true,
+  },
+};
+
+/* Краткие фрагменты Патрула Ринпоче, привязанные по группам / отдельным признакам.
+ * Где нет авторского фрагмента под конкретный признак — показывается общий по группе. */
+const READING = {
+  freedoms: {
+    intro: `«Свободы» подразумевают рождение не в одном из восьми неблагоприятных состояний, не оставляющих свобод, а в таком, которое позволяет практиковать возвышенную Дхарму.`,
+    perItem: [
+      `Если родишься в аду, нет никакой возможности следовать Дхарме, потому что постоянно мучают жара и холод. — Поразмышляй о существах ада, об интенсивности и длительности их страданий.`,
+      `У тех, кто родился голодным духом, нет никакой возможности следовать Дхарме, потому что постоянно мучают голод и жажда. — В течение многих сотен лет они даже не слышат слова «вода».`,
+      `В мире животных нет никакой возможности практиковать Дхарму потому, что животные страдают от порабощения и от нападений других животных. — Им можно сказать ОМ МАНИ ПАДМЭ ХУНГ, и они не услышат, не поймут, не смогут произнести.`,
+      `Если родишься в стране, где пьют насилие как путь к счастью, нет никакой возможности практиковать Дхарму, потому что там она неизвестна. — Эти люди особенно преуспели в неблагих действиях.`,
+      `Боги-долгожители проводят время в состоянии, лишенном восприятия, и не имеют никакой возможности практиковать Дхарму. — Когда карма исчерпывается, из-за ложных взглядов они перерождаются в низших мирах.`,
+      `Если родишься человеком, обладающим небуддийским воззрением, чьё мышление опутано ложными взглядами, у тебя нет возможности практиковать Дхарму. — Как монах Сунакшатра: 23 года при Будде и ни капли веры — переродился голодным духом.`,
+      `Если ты родился в тёмный временной цикл, ты не знаешь о Трёх Драгоценностях и не можешь отличить добро от зла. — Тёмным циклом называется период, когда нет будд.`,
+      `Если ты родился слабоумным, твоё мышление неполностью пригодно для того, чтобы слушать, изучать или медитировать. — Состояние человека подразумевает знание слов и понимание их значения.`,
+    ],
+  },
+  advantagesOwn: {
+    intro: `Пять собственных преимуществ по Нагарджуне: родиться человеком, в срединной стране, с совершенными органами чувств, вести достойный образ жизни и обладать верой в Дхарму.`,
+    perItem: [
+      `Если не родиться человеком, не будет возможности встретиться с Дхармой. Поэтому человеческое тело — благое преимущество.`,
+      `Если родиться в окраинной стране, где не знают о Дхарме, тоже не встретишься с Дхармой. Срединная страна — та, где Дхарма известна.`,
+      `Если родиться с неполноценными органами чувств, это будет помехой. Полноценные органы чувств — преимущество.`,
+      `Недостойный образ жизни не обходится без неблагих поступков, которые отвращают от Дхармы. Достойное дело и накопление заслуг — преимущество благого намерения.`,
+      `Если не иметь веры в учение Будды, не будет никакой склонности к Дхарме. Способность обратить мышление к Дхарме — преимущество веры.`,
+    ],
+  },
+  advantagesOther: {
+    intro: `Пять преимуществ, зависящих от других: появление Будды в этом мире, преподавание Дхармы, сохранение Дхармы, доступность общины и наличие учителя.`,
+    perItem: [
+      `Если бы Будда не появился в этом мире, никто не услышал бы Дхармы. Этот цикл — благой, поскольку в него явился Шакьямуни.`,
+      `Если бы Будда не преподал Дхарму, она бы не существовала для нас. Поразмышляй о бесчисленных учениях, оставленных им.`,
+      `Если бы Дхарма исчезла, передачи прервались бы. Сейчас живые линии передачи всё ещё доступны — это редкое стечение.`,
+      `Без сангхи и центров негде учиться и практиковать. У тебя есть место, и ты вошёл в его врата.`,
+      `Без учителя смысл текстов не раскроется. Принятие учителем в ученики — высшее из этих пяти.`,
+    ],
+  },
+  unfavSpontaneous: {
+    intro: `Восемь неподходящих состояний, возникающих внезапно и лишающих практики: даже имея ДЧЖ, можно потерять её плод из-за обстоятельств ума и кармы.`,
+    perItem: [
+      `Если ум подчинён пагубному мышлению — практика искажается изнутри. Сейчас твой ум направлен к благому.`,
+      `Отупение — состояние, когда нет ни боли, ни ясности; в нём не растёт мудрость. Ты сейчас не пребываешь в нём.`,
+      `Пагубный учитель уводит ученика от пути. Ты следуешь линии передачи, восходящей к Будде.`,
+      `Лень в практике Дхармы — главная причина того, что ДЧЖ остаётся неиспользованной. Сейчас ты решил действовать.`,
+      `Когда созревает пагубная карма прошлого, мышление подавлено и нет сил практиковать. У тебя сейчас есть силы.`,
+      `Под властью других нет свободы выбора практики. Ты сейчас можешь распоряжаться своим временем.`,
+      `Эгоистичные намерения превращают практику в усиление цепляния. Ты сейчас способен на бодхичитту.`,
+      `Фальшивый практик имитирует форму без сути. Ты ставишь чувство и понимание выше формы.`,
+    ],
+  },
+  unfavAttachments: {
+    intro: `Восемь неподходящих состояний, возникающих от несовместимых пристрастий: они не вычёркивают ДЧЖ, но мешают плодам практики проявиться.`,
+    perItem: [
+      `Цепляние за мирские цели отвлекает ум от глубинной работы. Сейчас ты выделил время именно на практику.`,
+      `Пагубный характер делает накопление заслуг трудным. Сейчас твой характер обращён к благому.`,
+      `Безразличие к страданиям Самсары лишает практику топлива — отречения. Ты способен видеть её природу.`,
+      `Без веры в Дхарму ничто из учений не приживается. Вера — это влага для семян.`,
+      `Когда нравятся пагубные действия — практика и жизнь идут в разные стороны. Сейчас они идут в одну.`,
+      `Утрата интереса к Дхарме — медленная коррозия. Сейчас интерес жив.`,
+      `Нарушение добродетельных обетов разрушает основу. Сейчас она цела.`,
+      `Нарушение самаи отрезает от линии передачи и благословения. Сейчас связь жива.`,
+    ],
+  },
+  reasons: {
+    intro: `Три причины обретения ДЧЖ: нравственность, щедрость и чистые устремления прошлых жизней. Без этих трёх ДЧЖ не возникает.`,
+    perItem: [
+      `Добродетельная нравственность прошлых жизней — основа человеческого тела как опоры. Без неё рождаешься в низших мирах.`,
+      `Добродетельная щедрость прошлых жизней даёт условия — здоровье, средства, окружение, дающие время и силу для практики.`,
+      `Добродетельные устремления прошлых жизней направляют рождение к Дхарме — иначе даже человеческое тело и условия проходят мимо Пути.`,
+    ],
+  },
+};
+
+/* Цели по кругам.
+ * Стратегия 1: 28 кругов на каждый признак (34 × 28 = 952), 16 кругов на каждую причину (3 × 16 = 48). Итого 1000.
+ * Стратегия 2 (25/75): признак 7+21=28 (трекаем суммарно 28), причина 4+12=16. */
+const TARGETS = {
+  attr: 28,
+  reason: 16,
+  totalCircles: 1000,
+};
+
+/* Плоский список всех признаков для селекта. */
+function flatAttrs() {
+  const out = [];
+  for (const key of Object.keys(ATTRS)) {
+    const g = ATTRS[key];
+    g.items.forEach((name, i) => {
+      out.push({ groupKey: key, idx: i, name, isReason: !!g.isReason, color: g.color });
+    });
+  }
+  return out;
+}
+
+/* ============================================================
+ *  ХРАНЕНИЕ
+ * ========================================================== */
+const STORE_KEY = "ngondro_dchz_v1";
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (!raw) return defaultState();
+    return Object.assign(defaultState(), JSON.parse(raw));
+  } catch (e) { return defaultState(); }
+}
+function saveState() { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+function defaultState() {
+  return {
+    tuns: [],            // [{id, date, length, groupKey, idx, tech, circles, prostr, feel, note}]
+    strategy: "1",
+    setLength: 48,
+    setWeek: 3,
+  };
+}
+let state = loadState();
+
+/* ============================================================
+ *  ВЫЧИСЛЕНИЯ
+ * ========================================================== */
+function attrTarget(groupKey) {
+  return ATTRS[groupKey].isReason ? TARGETS.reason : TARGETS.attr;
+}
+function attrCircles(groupKey, idx) {
+  return state.tuns
+    .filter(t => t.groupKey === groupKey && t.idx === idx)
+    .reduce((s, t) => s + (Number(t.circles) || 0), 0);
+}
+function totalCircles() { return state.tuns.reduce((s, t) => s + (Number(t.circles) || 0), 0); }
+function totalTarget() { return TARGETS.totalCircles; }
+function weekTuns() {
+  const now = new Date();
+  const day = (now.getDay() + 6) % 7;       // понедельник = 0
+  const monday = new Date(now); monday.setHours(0,0,0,0); monday.setDate(now.getDate() - day);
+  return state.tuns.filter(t => new Date(t.date) >= monday).length;
+}
+function forecastWeeks() {
+  const left = totalTarget() - totalCircles();
+  if (left <= 0) return "раздел закрыт";
+  const fallback = state.strategy === "1" ? 10 : 7;   // Техника 1
+  const avgPerTun = state.tuns.length ? totalCircles() / state.tuns.length : fallback;
+  const tunsLeft = Math.ceil(left / Math.max(1, avgPerTun));
+  const wks = Math.ceil(tunsLeft / Math.max(1, state.setWeek));
+  return `~${wks} нед при ${state.setWeek} тун/нед`;
+}
+
+/* ============================================================
+ *  РЕНДЕР
+ * ========================================================== */
+const $ = sel => document.querySelector(sel);
+const $$ = sel => document.querySelectorAll(sel);
+
+function fmtDate(s) {
+  const d = new Date(s);
+  return d.toLocaleDateString("ru-RU", { weekday: "short", day: "numeric", month: "short" });
+}
+function escapeHtml(s) { return (s || "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function renderStats() {
+  const total = totalCircles();
+  const target = totalTarget();
+  const pct = Math.min(100, Math.round((total / target) * 100));
+  $("#stat-week").textContent = `${weekTuns()}/${state.setWeek}`;
+  $("#stat-total").textContent = state.tuns.length;
+  $("#stat-pct").textContent = `${pct}%`;
+  $("#bar-overall").style.width = pct + "%";
+  $("#circles-text").textContent = `${total} / ${target} кругов`;
+  $("#forecast").textContent = forecastWeeks();
+}
+
+function renderJournal() {
+  const list = $("#journal-list");
+  if (!state.tuns.length) {
+    list.innerHTML = `<div class="empty">Тунов пока нет.<br>Начни с <b>«Записать тун»</b> сверху.</div>`;
+    return;
+  }
+  const sorted = [...state.tuns].sort((a, b) => (b.date + b.id).localeCompare(a.date + a.id));
+  list.innerHTML = sorted.map(t => {
+    const a = ATTRS[t.groupKey].items[t.idx] || "—";
+    const stripe = ATTRS[t.groupKey].color;
+    const stars = "★".repeat(t.feel || 0).padEnd(5, "☆");
+    return `
+      <div class="tun-card">
+        <div class="stripe" style="background:${stripe}"></div>
+        <div>
+          <div class="meta">${fmtDate(t.date)} · ${t.length} мин · Техника ${t.tech}</div>
+          <div class="name">${escapeHtml(a)}</div>
+          <div class="row">
+            <span><b>${t.circles}</b> кругов</span>
+            <span>· ${ATTRS[t.groupKey].title}</span>
+            ${t.prostr ? `<span>· ${t.prostr} простир.</span>` : ""}
+          </div>
+          ${t.note ? `<div class="note">«${escapeHtml(t.note)}»</div>` : ""}
+        </div>
+        <div class="actions">
+          <div class="feel" title="Чувство">${stars}</div>
+          <button class="icon-btn" data-edit="${t.id}" title="Изменить">✎</button>
+          <button class="icon-btn" data-del="${t.id}" title="Удалить">✕</button>
+        </div>
+      </div>`;
+  }).join("");
+
+  list.querySelectorAll("[data-del]").forEach(b => b.onclick = () => {
+    if (!confirm("Удалить этот тун?")) return;
+    state.tuns = state.tuns.filter(x => x.id !== b.dataset.del);
+    saveState(); renderAll();
+  });
+  list.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => openModal(b.dataset.edit));
+}
+
+function renderProgress() {
+  const list = $("#progress-list");
+  let html = "";
+  for (const key of Object.keys(ATTRS)) {
+    const g = ATTRS[key];
+    const target = g.isReason ? TARGETS.reason : TARGETS.attr;
+    html += `<div class="group">
+      <h3><span class="dot" style="background:${g.color}"></span>${g.title}</h3>`;
+    g.items.forEach((name, i) => {
+      const c = attrCircles(key, i);
+      const pct = Math.min(100, Math.round((c / target) * 100));
+      const done = c >= target ? "done" : "";
+      html += `
+        <div class="attr ${done}" data-key="${key}" data-idx="${i}">
+          <div class="num">${i + 1}</div>
+          <div class="text">${escapeHtml(name)}<small>${c} / ${target} кругов</small></div>
+          <div class="pct"><b>${pct}%</b></div>
+          <div class="mini-bar"><div style="width:${pct}%"></div></div>
+        </div>`;
+    });
+    html += `</div>`;
+  }
+  list.innerHTML = html;
+  // tap on attribute → open Reader on that attribute
+  list.querySelectorAll(".attr").forEach(el => el.onclick = () => {
+    $("#text-pick").value = `${el.dataset.key}:${el.dataset.idx}`;
+    showText();
+    switchPane("text");
+  });
+}
+
+function renderTextPicker() {
+  const sel = $("#text-pick");
+  sel.innerHTML = flatAttrs()
+    .map((a, i) => `<option value="${a.groupKey}:${a.idx}">${ATTRS[a.groupKey].title.split(" ")[0]} · ${i + 1}. ${escapeHtml(a.name)}</option>`)
+    .join("");
+  sel.onchange = showText;
+  showText();
+}
+
+function showText() {
+  const [key, idxRaw] = $("#text-pick").value.split(":");
+  const idx = +idxRaw;
+  const g = ATTRS[key];
+  const r = READING[key];
+  const name = g.items[idx];
+  const stripe = g.color;
+  $("#text-body").innerHTML = `
+    <p><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${stripe};margin-right:6px"></span>
+       <small style="color:var(--ink-3)">${g.title}</small></p>
+    <h2 style="margin:6px 0 12px">${idx + 1}. ${escapeHtml(name)}</h2>
+    <p class="quote">${escapeHtml(r.intro)}</p>
+    <p>${escapeHtml(r.perItem[idx] || "")}</p>
+    <p style="font-size:12px;color:var(--ink-3);margin-top:14px">
+      Задача: 30–40 секунд войти в чувство, потом начитывать. Если чувство теряется — остановиться, вернуться к размышлению.
+    </p>`;
+}
+
+function renderAttrSelect() {
+  const sel = $("#f-attr");
+  let html = "";
+  for (const key of Object.keys(ATTRS)) {
+    const g = ATTRS[key];
+    html += `<optgroup label="${g.title}">`;
+    g.items.forEach((name, i) => {
+      html += `<option value="${key}:${i}">${i + 1}. ${escapeHtml(name)}</option>`;
+    });
+    html += `</optgroup>`;
+  }
+  sel.innerHTML = html;
+}
+
+function renderSettings() {
+  $$("#pane-settings .strategy button").forEach(b => {
+    b.classList.toggle("active", b.dataset.strategy === state.strategy);
+  });
+  $("#set-length").value = state.setLength;
+  $("#set-week").value = state.setWeek;
+}
+
+function renderAll() {
+  renderStats();
+  renderJournal();
+  renderProgress();
+  renderSettings();
+}
+
+/* ============================================================
+ *  МОДАЛ — добавление / редактирование туна
+ * ========================================================== */
+let editingId = null;
+function defaultCirclesForStrategy() { return state.strategy === "1" ? 10 : 7; }
+
+function openModal(id) {
+  editingId = id || null;
+  const t = id ? state.tuns.find(x => x.id === id) : null;
+  $("#modal-title").textContent = t ? "Изменить тун" : "Записать тун";
+  $("#f-date").value = t ? t.date : new Date().toISOString().slice(0, 10);
+  $("#f-length").value = t ? t.length : state.setLength;
+  $("#f-attr").value = t ? `${t.groupKey}:${t.idx}` : $("#f-attr").options[0].value;
+  $("#f-tech").value = t ? t.tech : "1";
+  $("#f-circles").value = t ? t.circles : defaultCirclesForStrategy();
+  $("#f-prostr").value = t ? (t.prostr ?? 3) : 3;
+  setFeel(t ? t.feel : 0);
+  $("#f-note").value = t ? (t.note || "") : "";
+  updateHint();
+  $("#modal-back").classList.add("show");
+}
+function closeModal() {
+  $("#modal-back").classList.remove("show");
+  editingId = null;
+}
+function setFeel(v) {
+  $$("#f-feel button").forEach(b => b.classList.toggle("active", +b.dataset.v <= v));
+  $("#f-feel").dataset.value = v || 0;
+}
+function updateHint() {
+  const [key, idxRaw] = $("#f-attr").value.split(":");
+  const idx = +idxRaw;
+  const have = attrCircles(key, idx);
+  const target = attrTarget(key);
+  const left = Math.max(0, target - have);
+  const expected = defaultCirclesForStrategy();
+  const stratLabel = state.strategy === "1" ? "классическая" : "25/75";
+  $("#f-hint").innerHTML = `По этому признаку: <b>${have}/${target}</b> кругов · осталось ${left}. Техника 1, стратегия ${stratLabel} → ориентир <b>${expected} кругов</b> за тун.`;
+}
+
+$("#f-attr").addEventListener("change", updateHint);
+
+$("#f-feel").addEventListener("click", e => {
+  if (e.target.dataset.v) setFeel(+e.target.dataset.v);
+});
+
+$("#f-save").addEventListener("click", () => {
+  const [key, idxRaw] = $("#f-attr").value.split(":");
+  const tun = {
+    id: editingId || "t" + Date.now() + Math.random().toString(36).slice(2, 6),
+    date: $("#f-date").value,
+    length: +$("#f-length").value || 0,
+    groupKey: key,
+    idx: +idxRaw,
+    tech: $("#f-tech").value,
+    circles: +$("#f-circles").value || 0,
+    prostr: +$("#f-prostr").value || 0,
+    feel: +($("#f-feel").dataset.value || 0),
+    note: $("#f-note").value.trim(),
+  };
+  if (editingId) {
+    state.tuns = state.tuns.map(x => x.id === editingId ? tun : x);
+  } else {
+    state.tuns.push(tun);
+  }
+  saveState();
+  closeModal();
+  renderAll();
+});
+
+$("#modal-close").addEventListener("click", closeModal);
+$("#modal-back").addEventListener("click", e => { if (e.target.id === "modal-back") closeModal(); });
+
+/* ============================================================
+ *  ВКЛАДКИ + ПРОЧИЕ ОБРАБОТЧИКИ
+ * ========================================================== */
+function switchPane(name) {
+  $$(".tabs button").forEach(b => b.classList.toggle("active", b.dataset.pane === name));
+  $$(".pane").forEach(p => p.classList.toggle("active", p.id === "pane-" + name));
+}
+$$(".tabs button").forEach(b => b.addEventListener("click", () => switchPane(b.dataset.pane)));
+$("#btn-add").addEventListener("click", () => openModal());
+$("#btn-settings-shortcut").addEventListener("click", () => switchPane("settings"));
+
+/* Settings handlers */
+$$("#pane-settings .strategy button").forEach(b => b.addEventListener("click", () => {
+  state.strategy = b.dataset.strategy;
+  saveState(); renderSettings();
+}));
+$("#set-length").addEventListener("change", e => { state.setLength = +e.target.value || 48; saveState(); });
+$("#set-week").addEventListener("change", e => { state.setWeek = +e.target.value || 3; saveState(); renderStats(); });
+
+$("#btn-export").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `ngondro-dchz-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+$("#btn-import").addEventListener("click", () => $("#import-file").click());
+$("#import-file").addEventListener("change", e => {
+  const file = e.target.files[0]; if (!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const obj = JSON.parse(r.result);
+      if (!obj.tuns) throw new Error("неверный файл");
+      if (!confirm(`Импортировать ${obj.tuns.length} тунов? Текущие данные будут заменены.`)) return;
+      state = Object.assign(defaultState(), obj);
+      saveState(); renderAll();
+    } catch (err) { alert("Не удалось прочитать файл: " + err.message); }
+  };
+  r.readAsText(file);
+});
+$("#btn-reset").addEventListener("click", () => {
+  if (!confirm("Удалить все туны и настройки? Это нельзя отменить.")) return;
+  localStorage.removeItem(STORE_KEY);
+  state = defaultState();
+  renderAll();
+});
+
+/* ============================================================
+ *  СТАРТ
+ * ========================================================== */
+renderAttrSelect();
+renderTextPicker();
+renderAll();
+</script>
+</body>
+</html>
