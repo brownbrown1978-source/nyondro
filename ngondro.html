@@ -54,6 +54,38 @@
   .title { flex: 1 1 auto }
   .title small { color: var(--ink-3); font-size: 12px; display: block; }
 
+  /* === section nav === */
+  .section-nav {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 6px; margin-bottom: 12px;
+  }
+  .section-nav button {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 8px 4px; font-size: 11px; line-height: 1.15;
+    color: var(--ink-2); cursor: pointer; text-align: center;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .section-nav button .sec-num {
+    width: 20px; height: 20px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 700; color: #fff; font-size: 11px;
+  }
+  .section-nav button .sec-name { font-weight: 600; }
+  .section-nav button .sec-pct { font-size: 10px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .section-nav button.active {
+    background: var(--bg);
+    box-shadow: var(--shadow);
+    color: var(--ink);
+    border-color: transparent;
+    transform: translateY(-1px);
+  }
+  .section-nav button.active .sec-pct { color: var(--ink-2); }
+  @media (max-width: 480px) {
+    .section-nav button { font-size: 10px; padding: 6px 2px; }
+    .section-nav button .sec-num { width: 18px; height: 18px; font-size: 10px; }
+  }
+
   /* === stats card === */
   .stats {
     background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
@@ -285,11 +317,14 @@
       </svg>
     </div>
     <div class="title">
-      <h1>Нёндро · ДЧЖ</h1>
-      <small>Драгоценная человеческая жизнь</small>
+      <h1>Нёндро</h1>
+      <small id="section-subtitle">Общие внешние предварительные практики</small>
     </div>
     <button class="icon-btn" id="btn-settings-shortcut" title="Настройки" aria-label="Настройки">⚙</button>
   </header>
+
+  <!-- Section selector -->
+  <nav class="section-nav" id="section-nav" role="tablist" aria-label="Разделы нёндро"></nav>
 
   <!-- Stats -->
   <section class="stats" id="stats">
@@ -299,7 +334,7 @@
     </div>
     <div class="stat">
       <div class="num" id="stat-total">0</div>
-      <div class="lbl">Всего тунов</div>
+      <div class="lbl">Всего тхунов</div>
     </div>
     <div class="stat">
       <div class="num" id="stat-pct">0%</div>
@@ -317,7 +352,7 @@
   <!-- CTA -->
   <button class="cta" id="btn-add">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-    Записать тун
+    Записать тхун
   </button>
 
   <!-- Tabs -->
@@ -342,7 +377,7 @@
   <section class="pane" id="pane-text">
     <div class="reader">
       <div class="reader-head">
-        <h2 style="margin:0">Перед туном</h2>
+        <h2 style="margin:0">Перед тхуном</h2>
         <select id="text-pick"></select>
       </div>
       <div class="reader-body" id="text-body"></div>
@@ -361,13 +396,13 @@
         </div>
       </div>
       <div class="row-set">
-        <label>Стандартная длина туна (минут)</label>
+        <label>Стандартная длина тхуна (минут)</label>
         <p>Тибетский «час» = 24 ч / 30 = 48 мин. Можно ставить меньше — например 30 мин для возобновления.</p>
         <input type="number" id="set-length" min="5" max="120" value="48">
       </div>
       <div class="row-set">
-        <label>Целевой темп (тунов в неделю)</label>
-        <p>Рекомендуется 2–3 туна в неделю. При 3 тун/нед раздел ДЧЖ закрывается за ~3,5 месяца.</p>
+        <label>Целевой темп (тхунов в неделю)</label>
+        <p>Рекомендуется 2–3 тхуна в неделю. При 3 тхун/нед раздел ДЧЖ закрывается за ~3,5 месяца.</p>
         <input type="number" id="set-week" min="1" max="14" value="3">
       </div>
       <div class="row-set">
@@ -393,7 +428,7 @@
   <div class="modal" id="modal">
     <h2>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      <span id="modal-title">Записать тун</span>
+      <span id="modal-title">Записать тхун</span>
       <button class="x" id="modal-close" aria-label="Закрыть">×</button>
     </h2>
 
@@ -428,7 +463,7 @@
         <div class="tech1-step"><span class="t1-num">5</span><span>Все строки абзаца (3-й заход)</span><span class="t1-c">½ круга</span><span class="t1-c">2 круга</span></div>
         <div class="tech1-total">
           <span></span>
-          <span><b>Итого за тун:</b></span>
+          <span><b>Итого за тхун:</b></span>
           <span><b>7 кругов</b></span>
           <span><b>10 кругов</b></span>
         </div>
@@ -463,18 +498,36 @@
 
     <div class="hint" id="f-hint"></div>
 
-    <button class="save" id="f-save">Сохранить тун</button>
+    <button class="save" id="f-save">Сохранить тхун</button>
   </div>
 </div>
 
 <script>
 /* ============================================================
- *  ДАННЫЕ — структура раздела ДЧЖ
+ *  ДАННЫЕ — 6 разделов общих внешних предварительных практик
+ *  По Паттрулу Ринпоче, «Слова моего всеблагого учителя».
+ *
+ *  Каждый раздел = 1000 кругов. Раздел 1 (ДЧЖ) — точная разбивка
+ *  по Шри Сингха (28 кр./признак, 16 кр./причина). Разделы 2-6 —
+ *  каркас по структуре глав Паттрула с равномерным распределением
+ *  кругов; цифры будут уточнены при появлении точных PDF от Шри Сингха.
  * ========================================================== */
+const SECTIONS = {
+  s1: { num: 1, title: "Драгоценная человеческая жизнь",  short: "ДЧЖ",          color: "#2E5C8A", target: 1000 },
+  s2: { num: 2, title: "Непостоянство жизни",             short: "Непостоянство", color: "#5A8C3F", target: 1001 },
+  s3: { num: 3, title: "Изъяны самсары",                  short: "Самсара",      color: "#C84B3C", target: 1000 },
+  s4: { num: 4, title: "Карма — закон причины и следствия", short: "Карма",      color: "#E8B83C", target: 1000 },
+  s5: { num: 5, title: "Блага освобождения",              short: "Освобождение", color: "#7C5BB7", target: 1000 },
+  s6: { num: 6, title: "Как следовать учителю Дхармы",    short: "Учитель",      color: "#B68B2F", target: 1000 },
+};
+
 const ATTRS = {
+  /* === Раздел 1: ДЧЖ — 34 признака + 3 причины, 1000 кругов === */
   freedoms: {
+    section: "s1",
     title: "8 свобод",
     color: "var(--c-blue)",
+    target: 28,
     items: [
       "Я не существо ада",
       "Я не голодный дух",
@@ -487,8 +540,10 @@ const ATTRS = {
     ],
   },
   advantagesOwn: {
+    section: "s1",
     title: "5 собственных преимуществ",
     color: "var(--c-yellow)",
+    target: 28,
     items: [
       "Я родился человеком",
       "Я родился в центральной области Дхармы",
@@ -498,8 +553,10 @@ const ATTRS = {
     ],
   },
   advantagesOther: {
+    section: "s1",
     title: "5 преимуществ, зависящих от других",
     color: "var(--c-red)",
+    target: 28,
     items: [
       "Будда появился в этом мире",
       "Будда преподал Дхарму",
@@ -509,8 +566,10 @@ const ATTRS = {
     ],
   },
   unfavSpontaneous: {
+    section: "s1",
     title: "8 неподходящих состояний (внезапные условия)",
     color: "var(--c-green)",
+    target: 28,
     items: [
       "Я не подчиняюсь пагубному мышлению",
       "Я не пребываю в отупении",
@@ -523,8 +582,10 @@ const ATTRS = {
     ],
   },
   unfavAttachments: {
+    section: "s1",
     title: "8 неподходящих состояний (несовместимые пристрастия)",
     color: "#7C5BB7",
+    target: 28,
     items: [
       "Я не отвлечён цеплянием за мирские цели",
       "Я не обладаю пагубным характером",
@@ -537,14 +598,159 @@ const ATTRS = {
     ],
   },
   reasons: {
+    section: "s1",
     title: "3 причины ДЧЖ",
     color: "var(--gold)",
+    target: 16,
+    isReason: true,
     items: [
       "Добродетельная нравственность прошлых жизней",
       "Добродетельная щедрость прошлых жизней",
       "Добродетельные устремления прошлых жизней",
     ],
-    isReason: true,
+  },
+
+  /* === Раздел 2: Непостоянство — 7 размышлений, 1000 кругов === */
+  /* 7 × 143 = 1001 — округление в 1 круг приемлемо */
+  impermanence: {
+    section: "s2",
+    title: "7 размышлений о непостоянстве",
+    color: "#5A8C3F",
+    target: 143,
+    items: [
+      "Непостоянство вселенной (внешнего вместилища)",
+      "Непостоянство существ (содержимого вселенной)",
+      "Непостоянство, которому подвержены возвышенные",
+      "Непостоянство, которому подвержены правители",
+      "Различные примеры непостоянства",
+      "Неизвестность обстоятельств смерти",
+      "Непрерывное и острое осознание непостоянства",
+    ],
+  },
+
+  /* === Раздел 3: Изъяны самсары — общее + 6 миров, 1000 кругов === */
+  /* 7 × 143 = 1001 */
+  samsaraGeneral: {
+    section: "s3",
+    title: "Страдания самсары в целом",
+    color: "#C84B3C",
+    target: 142,
+    items: [
+      "Размышление о страданиях самсары в целом",
+    ],
+  },
+  sixRealms: {
+    section: "s3",
+    title: "Страдания шести миров",
+    color: "#9C3A2E",
+    target: 143,
+    items: [
+      "Адские существа",
+      "Голодные духи",
+      "Животные",
+      "Люди",
+      "Асуры (полубоги)",
+      "Боги",
+    ],
+  },
+
+  /* === Раздел 4: Карма — 10 пагубных + 10 благих + всеобщая природа, 1000 кругов === */
+  /* 10 × 48 + 10 × 48 + 1 × 40 = 480 + 480 + 40 = 1000 */
+  nonVirtuous: {
+    section: "s4",
+    title: "10 пагубных действий",
+    color: "#E8B83C",
+    target: 48,
+    items: [
+      "Убийство",
+      "Воровство",
+      "Сексуальный проступок",
+      "Ложь",
+      "Сеяние раздоров",
+      "Грубая речь",
+      "Бессмысленная болтовня",
+      "Алчность",
+      "Злонамеренность",
+      "Ложные взгляды",
+    ],
+  },
+  virtuous: {
+    section: "s4",
+    title: "10 благих действий",
+    color: "#C99A2E",
+    target: 48,
+    items: [
+      "Защита жизни",
+      "Щедрость",
+      "Сексуальная нравственность",
+      "Правдивая речь",
+      "Примирение",
+      "Мягкая речь",
+      "Осмысленная речь",
+      "Невозмутимость, отказ от алчности",
+      "Доброжелательность",
+      "Правильные взгляды",
+    ],
+  },
+  karmaGeneral: {
+    section: "s4",
+    title: "Всеобъемлющая природа кармы",
+    color: "#A77B22",
+    target: 40,
+    items: [
+      "Размышление о всеобъемлющей природе кармы",
+    ],
+  },
+
+  /* === Раздел 5: Блага освобождения — причина + плод, 1000 кругов === */
+  /* 2 × 500 = 1000 */
+  liberationCause: {
+    section: "s5",
+    title: "Причина освобождения",
+    color: "#7C5BB7",
+    target: 500,
+    items: [
+      "Размышление о причине обретения состояния освобождения",
+    ],
+  },
+  liberationFruit: {
+    section: "s5",
+    title: "Плод освобождения",
+    color: "#5C4290",
+    target: 500,
+    items: [
+      "Размышление о плоде — самом состоянии освобождения",
+    ],
+  },
+
+  /* === Раздел 6: Следование учителю — 3 составляющие, 1000 кругов === */
+  /* 333 + 334 + 333 = 1000 */
+  examineTeacher: {
+    section: "s6",
+    title: "Умение проверять учителя",
+    color: "#B68B2F",
+    target: 333,
+    items: [
+      "Качества подлинного учителя; как распознавать пагубного",
+    ],
+  },
+  followTeacher: {
+    section: "s6",
+    title: "Умение следовать учителю",
+    color: "#9A7423",
+    target: 334,
+    items: [
+      "Уважение, преданность, служение учителю",
+    ],
+  },
+  absorbTeacher: {
+    section: "s6",
+    title: "Умение усваивать мудрость и поведение учителя",
+    color: "#7E5C18",
+    target: 333,
+    items: [
+      "Воплощение услышанных наставлений в жизни",
+    ],
   },
 };
 
@@ -557,7 +763,7 @@ const READING = {
       `Если родишься в аду, нет никакой возможности следовать Дхарме, потому что постоянно мучают жара и холод. — Поразмышляй о существах ада, об интенсивности и длительности их страданий.`,
       `У тех, кто родился голодным духом, нет никакой возможности следовать Дхарме, потому что постоянно мучают голод и жажда. — В течение многих сотен лет они даже не слышат слова «вода».`,
       `В мире животных нет никакой возможности практиковать Дхарму потому, что животные страдают от порабощения и от нападений других животных. — Им можно сказать ОМ МАНИ ПАДМЭ ХУНГ, и они не услышат, не поймут, не смогут произнести.`,
-      `Если родишься в стране, где пьют насилие как путь к счастью, нет никакой возможности практиковать Дхарму, потому что там она неизвестна. — Эти люди особенно преуспели в неблагих действиях.`,
+      `Если родишься в стране, где пьют насилие как путь к счастью, нет никакой возможности практиковать Дхарму, потому что там она неизвестна. — Эти люди особенно преуспели в пагубных действиях.`,
       `Боги-долгожители проводят время в состоянии, лишенном восприятия, и не имеют никакой возможности практиковать Дхарму. — Когда карма исчерпывается, из-за ложных взглядов они перерождаются в низших мирах.`,
       `Если родишься человеком, обладающим небуддийским воззрением, чьё мышление опутано ложными взглядами, у тебя нет возможности практиковать Дхарму. — Как монах Сунакшатра: 23 года при Будде и ни капли веры — переродился голодным духом.`,
       `Если ты родился в тёмный временной цикл, ты не знаешь о Трёх Драгоценностях и не можешь отличить добро от зла. — Тёмным циклом называется период, когда нет будд.`,
@@ -570,7 +776,7 @@ const READING = {
       `Если не родиться человеком, не будет возможности встретиться с Дхармой. Поэтому человеческое тело — благое преимущество.`,
       `Если родиться в окраинной стране, где не знают о Дхарме, тоже не встретишься с Дхармой. Срединная страна — та, где Дхарма известна.`,
       `Если родиться с неполноценными органами чувств, это будет помехой. Полноценные органы чувств — преимущество.`,
-      `Недостойный образ жизни не обходится без неблагих поступков, которые отвращают от Дхармы. Достойное дело и накопление заслуг — преимущество благого намерения.`,
+      `Недостойный образ жизни не обходится без пагубных поступков, которые отвращают от Дхармы. Достойное дело и накопление заслуг — преимущество благого намерения.`,
       `Если не иметь веры в учение Будды, не будет никакой склонности к Дхарме. Способность обратить мышление к Дхарме — преимущество веры.`,
     ],
   },
@@ -593,7 +799,7 @@ const READING = {
       `Лень в практике Дхармы — главная причина того, что ДЧЖ остаётся неиспользованной. Сейчас ты решил действовать.`,
       `Когда созревает пагубная карма прошлого, мышление подавлено и нет сил практиковать. У тебя сейчас есть силы.`,
       `Под властью других нет свободы выбора практики. Ты сейчас можешь распоряжаться своим временем.`,
-      `Эгоистичные намерения превращают практику в усиление цепляния. Ты сейчас способен на бодхичитту.`,
+      `Эгоистичные намерения превращают практику в усиление цепляния. Ты сейчас способен на Бодхичитту.`,
       `Фальшивый практик имитирует форму без сути. Ты ставишь чувство и понимание выше формы.`,
     ],
   },
@@ -618,15 +824,111 @@ const READING = {
       `Добродетельные устремления прошлых жизней направляют рождение к Дхарме — иначе даже человеческое тело и условия проходят мимо Пути.`,
     ],
   },
-};
 
-/* Цели по кругам.
- * Стратегия 1: 28 кругов на каждый признак (34 × 28 = 952), 16 кругов на каждую причину (3 × 16 = 48). Итого 1000.
- * Стратегия 2 (25/75): признак 7+21=28 (трекаем суммарно 28), причина 4+12=16. */
-const TARGETS = {
-  attr: 28,
-  reason: 16,
-  totalCircles: 1000,
+  /* === Раздел 2: Непостоянство === */
+  impermanence: {
+    intro: `Даже имея ДЧЖ, твоя жизнь не будет длиться без конца. Цель раздела — войти в острое осознание того, что время и обстоятельства смерти неизвестны, и обратить ум к Дхарме сейчас.`,
+    perItem: [
+      `Внешний мир — горы, реки, светила — также непостоянен. Четыре стихии разрушают то, что казалось вечным. Если разрушаются они — что говорить о моей жизни.`,
+      `Все существа, населяющие три мира, меняются и умирают. Никто из живших до меня не остался. Никто из живущих рядом не останется.`,
+      `Возвышенные существа — будды, бодхисаттвы, великие учителя — являют непостоянство, уходя в паринирвану. Если уходят они, тем более мы.`,
+      `Цари и правители, обладавшие огромной властью, исчезают как утренний иней. Их короны — на земле, дворцы — пусты.`,
+      `Капля росы на травинке, пузырь на воде, эхо в горах, отражение в зеркале — традиционные примеры. Каждый из них применим к моей жизни.`,
+      `Мы знаем, что умрём. Но не знаем — когда, где, как, в чьём окружении. Поэтому единственная разумная стратегия — практиковать сейчас.`,
+      `Не «вспомнить о смерти один раз и забыть», а удерживать тонкое осознание непостоянства каждый момент. Тогда ум сам становится Дхармой.`,
+    ],
+  },
+
+  /* === Раздел 3: Изъяны самсары === */
+  samsaraGeneral: {
+    intro: `Самсара — это не место, а состояние ума, кружащееся под действием кармы. Куда бы ты ни родился — суть та же: цепляние, страдание, новое рождение.`,
+    perItem: [
+      `Размышляй о трёх видах страдания: страдание страдания, страдание перемены, всеобъемлющее страдание обусловленности. Они есть везде, даже в самых счастливых состояниях.`,
+    ],
+  },
+  sixRealms: {
+    intro: `Шесть миров — это шесть способов, которыми созревает карма: жара/холод, голод/жажда, тупость, борьба, зависть, гордыня. Все они — самсара.`,
+    perItem: [
+      `Адские существа — горячие и холодные ады. Невыносимые страдания тысячи лет. Семя — гнев и ненависть. Размышляй о причинах и следствии.`,
+      `Голодные духи — постоянный голод и жажда. Сотни лет без слова «вода». Семя — алчность.`,
+      `Животные — порабощение, поедание друг другом, отсутствие способности к Дхарме. Семя — невежество и тупость.`,
+      `Люди — рождение, старость, болезнь, смерть, не получить желаемое, расстаться с любимым, встретить нелюбимого, страдания пяти скандх. Семя — все три яда понемногу.`,
+      `Асуры — постоянная борьба и зависть к богам, которым проигрывают. Семя — зависть.`,
+      `Боги — долгое наслаждение, но конец предсказуем: семь дней до смерти боги видят падение. Семя — гордыня и привязанность.`,
+    ],
+  },
+
+  /* === Раздел 4: Карма === */
+  nonVirtuous: {
+    intro: `Десять пагубных действий через тело (3), речь (4), ум (3) — основные семена страдания. Полное действие требует основы, намерения, исполнения и завершения.`,
+    perItem: [
+      `Убийство живых существ — сокращает свою жизнь, ведёт в ад. Главное противоядие — защита жизни.`,
+      `Воровство — взять не данное. Ведёт к бедности и потерям. Противоядие — щедрость.`,
+      `Сексуальный проступок — нарушение принятых норм. Ведёт к разрушению отношений. Противоядие — нравственность.`,
+      `Ложь — особенно «великая ложь» о духовных достижениях. Противоядие — правдивость.`,
+      `Сеяние раздоров — разделять близких словами. Противоядие — примирять.`,
+      `Грубая речь — слова, ранящие других. Противоядие — мягкая речь.`,
+      `Бессмысленная болтовня — отвлекает себя и других от Дхармы. Противоядие — осмысленная речь.`,
+      `Алчность — жаждать чужого. Противоядие — внутреннее довольство.`,
+      `Злонамеренность — желать вреда другим. Противоядие — доброжелательность.`,
+      `Ложные взгляды — отрицание кармы, Трёх Драгоценностей. Противоядие — правильные взгляды.`,
+    ],
+  },
+  virtuous: {
+    intro: `Десять благих — обратные пагубным. Не просто «не делать плохого», а активно практиковать противоположное.`,
+    perItem: [
+      `Защита жизни — спасать существ, отказаться от насилия. Удлиняет жизнь, даёт здоровье.`,
+      `Щедрость — давать материальное, защиту, Дхарму. Ведёт к достатку.`,
+      `Сексуальная нравственность — поддерживает семейные узы. Ведёт к гармоничным отношениям.`,
+      `Правдивая речь — говорить правду, не приукрашивая. Ведёт к доверию.`,
+      `Примирение — соединять разделённых. Ведёт к гармонии в окружении.`,
+      `Мягкая речь — говорить с теплом. Ведёт к приятному звучанию голоса в будущих жизнях.`,
+      `Осмысленная речь — слова, направленные к Дхарме или благу. Ведёт к убедительности.`,
+      `Невозмутимость, отказ от алчности — радоваться чужому. Ведёт к исполнению желаний.`,
+      `Доброжелательность — желать счастья всем. Ведёт к красоте и любви окружающих.`,
+      `Правильные взгляды — вера в карму и Три Драгоценности. Ведёт к встрече с Дхармой в будущих жизнях.`,
+    ],
+  },
+  karmaGeneral: {
+    intro: `Карма — закон, а не наказание. Действия имеют четыре характеристики: безошибочность, разрастание, невозможность встретить чужой результат, неисчезновение несовершённого.`,
+    perItem: [
+      `Карма безошибочна: что посеешь, то и пожнёшь. Карма разрастается: малое семя даёт огромный плод. Невозможно встретить плод того, чего не делал. И невозможно избежать плода того, что сделал — пока он не созреет.`,
+    ],
+  },
+
+  /* === Раздел 5: Блага освобождения === */
+  liberationCause: {
+    intro: `Причина освобождения — четыре практики, отвращающие ум от самсары (предыдущие 4 раздела), плюс трёхчастная подготовка: следование учителю, накопление заслуг, развитие Бодхичитты.`,
+    perItem: [
+      `Без подготовки причины — освобождения не возникнет. Размышляй о том, как именно эти практики ведут к освобождению, и проверяй у себя их наличие.`,
+    ],
+  },
+  liberationFruit: {
+    intro: `Плод освобождения — выход из океана страданий самсары. Различают плоды шраваков, пратьекабудд, бодхисаттв и полное состояние Будды.`,
+    perItem: [
+      `Освобождение — не уход в небытие, а пробуждение к собственной природе. Размышляй о качествах состояния Будды как о цели, к которой ведёт практика.`,
+    ],
+  },
+
+  /* === Раздел 6: Следование учителю === */
+  examineTeacher: {
+    intro: `Без подлинного учителя путь невозможен — мы как слепой посреди пустыни. Но и пагубный учитель уведёт от пути. Поэтому первое — научиться проверять.`,
+    perItem: [
+      `Качества подлинного учителя: чистая линия передачи, глубокое сострадание, личный опыт практики, отсутствие восьми мирских забот. Пагубный — ищет учеников ради денег, славы, власти. Не торопиться. Проверять долго. Только потом принимать как коренного.`,
+    ],
+  },
+  followTeacher: {
+    intro: `Когда учитель найден и проверен — следовать ему через три двери: уважение, преданность, служение. Без этого передача не работает.`,
+    perItem: [
+      `Уважать ум учителя выше своего. Доверять его указаниям, даже если не понимаешь. Служить — телом, речью и умом. Это не унижение, а способ растворить эго и принять передачу.`,
+    ],
+  },
+  absorbTeacher: {
+    intro: `Окончательный смысл — не «иметь учителя», а воплотить в себе его мудрость и поведение. Услышанные наставления должны стать твоей внутренней реальностью.`,
+    perItem: [
+      `Не накапливать наставления как коллекцию, а применять каждое в жизни. Поведение учителя — образец для каждого действия. Так Дхарма перестаёт быть теорией и становится твоим путём.`,
+    ],
+  },
 };
 
 /* Плоский список всех признаков для селекта. */
@@ -635,10 +937,20 @@ function flatAttrs() {
   for (const key of Object.keys(ATTRS)) {
     const g = ATTRS[key];
     g.items.forEach((name, i) => {
-      out.push({ groupKey: key, idx: i, name, isReason: !!g.isReason, color: g.color });
+      out.push({ groupKey: key, idx: i, name, section: g.section, isReason: !!g.isReason, color: g.color });
     });
   }
   return out;
+}
+
+function groupsInSection(sectionKey) {
+  return Object.keys(ATTRS).filter(k => ATTRS[k].section === sectionKey);
+}
+function sectionTarget(sectionKey) { return SECTIONS[sectionKey].target; }
+function sectionCircles(sectionKey) {
+  return state.tuns
+    .filter(t => ATTRS[t.groupKey] && ATTRS[t.groupKey].section === sectionKey)
+    .reduce((s, t) => s + (Number(t.circles) || 0), 0);
 }
 
 /* ============================================================
@@ -659,6 +971,7 @@ function defaultState() {
     strategy: "1",
     setLength: 48,
     setWeek: 3,
+    activeSection: "s1",
   };
 }
 let state = loadState();
@@ -667,7 +980,7 @@ let state = loadState();
  *  ВЫЧИСЛЕНИЯ
  * ========================================================== */
 function attrTarget(groupKey) {
-  return ATTRS[groupKey].isReason ? TARGETS.reason : TARGETS.attr;
+  return ATTRS[groupKey].target;
 }
 function attrCircles(groupKey, idx) {
   return state.tuns
@@ -675,7 +988,10 @@ function attrCircles(groupKey, idx) {
     .reduce((s, t) => s + (Number(t.circles) || 0), 0);
 }
 function totalCircles() { return state.tuns.reduce((s, t) => s + (Number(t.circles) || 0), 0); }
-function totalTarget() { return TARGETS.totalCircles; }
+function totalTarget() {
+  return Object.values(SECTIONS).reduce((s, sec) => s + sec.target, 0);
+}
+function activeSection() { return state.activeSection || "s1"; }
 function weekTuns() {
   const now = new Date();
   const day = (now.getDay() + 6) % 7;       // понедельник = 0
@@ -689,7 +1005,7 @@ function forecastWeeks() {
   const avgPerTun = state.tuns.length ? totalCircles() / state.tuns.length : fallback;
   const tunsLeft = Math.ceil(left / Math.max(1, avgPerTun));
   const wks = Math.ceil(tunsLeft / Math.max(1, state.setWeek));
-  return `~${wks} нед при ${state.setWeek} тун/нед`;
+  return `~${wks} нед при ${state.setWeek} тхун/нед`;
 }
 
 /* ============================================================
@@ -704,22 +1020,46 @@ function fmtDate(s) {
 }
 function escapeHtml(s) { return (s || "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 
+function renderSectionNav() {
+  const nav = $("#section-nav");
+  const cur = activeSection();
+  nav.innerHTML = Object.keys(SECTIONS).map(k => {
+    const sec = SECTIONS[k];
+    const have = sectionCircles(k);
+    const target = sectionTarget(k);
+    const pct = Math.min(100, Math.round((have / target) * 100));
+    return `
+      <button data-sec="${k}" class="${k === cur ? "active" : ""}" title="${escapeHtml(sec.title)}">
+        <span class="sec-num" style="background:${sec.color};color:${k === "s5" ? "#1F1A14" : "#fff"}">${sec.num}</span>
+        <span class="sec-name">${escapeHtml(sec.short)}</span>
+        <span class="sec-pct">${pct}%</span>
+      </button>`;
+  }).join("");
+  nav.querySelectorAll("button").forEach(b => b.onclick = () => {
+    state.activeSection = b.dataset.sec;
+    saveState();
+    renderAll();
+  });
+}
+
 function renderStats() {
-  const total = totalCircles();
-  const target = totalTarget();
-  const pct = Math.min(100, Math.round((total / target) * 100));
+  const sec = SECTIONS[activeSection()];
+  const sCircles = sectionCircles(activeSection());
+  const sTarget = sec.target;
+  const pct = Math.min(100, Math.round((sCircles / sTarget) * 100));
+  $("#section-subtitle").textContent = sec.title;
   $("#stat-week").textContent = `${weekTuns()}/${state.setWeek}`;
   $("#stat-total").textContent = state.tuns.length;
   $("#stat-pct").textContent = `${pct}%`;
   $("#bar-overall").style.width = pct + "%";
-  $("#circles-text").textContent = `${total} / ${target} кругов`;
+  $("#circles-text").textContent = `${sCircles} / ${sTarget} кругов · ${sec.short}`;
   $("#forecast").textContent = forecastWeeks();
 }
 
 function renderJournal() {
   const list = $("#journal-list");
   if (!state.tuns.length) {
-    list.innerHTML = `<div class="empty">Тунов пока нет.<br>Начни с <b>«Записать тун»</b> сверху.</div>`;
+    list.innerHTML = `<div class="empty">Тхунов пока нет.<br>Начни с <b>«Записать тхун»</b> сверху.</div>`;
     return;
   }
   const sorted = [...state.tuns].sort((a, b) => (b.date + b.id).localeCompare(a.date + a.id));
@@ -749,7 +1089,7 @@ function renderJournal() {
   }).join("");
 
   list.querySelectorAll("[data-del]").forEach(b => b.onclick = () => {
-    if (!confirm("Удалить этот тун?")) return;
+    if (!confirm("Удалить этот тхун?")) return;
     state.tuns = state.tuns.filter(x => x.id !== b.dataset.del);
     saveState(); renderAll();
   });
@@ -758,10 +1098,19 @@ function renderJournal() {
 
 function renderProgress() {
   const list = $("#progress-list");
-  let html = "";
-  for (const key of Object.keys(ATTRS)) {
+  const cur = activeSection();
+  const groups = groupsInSection(cur);
+  const sec = SECTIONS[cur];
+  let html = `<div class="section-head">
+    <h2 style="margin:0;display:flex;align-items:center;gap:8px">
+      <span class="sec-num" style="background:${sec.color};color:${cur === "s5" ? "#1F1A14" : "#fff"};width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">${sec.num}</span>
+      ${escapeHtml(sec.title)}
+    </h2>
+    <small style="color:var(--ink-3)">${sectionCircles(cur)} / ${sec.target} кругов</small>
+  </div>`;
+  for (const key of groups) {
     const g = ATTRS[key];
-    const target = g.isReason ? TARGETS.reason : TARGETS.attr;
+    const target = g.target;
     html += `<div class="group">
       <h3><span class="dot" style="background:${g.color}"></span>${g.title}</h3>`;
     g.items.forEach((name, i) => {
@@ -789,9 +1138,19 @@ function renderProgress() {
 
 function renderTextPicker() {
   const sel = $("#text-pick");
-  sel.innerHTML = flatAttrs()
-    .map((a, i) => `<option value="${a.groupKey}:${a.idx}">${ATTRS[a.groupKey].title.split(" ")[0]} · ${i + 1}. ${escapeHtml(a.name)}</option>`)
-    .join("");
+  let html = "";
+  for (const sk of Object.keys(SECTIONS)) {
+    const sec = SECTIONS[sk];
+    for (const key of groupsInSection(sk)) {
+      const g = ATTRS[key];
+      html += `<optgroup label="${sec.num}. ${sec.short} · ${g.title}">`;
+      g.items.forEach((name, i) => {
+        html += `<option value="${key}:${i}">${i + 1}. ${escapeHtml(name)}</option>`;
+      });
+      html += `</optgroup>`;
+    }
+  }
+  sel.innerHTML = html;
   sel.onchange = showText;
   showText();
 }
@@ -817,13 +1176,16 @@ function showText() {
 function renderAttrSelect() {
   const sel = $("#f-attr");
   let html = "";
-  for (const key of Object.keys(ATTRS)) {
-    const g = ATTRS[key];
-    html += `<optgroup label="${g.title}">`;
-    g.items.forEach((name, i) => {
-      html += `<option value="${key}:${i}">${i + 1}. ${escapeHtml(name)}</option>`;
-    });
-    html += `</optgroup>`;
+  for (const sk of Object.keys(SECTIONS)) {
+    const sec = SECTIONS[sk];
+    for (const key of groupsInSection(sk)) {
+      const g = ATTRS[key];
+      html += `<optgroup label="${sec.num}. ${sec.short} · ${g.title}">`;
+      g.items.forEach((name, i) => {
+        html += `<option value="${key}:${i}">${i + 1}. ${escapeHtml(name)}</option>`;
+      });
+      html += `</optgroup>`;
+    }
   }
   sel.innerHTML = html;
 }
@@ -837,6 +1199,7 @@ function renderSettings() {
 }
 
 function renderAll() {
+  renderSectionNav();
   renderStats();
   renderJournal();
   renderProgress();
@@ -844,7 +1207,7 @@ function renderAll() {
 }
 
 /* ============================================================
- *  МОДАЛ — добавление / редактирование туна
+ *  МОДАЛ — добавление / редактирование тхуна
  * ========================================================== */
 let editingId = null;
 function defaultCirclesForStrategy() { return state.strategy === "1" ? 10 : 7; }
@@ -852,10 +1215,16 @@ function defaultCirclesForStrategy() { return state.strategy === "1" ? 10 : 7; }
 function openModal(id) {
   editingId = id || null;
   const t = id ? state.tuns.find(x => x.id === id) : null;
-  $("#modal-title").textContent = t ? "Изменить тун" : "Записать тун";
+  $("#modal-title").textContent = t ? "Изменить тхун" : "Записать тхун";
   $("#f-date").value = t ? t.date : new Date().toISOString().slice(0, 10);
   $("#f-length").value = t ? t.length : state.setLength;
-  $("#f-attr").value = t ? `${t.groupKey}:${t.idx}` : $("#f-attr").options[0].value;
+  if (t) {
+    $("#f-attr").value = `${t.groupKey}:${t.idx}`;
+  } else {
+    // По умолчанию — первый признак активного раздела
+    const firstGroup = groupsInSection(activeSection())[0];
+    $("#f-attr").value = `${firstGroup}:0`;
+  }
   $("#f-tech").value = t ? t.tech : "1";
   $("#f-circles").value = t ? t.circles : defaultCirclesForStrategy();
   $("#f-prostr").value = t ? (t.prostr ?? 3) : 3;
@@ -880,7 +1249,7 @@ function updateHint() {
   const left = Math.max(0, target - have);
   const expected = defaultCirclesForStrategy();
   const stratLabel = state.strategy === "1" ? "классическая" : "25/75";
-  $("#f-hint").innerHTML = `По этому признаку: <b>${have}/${target}</b> кругов · осталось ${left}. Техника 1, стратегия ${stratLabel} → ориентир <b>${expected} кругов</b> за тун.`;
+  $("#f-hint").innerHTML = `По этому признаку: <b>${have}/${target}</b> кругов · осталось ${left}. Техника 1, стратегия ${stratLabel} → ориентир <b>${expected} кругов</b> за тхун.`;
 }
 
 $("#f-attr").addEventListener("change", updateHint);
@@ -952,7 +1321,7 @@ $("#import-file").addEventListener("change", e => {
     try {
       const obj = JSON.parse(r.result);
       if (!obj.tuns) throw new Error("неверный файл");
-      if (!confirm(`Импортировать ${obj.tuns.length} тунов? Текущие данные будут заменены.`)) return;
+      if (!confirm(`Импортировать ${obj.tuns.length} тхунов? Текущие данные будут заменены.`)) return;
       state = Object.assign(defaultState(), obj);
       saveState(); renderAll();
     } catch (err) { alert("Не удалось прочитать файл: " + err.message); }
@@ -960,7 +1329,7 @@ $("#import-file").addEventListener("change", e => {
   r.readAsText(file);
 });
 $("#btn-reset").addEventListener("click", () => {
-  if (!confirm("Удалить все туны и настройки? Это нельзя отменить.")) return;
+  if (!confirm("Удалить все тхуны и настройки? Это нельзя отменить.")) return;
   localStorage.removeItem(STORE_KEY);
   state = defaultState();
   renderAll();

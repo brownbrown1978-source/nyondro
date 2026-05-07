@@ -1,0 +1,21 @@
+# Секреты — никогда не коммитить
+.github-token
+.tokens/
+*.token
+
+# macOS-мусор
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Редакторские артефакты
+.vscode/
+.idea/
+*.swp
+*~
+
+# Локальные логи / временные файлы
+*.log
+*.tmp
+node_modules/
