@@ -82,8 +82,12 @@
   }
   .section-nav button.active .sec-pct { color: var(--ink-2); }
   @media (max-width: 480px) {
-    .section-nav button { font-size: 10px; padding: 6px 2px; }
-    .section-nav button .sec-num { width: 18px; height: 18px; font-size: 10px; }
+    /* Two rows of three on mobile — gives each button a real touch target (~110px) */
+    .section-nav { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .section-nav button { font-size: 12px; padding: 10px 6px; gap: 6px; }
+    .section-nav button .sec-num { width: 22px; height: 22px; font-size: 12px; }
+    .section-nav button .sec-name { font-size: 12px; }
+    .section-nav button .sec-pct { font-size: 11px; }
   }
 
   /* === stats card === */
@@ -99,17 +103,235 @@
   .progress-bar { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-top: 8px; }
   .progress-bar > div { height: 100%; background: linear-gradient(90deg, var(--c-blue), var(--c-green) 35%, var(--c-yellow) 65%, var(--c-red)); border-radius: 999px; transition: width .3s; }
 
-  /* === big CTA === */
+  /* === CTA row === */
+  .cta-row { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; margin-bottom: 14px; }
   .cta {
-    width: 100%; padding: 14px 16px; border: 0; border-radius: var(--r);
-    background: var(--ink); color: var(--bg);
-    font-size: 15px; font-weight: 600; letter-spacing: .01em;
+    padding: 14px 16px; border: 0; border-radius: var(--r);
+    font-weight: 600; letter-spacing: .01em;
     box-shadow: var(--shadow);
     display: flex; align-items: center; justify-content: center; gap: 8px;
-    margin-bottom: 14px;
+    cursor: pointer; transition: transform .12s, box-shadow .12s;
   }
-  .cta:hover { background: #000; }
+  .cta-primary { background: var(--ink); color: var(--bg); font-size: 16px; }
+  .cta-primary:hover { background: #000; transform: translateY(-1px); }
+  .cta-secondary { background: var(--bg-2); color: var(--ink-2); font-size: 13px; border: 1px solid var(--line); }
+  .cta-secondary:hover { background: var(--bg); color: var(--ink); }
   .cta svg { display: block }
+  @media (max-width: 480px) {
+    .cta-row { grid-template-columns: 1fr; }
+    .cta-primary { font-size: 15px; }
+    .cta-secondary { font-size: 12px; padding: 10px 12px; }
+  }
+
+  /* === Wizard (Начать тхун) === */
+  .wizard-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(20, 16, 10, .55); backdrop-filter: blur(4px);
+    display: flex; align-items: stretch; justify-content: center;
+  }
+  .wizard-overlay[hidden] { display: none; }
+  .wizard {
+    width: 100%; max-width: 720px; margin: 0 auto;
+    background: var(--bg); display: flex; flex-direction: column;
+    max-height: 100vh; overflow: hidden;
+  }
+  .wizard-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px; border-bottom: 1px solid var(--line); background: var(--bg-2);
+    flex-shrink: 0;
+  }
+  .wizard-close {
+    background: transparent; border: 0; font-size: 24px; color: var(--ink-3);
+    width: 32px; height: 32px; border-radius: 50%; cursor: pointer; line-height: 1;
+  }
+  .wizard-close:hover { background: var(--line); color: var(--ink); }
+  .wizard-title { font-weight: 600; font-size: 16px; }
+  .wizard-stepper { display: flex; gap: 6px; margin-left: auto; }
+  .wizard-stepper .step {
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--line); color: var(--ink-3); font-size: 11px; font-weight: 700;
+    transition: background .2s;
+  }
+  .wizard-stepper .step.active { background: var(--c-blue); color: #fff; }
+  .wizard-stepper .step.done { background: var(--c-green); color: #fff; }
+  .wizard-body {
+    flex: 1 1 auto; overflow-y: auto;
+    padding: 18px 16px 100px;
+  }
+  .wizard-step h2 { font-size: 18px; margin: 0 0 12px; }
+  .wizard-step .hint { font-size: 13px; color: var(--ink-3); margin: 0 0 16px; }
+  .prep-checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .prep-checklist li {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden;
+  }
+  .prep-checklist label {
+    display: flex; gap: 10px; align-items: flex-start; cursor: pointer;
+    font-size: 14px; line-height: 1.45;
+  }
+  .prep-checklist input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; }
+  .prep-checklist details { width: 100%; }
+  .prep-checklist details > summary {
+    list-style: none;
+    padding: 12px 14px;
+    display: flex; gap: 10px; align-items: center;
+    cursor: pointer; user-select: none;
+    font-size: 14px; font-weight: 600; line-height: 1.4;
+    position: relative;
+  }
+  .prep-checklist details > summary::-webkit-details-marker { display: none; }
+  .prep-checklist details > summary::after {
+    content: "▾"; margin-left: auto; color: var(--ink-3);
+    font-size: 11px; transition: transform .2s;
+  }
+  .prep-checklist details[open] > summary::after { transform: rotate(180deg); }
+  .prep-checklist details > summary input[type="checkbox"] {
+    flex-shrink: 0; margin: 0;
+  }
+  .prep-checklist details > summary span { flex: 1; }
+  .prep-checklist details[open] > summary {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .prep-detail {
+    padding: 12px 14px;
+    font-size: 13px; line-height: 1.55; color: var(--ink-2);
+    background: var(--bg);
+  }
+  .prep-stage {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; margin-bottom: 10px;
+  }
+  .prep-stage h3 { font-size: 14px; margin: 0 0 4px; }
+  .prep-stage .stage-desc { font-size: 12px; color: var(--ink-3); margin: 0 0 8px; }
+  .prep-stage > label { display: flex; gap: 8px; align-items: center; font-size: 13px; cursor: pointer; }
+  .prep-stage details { margin: 8px 0; }
+  .prep-stage details summary { font-size: 12px; color: var(--ink-2); cursor: pointer; user-select: none; }
+  .liturgy-inline {
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 14px; line-height: 1.65; color: var(--ink);
+    white-space: pre-wrap; background: var(--bg); border-radius: 8px;
+    padding: 10px 12px; margin-top: 6px; text-align: center;
+  }
+  .shamatha-controls {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0;
+  }
+  .shamatha-controls input[type="number"] {
+    width: 60px; border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; background: var(--bg);
+  }
+  .btn-small {
+    background: var(--ink); color: var(--bg); border: 0; border-radius: 8px;
+    padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer;
+  }
+  .btn-small:hover { background: #000; }
+  .mini-timer {
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 18px; font-weight: 600; color: var(--c-blue); font-variant-numeric: tabular-nums;
+    min-width: 70px; text-align: center;
+  }
+  .vow-form {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px; margin-bottom: 14px;
+    display: grid; gap: 12px; min-width: 0;
+  }
+  .vow-form label {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    font-size: 13px; font-weight: 600; min-width: 0;
+  }
+  .vow-form input, .vow-form select {
+    border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px;
+    background: var(--bg); flex: 1 1 auto; min-width: 0; max-width: 60%;
+  }
+  @media (max-width: 480px) {
+    /* Stack label text on top, control beneath at full width — long select option
+       names won't push the row beyond viewport */
+    .vow-form label { flex-direction: column; align-items: stretch; gap: 4px; }
+    .vow-form input, .vow-form select { max-width: 100%; width: 100%; }
+  }
+  .vow-text { margin: 14px 0; }
+  label.confirm {
+    display: flex; gap: 10px; align-items: center; padding: 12px 14px;
+    background: rgba(232,184,60,.15); border-radius: 10px; cursor: pointer;
+    font-weight: 600;
+  }
+  .med-timer-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px;
+  }
+  .med-timer {
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 36px; font-weight: 700; color: var(--c-blue);
+    font-variant-numeric: tabular-nums; flex: 1;
+  }
+  .med-timer.paused { color: var(--ink-3); }
+  .med-timer-actions { display: flex; flex-direction: column; gap: 6px; }
+  .med-counter {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px;
+    align-items: center; margin-bottom: 16px;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px;
+  }
+  .circ-btn {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+    font-size: 24px; font-weight: 700; padding: 14px; cursor: pointer;
+    color: var(--ink);
+  }
+  .circ-btn:active { background: var(--line); }
+  .circ-display { text-align: center; }
+  .circ-num { font-family: "Iowan Old Style", "Charter", "Georgia", serif; font-size: 32px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .circ-label { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .08em; }
+  .med-recit {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px; max-height: 320px; overflow-y: auto;
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 15px; line-height: 1.7; white-space: pre-wrap; text-align: center;
+  }
+  .finish-block {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; margin-bottom: 12px;
+  }
+  .finish-block h3 { font-size: 14px; margin: 0 0 8px; }
+  .finish-block label { display: block; font-size: 12px; color: var(--ink-3); margin-top: 8px; }
+  .finish-block textarea {
+    width: 100%; border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 10px; background: var(--bg); font-family: inherit; font-size: 13px;
+    resize: vertical; margin-top: 4px;
+  }
+  .feel-stars { display: flex; gap: 4px; margin-top: 8px; }
+  .feel-stars button {
+    background: transparent; border: 0; font-size: 28px; cursor: pointer;
+    color: var(--line); padding: 4px 6px;
+  }
+  .feel-stars button.on, .feel-stars button:hover { color: var(--c-yellow); }
+  .wizard-footer {
+    border-top: 1px solid var(--line); background: var(--bg-2);
+    padding: 12px 16px; display: flex; gap: 8px; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .wizard-footer button {
+    flex: 1; padding: 12px 16px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; cursor: pointer; border: 0;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: #000; }
+  .btn-primary:disabled { background: var(--ink-3); cursor: not-allowed; opacity: .6; }
+  .btn-secondary { background: var(--bg); border: 1px solid var(--line); color: var(--ink-2); }
+  .btn-secondary:hover { background: var(--line); }
+  .bell-banner {
+    position: fixed; inset: 0; background: rgba(46,92,138,.92); color: #fff;
+    z-index: 200; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px; text-align: center; padding: 24px;
+    backdrop-filter: blur(8px);
+  }
+  .bell-banner[hidden] { display: none; }
+  .bell-banner h2 { font-size: 22px; margin: 0 0 8px; color: #fff; }
+  .bell-banner p { margin: 0; font-size: 14px; max-width: 360px; line-height: 1.5; opacity: .9; }
+  .bell-banner button {
+    margin-top: 8px; padding: 12px 24px; border-radius: 10px;
+    background: #fff; color: var(--c-blue); font-weight: 700; font-size: 14px; border: 0; cursor: pointer;
+  }
 
   /* === tabs === */
   .tabs {
@@ -193,6 +415,55 @@
     border-left: 3px solid var(--c-yellow); padding: 6px 12px; color: var(--ink-2);
     background: rgba(232,184,60,.08); border-radius: 0 8px 8px 0;
     margin: 8px 0;
+  }
+  .reader-body .recit {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; margin: 12px 0;
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 14.5px; line-height: 1.7; color: var(--ink);
+    white-space: pre-wrap; text-align: center;
+  }
+  .reader-body .recit-title {
+    font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .08em;
+    margin-bottom: 8px; font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  }
+
+  /* === text subnav (Общие / Раздельные) === */
+  .text-subnav {
+    display: flex; gap: 6px; margin-bottom: 12px;
+    background: var(--bg-2); border: 1px solid var(--line);
+    border-radius: 10px; padding: 4px;
+  }
+  .text-subnav button {
+    flex: 1; padding: 8px 12px; font-size: 13px;
+    background: transparent; border: 0; border-radius: 8px;
+    color: var(--ink-3); font-weight: 600;
+  }
+  .text-subnav button.active {
+    background: var(--bg); color: var(--ink);
+    box-shadow: var(--shadow);
+  }
+  .text-sub { display: none; }
+  .text-sub.active { display: block; }
+  .text-hint { font-size: 12px; color: var(--ink-3); margin: 0 0 12px; }
+
+  /* === liturgy cards === */
+  .liturgy-card {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 14px 16px; box-shadow: var(--shadow); margin-bottom: 12px;
+  }
+  .liturgy-card h3 {
+    font-size: 15px; color: var(--ink); margin: 0 0 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .liturgy-card h3::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+    display: inline-block;
+  }
+  .liturgy-card .body {
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 14.5px; line-height: 1.7; color: var(--ink);
+    white-space: pre-wrap; text-align: center;
   }
 
   /* === settings === */
@@ -338,7 +609,7 @@
     </div>
     <div class="stat">
       <div class="num" id="stat-pct">0%</div>
-      <div class="lbl">Прогресс ДЧЖ</div>
+      <div class="lbl">Прогресс</div>
     </div>
     <div style="grid-column: 1 / -1">
       <div class="progress-bar"><div id="bar-overall" style="width:0%"></div></div>
@@ -349,17 +620,22 @@
     </div>
   </section>
 
-  <!-- CTA -->
-  <button class="cta" id="btn-add">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-    Записать тхун
-  </button>
+  <!-- CTA row -->
+  <div class="cta-row">
+    <button class="cta cta-primary" id="btn-start-thun">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Начать тхун
+    </button>
+    <button class="cta cta-secondary" id="btn-add">
+      Записать задним числом
+    </button>
+  </div>
 
   <!-- Tabs -->
   <nav class="tabs" role="tablist">
     <button class="active" data-pane="journal">Журнал</button>
     <button data-pane="progress">Прогресс</button>
-    <button data-pane="text">Текст</button>
+    <button data-pane="text">Практика нёндро</button>
     <button data-pane="settings">Настройки</button>
   </nav>
 
@@ -373,14 +649,28 @@
     <div id="progress-list"></div>
   </section>
 
-  <!-- Pane: text -->
+  <!-- Pane: practice texts (renamed from "Текст") -->
   <section class="pane" id="pane-text">
-    <div class="reader">
-      <div class="reader-head">
-        <h2 style="margin:0">Перед тхуном</h2>
-        <select id="text-pick"></select>
+    <div class="text-subnav" role="tablist">
+      <button class="active" data-textsub="liturgy">Общие практики</button>
+      <button data-textsub="recitations">Раздельные практики</button>
+    </div>
+
+    <!-- Общие практики (литургия из PDF) -->
+    <div class="text-sub active" id="text-sub-liturgy">
+      <p class="text-hint">Тексты в порядке выполнения тхуна. Из PDF «Практика нёндро в туне» (Дзогчен Шри Сингха).</p>
+      <div id="liturgy-list"></div>
+    </div>
+
+    <!-- Раздельные практики (recitations по признаку) -->
+    <div class="text-sub" id="text-sub-recitations" hidden>
+      <div class="reader">
+        <div class="reader-head">
+          <h2 style="margin:0">Строки начитывания</h2>
+          <select id="text-pick"></select>
+        </div>
+        <div class="reader-body" id="text-body"></div>
       </div>
-      <div class="reader-body" id="text-body"></div>
     </div>
   </section>
 
@@ -502,6 +792,246 @@
   </div>
 </div>
 
+<!-- ============================================================
+     ВИЗАРД «Начать тхун» — 5 шагов: Приготовления → Подготовка →
+     Обет → Медитация → Завершение
+     ============================================================ -->
+<div class="wizard-overlay" id="wizard-overlay" hidden>
+  <div class="wizard">
+    <header class="wizard-header">
+      <button class="wizard-close" id="wizard-close" aria-label="Закрыть">×</button>
+      <div class="wizard-title">Тхун</div>
+      <div class="wizard-stepper">
+        <span class="step active" data-step="1">1</span>
+        <span class="step" data-step="2">2</span>
+        <span class="step" data-step="3">3</span>
+        <span class="step" data-step="4">4</span>
+        <span class="step" data-step="5">5</span>
+      </div>
+    </header>
+
+    <main class="wizard-body" id="wizard-body">
+
+      <!-- Шаг 1: Приготовления -->
+      <section class="wizard-step" data-step="1">
+        <h2>1 · Приготовления</h2>
+        <p class="hint">Подготовь место и тело до начала тхуна. Не давай приготовлениям решать, делать тхун или нет — лучше сделать тхун без некоторых, чем отложить навсегда. Нажми на любую строку, чтобы развернуть подробности из PDF.</p>
+        <ul class="prep-checklist">
+          <li>
+            <details>
+              <summary><input type="checkbox" data-prep="busyness" onclick="event.stopPropagation()"> <span>Занятость</span></summary>
+              <div class="prep-detail">Позаботиться о том, чтобы не было потребности заниматься какими-либо иными занятиями помимо занятия тхуна.</div>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary><input type="checkbox" data-prep="place" onclick="event.stopPropagation()"> <span>Место</span></summary>
+              <div class="prep-detail">Убедиться в чистоте места, обеспечить помещение свежим воздухом и светом, позаботиться о звукоизоляции и ограничить доступ к месту медитации.</div>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary><input type="checkbox" data-prep="devices" onclick="event.stopPropagation()"> <span>Условия</span></summary>
+              <div class="prep-detail">Отключить звук у телефона и т. п. устройств, выключить активно работающие электрические, газовые и водные устройства (плиту, краны и т. п.).</div>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary><input type="checkbox" data-prep="tools" onclick="event.stopPropagation()"> <span>Инструменты</span></summary>
+              <div class="prep-detail">Подготовить подношения на алтаре, подушку / стул для сидения, чётки и иные инструменты, тексты для изучения и практики, часы.</div>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary><input type="checkbox" data-prep="body" onclick="event.stopPropagation()"> <span>Тело</span></summary>
+              <div class="prep-detail">Сходить в туалет, прочистить нос, одеться в удобную для сидения и тёплую одежду, подготовить плед для ног при необходимости, носовые платки, воду в чашке или термосе.</div>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary><input type="checkbox" data-prep="content" onclick="event.stopPropagation()"> <span>Содержание</span></summary>
+              <div class="prep-detail">Решить, какой медитации будет посвящён тхун, сколько он будет выполняться, сколько будет выполняться та или иная часть тхуна и тому подобное.</div>
+            </details>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Шаг 2: Подготовка тела, речи, ума -->
+      <section class="wizard-step" data-step="2" hidden>
+        <h2>2 · Подготовка</h2>
+        <p class="hint">Подготовь тело, речь и ум. Шаматха — основная часть; остальное короче.</p>
+
+        <div class="prep-stage">
+          <h3>Тело · семичастная поза Вайрочаны</h3>
+          <p class="stage-desc">Спина прямая. На подушке или стуле (при проблемах с ногами).</p>
+          <label><input type="checkbox" data-prep="pose"> Принял позу</label>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Тело · шаматха</h3>
+          <p class="stage-desc">6 минут по умолчанию; дольше — для успокоения особо взволнованного ума. Диапазон 3–30 мин.</p>
+          <div class="shamatha-controls">
+            <label>Длительность:
+              <input type="number" id="shamatha-min" min="3" max="30" step="1" value="6">
+            </label>
+            <button id="shamatha-start" class="btn-small" type="button">Запустить</button>
+            <span id="shamatha-timer" class="mini-timer">06:00</span>
+          </div>
+          <label><input type="checkbox" data-prep="shamatha"> Шаматха завершена</label>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Речь · девятичастное дыхание</h3>
+          <p class="stage-desc">Три цикла по три вдоха-выдоха. Дыхание — это речь.</p>
+          <label><input type="checkbox" data-prep="breath"> Дыхание выполнено</label>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · молитва мастерам линии передачи</h3>
+          <div class="liturgy-inline">Лама Чхен Лама Чхен Лама Чхенно!
+(3 раза)</div>
+          <label><input type="checkbox" data-prep="masters"> Прочитано</label>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · принятие прибежища</h3>
+          <details><summary>Текст</summary><div class="liturgy-inline" data-liturgy="refuge"></div></details>
+          <label><input type="checkbox" data-prep="refuge"> Прочитано</label>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · взращивание четырёх безмерных</h3>
+          <details><summary>Текст</summary><div class="liturgy-inline" data-liturgy="four_immeasurables"></div></details>
+          <label><input type="checkbox" data-prep="four"> Прочитано</label>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · зарождение Бодхичитты</h3>
+          <details><summary>Текст</summary><div class="liturgy-inline" data-liturgy="bodhichitta"></div></details>
+          <label><input type="checkbox" data-prep="bodhi"> Прочитано</label>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · благословение Коренного Мастера (семистрочная)</h3>
+          <details><summary>Текст</summary><div class="liturgy-inline" data-liturgy="seven_line"></div></details>
+          <label><input type="checkbox" data-prep="blessing"> Прочитано</label>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · сущностные подготовительные строки нёндро</h3>
+          <details><summary>Текст</summary><div class="liturgy-inline" data-liturgy="essential_lines"></div></details>
+          <label><input type="checkbox" data-prep="essential"> Прочитано</label>
+        </div>
+      </section>
+
+      <!-- Шаг 3: Обет -->
+      <section class="wizard-step" data-step="3" hidden>
+        <h2>3 · Обет совершить тхун</h2>
+        <p class="hint">Чёткое намерение: длительность, признак, ориентир по кругам. Обет — серьёзно. Чем дольше его не нарушаешь, тем легче хранить.</p>
+        <div class="vow-form">
+          <label>Длительность тхуна (мин):
+            <input type="number" id="vow-length" min="5" max="180" value="48">
+          </label>
+          <label>Признак / часть раздела:
+            <select id="vow-attr"></select>
+          </label>
+          <label>Стратегия:
+            <span id="vow-strategy">—</span>
+          </label>
+          <label>Ориентир кругов:
+            <span id="vow-circles">—</span>
+          </label>
+        </div>
+        <div class="vow-text">
+          <div class="liturgy-inline" id="vow-text-body"></div>
+        </div>
+        <label class="confirm"><input type="checkbox" id="vow-confirm"> Я даю этот обет</label>
+      </section>
+
+      <!-- Шаг 4: Медитация -->
+      <section class="wizard-step" data-step="4" hidden>
+        <h2 id="med-title-h">4 · Медитация</h2>
+        <div class="med-timer-row">
+          <div class="med-timer" id="med-timer">48:00</div>
+          <div class="med-timer-actions">
+            <button id="med-pause" class="btn-small" type="button">Пауза</button>
+            <button id="med-bell-test" class="btn-small" type="button" style="background:var(--bg);color:var(--ink-2);border:1px solid var(--line)">Бэлл</button>
+          </div>
+        </div>
+        <div class="med-counter">
+          <button id="med-circ-minus" class="circ-btn" type="button">−</button>
+          <div class="circ-display">
+            <div class="circ-num" id="med-circles">0</div>
+            <div class="circ-label">кругов</div>
+          </div>
+          <button id="med-circ-plus" class="circ-btn" type="button">+</button>
+        </div>
+        <div class="med-recit recit" id="med-recit-body"></div>
+      </section>
+
+      <!-- Шаг 5: Завершение -->
+      <section class="wizard-step" data-step="5" hidden>
+        <h2>5 · Завершение</h2>
+        <p class="hint">Минуту-две на самопроверку и посвящение. Не формально.</p>
+
+        <div class="finish-block">
+          <h3>Самопроверка</h3>
+          <label>Ошибки / отвлечения:
+            <textarea id="finish-mistakes" rows="2" placeholder="Что пошло не так, где были отвлечения…"></textarea>
+          </label>
+          <label>Успехи / прозрения:
+            <textarea id="finish-successes" rows="2" placeholder="Новые переживания, прозрения, удавшееся…"></textarea>
+          </label>
+        </div>
+
+        <div class="finish-block">
+          <h3>Посвящение заслуг</h3>
+          <details><summary>Текст молитвы</summary>
+            <div class="liturgy-inline" data-liturgy="dedication"></div>
+          </details>
+          <label>Устремление (для себя / других):
+            <textarea id="finish-aspiration" rows="1" placeholder="Добродетельное желание…"></textarea>
+          </label>
+          <label>Обещание (новое или прежнее):
+            <textarea id="finish-promise" rows="1" placeholder="Добродетельное обещание…"></textarea>
+          </label>
+        </div>
+
+        <div class="finish-block">
+          <h3>Чувство</h3>
+          <div class="feel-stars" id="finish-feel" role="radiogroup">
+            <button type="button" data-feel="1" aria-label="1">★</button>
+            <button type="button" data-feel="2" aria-label="2">★</button>
+            <button type="button" data-feel="3" aria-label="3">★</button>
+            <button type="button" data-feel="4" aria-label="4">★</button>
+            <button type="button" data-feel="5" aria-label="5">★</button>
+          </div>
+        </div>
+
+        <div class="finish-block">
+          <label>Заметка (необязательно):
+            <textarea id="finish-note" rows="2" placeholder="Что хочется зафиксировать…"></textarea>
+          </label>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="wizard-footer">
+      <button id="wizard-prev" class="btn-secondary" type="button">Назад</button>
+      <button id="wizard-next" class="btn-primary" type="button">Далее</button>
+      <button id="wizard-save" class="btn-primary" type="button" hidden>Сохранить тхун</button>
+    </footer>
+  </div>
+</div>
+
+<!-- Бэлл-баннер на истечение таймера -->
+<div class="bell-banner" id="bell-banner" hidden>
+  <h2>Тхун завершён</h2>
+  <p>Поздравляю. Время перейти к самопроверке и посвящению заслуг.</p>
+  <button id="bell-banner-ok" type="button">Перейти к завершению</button>
+</div>
+
 <script>
 /* ============================================================
  *  ДАННЫЕ — 6 разделов общих внешних предварительных практик
@@ -513,12 +1043,12 @@
  *  кругов; цифры будут уточнены при появлении точных PDF от Шри Сингха.
  * ========================================================== */
 const SECTIONS = {
-  s1: { num: 1, title: "Драгоценная человеческая жизнь",  short: "ДЧЖ",          color: "#2E5C8A", target: 1000 },
-  s2: { num: 2, title: "Непостоянство жизни",             short: "Непостоянство", color: "#5A8C3F", target: 1001 },
-  s3: { num: 3, title: "Изъяны самсары",                  short: "Самсара",      color: "#C84B3C", target: 1000 },
-  s4: { num: 4, title: "Карма — закон причины и следствия", short: "Карма",      color: "#E8B83C", target: 1000 },
-  s5: { num: 5, title: "Блага освобождения",              short: "Освобождение", color: "#7C5BB7", target: 1000 },
-  s6: { num: 6, title: "Как следовать учителю Дхармы",    short: "Учитель",      color: "#B68B2F", target: 1000 },
+  s1: { num: 1, title: "Драгоценная человеческая жизнь",       short: "ДЧЖ",           color: "#2E5C8A", target: 1000 },
+  s2: { num: 2, title: "Жизнь непостоянна",                    short: "Непостоянство", color: "#5A8C3F", target: 994 },
+  s3: { num: 3, title: "Цепляние за самость — это самсара",    short: "Самсара",       color: "#C84B3C", target: 1002 },
+  s4: { num: 4, title: "Закон причины и следствия безошибочен", short: "Карма",        color: "#E8B83C", target: 1000 },
+  s5: { num: 5, title: "Нирвана — это мышление без цепляния",  short: "Нирвана",       color: "#7C5BB7", target: 1001 },
+  s6: { num: 6, title: "Ваджрный Мастер — воплощение Будды",   short: "Учитель",       color: "#B68B2F", target: 1000 },
 };
 
 const ATTRS = {
@@ -549,7 +1079,7 @@ const ATTRS = {
       "Я родился в центральной области Дхармы",
       "Я обладаю функциональными органами способностей",
       "Я не сошёл с пути Дхармы",
-      "Я обладаю верой в Дхарму",
+      "Я обладаю верой в своё благое мышление",
     ],
   },
   advantagesOther: {
@@ -572,12 +1102,12 @@ const ATTRS = {
     target: 28,
     items: [
       "Я не подчиняюсь пагубному мышлению",
-      "Я не пребываю в отупении",
+      "Я не являюсь умственно отсталым",
       "Я не следую пагубному учителю",
       "Я не ленюсь в практике Дхармы",
       "Я не подавлен созреванием пагубной кармы",
       "Я не нахожусь под властью других",
-      "Во мне нет эгоистичных намерений",
+      "Я не злоупотребляю Дхармой как средством от страха",
       "Я не являюсь фальшивым практиком Дхармы",
     ],
   },
@@ -587,13 +1117,13 @@ const ATTRS = {
     color: "#7C5BB7",
     target: 28,
     items: [
-      "Я не отвлечён цеплянием за мирские цели",
+      "Я не связан сильной привязанностью",
       "Я не обладаю пагубным характером",
-      "Я не безразличен к страданиям Самсары",
-      "Я не лишён веры в Дхарму",
-      "Мне не нравятся пагубные действия",
-      "Я не теряю интерес к Дхарме",
-      "Я не нарушаю свои добродетельные обещания (обеты)",
+      "Я не безразличен к страданиям самсары",
+      "Я не лишён веры в Дхарму и подлинных учителей Дхармы",
+      "Я не сорадуюсь недобродетелям",
+      "Я не теряю интереса к Дхарме",
+      "Я не нарушаю свои добродетельные обещания",
       "Я не нарушаю свои самаи",
     ],
   },
@@ -610,124 +1140,104 @@ const ATTRS = {
     ],
   },
 
-  /* === Раздел 2: Непостоянство — 7 размышлений, 1000 кругов === */
-  /* 7 × 143 = 1001 — округление в 1 круг приемлемо */
-  impermanence: {
+  /* === Раздел 2: Жизнь непостоянна — 8 оснований + 18 примеров (PDF) === */
+  /* 8 × 50 + 18 × 33 = 400 + 594 = 994 */
+  impermanenceBases: {
     section: "s2",
-    title: "7 размышлений о непостоянстве",
+    title: "8 оснований непостоянства",
     color: "#5A8C3F",
-    target: 143,
+    target: 50,
     items: [
       "Непостоянство вселенной (внешнего вместилища)",
-      "Непостоянство существ (содержимого вселенной)",
-      "Непостоянство, которому подвержены возвышенные",
-      "Непостоянство, которому подвержены правители",
-      "Различные примеры непостоянства",
-      "Неизвестность обстоятельств смерти",
-      "Непрерывное и острое осознание непостоянства",
+      "Непостоянство существ (внутреннего содержимого)",
+      "Непостоянство просветлённых существ",
+      "Непостоянство временных лидеров",
+      "Различные аналогии непостоянства",
+      "Многочисленность условий смерти",
+      "Непостоянство составных феноменов",
+      "Заблуждение, что умирают только другие",
+    ],
+  },
+  impermanenceExamples: {
+    section: "s2",
+    title: "18 примеров непостоянства",
+    color: "#4A7C2F",
+    target: 33,
+    items: [
+      "Глобальная эволюция и вырождение существ великого цикла",
+      "Безостановочный цикл смены сезонов",
+      "Прошлое ушло, настоящее меняется, будущее не наступило",
+      "Богатые становятся бедными, уважаемые презираемыми",
+      "Смерть предков, родственников и друзей",
+      "Кумиры состарились, померкли, иссякли",
+      "Смерть домашних и бесчисленных животных",
+      "Все существа этого мира умирали, умирают и умрут",
+      "Всё составное распадётся, накопленное исчерпается",
+      "Вредоносные условия способны оборвать жизнь в один миг",
+      "Великие учителя прошлого ушли",
+      "Великие цари и империи исчезли",
+      "Тело меняется каждое мгновение",
+      "Дыхание непрерывно меняется",
+      "Мысли возникают и исчезают непрерывно",
+      "Времена года, день и ночь чередуются",
+      "Молодость превращается в старость",
+      "Здоровье превращается в болезнь",
     ],
   },
 
-  /* === Раздел 3: Изъяны самсары — общее + 6 миров, 1000 кругов === */
-  /* 7 × 143 = 1001 */
-  samsaraGeneral: {
+  /* === Раздел 3: Цепляние за самость — это самсара (PDF) === */
+  /* 6 ядов / миров × 167 = 1002 */
+  samsaraPoisons: {
     section: "s3",
-    title: "Страдания самсары в целом",
+    title: "6 ядов — создатели миров самсары",
     color: "#C84B3C",
-    target: 142,
+    target: 167,
     items: [
-      "Размышление о страданиях самсары в целом",
+      "Гнев — создатель мира адов",
+      "Зависть — создатель мира полубогов",
+      "Жадность — создатель мира голодных духов",
+      "Гордость — создатель мира богов",
+      "Неведение — создатель мира животных",
+      "Привязанность — создатель мира людей",
     ],
   },
-  sixRealms: {
-    section: "s3",
-    title: "Страдания шести миров",
-    color: "#9C3A2E",
+
+  /* === Раздел 4: Закон причины и следствия безошибочен (PDF) === */
+  /* Монолит: 1 item × 1000. Счётчик един для всего раздела. */
+  karma: {
+    section: "s4",
+    title: "Закон причины и следствия",
+    color: "#E8B83C",
+    target: 1000,
+    isMonolith: true,
+    items: [
+      "Закон причины и следствия безошибочен",
+    ],
+  },
+
+  /* === Раздел 5: Нирвана — это мышление без цепляния (PDF) === */
+  /* 7 свобод × 143 = 1001 */
+  nirvanaFreedoms: {
+    section: "s5",
+    title: "7 свобод просветления",
+    color: "#7C5BB7",
     target: 143,
     items: [
-      "Адские существа",
-      "Голодные духи",
-      "Животные",
-      "Люди",
-      "Асуры (полубоги)",
-      "Боги",
+      "Свобода от гнева — милосердное умиротворение",
+      "Свобода от зависти — любящее, блаженное умиротворение",
+      "Свобода от жадности — щедрое умиротворение",
+      "Свобода от гордости — благородное, бессамостное умиротворение",
+      "Свобода от неведения — внимательное, светоносное умиротворение",
+      "Свобода от привязанности — мудрое, бесстрашное умиротворение",
+      "Свобода от цепляния за самость — Пробуждённое Всеведение",
     ],
   },
 
-  /* === Раздел 4: Карма — 10 пагубных + 10 благих + всеобщая природа, 1000 кругов === */
-  /* 10 × 48 + 10 × 48 + 1 × 40 = 480 + 480 + 40 = 1000 */
-  nonVirtuous: {
-    section: "s4",
-    title: "10 пагубных действий",
-    color: "#E8B83C",
-    target: 48,
-    items: [
-      "Убийство",
-      "Воровство",
-      "Сексуальный проступок",
-      "Ложь",
-      "Сеяние раздоров",
-      "Грубая речь",
-      "Бессмысленная болтовня",
-      "Алчность",
-      "Злонамеренность",
-      "Ложные взгляды",
-    ],
-  },
-  virtuous: {
-    section: "s4",
-    title: "10 благих действий",
-    color: "#C99A2E",
-    target: 48,
-    items: [
-      "Защита жизни",
-      "Щедрость",
-      "Сексуальная нравственность",
-      "Правдивая речь",
-      "Примирение",
-      "Мягкая речь",
-      "Осмысленная речь",
-      "Невозмутимость, отказ от алчности",
-      "Доброжелательность",
-      "Правильные взгляды",
-    ],
-  },
-  karmaGeneral: {
-    section: "s4",
-    title: "Всеобъемлющая природа кармы",
-    color: "#A77B22",
-    target: 40,
-    items: [
-      "Размышление о всеобъемлющей природе кармы",
-    ],
-  },
-
-  /* === Раздел 5: Блага освобождения — причина + плод, 1000 кругов === */
-  /* 2 × 500 = 1000 */
-  liberationCause: {
-    section: "s5",
-    title: "Причина освобождения",
-    color: "#7C5BB7",
-    target: 500,
-    items: [
-      "Размышление о причине обретения состояния освобождения",
-    ],
-  },
-  liberationFruit: {
-    section: "s5",
-    title: "Плод освобождения",
-    color: "#5C4290",
-    target: 500,
-    items: [
-      "Размышление о плоде — самом состоянии освобождения",
-    ],
-  },
-
-  /* === Раздел 6: Следование учителю — 3 составляющие, 1000 кругов === */
+  /* === Раздел 6: Ваджрный Мастер — воплощение Будды (PDF) === */
   /* 333 + 334 + 333 = 1000 */
   examineTeacher: {
     section: "s6",
-    title: "Умение проверять учителя",
+    title: "Проверять учителя",
     color: "#B68B2F",
     target: 333,
     items: [
@@ -736,23 +1246,402 @@ const ATTRS = {
   },
   followTeacher: {
     section: "s6",
-    title: "Умение следовать учителю",
+    title: "Следовать учителю",
     color: "#9A7423",
     target: 334,
     items: [
-      "Уважение, преданность, служение учителю",
+      "Подлинная практика, смиренное служение, материальные дары",
     ],
   },
   absorbTeacher: {
     section: "s6",
-    title: "Умение усваивать мудрость и поведение учителя",
+    title: "Усваивать (изучать → размышлять → медитировать)",
     color: "#7E5C18",
     target: 333,
     items: [
-      "Воплощение услышанных наставлений в жизни",
+      "Изучить, размышлять, медитировать — что Ваджрный Мастер это Будда",
     ],
   },
 };
+
+/* ============================================================
+ *  ЛИТУРГИЯ — общие практики из PDF «Практика нёндро в туне»
+ *  (Дзогчен Шри Сингха). Порядок и тексты сохранены дословно
+ *  с учётом терминологии CONTEXT.md (тхун, шаматха, Бодхичитта, самсара).
+ * ========================================================== */
+const LITURGY = [
+  {
+    id: "masters",
+    title: "Молитва мастерам линии передачи",
+    body: `Лама Чхен Лама Чхен Лама Чхенно!
+(3 раза)
+
+Расширенно (для первого тхуна дня в ритрите или порой вне ритрита):
+молитва Линии Передачи Дзогчен Лонгчен Ньинтиг или Кхандро Ньинтиг из «Пути Будды».`,
+  },
+  {
+    id: "refuge",
+    title: "Принятие прибежища",
+    body: `Принимаю прибежище в Будде – моём проводнике.
+Принимаю прибежище в Дхарме – моём пути.
+Принимаю прибежище в Сангхе – моём спутнике.`,
+  },
+  {
+    id: "four_immeasurables",
+    title: "Взращивание четырёх безмерных",
+    body: `Да освободятся все существа от страданий и пагубного мышления.
+Да обретут все существа счастье и благое мышление.
+Да не отделятся никогда все существа от великого блаженства
+за пределами иллюзий и заблуждений.
+Да пребудут все существа в абсолютной равностности
+за пределами страха и надежды.`,
+  },
+  {
+    id: "bodhichitta",
+    title: "Зарождение Бодхичитты",
+    body: `Намо Буддая! Для истинного счастья всех существ
+я стану Буддой в этой жизни как можно скорее,
+для этого я буду с радостью практиковать Путь Будды.`,
+  },
+  {
+    id: "seven_line",
+    title: "Получение благословения от Коренного Мастера",
+    body: `[Семистрочная молитва]
+
+Хунг! В северо-западном краю Уддияны,
+поверх цветка древа лотоса,
+обретший высшие достижения,
+прославлен как Падмасамбхава,
+окружён свитами Дакинь —
+я практикую, следуя тебе,
+прошу, приди и благослови.
+
+Гуру Пэдма Сиддхи Хунг
+А`,
+  },
+  {
+    id: "essential_lines",
+    title: "Сущностные подготовительные строки нёндро",
+    body: `Моё человеческое тело драгоценно,
+ведь свободы и дарования так редко обретаемы.
+Моя жизнь непостоянна,
+ведь время и обстоятельства смерти неизвестны.
+Самсара — это страдание,
+ведь это иллюзорный круговорот моего цепляния за самость.
+Карма безошибочна,
+ведь всё, что со мной происходит — это следствие моих намерений и действий.
+Нирвана — это свобода от страдания,
+ведь это просветлённое прекращение моего пагубного мышления.
+Ваджрный Мастер — воплощение всех Будд,
+ведь мой несравненный Гуру совершенно ведёт меня по Пути Будды.`,
+  },
+  {
+    id: "vow",
+    title: "Обет совершить тхун",
+    body: `Намо Буддая!
+Для истинного счастья всех существ
+я стану Буддой в этой жизни как можно скорее,
+для этого с этого момента и до XX:XX (в течение X минут / часов)
+я беру обет пребывать в этом месте и практиковать Дхарму.
+Я не сойду с этого места, даже если небеса упадут на землю.
+В это время я буду сосредотачиваться только на Дхарме,
+буду произносить только Дхарму и буду заниматься только Дхармой.
+Таково моё решение, таково моё обещание. Я никогда не нарушу это обещание.
+Все Будды, Просветлённые и Мастера Линии передачи,
+прошу благословите меня осуществить это обещание.`,
+  },
+  {
+    id: "dedication",
+    title: "Посвящение заслуг",
+    body: `Намо Буддая!
+Для истинного счастья всех существ
+я стану Буддой в этой жизни как можно скорее.
+Для этого так же, как посвящают все Будды и бодхисаттвы,
+я с радостью посвящаю все заслуги всем существам,
+чтобы каждое существо достигло непревзойдённого просветления.
+Да будут все мои посвящения чистыми как мудрость Манджушри.
+Да будут все мои посвящения исполнены как устремление Самантабхадры.`,
+  },
+];
+
+/* ============================================================
+ *  RECITATIONS — полные строки начитывания по PDF
+ *
+ *  Раздел 1 (ДЧЖ): каждый из 34 признаков — 14 строк по шаблону:
+ *    1. «Намо Буддая!»
+ *    2. Уникальная строка признака
+ *    3-14. Стандартный корпус (12 строк, одинаков для всех)
+ *
+ *  Разделы 2-6 — собственные блоки PDF.
+ * ========================================================== */
+const STANDARD_BODY_S1 = [
+  "Это человеческое тело так трудно обрести.",
+  "Я никогда не буду плохо обращаться со своим драгоценным человеческим телом.",
+  "Это драгоценное человеческое тело – бесценная опора для становления Буддой.",
+  "Я уважаю своё драгоценное человеческое тело и буду без цепляния заботиться о нём.",
+  "Это человеческое тело – не обуза и не диктатор для меня.",
+  "Я буду использовать своё драгоценное человеческое тело мудро, добродетельно и усердно.",
+  "Человеческое тело драгоценно.",
+  "Моё человеческое тело драгоценно.",
+  "Моя человеческая жизнь драгоценна.",
+  "Моя жизнь в Дхарме очень драгоценна.",
+  "Жизнь драгоценна.",
+  "Так драгоценна.",
+  "Драгоценна.",
+];
+
+function s1Recitation(uniqueLine) {
+  return ["Намо Буддая!", uniqueLine, ...STANDARD_BODY_S1];
+}
+
+const S1_UNIQUE_LINES = {
+  freedoms: [
+    "Я так благодарен, что я не существо ада.",
+    "Я так благодарен, что я не голодный дух.",
+    "Я так благодарен, что я не животное.",
+    "Я так благодарен, что я не следую пути насилия.",
+    "Я так благодарен, что я не бог-долгожитель.",
+    "Я так благодарен, что я не придерживаюсь ложных воззрений.",
+    "Я так благодарен, что я не родился в тёмный временной цикл.",
+    "Я так благодарен, что я не родился умственно неполноценным.",
+  ],
+  advantagesOwn: [
+    "Я так благодарен, что родился человеком.",
+    "Я так благодарен, что родился в центральной области Дхармы.",
+    "Я так благодарен, что обладаю функциональными органами способностей.",
+    "Я так благодарен, что не сошёл с пути Дхармы / мои действия не имеют пагубных последствий / не бросаю добродетель при возникновении препятствий.",
+    "Я так благодарен, что обладаю верой в своё благое мышление.",
+  ],
+  advantagesOther: [
+    "Я так благодарен, что Будда появился в этом мире.",
+    "Я так благодарен, что Будда преподал Дхарму в этом мире.",
+    "Я так благодарен, что в этом мире всё ещё есть Дхарма.",
+    "Я так благодарен, что у меня есть доступ к Дхарме и я могу войти в Дхарму / есть Дхарма-центр и я вошёл во врата / в этом мире есть практикующая Сангха.",
+    "Я так благодарен, что был принят в ученики учителем Дхармы.",
+  ],
+  unfavSpontaneous: [
+    "Я так благодарен, что не подчиняюсь своему пагубному мышлению.",
+    "Я так благодарен, что не являюсь умственно отсталым.",
+    "Я так благодарен, что не следую пагубному учителю.",
+    "Я так благодарен, что не ленюсь в своей практике Дхармы.",
+    "Я так благодарен, что не подавлен созреванием пагубной кармы.",
+    "Я так благодарен, что не нахожусь под властью других.",
+    "Я так благодарен, что не злоупотребляю Дхармой как средством от страха / во мне нет эгоистичных намерений.",
+    "Я так благодарен, что не являюсь фальшивым практиком Дхармы.",
+  ],
+  unfavAttachments: [
+    "Я так благодарен, что не связан сильной привязанностью / не отвлечён цеплянием за мирские цели / не спутан арканом привязанности.",
+    "Я так благодарен, что не обладаю пагубным характером.",
+    "Я так благодарен, что не безразличен к страданиям самсары.",
+    "Я так благодарен, что не лишён веры в Дхарму и подлинных учителей Дхармы.",
+    "Я так благодарен, что не сорадуюсь недобродетелям / мне не нравятся пагубные действия.",
+    "Я так благодарен, что не теряю интереса к Дхарме.",
+    "Я так благодарен, что не нарушаю свои добродетельные обещания.",
+    "Я так благодарен, что не нарушаю свои самаи.",
+  ],
+  // reasons: для 3 причин нет начитывания — только размышление (концепция).
+  // 16 кругов на причину = 16 раундов размышления, без строк.
+};
+
+/* Раздел 2: 8 оснований — общий рефрен + уникальные строки */
+const S2_BASES_TEMPLATE_TAIL = [
+  "Я не дам себе увязать в печали; я не буду цепляться за соблазнительные переживания.",
+  "Всё непостоянно. Моя жизнь непостоянна. Непостоянна.",
+  "Моя смерть гарантирована, однако когда я умру, как я умру и где я умру неизвестно.",
+  "Я не буду бояться умереть и не буду искать смерти.",
+  "Вся жизнь непостоянна. Моя жизнь непостоянна. Непостоянна.",
+  "Почти нет времени осуществить практику драгоценной Дхармы.",
+  "Как же я могу тратить впустую даже мгновение на практику пагубного мышления?",
+  "Поэтому я не дам себе погрязнуть в лени; я не буду цепляться только лишь за эту жизнь.",
+  "Я буду с радостью практиковать Дхарму каждое мгновение.",
+  "Всё непостоянно.",
+  "Вся жизнь непостоянна.",
+  "Моя жизнь непостоянна.",
+  "Непостоянна.",
+  "Непостоянна.",
+  "Непостоянна.",
+];
+
+const S2_BASES_UNIQUE = [
+  "Вся жизнь непостоянна, ведь когда я исследую внешнее вместилище, вселенную, я вижу, что она непрестанно меняется. Так я глубоко распознаю, что даже вселенная непостоянна.",
+  "Вся жизнь непостоянна, ведь когда я исследую внутреннее содержимое, всех существ, я вижу, что они непрестанно претерпевают цикл рождения и смерти. Так я глубоко распознаю, что все существа непостоянны.",
+  "Вся жизнь непостоянна, ведь когда я исследую просветлённых существ, я вижу, что они также являют рождение и смерть. Так я глубоко распознаю, что даже просветлённые существа непостоянны.",
+  "Вся жизнь непостоянна, ведь когда я исследую временных лидеров, я вижу, что они не свободны от цикла рождения и смерти. Так я глубоко распознаю, что все временные лидеры непостоянны.",
+  "Вся жизнь непостоянна, ведь когда я исследую различные аналогии, я вижу, что всё непостоянно и непрестанно меняется. Так я глубоко распознаю, что все эти примеры демонстрируют непостоянство.",
+  "Вся жизнь непостоянна, ведь когда я исследую условия смерти, я вижу, что они многочисленны. Так я глубоко распознаю, что меня окружают многочисленные условия смерти.",
+  "Вся жизнь непостоянна, ведь когда я сосредотачиваюсь на составных феноменах, я вижу, что всё меняется каждое мгновение. Так я глубоко распознаю, что все составные феномены непостоянны.",
+  "Вся жизнь непостоянна, хотя я и полагаю неведуще, что умерли, умирают и умрут все кроме меня. Так я глубоко распознаю, что всё меняется каждое мгновение, в том числе и я.",
+];
+
+/* Раздел 2: 18 примеров — общий рефрен + уникальные строки */
+const S2_EXAMPLES_TEMPLATE_HEAD = [
+  "Намо Буддая!",
+  "Я распознаю, что моя жизнь непостоянна. Моя смерть гарантирована.",
+  "Когда я умру, как я умру и где я умру неизвестно.",
+  "Я не буду бояться умереть и не буду искать смерти.",
+];
+
+const S2_EXAMPLES_TEMPLATE_TAIL = [
+  "Я вижу, что всё непрестанно меняется, включая меня.",
+  "Поэтому я буду усердно практиковать Дхарму.",
+  "Почти нет времени осуществить практику благого мышления, причину счастья.",
+  "Как же я могу тратить впустую даже мгновение на практику пагубного мышления и пагубных действий, причины страдания?",
+  "Я буду с радостью практиковать Дхарму каждое мгновение.",
+  "Всё непостоянно.",
+  "Вся жизнь непостоянна.",
+  "Моя жизнь непостоянна.",
+  "Непостоянна.",
+  "Непостоянна.",
+  "Непостоянна.",
+];
+
+const S2_EXAMPLES_UNIQUE = [
+  "Вся жизнь непостоянна. Так глобальные эволюция и вырождение существ этого великого вселенского временного цикла непрестанны.",
+  "Вся жизнь непостоянна. Так безостановочен цикл смены сезонов — весна, лето, осень и зима непостоянны.",
+  "Вся жизнь непостоянна. Так прошлое ушло, настоящее меняется, а будущее ещё не наступило. Дни, месяцы и годы непостоянны.",
+  "Вся жизнь непостоянна. Так богатые становятся бедными, бедные становятся богатыми, уважаемые становятся презираемыми, презираемые становятся уважаемыми, знаменитые становятся неизвестными, и неизвестные становятся известными.",
+  "Вся жизнь непостоянна. Так многих моих предков постигла смерть, оставив лишь их имена. Я видел, как умирали многие из моих родственников и друзей несмотря на свою живость в последние годы. Теперь я не знаю, где они переродились. Все друзья и близкие непостоянны.",
+  "Вся жизнь непостоянна. Так многих из моих кумиров нет в живых, и многие из них изменились. Их красота померкла. Их слава угасла. Их сила иссякла. Все мирские достижения непостоянны.",
+  "Вся жизнь непостоянна. Так множество моих домашних животных умерло. Бесчисленные животные умирают и находятся при смерти каждый день. Всех животных ждёт смерть.",
+  "Вся жизнь непостоянна. Так все существа в этом мире умирали, умирают и умрут. Никто не может избежать смерти.",
+  "Вся жизнь непостоянна. Так: Всё составное распадётся. Всё накопленное исчерпается. Всё возвысившееся падёт. Всё рождённое умрёт.",
+  "Есть много оснований для познания непостоянства. Для сохранения драгоценного человеческого тела требуются бессчётные поддерживающие условия, при этом я ежедневно сталкиваюсь со множеством вредоносных условий, способных в один миг оборвать мою жизнь.",
+  "Вся жизнь непостоянна. Так все великие учителя прошлого, чьи имена я слышу с почтением, оставили свои тела. Учителя непостоянны.",
+  "Вся жизнь непостоянна. Так все великие цари и империи прошлого исчезли, оставив лишь руины. Власть и государства непостоянны.",
+  "Вся жизнь непостоянна. Так моё тело меняется каждое мгновение — клетки рождаются и умирают, кожа стареет, силы убывают. Тело непостоянно.",
+  "Вся жизнь непостоянна. Так моё дыхание меняется непрерывно — каждый вдох и выдох уникален и не повторится. Дыхание непостоянно.",
+  "Вся жизнь непостоянна. Так мысли возникают и исчезают непрерывно — ни одна мысль не задерживается. Мышление непостоянно.",
+  "Вся жизнь непостоянна. Так времена года, день и ночь чередуются без остановки. Время непостоянно.",
+  "Вся жизнь непостоянна. Так юность неизбежно перерастает в старость. Молодость непостоянна.",
+  "Вся жизнь непостоянна. Так здоровье ухудшается в болезни, и силы иссякают. Здоровье непостоянно.",
+];
+
+/* Раздел 3: текст-обрамление + 6 ядов */
+const S3_INTRO = `Да реализую я, что самсара – это страдание, созданное цеплянием за "я".
+Я отрекаюсь от своего цепляния за "я", создателя миров самсары.
+Я отрекаюсь от своего пагубного мышления, создателя моего страдания.
+Моё пагубное мышление – это страдание!`;
+
+const S3_OUTRO = `Пагубное мышление – это страдание.
+Я усмирю всё своё пагубное мышление.
+Я предотвращу всё своё пагубное мышление.
+Я уничтожу всё своё пагубное мышление.`;
+
+const S3_POISONS_LINES = [
+  "Я отрекаюсь от своего гнева, создателя мира адов.",
+  "Я отрекаюсь от своей зависти, создателя мира полубогов.",
+  "Я отрекаюсь от своей жадности, создателя мира голодных духов.",
+  "Я отрекаюсь от своей гордости, создателя мира богов.",
+  "Я отрекаюсь от своего неведения, создателя мира животных.",
+  "Я отрекаюсь от своей привязанности, создателя мира людей.",
+];
+
+/* Раздел 4: монолит */
+const S4_KARMA_FULL = `Да реализую я, что карма – это сила мышления.
+Да реализую я, что всё мышление создаёт карму.
+Да реализую я, что моё благое мышление и благая карма —
+это единственная причина моего счастья и условие счастья всех существ.
+Я буду всегда увеличивать свою благую карму.
+Закон причины и следствия безошибочен.
+
+Да реализую я, что моё пагубное мышление и пагубная карма —
+это единственная причина моего страдания и условие страдания всех существ.
+Я буду всегда увеличивать свою благую карму.
+Закон причины и следствия безошибочен.
+
+Я не могу переживать следствие кармы, которую не создавал.
+Моя карма не рассеется без созревания или воздействия противоядия.
+Вся моя карма безошибочно созреет как мои переживания и феномены.
+Закон причины и следствия безошибочен.
+
+Моё пагубное мышление увеличивает мою пагубную карму и уменьшает мою благую карму.
+Моё благое мышление увеличивает мою благую карму и уменьшает мою пагубную карму.
+Закон причины и следствия безошибочен.`;
+
+/* Раздел 5: 7 свобод нирваны */
+const S5_INTRO = `Да реализую я, что нирвана означает просветление.
+Да реализую я, что просветление – это прекращение моего цепляния за самость.
+Да реализую я, что моё благое мышление –
+это умиротворение, счастье, радость и блаженство.
+Да реализую я, что каждое благое мышление – это следующий уровень просветления.
+Да реализую я, что каждое благое мышление – это следующий уровень Будды.
+Моё благое мышление – это умиротворение.`;
+
+const S5_FREEDOMS_LINES = [
+  "Свобода от гнева – это милосердное, могущественное умиротворение просветления.",
+  "Свобода от зависти – это любящее, блаженное умиротворение просветления.",
+  "Свобода от жадности – это щедрое, всеобъемлющее умиротворение просветления.",
+  "Свобода от гордости – это благородное, бессамостное умиротворение просветления.",
+  "Свобода от неведения – это внимательное, светоносное умиротворение просветления.",
+  "Свобода от привязанности – это мудрое, бесстрашное умиротворение просветления.",
+  "Свобода от цепляния за самость – это просветлённое, безграничное умиротворение Пробуждённого Всеведения.",
+];
+
+/* Раздел 6: 3 умения */
+const S6_INTRO = `Да осознаю я, что Ваджрный Мастер — воплощение всех Будд.`;
+
+const S6_PARTS = [
+  // Шаг 1: проверять
+  `1. Да буду я благоприятно воссоединяться со своим квалифицированным учителем.
+Да буду я преданно следовать учениям своего квалифицированного учителя.
+Да буду я с верой осуществлять устремления своего квалифицированного учителя.
+Учитель Дхармы — это Будда.`,
+  // Шаг 2: следовать
+  `2. Да реализую я, что моя подлинная практика — это наивысшее подношение Ваджрному Мастеру.
+Да реализую я, что моё смиренное служение — это превосходное подношение Ваджрному Мастеру.
+Да реализую я, что материальные дары — это прекрасное подношение Ваджрному Мастеру.
+Учитель Дхармы — это Будда.`,
+  // Шаг 3: усваивать
+  `3. Да буду я изучать и пойму, что Ваджрный Мастер — это Будда.
+Да буду я размышлять и переживу, что Ваджрный Мастер — это Будда.
+Да буду я медитировать и реализую, что Ваджрный Мастер — это Будда.
+Учитель Дхармы — это Будда.`,
+];
+
+/* Сборка финального объекта RECITATIONS:
+ *   RECITATIONS[groupKey][idx] = { title, lines: [string, ...] }
+ */
+const RECITATIONS = (() => {
+  const r = {};
+  // s1 признаки (34 шт): полные 15-строчные блоки начитывания.
+  // 3 причины ДЧЖ — без начитывания, только размышление; их в RECITATIONS НЕТ.
+  for (const gk of Object.keys(S1_UNIQUE_LINES)) {
+    r[gk] = S1_UNIQUE_LINES[gk].map((uniq, i) => ({
+      title: ATTRS[gk].items[i],
+      lines: s1Recitation(uniq),
+    }));
+  }
+  // s2 bases
+  r.impermanenceBases = S2_BASES_UNIQUE.map((uniq, i) => ({
+    title: ATTRS.impermanenceBases.items[i],
+    lines: ["Намо Буддая!", uniq, ...S2_BASES_TEMPLATE_TAIL],
+  }));
+  // s2 examples
+  r.impermanenceExamples = S2_EXAMPLES_UNIQUE.map((uniq, i) => ({
+    title: ATTRS.impermanenceExamples.items[i],
+    lines: [...S2_EXAMPLES_TEMPLATE_HEAD, uniq, ...S2_EXAMPLES_TEMPLATE_TAIL],
+  }));
+  // s3 poisons
+  r.samsaraPoisons = S3_POISONS_LINES.map((line, i) => ({
+    title: ATTRS.samsaraPoisons.items[i],
+    lines: [S3_INTRO, `${i + 1}. ${line}`, S3_OUTRO],
+  }));
+  // s4 karma — единый блок
+  r.karma = [{
+    title: ATTRS.karma.items[0],
+    lines: [S4_KARMA_FULL],
+  }];
+  // s5 nirvana freedoms
+  r.nirvanaFreedoms = S5_FREEDOMS_LINES.map((line, i) => ({
+    title: ATTRS.nirvanaFreedoms.items[i],
+    lines: [S5_INTRO, `${i + 1}. ${line}`],
+  }));
+  // s6 teacher
+  r.examineTeacher = [{ title: ATTRS.examineTeacher.items[0], lines: [S6_INTRO, S6_PARTS[0]] }];
+  r.followTeacher   = [{ title: ATTRS.followTeacher.items[0],   lines: [S6_INTRO, S6_PARTS[1]] }];
+  r.absorbTeacher   = [{ title: ATTRS.absorbTeacher.items[0],   lines: [S6_INTRO, S6_PARTS[2]] }];
+  return r;
+})();
 
 /* Краткие фрагменты Патрула Ринпоче, привязанные по группам / отдельным признакам.
  * Где нет авторского фрагмента под конкретный признак — показывается общий по группе. */
@@ -825,108 +1714,96 @@ const READING = {
     ],
   },
 
-  /* === Раздел 2: Непостоянство === */
-  impermanence: {
-    intro: `Даже имея ДЧЖ, твоя жизнь не будет длиться без конца. Цель раздела — войти в острое осознание того, что время и обстоятельства смерти неизвестны, и обратить ум к Дхарме сейчас.`,
+  /* === Раздел 2: Жизнь непостоянна (PDF) === */
+  impermanenceBases: {
+    intro: `Восемь оснований непостоянства — восемь точек, через которые ум входит в острое осознание непостоянства всего: вселенной, существ, даже просветлённых, лидеров, аналогий, условий смерти, составных феноменов и иллюзии «умирают только другие».`,
     perItem: [
-      `Внешний мир — горы, реки, светила — также непостоянен. Четыре стихии разрушают то, что казалось вечным. Если разрушаются они — что говорить о моей жизни.`,
-      `Все существа, населяющие три мира, меняются и умирают. Никто из живших до меня не остался. Никто из живущих рядом не останется.`,
-      `Возвышенные существа — будды, бодхисаттвы, великие учителя — являют непостоянство, уходя в паринирвану. Если уходят они, тем более мы.`,
-      `Цари и правители, обладавшие огромной властью, исчезают как утренний иней. Их короны — на земле, дворцы — пусты.`,
-      `Капля росы на травинке, пузырь на воде, эхо в горах, отражение в зеркале — традиционные примеры. Каждый из них применим к моей жизни.`,
-      `Мы знаем, что умрём. Но не знаем — когда, где, как, в чьём окружении. Поэтому единственная разумная стратегия — практиковать сейчас.`,
-      `Не «вспомнить о смерти один раз и забыть», а удерживать тонкое осознание непостоянства каждый момент. Тогда ум сам становится Дхармой.`,
+      `Внешнее вместилище — вселенная — меняется непрестанно. Если меняется она, что говорить о моей жизни.`,
+      `Внутреннее содержимое — все существа — без остановки рождаются и умирают.`,
+      `Даже просветлённые существа — будды, бодхисаттвы, великие учителя — являют рождение и смерть.`,
+      `Цари, президенты, временные лидеры — никто не свободен от цикла рождения и смерти.`,
+      `Все аналогии — капля росы, пузырь, эхо, отражение — указывают на одно: всё меняется.`,
+      `Условий смерти бесчисленно: болезнь, насилие, пища, лекарства, природные стихии — любое из них может оборваться сегодня.`,
+      `Все составные феномены меняются каждое мгновение. Я не исключение.`,
+      `Я ошибочно полагаю, что умирают только другие. На самом деле я меняюсь и умру наравне со всеми.`,
+    ],
+  },
+  impermanenceExamples: {
+    intro: `Восемнадцать примеров непостоянства — конкретные опоры для медитации, чтобы переживание непостоянства стало живым.`,
+    perItem: [
+      `Глобальная эволюция и вырождение существ великого цикла непрестанны.`,
+      `Безостановочный цикл смены сезонов — весна, лето, осень, зима — все они непостоянны.`,
+      `Прошлое ушло, настоящее меняется, будущее ещё не наступило. Дни, месяцы, годы непостоянны.`,
+      `Богатые становятся бедными, бедные — богатыми; уважаемые — презираемыми; знаменитые — забытыми.`,
+      `Многих моих предков, родственников, друзей уже нет. Все близкие непостоянны.`,
+      `Кумиры состарились, померкли, иссякли. Все мирские достижения непостоянны.`,
+      `Множество домашних и диких животных умирает каждый день. Все животные смертны.`,
+      `Все существа этого мира умирали, умирают и умрут. Никто не избежал смерти.`,
+      `Всё составное распадётся. Всё накопленное исчерпается. Всё возвысившееся падёт. Всё рождённое умрёт.`,
+      `Тело живо благодаря бессчётным поддерживающим условиям. Малейший сбой может оборвать жизнь в миг.`,
+      `Великие учителя прошлого, имена которых я слышу с почтением, оставили свои тела.`,
+      `Великие цари и империи прошлого исчезли, оставив лишь руины.`,
+      `Моё тело меняется каждое мгновение — клетки рождаются и умирают.`,
+      `Моё дыхание меняется непрерывно. Каждый вдох уникален.`,
+      `Мысли возникают и исчезают непрерывно. Ничто не задерживается в уме.`,
+      `Времена года, день и ночь чередуются без остановки. Время непостоянно.`,
+      `Юность неизбежно перерастает в старость.`,
+      `Здоровье ухудшается в болезни, силы иссякают.`,
     ],
   },
 
-  /* === Раздел 3: Изъяны самсары === */
-  samsaraGeneral: {
-    intro: `Самсара — это не место, а состояние ума, кружащееся под действием кармы. Куда бы ты ни родился — суть та же: цепляние, страдание, новое рождение.`,
+  /* === Раздел 3: Цепляние за самость — это самсара (PDF) === */
+  samsaraPoisons: {
+    intro: `Самсара создаётся не вовне, а изнутри — цеплянием за «я». Шесть ядов цепляния порождают шесть миров. Распознавая яд, я отрекаюсь от него — и одновременно отрекаюсь от мира, который он создаёт.`,
     perItem: [
-      `Размышляй о трёх видах страдания: страдание страдания, страдание перемены, всеобъемлющее страдание обусловленности. Они есть везде, даже в самых счастливых состояниях.`,
-    ],
-  },
-  sixRealms: {
-    intro: `Шесть миров — это шесть способов, которыми созревает карма: жара/холод, голод/жажда, тупость, борьба, зависть, гордыня. Все они — самсара.`,
-    perItem: [
-      `Адские существа — горячие и холодные ады. Невыносимые страдания тысячи лет. Семя — гнев и ненависть. Размышляй о причинах и следствии.`,
-      `Голодные духи — постоянный голод и жажда. Сотни лет без слова «вода». Семя — алчность.`,
-      `Животные — порабощение, поедание друг другом, отсутствие способности к Дхарме. Семя — невежество и тупость.`,
-      `Люди — рождение, старость, болезнь, смерть, не получить желаемое, расстаться с любимым, встретить нелюбимого, страдания пяти скандх. Семя — все три яда понемногу.`,
-      `Асуры — постоянная борьба и зависть к богам, которым проигрывают. Семя — зависть.`,
-      `Боги — долгое наслаждение, но конец предсказуем: семь дней до смерти боги видят падение. Семя — гордыня и привязанность.`,
+      `Гнев — создатель мира адов. Размышляй о горячих и холодных адах как о собственном гневе, видимом изнутри.`,
+      `Зависть — создатель мира полубогов (асуров). Размышляй о бесконечной борьбе и неспособности победить как о собственной зависти.`,
+      `Жадность — создатель мира голодных духов. Размышляй о столетиях голода и жажды как о собственной жадности.`,
+      `Гордость — создатель мира богов. Размышляй о приятном, но конечном состоянии богов как о собственной гордости, не видящей падения.`,
+      `Неведение — создатель мира животных. Размышляй о порабощении и неспособности к Дхарме как о собственном неведении.`,
+      `Привязанность — создатель мира людей. Размышляй о восьми страданиях человека как о следствии собственной привязанности.`,
     ],
   },
 
-  /* === Раздел 4: Карма === */
-  nonVirtuous: {
-    intro: `Десять пагубных действий через тело (3), речь (4), ум (3) — основные семена страдания. Полное действие требует основы, намерения, исполнения и завершения.`,
+  /* === Раздел 4: Закон причины и следствия безошибочен (PDF, монолит) === */
+  karma: {
+    intro: `Закон причины и следствия безошибочен. Карма — это сила мышления; всё мышление создаёт карму. Раздел построен как единое размышление в четырёх частях: благое мышление — причина счастья; пагубное — причина страдания; несозданная карма не созревает; благое мышление увеличивает благую карму и уменьшает пагубную.`,
     perItem: [
-      `Убийство живых существ — сокращает свою жизнь, ведёт в ад. Главное противоядие — защита жизни.`,
-      `Воровство — взять не данное. Ведёт к бедности и потерям. Противоядие — щедрость.`,
-      `Сексуальный проступок — нарушение принятых норм. Ведёт к разрушению отношений. Противоядие — нравственность.`,
-      `Ложь — особенно «великая ложь» о духовных достижениях. Противоядие — правдивость.`,
-      `Сеяние раздоров — разделять близких словами. Противоядие — примирять.`,
-      `Грубая речь — слова, ранящие других. Противоядие — мягкая речь.`,
-      `Бессмысленная болтовня — отвлекает себя и других от Дхармы. Противоядие — осмысленная речь.`,
-      `Алчность — жаждать чужого. Противоядие — внутреннее довольство.`,
-      `Злонамеренность — желать вреда другим. Противоядие — доброжелательность.`,
-      `Ложные взгляды — отрицание кармы, Трёх Драгоценностей. Противоядие — правильные взгляды.`,
-    ],
-  },
-  virtuous: {
-    intro: `Десять благих — обратные пагубным. Не просто «не делать плохого», а активно практиковать противоположное.`,
-    perItem: [
-      `Защита жизни — спасать существ, отказаться от насилия. Удлиняет жизнь, даёт здоровье.`,
-      `Щедрость — давать материальное, защиту, Дхарму. Ведёт к достатку.`,
-      `Сексуальная нравственность — поддерживает семейные узы. Ведёт к гармоничным отношениям.`,
-      `Правдивая речь — говорить правду, не приукрашивая. Ведёт к доверию.`,
-      `Примирение — соединять разделённых. Ведёт к гармонии в окружении.`,
-      `Мягкая речь — говорить с теплом. Ведёт к приятному звучанию голоса в будущих жизнях.`,
-      `Осмысленная речь — слова, направленные к Дхарме или благу. Ведёт к убедительности.`,
-      `Невозмутимость, отказ от алчности — радоваться чужому. Ведёт к исполнению желаний.`,
-      `Доброжелательность — желать счастья всем. Ведёт к красоте и любви окружающих.`,
-      `Правильные взгляды — вера в карму и Три Драгоценности. Ведёт к встрече с Дхармой в будущих жизнях.`,
-    ],
-  },
-  karmaGeneral: {
-    intro: `Карма — закон, а не наказание. Действия имеют четыре характеристики: безошибочность, разрастание, невозможность встретить чужой результат, неисчезновение несовершённого.`,
-    perItem: [
-      `Карма безошибочна: что посеешь, то и пожнёшь. Карма разрастается: малое семя даёт огромный плод. Невозможно встретить плод того, чего не делал. И невозможно избежать плода того, что сделал — пока он не созреет.`,
+      `Размышляй о четырёх частях прозы PDF как о единой ткани. Счётчик един для всего раздела — это монолит, а не серия пунктов.`,
     ],
   },
 
-  /* === Раздел 5: Блага освобождения === */
-  liberationCause: {
-    intro: `Причина освобождения — четыре практики, отвращающие ум от самсары (предыдущие 4 раздела), плюс трёхчастная подготовка: следование учителю, накопление заслуг, развитие Бодхичитты.`,
+  /* === Раздел 5: Нирвана — это мышление без цепляния за самость (PDF) === */
+  nirvanaFreedoms: {
+    intro: `Нирвана — это просветление, прекращение цепляния за самость. Каждое благое мышление — следующий уровень просветления. Семь свобод — семь освобождений от шести ядов плюс свобода от самого цепляния за «я».`,
     perItem: [
-      `Без подготовки причины — освобождения не возникнет. Размышляй о том, как именно эти практики ведут к освобождению, и проверяй у себя их наличие.`,
-    ],
-  },
-  liberationFruit: {
-    intro: `Плод освобождения — выход из океана страданий самсары. Различают плоды шраваков, пратьекабудд, бодхисаттв и полное состояние Будды.`,
-    perItem: [
-      `Освобождение — не уход в небытие, а пробуждение к собственной природе. Размышляй о качествах состояния Будды как о цели, к которой ведёт практика.`,
+      `Свобода от гнева — милосердное, могущественное умиротворение просветления.`,
+      `Свобода от зависти — любящее, блаженное умиротворение просветления.`,
+      `Свобода от жадности — щедрое, всеобъемлющее умиротворение просветления.`,
+      `Свобода от гордости — благородное, бессамостное умиротворение просветления.`,
+      `Свобода от неведения — внимательное, светоносное умиротворение просветления.`,
+      `Свобода от привязанности — мудрое, бесстрашное умиротворение просветления.`,
+      `Свобода от цепляния за самость — просветлённое, безграничное умиротворение Пробуждённого Всеведения.`,
     ],
   },
 
-  /* === Раздел 6: Следование учителю === */
+  /* === Раздел 6: Ваджрный Мастер — воплощение Будды (PDF) === */
   examineTeacher: {
-    intro: `Без подлинного учителя путь невозможен — мы как слепой посреди пустыни. Но и пагубный учитель уведёт от пути. Поэтому первое — научиться проверять.`,
+    intro: `Ваджрный Мастер — воплощение всех Будд. Первая часть — благоприятно воссоединяться с квалифицированным учителем и преданно следовать его учениям.`,
     perItem: [
       `Качества подлинного учителя: чистая линия передачи, глубокое сострадание, личный опыт практики, отсутствие восьми мирских забот. Пагубный — ищет учеников ради денег, славы, власти. Не торопиться. Проверять долго. Только потом принимать как коренного.`,
     ],
   },
   followTeacher: {
-    intro: `Когда учитель найден и проверен — следовать ему через три двери: уважение, преданность, служение. Без этого передача не работает.`,
+    intro: `Когда учитель найден и проверен — подношения через три двери: подлинная практика (наивысшее подношение), смиренное служение (превосходное), материальные дары (прекрасное).`,
     perItem: [
-      `Уважать ум учителя выше своего. Доверять его указаниям, даже если не понимаешь. Служить — телом, речью и умом. Это не унижение, а способ растворить эго и принять передачу.`,
+      `Подлинная практика — то подношение, ради которого учитель появляется в твоей жизни. Без неё все остальные подношения теряют смысл.`,
     ],
   },
   absorbTeacher: {
-    intro: `Окончательный смысл — не «иметь учителя», а воплотить в себе его мудрость и поведение. Услышанные наставления должны стать твоей внутренней реальностью.`,
+    intro: `Окончательное усвоение через трёхступенчатый процесс: изучить → размышлять → медитировать. На каждой ступени убедиться, что Ваджрный Мастер — это Будда.`,
     perItem: [
-      `Не накапливать наставления как коллекцию, а применять каждое в жизни. Поведение учителя — образец для каждого действия. Так Дхарма перестаёт быть теорией и становится твоим путём.`,
+      `Изучить наставления, размышлять над ними до собственного переживания, медитировать до прямой реализации того, что Ваджрный Мастер — это Будда.`,
     ],
   },
 };
@@ -957,21 +1834,58 @@ function sectionCircles(sectionKey) {
  *  ХРАНЕНИЕ
  * ========================================================== */
 const STORE_KEY = "ngondro_dchz_v1";
+
+/* Миграция старых groupKey (до структурной правки 2026-05-13) → новые имена. */
+const GROUPKEY_MIGRATION = {
+  // s2
+  impermanence: "impermanenceExamples",
+  // s3
+  samsaraGeneral: "samsaraPoisons",
+  sixRealms: "samsaraPoisons",
+  // s4
+  nonVirtuous: "karma",
+  virtuous: "karma",
+  karmaGeneral: "karma",
+  // s5
+  liberationCause: "nirvanaFreedoms",
+  liberationFruit: "nirvanaFreedoms",
+};
+
+function migrateState(s) {
+  if (!s || !Array.isArray(s.tuns)) return s;
+  let migrated = 0;
+  s.tuns.forEach(t => {
+    if (GROUPKEY_MIGRATION[t.groupKey]) {
+      t.groupKey = GROUPKEY_MIGRATION[t.groupKey];
+      t.idx = 0; // безопасный сброс — items в новой группе могут не совпадать
+      migrated++;
+    }
+  });
+  if (migrated > 0) console.info(`[ngondro] migrated ${migrated} tun(s) to new groupKeys`);
+  return s;
+}
+
 function loadState() {
   try {
     const raw = localStorage.getItem(STORE_KEY);
     if (!raw) return defaultState();
-    return Object.assign(defaultState(), JSON.parse(raw));
+    const s = migrateState(Object.assign(defaultState(), JSON.parse(raw)));
+    // Persist immediately after migration to avoid repeated runs on every load
+    if (raw !== JSON.stringify(s)) {
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch (_) {}
+    }
+    return s;
   } catch (e) { return defaultState(); }
 }
 function saveState() { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
 function defaultState() {
   return {
-    tuns: [],            // [{id, date, length, groupKey, idx, tech, circles, prostr, feel, note}]
+    tuns: [],            // [{id, date, length, groupKey, idx, tech, circles, prostr, feel, note, selfCheck?, dedication?}]
     strategy: "1",
     setLength: 48,
     setWeek: 3,
     activeSection: "s1",
+    shamathaMin: 6,      // длительность шаматхи в подготовке (3–30 мин, дефолт 6)
   };
 }
 let state = loadState();
@@ -1044,15 +1958,16 @@ function renderSectionNav() {
 
 function renderStats() {
   const sec = SECTIONS[activeSection()];
-  const sCircles = sectionCircles(activeSection());
-  const sTarget = sec.target;
-  const pct = Math.min(100, Math.round((sCircles / sTarget) * 100));
+  // Общий прогресс по всем 6 разделам (per-section % уже в верхней навигации).
+  const totalCircles = state.tuns.reduce((sum, t) => sum + (+t.circles || 0), 0);
+  const totalTarget = Object.values(SECTIONS).reduce((s, x) => s + x.target, 0);
+  const pct = totalTarget > 0 ? Math.min(100, Math.round((totalCircles / totalTarget) * 100)) : 0;
   $("#section-subtitle").textContent = sec.title;
   $("#stat-week").textContent = `${weekTuns()}/${state.setWeek}`;
   $("#stat-total").textContent = state.tuns.length;
   $("#stat-pct").textContent = `${pct}%`;
   $("#bar-overall").style.width = pct + "%";
-  $("#circles-text").textContent = `${sCircles} / ${sTarget} кругов · ${sec.short}`;
+  $("#circles-text").textContent = `${totalCircles} / ${totalTarget} кругов · все разделы`;
   $("#forecast").textContent = forecastWeeks();
 }
 
@@ -1128,11 +2043,22 @@ function renderProgress() {
     html += `</div>`;
   }
   list.innerHTML = html;
-  // tap on attribute → open Reader on that attribute
+  // tap on attribute → open Reader on «Раздельные практики» sub-tab focused on that attribute
   list.querySelectorAll(".attr").forEach(el => el.onclick = () => {
     $("#text-pick").value = `${el.dataset.key}:${el.dataset.idx}`;
     showText();
     switchPane("text");
+    switchTextSub("recitations");
+  });
+}
+
+/* Программно переключить под-вкладку внутри «Практика нёндро». */
+function switchTextSub(name) {
+  $$(".text-subnav button").forEach(b => b.classList.toggle("active", b.dataset.textsub === name));
+  $$(".text-sub").forEach(s => {
+    const match = s.id === "text-sub-" + name;
+    s.classList.toggle("active", match);
+    s.hidden = !match;
   });
 }
 
@@ -1162,15 +2088,44 @@ function showText() {
   const r = READING[key];
   const name = g.items[idx];
   const stripe = g.color;
+
+  // Recitation: полные строки начитывания по PDF.
+  // Для 3 причин ДЧЖ начитывания нет — только размышление по тексту Паттрула выше.
+  const rec = (RECITATIONS[key] && RECITATIONS[key][idx]) || null;
+  let recHtml = "";
+  if (rec && rec.lines && rec.lines.length) {
+    recHtml = `
+      <div class="recit">
+        <div class="recit-title">Строки начитывания (PDF)</div>${rec.lines.map(l => escapeHtml(l)).join("\n")}
+      </div>`;
+  } else if (g.isReason) {
+    recHtml = `
+      <div class="recit" style="font-style:italic;color:var(--ink-2)">
+        <div class="recit-title">Размышление</div>Для 3 причин ДЧЖ нет формальных строк начитывания — только размышление по тексту выше. Один круг = одно завершённое размышление.
+      </div>`;
+  }
+
   $("#text-body").innerHTML = `
     <p><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${stripe};margin-right:6px"></span>
        <small style="color:var(--ink-3)">${g.title}</small></p>
     <h2 style="margin:6px 0 12px">${idx + 1}. ${escapeHtml(name)}</h2>
-    <p class="quote">${escapeHtml(r.intro)}</p>
-    <p>${escapeHtml(r.perItem[idx] || "")}</p>
+    <p class="quote">${escapeHtml(r ? r.intro : "")}</p>
+    <p>${escapeHtml((r && r.perItem && r.perItem[idx]) || "")}</p>
+    ${recHtml}
     <p style="font-size:12px;color:var(--ink-3);margin-top:14px">
       Задача: 30–40 секунд войти в чувство, потом начитывать. Если чувство теряется — остановиться, вернуться к размышлению.
     </p>`;
+}
+
+function renderLiturgy() {
+  const host = $("#liturgy-list");
+  if (!host) return;
+  host.innerHTML = LITURGY.map(item => `
+    <div class="liturgy-card" id="liturgy-${item.id}">
+      <h3>${escapeHtml(item.title)}</h3>
+      <div class="body">${escapeHtml(item.body)}</div>
+    </div>
+  `).join("");
 }
 
 function renderAttrSelect() {
@@ -1296,6 +2251,17 @@ $$(".tabs button").forEach(b => b.addEventListener("click", () => switchPane(b.d
 $("#btn-add").addEventListener("click", () => openModal());
 $("#btn-settings-shortcut").addEventListener("click", () => switchPane("settings"));
 
+/* Subnav для вкладки «Практика нёндро» */
+$$(".text-subnav button").forEach(b => b.addEventListener("click", () => {
+  const sub = b.dataset.textsub;
+  $$(".text-subnav button").forEach(x => x.classList.toggle("active", x === b));
+  $$(".text-sub").forEach(s => {
+    const match = s.id === "text-sub-" + sub;
+    s.classList.toggle("active", match);
+    s.hidden = !match;
+  });
+}));
+
 /* Settings handlers */
 $$("#pane-settings .strategy button").forEach(b => b.addEventListener("click", () => {
   state.strategy = b.dataset.strategy;
@@ -1340,7 +2306,589 @@ $("#btn-reset").addEventListener("click", () => {
  * ========================================================== */
 renderAttrSelect();
 renderTextPicker();
+renderLiturgy();
 renderAll();
+
+/* ============================================================
+ *  WEB AUDIO BELL — мягкий тон поющей чаши
+ *  Несколько синусоидальных гармоник с экспоненциальным
+ *  затуханием. Без внешних сэмплов.
+ * ========================================================== */
+let _audioCtx = null;
+function getAudioCtx() {
+  if (!_audioCtx) {
+    try { _audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+    catch (e) { console.warn("Web Audio недоступен", e); return null; }
+  }
+  if (_audioCtx.state === "suspended") _audioCtx.resume();
+  return _audioCtx;
+}
+
+function ringBell({ pitch = 392, duration = 6 } = {}) {
+  // pitch = 392 Hz (G4) — тёплый средний регистр, ближе к маленькой поющей чаше
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+  const master = ctx.createGain();
+  master.gain.value = 0.45;
+  master.connect(ctx.destination);
+  // Гармоники характерные для бронзовой чаши: 1 / 2.76 / 5.4 / 8.93 / 13.34 (упрощено)
+  const partials = [
+    { mul: 1.00, gain: 0.50, dur: duration },
+    { mul: 2.00, gain: 0.30, dur: duration * 0.75 },
+    { mul: 2.76, gain: 0.20, dur: duration * 0.65 },
+    { mul: 4.10, gain: 0.10, dur: duration * 0.55 },
+    { mul: 5.40, gain: 0.06, dur: duration * 0.45 },
+  ];
+  partials.forEach(p => {
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.value = pitch * p.mul;
+    g.gain.setValueAtTime(0, now);
+    g.gain.linearRampToValueAtTime(p.gain, now + 0.015);                     // быстрая атака
+    g.gain.exponentialRampToValueAtTime(0.0001, now + p.dur);                // долгое затухание
+    osc.connect(g); g.connect(master);
+    osc.start(now);
+    osc.stop(now + p.dur);
+  });
+  // Лёгкая «дыхательная» субмодуляция громкости — как у живой чаши
+  const lfo = ctx.createOscillator();
+  const lfoGain = ctx.createGain();
+  lfo.frequency.value = 4.2;
+  lfoGain.gain.value = 0.04;
+  lfo.connect(lfoGain); lfoGain.connect(master.gain);
+  lfo.start(now); lfo.stop(now + duration);
+}
+
+/* ============================================================
+ *  WIZARD — «Начать тхун»
+ *  Стейт визарда живёт в локальной переменной (не в state),
+ *  пока не сохранён — затем превращается в state.tuns запись.
+ * ========================================================== */
+const wizardState = {
+  step: 1,
+  prep: {},                  // checkboxes step 1+2
+  shamathaMin: 6,
+  shamathaTimer: null,
+  shamathaRemaining: 0,
+  vow: {
+    length: 48,
+    groupKey: "freedoms",
+    idx: 0,
+    targetCircles: 0,
+    confirmed: false,
+  },
+  med: {
+    timer: null,
+    startedAt: null,
+    elapsedBeforePause: 0,
+    paused: false,
+    durationSec: 48 * 60,
+    circles: 0,
+    bellRang: false,
+  },
+  finish: {
+    mistakes: "", successes: "",
+    aspiration: "", promise: "",
+    feel: 0, note: "",
+  },
+};
+
+function openWizard() {
+  // reset
+  wizardState.step = 1;
+  wizardState.prep = {};
+  wizardState.shamathaMin = state.shamathaMin || 6;
+  wizardState.shamathaRemaining = 0;
+  wizardState.vow.length = state.setLength || 48;
+  wizardState.vow.groupKey = state.activeSection ? firstGroupOfSection(state.activeSection) : "freedoms";
+  wizardState.vow.idx = 0;
+  wizardState.vow.confirmed = false;
+  wizardState.med = {
+    timer: null, startedAt: null, elapsedBeforePause: 0,
+    paused: false, durationSec: 48 * 60, circles: 0, bellRang: false,
+  };
+  wizardState.finish = { mistakes: "", successes: "", aspiration: "", promise: "", feel: 0, note: "" };
+
+  // populate liturgy inline blocks
+  $$('[data-liturgy]').forEach(el => {
+    const id = el.dataset.liturgy;
+    const lit = LITURGY.find(l => l.id === id);
+    if (lit) el.textContent = lit.body;
+  });
+
+  // shamatha defaults
+  $("#shamatha-min").value = wizardState.shamathaMin;
+  $("#shamatha-timer").textContent = formatMS(wizardState.shamathaMin * 60);
+
+  // populate vow attr select
+  populateVowAttrSelect();
+  $("#vow-length").value = wizardState.vow.length;
+
+  // reset checkboxes & form fields
+  $$('#wizard-overlay input[type="checkbox"]').forEach(c => c.checked = false);
+  ["finish-mistakes","finish-successes","finish-aspiration","finish-promise","finish-note"].forEach(id => {
+    const el = $("#" + id); if (el) el.value = "";
+  });
+  $$('#finish-feel button').forEach(b => b.classList.remove("on"));
+
+  showWizardStep(1);
+  $("#wizard-overlay").hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
+function closeWizard() {
+  // Stop active timers
+  if (wizardState.shamathaTimer) { clearInterval(wizardState.shamathaTimer); wizardState.shamathaTimer = null; }
+  if (wizardState.med.timer) { clearInterval(wizardState.med.timer); wizardState.med.timer = null; }
+  $("#wizard-overlay").hidden = true;
+  $("#bell-banner").hidden = true;
+  document.body.style.overflow = "";
+}
+
+function firstGroupOfSection(sk) {
+  for (const gk of Object.keys(ATTRS)) {
+    if (ATTRS[gk].section === sk) return gk;
+  }
+  return "freedoms";
+}
+
+function showWizardStep(n) {
+  wizardState.step = n;
+  $$('.wizard-step').forEach(s => s.hidden = +s.dataset.step !== n);
+  $$('.wizard-stepper .step').forEach(s => {
+    const sn = +s.dataset.step;
+    s.classList.toggle("active", sn === n);
+    s.classList.toggle("done", sn < n);
+  });
+  $("#wizard-prev").disabled = (n === 1);
+  $("#wizard-next").hidden = (n === 5);
+  $("#wizard-save").hidden = (n !== 5);
+  // Step-specific entry handlers
+  if (n === 3) refreshVow();
+  if (n === 4) startMeditation();
+  if (n === 5) stopMeditation();
+}
+
+function formatMS(totalSec) {
+  const m = Math.floor(totalSec / 60), s = totalSec % 60;
+  return String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+}
+
+/* === Step 2: шаматха-таймер === */
+function startShamatha() {
+  if (wizardState.shamathaTimer) {
+    clearInterval(wizardState.shamathaTimer);
+    wizardState.shamathaTimer = null;
+    $("#shamatha-start").textContent = "Запустить";
+    return;
+  }
+  const min = Math.max(3, Math.min(30, +$("#shamatha-min").value || 6));
+  wizardState.shamathaMin = min;
+  state.shamathaMin = min; saveState();
+  wizardState.shamathaRemaining = min * 60;
+  $("#shamatha-timer").textContent = formatMS(wizardState.shamathaRemaining);
+  $("#shamatha-start").textContent = "Стоп";
+  wizardState.shamathaTimer = setInterval(() => {
+    wizardState.shamathaRemaining--;
+    $("#shamatha-timer").textContent = formatMS(Math.max(0, wizardState.shamathaRemaining));
+    if (wizardState.shamathaRemaining <= 0) {
+      clearInterval(wizardState.shamathaTimer);
+      wizardState.shamathaTimer = null;
+      $("#shamatha-start").textContent = "Запустить";
+      ringBell({ pitch: 523, duration: 4 }); // более высокий, короткий — для шаматхи
+      $("#shamatha-timer").textContent = "✓";
+      const cb = document.querySelector('input[data-prep="shamatha"]');
+      if (cb) cb.checked = true;
+    }
+  }, 1000);
+}
+
+/* === Step 3: визард обета === */
+function populateVowAttrSelect() {
+  const sel = $("#vow-attr");
+  let html = "";
+  for (const sk of Object.keys(SECTIONS)) {
+    const sec = SECTIONS[sk];
+    for (const key of Object.keys(ATTRS)) {
+      const g = ATTRS[key]; if (g.section !== sk) continue;
+      html += `<optgroup label="${sec.num}. ${sec.short} · ${g.title}">`;
+      g.items.forEach((name, i) => {
+        html += `<option value="${key}:${i}">${i + 1}. ${escapeHtml(name)}</option>`;
+      });
+      html += `</optgroup>`;
+    }
+  }
+  sel.innerHTML = html;
+  sel.value = wizardState.vow.groupKey + ":" + wizardState.vow.idx;
+  sel.onchange = () => {
+    const [k, i] = sel.value.split(":");
+    wizardState.vow.groupKey = k;
+    wizardState.vow.idx = +i;
+    refreshVow();
+  };
+  $("#vow-length").onchange = () => {
+    wizardState.vow.length = Math.max(5, Math.min(180, +$("#vow-length").value || 48));
+    refreshVow();
+  };
+  $("#vow-confirm").onchange = e => {
+    wizardState.vow.confirmed = e.target.checked;
+  };
+}
+
+function refreshVow() {
+  const v = wizardState.vow;
+  const stratLabel = state.strategy === "2" ? "25/75 (Стратегия 2)" : "Классическая (Стратегия 1)";
+  const targetCircles = state.strategy === "2" ? 7 : 10;
+  v.targetCircles = targetCircles;
+  $("#vow-strategy").textContent = stratLabel;
+  $("#vow-circles").textContent = targetCircles + " (Техника 1, дефолт)";
+  // Format vow text with placeholders filled
+  const endTime = new Date(Date.now() + v.length * 60 * 1000);
+  const endHM = String(endTime.getHours()).padStart(2,"0") + ":" + String(endTime.getMinutes()).padStart(2,"0");
+  const vowLit = LITURGY.find(l => l.id === "vow").body;
+  const filled = vowLit
+    .replace("XX:XX", endHM)
+    .replace("X минут / часов", v.length + " мин");
+  $("#vow-text-body").textContent = filled;
+}
+
+/* === Step 4: медитация === */
+function startMeditation() {
+  const v = wizardState.vow;
+  const m = wizardState.med;
+  m.durationSec = v.length * 60;
+  m.circles = 0;
+  m.startedAt = Date.now();
+  m.elapsedBeforePause = 0;
+  m.paused = false;
+  m.bellRang = false;
+  $("#med-title-h").textContent = `4 · Медитация · ${ATTRS[v.groupKey].title} #${v.idx + 1}`;
+  $("#med-circles").textContent = "0";
+  // Show recitation text — или контемплятивную подсказку для 3 причин ДЧЖ
+  const rec = RECITATIONS[v.groupKey] && RECITATIONS[v.groupKey][v.idx];
+  const reading = READING[v.groupKey] || {};
+  const perItemText = (reading.perItem && reading.perItem[v.idx]) || reading.intro || "";
+  if (rec && rec.lines && rec.lines.length) {
+    $("#med-recit-body").textContent = rec.lines.join("\n");
+  } else if (ATTRS[v.groupKey].isReason) {
+    $("#med-recit-body").textContent =
+      "РАЗМЫШЛЕНИЕ (без начитывания)\n\n" +
+      ATTRS[v.groupKey].items[v.idx] + "\n\n" +
+      perItemText + "\n\n" +
+      "Один круг = одно завершённое размышление.";
+  } else {
+    $("#med-recit-body").textContent = perItemText || "(нет текста)";
+  }
+  updateMedTimerDisplay();
+  if (m.timer) clearInterval(m.timer);
+  m.timer = setInterval(tickMed, 250);
+}
+
+function tickMed() {
+  const m = wizardState.med;
+  if (m.paused) return;
+  const elapsedNow = m.elapsedBeforePause + (Date.now() - m.startedAt) / 1000;
+  const remaining = m.durationSec - elapsedNow;
+  if (remaining <= 0 && !m.bellRang) {
+    m.bellRang = true;
+    ringBell({ pitch: 392, duration: 7 });
+    showBellBanner();
+  }
+  updateMedTimerDisplay(Math.max(0, remaining));
+}
+
+function updateMedTimerDisplay(remaining) {
+  if (remaining === undefined) {
+    const m = wizardState.med;
+    const elapsedNow = m.elapsedBeforePause + (m.paused ? 0 : (Date.now() - m.startedAt) / 1000);
+    remaining = Math.max(0, m.durationSec - elapsedNow);
+  }
+  $("#med-timer").textContent = formatMS(Math.ceil(remaining));
+  $("#med-timer").classList.toggle("paused", wizardState.med.paused);
+}
+
+function stopMeditation() {
+  const m = wizardState.med;
+  if (m.timer) { clearInterval(m.timer); m.timer = null; }
+}
+
+function pauseMeditation() {
+  const m = wizardState.med;
+  if (m.paused) {
+    m.startedAt = Date.now();
+    m.paused = false;
+    $("#med-pause").textContent = "Пауза";
+  } else {
+    m.elapsedBeforePause += (Date.now() - m.startedAt) / 1000;
+    m.paused = true;
+    $("#med-pause").textContent = "Продолжить";
+  }
+}
+
+function showBellBanner() {
+  $("#bell-banner").hidden = false;
+}
+
+/* === Step 5: завершение → save tun === */
+function setFinishFeel(n) {
+  wizardState.finish.feel = n;
+  $$('#finish-feel button').forEach(b => b.classList.toggle("on", +b.dataset.feel <= n));
+}
+
+function collectFinish() {
+  wizardState.finish.mistakes   = $("#finish-mistakes").value.trim();
+  wizardState.finish.successes  = $("#finish-successes").value.trim();
+  wizardState.finish.aspiration = $("#finish-aspiration").value.trim();
+  wizardState.finish.promise    = $("#finish-promise").value.trim();
+  wizardState.finish.note       = $("#finish-note").value.trim();
+}
+
+function saveWizardTun() {
+  collectFinish();
+  const v = wizardState.vow;
+  const m = wizardState.med;
+  const f = wizardState.finish;
+  const tun = {
+    id: "w" + Date.now().toString(36),
+    date: new Date().toISOString().slice(0,10),
+    length: v.length,
+    groupKey: v.groupKey,
+    idx: v.idx,
+    tech: "1",
+    circles: m.circles,
+    prostr: 0,
+    feel: f.feel || 3,
+    note: f.note,
+    selfCheck: { mistakes: f.mistakes, successes: f.successes },
+    dedication: { aspiration: f.aspiration, promise: f.promise },
+    fromWizard: true,
+  };
+  state.tuns.unshift(tun);
+  saveState();
+  renderAll();
+  closeWizard();
+}
+
+/* === Validation per step (Далее →) === */
+function canAdvance() {
+  const s = wizardState.step;
+  if (s === 1) {
+    // Не блокируем, но рекомендуем все чекбоксы (мягкая валидация)
+    return true;
+  }
+  if (s === 2) {
+    // Тоже мягко
+    return true;
+  }
+  if (s === 3) {
+    return wizardState.vow.confirmed;
+  }
+  if (s === 4) {
+    return true;
+  }
+  return true;
+}
+
+/* === Wizard event wiring === */
+$("#btn-start-thun").addEventListener("click", () => {
+  getAudioCtx(); // unlock audio on user gesture
+  openWizard();
+});
+$("#wizard-close").addEventListener("click", () => {
+  if (confirm("Закрыть тхун без сохранения?")) closeWizard();
+});
+$("#wizard-prev").addEventListener("click", () => {
+  if (wizardState.step > 1) showWizardStep(wizardState.step - 1);
+});
+$("#wizard-next").addEventListener("click", () => {
+  if (!canAdvance()) {
+    if (wizardState.step === 3) alert("Сначала дай обет — отметь чекбокс «Я даю этот обет».");
+    return;
+  }
+  if (wizardState.step < 5) showWizardStep(wizardState.step + 1);
+});
+$("#wizard-save").addEventListener("click", saveWizardTun);
+
+$("#shamatha-start").addEventListener("click", startShamatha);
+
+$("#med-pause").addEventListener("click", pauseMeditation);
+$("#med-bell-test").addEventListener("click", () => ringBell({ pitch: 392, duration: 5 }));
+$("#med-circ-plus").addEventListener("click", () => {
+  wizardState.med.circles++;
+  $("#med-circles").textContent = wizardState.med.circles;
+});
+$("#med-circ-minus").addEventListener("click", () => {
+  wizardState.med.circles = Math.max(0, wizardState.med.circles - 1);
+  $("#med-circles").textContent = wizardState.med.circles;
+});
+
+$$('#finish-feel button').forEach(b => b.addEventListener("click", () => setFinishFeel(+b.dataset.feel)));
+
+$("#bell-banner-ok").addEventListener("click", () => {
+  $("#bell-banner").hidden = true;
+  showWizardStep(5);
+});
+
+/* ============================================================
+ *  ТЕСТЫ — самопроверка при загрузке
+ *  Все проверки должны проходить, иначе показывается баннер.
+ * ========================================================== */
+(function selfTests() {
+  const fails = [];
+  function assert(cond, msg) { if (!cond) fails.push(msg); }
+
+  // Структура SECTIONS
+  assert(Object.keys(SECTIONS).length === 6, "6 разделов в SECTIONS");
+  ["s1","s2","s3","s4","s5","s6"].forEach(sk => assert(SECTIONS[sk], `SECTIONS.${sk} существует`));
+
+  // ATTRS consistency
+  for (const gk of Object.keys(ATTRS)) {
+    const g = ATTRS[gk];
+    assert(g.section, `${gk}: есть section`);
+    assert(SECTIONS[g.section], `${gk}.section=${g.section} → существующий раздел`);
+    assert(Array.isArray(g.items) && g.items.length > 0, `${gk}: items не пуст`);
+    assert(typeof g.target === "number" && g.target > 0, `${gk}: target — положительное число`);
+  }
+
+  // Сумма кругов на раздел ≈ 1000 (±15)
+  for (const sk of Object.keys(SECTIONS)) {
+    let sum = 0;
+    for (const gk of Object.keys(ATTRS)) {
+      if (ATTRS[gk].section === sk) {
+        sum += ATTRS[gk].target * ATTRS[gk].items.length;
+      }
+    }
+    const diff = Math.abs(sum - 1000);
+    assert(diff <= 15, `${sk}: сумма кругов = ${sum}, |Δ1000| = ${diff} (>15)`);
+  }
+
+  // Раздел 1: 34 признака + 3 причины = 37 пунктов
+  let s1Total = 0;
+  Object.keys(ATTRS).filter(k => ATTRS[k].section === "s1").forEach(k => s1Total += ATTRS[k].items.length);
+  assert(s1Total === 37, `Раздел 1: 34 признака + 3 причины = 37 (получено ${s1Total})`);
+
+  // LITURGY: 8 общих практик
+  assert(LITURGY.length === 8, `LITURGY = 8 блоков (получено ${LITURGY.length})`);
+  LITURGY.forEach(b => {
+    assert(b.id && b.title && b.body, `LITURGY ${b.id || "?"}: id+title+body`);
+  });
+
+  // RECITATIONS: для каждого item каждого groupKey есть строки
+  // Исключение: 3 причины ДЧЖ — без начитывания (только размышление).
+  for (const gk of Object.keys(ATTRS)) {
+    if (ATTRS[gk].isReason) {
+      assert(!RECITATIONS[gk], `RECITATIONS[${gk}]: для причин не должно быть начитывания`);
+      continue;
+    }
+    const items = ATTRS[gk].items;
+    const recs = RECITATIONS[gk];
+    assert(Array.isArray(recs), `RECITATIONS[${gk}]: массив`);
+    if (Array.isArray(recs)) {
+      assert(recs.length === items.length, `RECITATIONS[${gk}]: ${recs.length} vs items ${items.length}`);
+      recs.forEach((rec, i) => {
+        assert(rec && Array.isArray(rec.lines) && rec.lines.length > 0, `${gk}[${i}]: непустые lines`);
+      });
+    }
+  }
+
+  // Стандартный корпус Р1: 13 строк
+  assert(STANDARD_BODY_S1.length === 13, `STANDARD_BODY_S1: 13 строк (есть ${STANDARD_BODY_S1.length})`);
+
+  // Р1 признаки (кроме reasons): ровно 15 строк (Намо Буддая + уникальная + 13 стандартных)
+  ["freedoms","advantagesOwn","advantagesOther","unfavSpontaneous","unfavAttachments"].forEach(gk => {
+    RECITATIONS[gk].forEach((rec, i) => {
+      assert(rec.lines.length === 15, `${gk}[${i}]: 15 строк (есть ${rec.lines.length})`);
+    });
+  });
+
+  // 3 причины ДЧЖ — без начитывания, только размышление
+  assert(ATTRS.reasons.isReason === true, "reasons: isReason=true");
+  assert(!RECITATIONS.reasons, "reasons: нет блока начитывания");
+
+  // Миграция: dry-run на тестовых tuns
+  const test = { tuns: [
+    { groupKey: "impermanence", idx: 5 },
+    { groupKey: "sixRealms", idx: 2 },
+    { groupKey: "karmaGeneral", idx: 0 },
+    { groupKey: "nonVirtuous", idx: 1 },
+    { groupKey: "virtuous", idx: 4 },
+    { groupKey: "liberationCause", idx: 0 },
+    { groupKey: "liberationFruit", idx: 0 },
+    { groupKey: "freedoms", idx: 0 }, // не должна меняться
+  ]};
+  migrateState(test);
+  assert(test.tuns[0].groupKey === "impermanenceExamples", "migrate: impermanence");
+  assert(test.tuns[1].groupKey === "samsaraPoisons",       "migrate: sixRealms");
+  assert(test.tuns[2].groupKey === "karma",                "migrate: karmaGeneral");
+  assert(test.tuns[3].groupKey === "karma",                "migrate: nonVirtuous");
+  assert(test.tuns[4].groupKey === "karma",                "migrate: virtuous");
+  assert(test.tuns[5].groupKey === "nirvanaFreedoms",      "migrate: liberationCause");
+  assert(test.tuns[6].groupKey === "nirvanaFreedoms",      "migrate: liberationFruit");
+  assert(test.tuns[7].groupKey === "freedoms",             "migrate: freedoms не трогаем");
+  assert(test.tuns[0].idx === 0, "migrate: idx сбрасывается в 0");
+
+  // Раздел 4 — монолит
+  assert(ATTRS.karma.items.length === 1, "karma: 1 item (монолит)");
+  assert(ATTRS.karma.target === 1000, "karma: target=1000");
+  assert(ATTRS.karma.isMonolith === true, "karma: isMonolith=true");
+
+  // Раздел 3 — 6 ядов по PDF
+  assert(ATTRS.samsaraPoisons.items.length === 6, "samsaraPoisons: 6 ядов");
+  assert(ATTRS.samsaraPoisons.items[0].includes("Гнев"), "samsaraPoisons[0]: Гнев первым");
+  assert(ATTRS.samsaraPoisons.items[5].includes("Привязанность"), "samsaraPoisons[5]: Привязанность последней");
+
+  // Раздел 5 — 7 свобод
+  assert(ATTRS.nirvanaFreedoms.items.length === 7, "nirvanaFreedoms: 7 свобод");
+
+  // Wizard: ID-обязательные LITURGY элементы
+  ["masters","refuge","four_immeasurables","bodhichitta","seven_line","essential_lines","vow","dedication"].forEach(id => {
+    assert(LITURGY.some(l => l.id === id), `LITURGY содержит id=${id}`);
+  });
+
+  // Wizard: HTML-узлы существуют (DOM-структура)
+  ["#wizard-overlay","#btn-start-thun","#wizard-prev","#wizard-next","#wizard-save",
+   "#med-timer","#med-circles","#shamatha-timer","#vow-text-body","#bell-banner",
+   "#finish-mistakes","#finish-successes","#finish-aspiration","#finish-promise","#finish-feel"
+  ].forEach(sel => {
+    assert(document.querySelector(sel), `Wizard DOM: ${sel}`);
+  });
+
+  // Wizard: 5 шагов в визарде
+  assert(document.querySelectorAll('.wizard-step').length === 5, "5 шагов в визарде");
+
+  // Wizard: Web Audio bell функция определена
+  assert(typeof ringBell === "function", "ringBell определён");
+  assert(typeof getAudioCtx === "function", "getAudioCtx определён");
+
+  // Wizard: state shamathaMin валиден
+  assert(typeof state.shamathaMin === "number" && state.shamathaMin >= 3 && state.shamathaMin <= 30,
+    `state.shamathaMin в [3..30] (есть ${state.shamathaMin})`);
+
+  // CSS [hidden] guard: элементы с display:flex/grid/block в CSS должны иметь
+  // явный override .selector[hidden] { display: none } — иначе атрибут hidden игнорируется.
+  // Регрессия 2026-05-13: bell-banner показывался при загрузке, потому что display:flex
+  // в .bell-banner перекрывал HTML-default display:none для [hidden].
+  ["#wizard-overlay","#bell-banner"].forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el && el.hidden) {
+      const d = window.getComputedStyle(el).display;
+      assert(d === "none", `${sel}[hidden] → computed display="${d}" (ожидалось "none")`);
+    }
+  });
+
+  // Report
+  if (fails.length) {
+    console.error("[ngondro tests] FAILED " + fails.length + ":", fails);
+    const banner = document.createElement("div");
+    banner.style.cssText = "position:fixed;bottom:8px;left:8px;right:8px;background:#C84B3C;color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;z-index:9999;max-height:240px;overflow:auto;box-shadow:0 4px 16px rgba(0,0,0,.2);font-family:-apple-system,sans-serif";
+    banner.innerHTML = `<b>Тесты не прошли (${fails.length}):</b><br>` + fails.map(f => "• " + f).join("<br>");
+    document.body.appendChild(banner);
+  } else {
+    console.info("[ngondro tests] " + 30 + "+ assertions OK");
+  }
+})();
 </script>
 </body>
 </html>

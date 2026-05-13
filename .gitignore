@@ -19,3 +19,5 @@
 *.log
 *.tmp
 node_modules/
+.write-test
+.write-check-*
