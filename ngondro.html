@@ -401,9 +401,7 @@
   .attr {
     display: grid; grid-template-columns: 24px 1fr auto; gap: 10px; align-items: center;
     padding: 8px 12px; border-bottom: 1px solid var(--line);
-    cursor: pointer;
   }
-  .attr:hover { background: var(--bg-2); }
   .attr .num { color: var(--ink-3); font-size: 12px; font-variant-numeric: tabular-nums; }
   .attr .text { font-size: 14px; }
   .attr .text small { color: var(--ink-3); display: block; font-size: 11px; margin-top: 2px; }
@@ -646,11 +644,10 @@
     </button>
   </div>
 
-  <!-- Tabs -->
+  <!-- Tabs (3 вкладки: тексты практики живут внутри wizard «Начать тхун») -->
   <nav class="tabs" role="tablist">
     <button class="active" data-pane="journal">Журнал</button>
     <button data-pane="progress">Прогресс</button>
-    <button data-pane="text">Практика нёндро</button>
     <button data-pane="settings">Настройки</button>
   </nav>
 
@@ -662,31 +659,6 @@
   <!-- Pane: progress -->
   <section class="pane" id="pane-progress">
     <div id="progress-list"></div>
-  </section>
-
-  <!-- Pane: practice texts (renamed from "Текст") -->
-  <section class="pane" id="pane-text">
-    <div class="text-subnav" role="tablist">
-      <button class="active" data-textsub="liturgy">Общие практики</button>
-      <button data-textsub="recitations">Раздельные практики</button>
-    </div>
-
-    <!-- Общие практики (литургия из PDF) -->
-    <div class="text-sub active" id="text-sub-liturgy">
-      <p class="text-hint">Тексты в порядке выполнения тхуна. Из PDF «Практика нёндро в туне» (Дзогчен Шри Сингха).</p>
-      <div id="liturgy-list"></div>
-    </div>
-
-    <!-- Раздельные практики (recitations по признаку) -->
-    <div class="text-sub" id="text-sub-recitations" hidden>
-      <div class="reader">
-        <div class="reader-head">
-          <h2 style="margin:0">Строки начитывания</h2>
-          <select id="text-pick"></select>
-        </div>
-        <div class="reader-body" id="text-body"></div>
-      </div>
-    </div>
   </section>
 
   <!-- Pane: settings -->
@@ -898,31 +870,31 @@
 
         <div class="prep-stage">
           <h3>Ум · принятие прибежища</h3>
-          <details><summary>Текст</summary><div class="liturgy-inline" data-liturgy="refuge"></div></details>
+          <div class="liturgy-inline" data-liturgy="refuge"></div>
           <label><input type="checkbox" data-prep="refuge"> Прочитано</label>
         </div>
 
         <div class="prep-stage">
           <h3>Ум · взращивание четырёх безмерных</h3>
-          <details><summary>Текст</summary><div class="liturgy-inline" data-liturgy="four_immeasurables"></div></details>
+          <div class="liturgy-inline" data-liturgy="four_immeasurables"></div>
           <label><input type="checkbox" data-prep="four"> Прочитано</label>
         </div>
 
         <div class="prep-stage">
           <h3>Ум · зарождение Бодхичитты</h3>
-          <details><summary>Текст</summary><div class="liturgy-inline" data-liturgy="bodhichitta"></div></details>
+          <div class="liturgy-inline" data-liturgy="bodhichitta"></div>
           <label><input type="checkbox" data-prep="bodhi"> Прочитано</label>
         </div>
 
         <div class="prep-stage">
           <h3>Ум · благословение Коренного Мастера (семистрочная)</h3>
-          <details><summary>Текст</summary><div class="liturgy-inline" data-liturgy="seven_line"></div></details>
+          <div class="liturgy-inline" data-liturgy="seven_line"></div>
           <label><input type="checkbox" data-prep="blessing"> Прочитано</label>
         </div>
 
         <div class="prep-stage">
           <h3>Ум · сущностные подготовительные строки нёндро</h3>
-          <details><summary>Текст</summary><div class="liturgy-inline" data-liturgy="essential_lines"></div></details>
+          <div class="liturgy-inline" data-liturgy="essential_lines"></div>
           <label><input type="checkbox" data-prep="essential"> Прочитано</label>
         </div>
       </section>
@@ -989,9 +961,7 @@
 
         <div class="finish-block">
           <h3>Посвящение заслуг</h3>
-          <details><summary>Текст молитвы</summary>
-            <div class="liturgy-inline" data-liturgy="dedication"></div>
-          </details>
+          <div class="liturgy-inline" data-liturgy="dedication"></div>
           <label>Устремление (для себя / других):
             <textarea id="finish-aspiration" rows="1" placeholder="Добродетельное желание…"></textarea>
           </label>
@@ -2046,79 +2016,17 @@ function renderProgress() {
     html += `</div>`;
   }
   list.innerHTML = html;
-  // tap on attribute → open Reader on «Раздельные практики» sub-tab focused on that attribute
-  list.querySelectorAll(".attr").forEach(el => el.onclick = () => {
-    $("#text-pick").value = `${el.dataset.key}:${el.dataset.idx}`;
-    showText();
-    switchPane("text");
-    switchTextSub("recitations");
-  });
+  /* Раньше клик по признаку открывал вкладку «Практика нёндро». Сейчас эта
+     вкладка удалена — тексты живут внутри wizard. Чтобы избежать ложного
+     ощущения кликабельности, обработчик не вешаем. */
 }
 
-/* Программно переключить под-вкладку внутри «Практика нёндро». */
-function switchTextSub(name) {
-  $$(".text-subnav button").forEach(b => b.classList.toggle("active", b.dataset.textsub === name));
-  $$(".text-sub").forEach(s => {
-    const match = s.id === "text-sub-" + name;
-    s.classList.toggle("active", match);
-    s.hidden = !match;
-  });
-}
-
-function renderTextPicker() {
-  const sel = $("#text-pick");
-  let html = "";
-  for (const sk of Object.keys(SECTIONS)) {
-    const sec = SECTIONS[sk];
-    for (const key of groupsInSection(sk)) {
-      const g = ATTRS[key];
-      html += `<optgroup label="${sec.num}. ${sec.short} · ${g.title}">`;
-      g.items.forEach((name, i) => {
-        html += `<option value="${key}:${i}">${i + 1}. ${escapeHtml(name)}</option>`;
-      });
-      html += `</optgroup>`;
-    }
-  }
-  sel.innerHTML = html;
-  sel.onchange = showText;
-  showText();
-}
-
-function showText() {
-  const [key, idxRaw] = $("#text-pick").value.split(":");
-  const idx = +idxRaw;
-  const g = ATTRS[key];
-  const r = READING[key];
-  const name = g.items[idx];
-  const stripe = g.color;
-
-  // Recitation: полные строки начитывания по PDF.
-  // Для 3 причин ДЧЖ начитывания нет — только размышление по тексту Паттрула выше.
-  const rec = (RECITATIONS[key] && RECITATIONS[key][idx]) || null;
-  let recHtml = "";
-  if (rec && rec.lines && rec.lines.length) {
-    recHtml = `
-      <div class="recit">
-        <div class="recit-title">Строки начитывания (PDF)</div>${rec.lines.map(l => escapeHtml(l)).join("\n")}
-      </div>`;
-  } else if (g.isReason) {
-    recHtml = `
-      <div class="recit" style="font-style:italic;color:var(--ink-2)">
-        <div class="recit-title">Размышление</div>Для 3 причин ДЧЖ нет формальных строк начитывания — только размышление по тексту выше. Один круг = одно завершённое размышление.
-      </div>`;
-  }
-
-  $("#text-body").innerHTML = `
-    <p><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${stripe};margin-right:6px"></span>
-       <small style="color:var(--ink-3)">${g.title}</small></p>
-    <h2 style="margin:6px 0 12px">${idx + 1}. ${escapeHtml(name)}</h2>
-    <p class="quote">${escapeHtml(r ? r.intro : "")}</p>
-    <p>${escapeHtml((r && r.perItem && r.perItem[idx]) || "")}</p>
-    ${recHtml}
-    <p style="font-size:12px;color:var(--ink-3);margin-top:14px">
-      Задача: 30–40 секунд войти в чувство, потом начитывать. Если чувство теряется — остановиться, вернуться к размышлению.
-    </p>`;
-}
+/* Вкладка «Практика нёндро» удалена — тексты молитв и начитывания живут
+   внутри wizard «Начать тхун». Функции ниже оставлены как no-op для
+   обратной совместимости со стартап-вызовами. */
+function switchTextSub() { /* no-op */ }
+function renderTextPicker() { /* no-op — вкладка удалена */ }
+function showText() { /* no-op — вкладка удалена */ }
 
 function renderLiturgy() {
   const host = $("#liturgy-list");
