@@ -69,12 +69,12 @@
     transition: transform .15s, box-shadow .15s, background .15s;
     min-height: 96px;
   }
-  /* Номер раздела — крупный, полупрозрачный, как водяной знак за заголовком. */
+  /* Номер раздела — чуть крупнее основного шрифта, полупрозрачный, в верхнем правом углу. */
   .section-nav button .sec-num {
-    position: absolute; top: 0px; right: 8px;
+    position: absolute; top: 6px; right: 10px;
     font-family: "Iowan Old Style", "Charter", "Georgia", serif;
-    font-size: 56px; font-weight: 700; color: var(--ink);
-    opacity: 0.08; line-height: 1;
+    font-size: 18px; font-weight: 600; color: var(--ink);
+    opacity: 0.28; line-height: 1;
     pointer-events: none; font-variant-numeric: tabular-nums;
     user-select: none;
   }
@@ -96,12 +96,12 @@
     border-color: transparent;
     transform: translateY(-1px);
   }
-  .section-nav button.active .sec-num { opacity: 0.12; }
+  .section-nav button.active .sec-num { opacity: 0.42; }
   .section-nav button.active .sec-pct { color: var(--ink-2); }
   @media (max-width: 480px) {
     .section-nav { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-    .section-nav button { font-size: 11px; padding: 12px 12px 18px; min-height: 84px; }
-    .section-nav button .sec-num { font-size: 44px; }
+    .section-nav button { font-size: 11px; padding: 10px 10px 18px; min-height: 80px; }
+    .section-nav button .sec-num { font-size: 16px; top: 5px; right: 8px; }
   }
 
   /* === stats card === */
