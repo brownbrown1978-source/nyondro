@@ -76,7 +76,10 @@
   }
   .section-nav button .sec-name {
     font-weight: 600; flex: 1;
-    word-break: break-word; hyphens: auto;
+    /* Слова целиком на отдельных строках. hyphens:manual — никаких автоматических
+       переносов в середине слова («во-площение» → недопустимо). overflow-wrap — fallback
+       только для слов, которые в принципе не помещаются. */
+    hyphens: manual; word-break: normal; overflow-wrap: break-word;
   }
   .section-nav button .sec-pct { font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
   .section-nav button.active {
@@ -114,8 +117,26 @@
     display: flex; align-items: center; justify-content: center; gap: 8px;
     cursor: pointer; transition: transform .12s, box-shadow .12s;
   }
-  .cta-primary { background: var(--ink); color: var(--bg); font-size: 16px; }
-  .cta-primary:hover { background: #000; transform: translateY(-1px); }
+  .cta-primary {
+    background: linear-gradient(135deg, #2E5C8A 0%, #1F3F5F 100%);
+    color: var(--bg); font-size: 16px;
+    position: relative; overflow: hidden;
+  }
+  .cta-primary:hover {
+    background: linear-gradient(135deg, #3A6FA3 0%, #2E5C8A 100%);
+    transform: translateY(-1px);
+  }
+  /* Подпись цветами флага дзогчен внизу кнопки — связывает с иконкой/палитрой. */
+  .cta-primary::after {
+    content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg,
+      #2E5C8A 0%, #2E5C8A 20%,
+      #F5F1E8 20%, #F5F1E8 40%,
+      #E8B83C 40%, #E8B83C 60%,
+      #C84B3C 60%, #C84B3C 80%,
+      #5A8C3F 80%, #5A8C3F 100%);
+    opacity: .8;
+  }
   .cta-secondary { background: var(--bg-2); color: var(--ink-2); font-size: 13px; border: 1px solid var(--line); }
   .cta-secondary:hover { background: var(--bg); color: var(--ink); }
   .cta svg { display: block }
@@ -349,16 +370,19 @@
   }
 
   /* === tabs === */
+  /* Две вкладки 50/50 (Журнал · Прогресс). «Настройки» доступны через
+     иконку ⚙ в правом верхнем углу шапки — не загромождают таб-бар. */
   .tabs {
-    display: grid; grid-template-columns: repeat(4, 1fr);
+    display: grid; grid-template-columns: repeat(2, 1fr);
     background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
     padding: 4px; margin-bottom: 14px;
   }
   .tabs button {
-    background: transparent; border: 0; padding: 8px; border-radius: 10px;
-    color: var(--ink-2); font-size: 13px; font-weight: 500;
+    background: transparent; border: 0; padding: 10px; border-radius: 10px;
+    color: var(--ink-2); font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: background .15s, color .15s;
   }
-  .tabs button.active { background: var(--bg); color: var(--ink); box-shadow: var(--shadow); }
+  .tabs button.active { background: var(--bg); color: var(--ink); box-shadow: var(--shadow); font-weight: 600; }
 
   /* === panes === */
   .pane { display: none }
@@ -383,6 +407,17 @@
     font-size: 12px; cursor: pointer;
   }
   .icon-btn:hover { color: var(--c-red) }
+  /* Шестерёнка настроек в шапке — единственная точка входа в настройки,
+     поэтому чуть заметнее, но не кричаще. */
+  header.top .icon-btn {
+    font-size: 20px; color: var(--ink-2);
+    width: 36px; height: 36px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background .15s, color .15s;
+  }
+  header.top .icon-btn:hover {
+    background: var(--bg-2); color: var(--ink);
+  }
 
   .empty {
     padding: 32px 16px; text-align: center; color: var(--ink-3); font-size: 14px;
