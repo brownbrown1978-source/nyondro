@@ -61,38 +61,47 @@
     gap: 8px; margin-bottom: 12px;
   }
   .section-nav button {
+    position: relative; overflow: hidden;
     background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
-    padding: 12px 10px; font-size: 12px; line-height: 1.25;
-    color: var(--ink-2); cursor: pointer; text-align: center;
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
-    transition: transform .15s, box-shadow .15s;
-    min-height: 90px;
+    padding: 14px 14px 22px; font-size: 12px; line-height: 1.3;
+    cursor: pointer; text-align: left;
+    display: flex; flex-direction: column; justify-content: center;
+    transition: transform .15s, box-shadow .15s, background .15s;
+    min-height: 96px;
   }
+  /* Номер раздела — крупный, полупрозрачный, как водяной знак за заголовком. */
   .section-nav button .sec-num {
-    width: 22px; height: 22px; border-radius: 50%;
-    display: inline-flex; align-items: center; justify-content: center;
-    font-weight: 700; color: #fff; font-size: 12px;
-    flex-shrink: 0;
+    position: absolute; top: 0px; right: 8px;
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 56px; font-weight: 700; color: var(--ink);
+    opacity: 0.08; line-height: 1;
+    pointer-events: none; font-variant-numeric: tabular-nums;
+    user-select: none;
   }
   .section-nav button .sec-name {
-    font-weight: 600; flex: 1;
-    /* Слова целиком на отдельных строках. hyphens:manual — никаких автоматических
-       переносов в середине слова («во-площение» → недопустимо). overflow-wrap — fallback
-       только для слов, которые в принципе не помещаются. */
+    position: relative; z-index: 1;
+    font-weight: 600;
+    color: var(--sec-title-color, var(--ink-2));
     hyphens: manual; word-break: normal; overflow-wrap: break-word;
+    padding-right: 14px;
   }
-  .section-nav button .sec-pct { font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .section-nav button .sec-pct {
+    position: absolute; bottom: 6px; right: 10px;
+    font-size: 10px; color: var(--ink-3); font-variant-numeric: tabular-nums;
+    letter-spacing: .02em;
+  }
   .section-nav button.active {
     background: var(--bg);
     box-shadow: var(--shadow);
-    color: var(--ink);
     border-color: transparent;
     transform: translateY(-1px);
   }
+  .section-nav button.active .sec-num { opacity: 0.12; }
   .section-nav button.active .sec-pct { color: var(--ink-2); }
   @media (max-width: 480px) {
     .section-nav { grid-template-columns: repeat(2, 1fr); gap: 6px; }
-    .section-nav button { font-size: 11px; padding: 10px 8px; min-height: 86px; }
+    .section-nav button { font-size: 11px; padding: 12px 12px 18px; min-height: 84px; }
+    .section-nav button .sec-num { font-size: 44px; }
   }
 
   /* === stats card === */
@@ -120,22 +129,10 @@
   .cta-primary {
     background: linear-gradient(135deg, #2E5C8A 0%, #1F3F5F 100%);
     color: var(--bg); font-size: 16px;
-    position: relative; overflow: hidden;
   }
   .cta-primary:hover {
     background: linear-gradient(135deg, #3A6FA3 0%, #2E5C8A 100%);
     transform: translateY(-1px);
-  }
-  /* Подпись цветами флага дзогчен внизу кнопки — связывает с иконкой/палитрой. */
-  .cta-primary::after {
-    content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg,
-      #2E5C8A 0%, #2E5C8A 20%,
-      #F5F1E8 20%, #F5F1E8 40%,
-      #E8B83C 40%, #E8B83C 60%,
-      #C84B3C 60%, #C84B3C 80%,
-      #5A8C3F 80%, #5A8C3F 100%);
-    opacity: .8;
   }
   .cta-secondary { background: var(--bg-2); color: var(--ink-2); font-size: 13px; border: 1px solid var(--line); }
   .cta-secondary:hover { background: var(--bg); color: var(--ink); }
@@ -542,6 +539,19 @@
   }
 
   /* === settings === */
+  .settings-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: -4px 0 14px;
+  }
+  .settings-head h2 { margin: 0; font-size: 20px; }
+  .settings-close {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: transparent; border: 1px solid var(--line);
+    color: var(--ink-2); font-size: 18px; line-height: 1;
+    cursor: pointer; transition: background .15s, color .15s;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .settings-close:hover { background: var(--bg-2); color: var(--ink); }
   .settings { display: grid; gap: 14px }
   .row-set {
     background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
@@ -706,11 +716,10 @@
     </button>
   </div>
 
-  <!-- Tabs (3 вкладки: тексты практики живут внутри wizard «Начать тхун») -->
+  <!-- Tabs: только 2 основных. «Настройки» открываются по ⚙ в шапке. -->
   <nav class="tabs" role="tablist">
     <button class="active" data-pane="journal">Журнал</button>
     <button data-pane="progress">Прогресс</button>
-    <button data-pane="settings">Настройки</button>
   </nav>
 
   <!-- Pane: journal -->
@@ -723,8 +732,12 @@
     <div id="progress-list"></div>
   </section>
 
-  <!-- Pane: settings -->
+  <!-- Pane: settings (открывается из ⚙ в шапке, повторный клик закрывает; либо × ниже) -->
   <section class="pane" id="pane-settings">
+    <div class="settings-head">
+      <h2>Настройки</h2>
+      <button class="settings-close" id="btn-settings-close" type="button" aria-label="Закрыть настройки">×</button>
+    </div>
     <div class="settings">
       <div class="row-set">
         <label>Стратегия</label>
@@ -1069,13 +1082,15 @@
  *  каркас по структуре глав Паттрула с равномерным распределением
  *  кругов; цифры будут уточнены при появлении точных PDF от Шри Сингха.
  * ========================================================== */
+/* color — основной (для бэйджей/полос); titleColor — читаемый на cream-фоне,
+   используется как цвет заголовка раздела в section-nav. */
 const SECTIONS = {
-  s1: { num: 1, title: "«Человеческая жизнь драгоценна»",                       short: "«Человеческая жизнь драгоценна»",                       color: "#2E5C8A", target: 1000 },
-  s2: { num: 2, title: "«Жизнь непостоянна»",                                   short: "«Жизнь непостоянна»",                                   color: "#5A8C3F", target: 994 },
-  s3: { num: 3, title: "«Цепляние за самость — это самсара»",                   short: "«Цепляние за самость — это самсара»",                   color: "#C84B3C", target: 1002 },
-  s4: { num: 4, title: "«Закон причины и следствия безошибочен»",               short: "«Закон причины и следствия безошибочен»",               color: "#E8B83C", target: 1000 },
-  s5: { num: 5, title: "«Нирвана — это мышление без цепляния за самость»",      short: "«Нирвана — это мышление без цепляния за самость»",      color: "#7C5BB7", target: 1001 },
-  s6: { num: 6, title: "«Ваджрный Мастер — это воплощение Будды»",              short: "«Ваджрный Мастер — это воплощение Будды»",              color: "#B68B2F", target: 1000 },
+  s1: { num: 1, title: "«Человеческая жизнь драгоценна»",                       short: "«Человеческая жизнь драгоценна»",                       color: "#2E5C8A", titleColor: "#2E5C8A", target: 1000 },
+  s2: { num: 2, title: "«Жизнь непостоянна»",                                   short: "«Жизнь непостоянна»",                                   color: "#5A8C3F", titleColor: "#3D6829", target: 994 },
+  s3: { num: 3, title: "«Цепляние за самость — это самсара»",                   short: "«Цепляние за самость — это самсара»",                   color: "#C84B3C", titleColor: "#9A3528", target: 1002 },
+  s4: { num: 4, title: "«Закон причины и следствия безошибочен»",               short: "«Закон причины и следствия безошибочен»",               color: "#E8B83C", titleColor: "#9A7423", target: 1000 },
+  s5: { num: 5, title: "«Нирвана — это мышление без цепляния за самость»",      short: "«Нирвана — это мышление без цепляния за самость»",      color: "#7C5BB7", titleColor: "#5C4290", target: 1001 },
+  s6: { num: 6, title: "«Ваджрный Мастер — это воплощение Будды»",              short: "«Ваджрный Мастер — это воплощение Будды»",              color: "#B68B2F", titleColor: "#7E5C18", target: 1000 },
 };
 
 const ATTRS = {
@@ -1992,9 +2007,10 @@ function renderSectionNav() {
     const have = sectionCircles(k);
     const target = sectionTarget(k);
     const pct = Math.min(100, Math.round((have / target) * 100));
+    const tc = sec.titleColor || sec.color;
     return `
-      <button data-sec="${k}" class="${k === cur ? "active" : ""}" title="${escapeHtml(sec.title)}">
-        <span class="sec-num" style="background:${sec.color};color:${k === "s5" ? "#1F1A14" : "#fff"}">${sec.num}</span>
+      <button data-sec="${k}" class="${k === cur ? "active" : ""}" title="${escapeHtml(sec.title)}" style="--sec-title-color:${tc}">
+        <span class="sec-num">${sec.num}</span>
         <span class="sec-name">${escapeHtml(sec.short)}</span>
         <span class="sec-pct">${pct}%</span>
       </button>`;
@@ -2237,7 +2253,22 @@ function switchPane(name) {
 }
 $$(".tabs button").forEach(b => b.addEventListener("click", () => switchPane(b.dataset.pane)));
 $("#btn-add").addEventListener("click", () => openModal());
-$("#btn-settings-shortcut").addEventListener("click", () => switchPane("settings"));
+/* Шестерёнка работает как toggle: клик открывает «Настройки», повторный — возвращает к «Журналу». */
+let lastPaneBeforeSettings = "journal";
+$("#btn-settings-shortcut").addEventListener("click", () => {
+  const settingsPane = $("#pane-settings");
+  if (settingsPane && settingsPane.classList.contains("active")) {
+    switchPane(lastPaneBeforeSettings || "journal");
+  } else {
+    // Запомним, откуда пришли (Журнал или Прогресс), чтобы вернуться сюда
+    const active = document.querySelector(".pane.active");
+    if (active && active.id !== "pane-settings") lastPaneBeforeSettings = active.id.replace("pane-", "");
+    switchPane("settings");
+  }
+});
+// Дублирующий × внутри пана — то же действие
+const closeBtn = $("#btn-settings-close");
+if (closeBtn) closeBtn.addEventListener("click", () => switchPane(lastPaneBeforeSettings || "journal"));
 
 /* Subnav для вкладки «Практика нёндро» */
 $$(".text-subnav button").forEach(b => b.addEventListener("click", () => {
