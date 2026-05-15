@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Нёндро · ДЧЖ</title>
-<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231F3F7A"/><circle cx="50" cy="50" r="44" fill="%232E5C8A"/><circle cx="50" cy="50" r="37" fill="%23F5F1E8"/><circle cx="50" cy="50" r="29" fill="%23E8B83C"/><circle cx="50" cy="50" r="20" fill="%23C84B3C"/><circle cx="50" cy="50" r="11" fill="%235A8C3F"/><circle cx="50" cy="50" r="4" fill="%23F5F1E8"/></svg>'>
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231F3F7A"/><circle cx="50" cy="50" r="44" fill="%232E5C8A"/><circle cx="50" cy="50" r="37" fill="%23F5F1E8"/><circle cx="50" cy="50" r="29" fill="%23E8B83C"/><circle cx="50" cy="50" r="20" fill="%23C84B3C"/><circle cx="50" cy="50" r="13" fill="%235A8C3F"/><g transform="translate(50 50)" fill="%23F5F1E8"><path d="M 0 0 C -1 -4 1 -8 4 -9 C 8 -9 10 -6 8 -3 C 6 -1 2 0 0 0 Z"/><path d="M 0 0 C -1 -4 1 -8 4 -9 C 8 -9 10 -6 8 -3 C 6 -1 2 0 0 0 Z" transform="rotate(120)"/><path d="M 0 0 C -1 -4 1 -8 4 -9 C 8 -9 10 -6 8 -3 C 6 -1 2 0 0 0 Z" transform="rotate(240)"/></g></svg>'>
 <style>
   /* === reset / base === */
   *,*::before,*::after { box-sizing: border-box }
@@ -432,15 +432,15 @@
   }
   .icon-btn:hover { color: var(--c-red) }
   /* Шестерёнка настроек в шапке — единственная точка входа в настройки,
-     поэтому чуть заметнее, но не кричаще. */
+     поэтому хорошо заметная (но без агрессивного цвета). */
   header.top .icon-btn {
-    font-size: 20px; color: var(--ink-2);
-    width: 36px; height: 36px; border-radius: 50%;
+    font-size: 28px; color: var(--ink-2);
+    width: 44px; height: 44px; border-radius: 50%;
     display: inline-flex; align-items: center; justify-content: center;
-    transition: background .15s, color .15s;
+    transition: background .15s, color .15s, transform .25s;
   }
   header.top .icon-btn:hover {
-    background: var(--bg-2); color: var(--ink);
+    background: var(--bg-2); color: var(--ink); transform: rotate(45deg);
   }
 
   .empty {
@@ -664,15 +664,21 @@
   <!-- Header -->
   <header class="top">
     <div class="logo" aria-hidden="true">
-      <!-- Логотип-мишень: синий фон + концентрические круги в цветах пяти мудростей -->
+      <!-- Логотип-мишень: синий фон, концентрические круги в цветах пяти мудростей,
+           гангиль (трёхчастный завиток — символ дзогчен) в центре. -->
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <rect width="100" height="100" fill="#1F3F7A"/>
         <circle cx="50" cy="50" r="44" fill="#2E5C8A"/>
         <circle cx="50" cy="50" r="37" fill="#F5F1E8"/>
         <circle cx="50" cy="50" r="29" fill="#E8B83C"/>
         <circle cx="50" cy="50" r="20" fill="#C84B3C"/>
-        <circle cx="50" cy="50" r="11" fill="#5A8C3F"/>
-        <circle cx="50" cy="50" r="4" fill="#F5F1E8"/>
+        <circle cx="50" cy="50" r="13" fill="#5A8C3F"/>
+        <g transform="translate(50 50)" fill="#F5F1E8">
+          <!-- Три завитка гангиль, 120° друг от друга -->
+          <path d="M 0 0 C -1 -4 1 -8 4 -9 C 8 -9 10 -6 8 -3 C 6 -1 2 0 0 0 Z"/>
+          <path d="M 0 0 C -1 -4 1 -8 4 -9 C 8 -9 10 -6 8 -3 C 6 -1 2 0 0 0 Z" transform="rotate(120)"/>
+          <path d="M 0 0 C -1 -4 1 -8 4 -9 C 8 -9 10 -6 8 -3 C 6 -1 2 0 0 0 Z" transform="rotate(240)"/>
+        </g>
       </svg>
     </div>
     <div class="title">
