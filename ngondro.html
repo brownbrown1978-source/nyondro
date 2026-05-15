@@ -265,10 +265,14 @@
   }
   .bilingual p {
     margin: 0 0 4px; font-size: 14px; line-height: 1.5;
+    text-align: center;
+  }
+  .bilingual .invocation {
+    font-weight: 700; font-size: 16px; margin-bottom: 8px;
+    letter-spacing: .04em;
   }
   .bilingual .mantra {
-    margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--line);
-    font-weight: 600; letter-spacing: .04em;
+    margin-top: 6px; font-weight: 600; letter-spacing: .04em;
   }
   @media (max-width: 600px) {
     /* На узком — друг под другом */
@@ -1371,7 +1375,8 @@ const LITURGY = [
     bodyHTML: `<div class="bilingual">
       <div class="bilingual-col">
         <div class="bilingual-label">Тибетский (транскрипция)</div>
-        <p>ХУНГ. ОР ГЬЕН ЮЛ ГЬИ НУБ ЧЖАНГ ЦАМ</p>
+        <p class="invocation">ХУНГ</p>
+        <p>ОР ГЬЕН ЮЛ ГЬИ НУБ ЧЖАНГ ЦАМ</p>
         <p>ПЕД МА ГЕ САР ДОНГ ПО ЛА</p>
         <p>Я ЦЕН ЧОГ КИ НГО ДРУБ НЬЕ</p>
         <p>ПЕД МА ЧЖУНГ НЕ ШЕ СУ ДРАК</p>
@@ -1382,7 +1387,8 @@ const LITURGY = [
       </div>
       <div class="bilingual-col">
         <div class="bilingual-label">Русский перевод</div>
-        <p>Хунг! В северо-западном краю священной Уддияны,</p>
+        <p class="invocation">Хунг!</p>
+        <p>В северо-западном краю священной Уддияны,</p>
         <p>в сердце лотоса посреди озера Данакоша,</p>
         <p>обладающий чудесными высшими достижениями,</p>
         <p>прославленный как Лотосорождённый,</p>
