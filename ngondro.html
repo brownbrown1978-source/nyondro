@@ -55,24 +55,30 @@
   .title small { color: var(--ink-3); font-size: 12px; display: block; }
 
   /* === section nav === */
+  /* Длинные «цитатные» названия из PDF — поэтому переносим текст и даём 2×3 даже на десктопе. */
   .section-nav {
-    display: grid; grid-template-columns: repeat(6, 1fr);
-    gap: 6px; margin-bottom: 12px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-bottom: 12px;
   }
   .section-nav button {
     background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
-    padding: 8px 4px; font-size: 11px; line-height: 1.15;
+    padding: 12px 10px; font-size: 12px; line-height: 1.25;
     color: var(--ink-2); cursor: pointer; text-align: center;
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
     transition: transform .15s, box-shadow .15s;
+    min-height: 90px;
   }
   .section-nav button .sec-num {
-    width: 20px; height: 20px; border-radius: 50%;
+    width: 22px; height: 22px; border-radius: 50%;
     display: inline-flex; align-items: center; justify-content: center;
-    font-weight: 700; color: #fff; font-size: 11px;
+    font-weight: 700; color: #fff; font-size: 12px;
+    flex-shrink: 0;
   }
-  .section-nav button .sec-name { font-weight: 600; }
-  .section-nav button .sec-pct { font-size: 10px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .section-nav button .sec-name {
+    font-weight: 600; flex: 1;
+    word-break: break-word; hyphens: auto;
+  }
+  .section-nav button .sec-pct { font-size: 11px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
   .section-nav button.active {
     background: var(--bg);
     box-shadow: var(--shadow);
@@ -82,12 +88,8 @@
   }
   .section-nav button.active .sec-pct { color: var(--ink-2); }
   @media (max-width: 480px) {
-    /* Two rows of three on mobile — gives each button a real touch target (~110px) */
-    .section-nav { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .section-nav button { font-size: 12px; padding: 10px 6px; gap: 6px; }
-    .section-nav button .sec-num { width: 22px; height: 22px; font-size: 12px; }
-    .section-nav button .sec-name { font-size: 12px; }
-    .section-nav button .sec-pct { font-size: 11px; }
+    .section-nav { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .section-nav button { font-size: 11px; padding: 10px 8px; min-height: 86px; }
   }
 
   /* === stats card === */
@@ -199,6 +201,19 @@
     font-size: 13px; line-height: 1.55; color: var(--ink-2);
     background: var(--bg);
   }
+  /* === Always-open prep checklist (without <details>) === */
+  .prep-checklist-open li {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden;
+  }
+  .prep-row {
+    display: flex; gap: 10px; align-items: center;
+    padding: 12px 14px; cursor: pointer; user-select: none;
+    font-size: 14px; font-weight: 600; line-height: 1.4;
+    border-bottom: 1px solid var(--line); background: var(--bg);
+  }
+  .prep-row input[type="checkbox"] { margin: 0; flex-shrink: 0; }
+  .prep-name { flex: 1; }
   .prep-stage {
     background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
     padding: 12px 14px; margin-bottom: 10px;
@@ -815,43 +830,31 @@
       <!-- Шаг 1: Приготовления -->
       <section class="wizard-step" data-step="1">
         <h2>1 · Приготовления</h2>
-        <p class="hint">Подготовь место и тело до начала тхуна. Не давай приготовлениям решать, делать тхун или нет — лучше сделать тхун без некоторых, чем отложить навсегда. Нажми на любую строку, чтобы развернуть подробности из PDF.</p>
-        <ul class="prep-checklist">
+        <p class="hint">Подготовь место и тело до начала тхуна. Не давай приготовлениям решать, делать тхун или нет — лучше сделать тхун без некоторых, чем отложить навсегда.</p>
+        <ul class="prep-checklist prep-checklist-open">
           <li>
-            <details>
-              <summary><input type="checkbox" data-prep="busyness" onclick="event.stopPropagation()"> <span>Занятость</span></summary>
-              <div class="prep-detail">Позаботиться о том, чтобы не было потребности заниматься какими-либо иными занятиями помимо занятия тхуна.</div>
-            </details>
+            <label class="prep-row"><input type="checkbox" data-prep="busyness"> <span class="prep-name">Занятость</span></label>
+            <div class="prep-detail">Позаботиться о том, чтобы не было потребности заниматься какими-либо иными занятиями помимо занятия тхуна.</div>
           </li>
           <li>
-            <details>
-              <summary><input type="checkbox" data-prep="place" onclick="event.stopPropagation()"> <span>Место</span></summary>
-              <div class="prep-detail">Убедиться в чистоте места, обеспечить помещение свежим воздухом и светом, позаботиться о звукоизоляции и ограничить доступ к месту медитации.</div>
-            </details>
+            <label class="prep-row"><input type="checkbox" data-prep="place"> <span class="prep-name">Место</span></label>
+            <div class="prep-detail">Убедиться в чистоте места, обеспечить помещение свежим воздухом и светом, позаботиться о звукоизоляции и ограничить доступ к месту медитации.</div>
           </li>
           <li>
-            <details>
-              <summary><input type="checkbox" data-prep="devices" onclick="event.stopPropagation()"> <span>Условия</span></summary>
-              <div class="prep-detail">Отключить звук у телефона и т. п. устройств, выключить активно работающие электрические, газовые и водные устройства (плиту, краны и т. п.).</div>
-            </details>
+            <label class="prep-row"><input type="checkbox" data-prep="devices"> <span class="prep-name">Условия</span></label>
+            <div class="prep-detail">Отключить звук у телефона и т. п. устройств, выключить активно работающие электрические, газовые и водные устройства (плиту, краны и т. п.).</div>
           </li>
           <li>
-            <details>
-              <summary><input type="checkbox" data-prep="tools" onclick="event.stopPropagation()"> <span>Инструменты</span></summary>
-              <div class="prep-detail">Подготовить подношения на алтаре, подушку / стул для сидения, чётки и иные инструменты, тексты для изучения и практики, часы.</div>
-            </details>
+            <label class="prep-row"><input type="checkbox" data-prep="tools"> <span class="prep-name">Инструменты</span></label>
+            <div class="prep-detail">Подготовить подношения на алтаре, подушку / стул для сидения, чётки и иные инструменты, тексты для изучения и практики, часы.</div>
           </li>
           <li>
-            <details>
-              <summary><input type="checkbox" data-prep="body" onclick="event.stopPropagation()"> <span>Тело</span></summary>
-              <div class="prep-detail">Сходить в туалет, прочистить нос, одеться в удобную для сидения и тёплую одежду, подготовить плед для ног при необходимости, носовые платки, воду в чашке или термосе.</div>
-            </details>
+            <label class="prep-row"><input type="checkbox" data-prep="body"> <span class="prep-name">Тело</span></label>
+            <div class="prep-detail">Сходить в туалет, прочистить нос, одеться в удобную для сидения и тёплую одежду, подготовить плед для ног при необходимости, носовые платки, воду в чашке или термосе.</div>
           </li>
           <li>
-            <details>
-              <summary><input type="checkbox" data-prep="content" onclick="event.stopPropagation()"> <span>Содержание</span></summary>
-              <div class="prep-detail">Решить, какой медитации будет посвящён тхун, сколько он будет выполняться, сколько будет выполняться та или иная часть тхуна и тому подобное.</div>
-            </details>
+            <label class="prep-row"><input type="checkbox" data-prep="content"> <span class="prep-name">Содержание</span></label>
+            <div class="prep-detail">Решить, какой медитации будет посвящён тхун, сколько он будет выполняться, сколько будет выполняться та или иная часть тхуна и тому подобное.</div>
           </li>
         </ul>
       </section>
@@ -1043,12 +1046,12 @@
  *  кругов; цифры будут уточнены при появлении точных PDF от Шри Сингха.
  * ========================================================== */
 const SECTIONS = {
-  s1: { num: 1, title: "Драгоценная человеческая жизнь",       short: "ДЧЖ",           color: "#2E5C8A", target: 1000 },
-  s2: { num: 2, title: "Жизнь непостоянна",                    short: "Непостоянство", color: "#5A8C3F", target: 994 },
-  s3: { num: 3, title: "Цепляние за самость — это самсара",    short: "Самсара",       color: "#C84B3C", target: 1002 },
-  s4: { num: 4, title: "Закон причины и следствия безошибочен", short: "Карма",        color: "#E8B83C", target: 1000 },
-  s5: { num: 5, title: "Нирвана — это мышление без цепляния",  short: "Нирвана",       color: "#7C5BB7", target: 1001 },
-  s6: { num: 6, title: "Ваджрный Мастер — воплощение Будды",   short: "Учитель",       color: "#B68B2F", target: 1000 },
+  s1: { num: 1, title: "«Человеческая жизнь драгоценна»",                       short: "«Человеческая жизнь драгоценна»",                       color: "#2E5C8A", target: 1000 },
+  s2: { num: 2, title: "«Жизнь непостоянна»",                                   short: "«Жизнь непостоянна»",                                   color: "#5A8C3F", target: 994 },
+  s3: { num: 3, title: "«Цепляние за самость — это самсара»",                   short: "«Цепляние за самость — это самсара»",                   color: "#C84B3C", target: 1002 },
+  s4: { num: 4, title: "«Закон причины и следствия безошибочен»",               short: "«Закон причины и следствия безошибочен»",               color: "#E8B83C", target: 1000 },
+  s5: { num: 5, title: "«Нирвана — это мышление без цепляния за самость»",      short: "«Нирвана — это мышление без цепляния за самость»",      color: "#7C5BB7", target: 1001 },
+  s6: { num: 6, title: "«Ваджрный Мастер — это воплощение Будды»",              short: "«Ваджрный Мастер — это воплощение Будды»",              color: "#B68B2F", target: 1000 },
 };
 
 const ATTRS = {
