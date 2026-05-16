@@ -68,28 +68,41 @@
   .lunar-line .lunar-desc {
     color: var(--ink-3); font-size: 13px; margin-left: 6px;
   }
-  /* Уровень 2 — особый монастырский день (8/10/15/25/29/30): синяя плашка. */
+  /* Уровень 2 — особый монастырский день (8/10/15/25/29/30): синяя плашка с маркером. */
   .lunar-line.monthly {
-    background: linear-gradient(90deg, rgba(46,92,138,.12), rgba(46,92,138,.04));
-    border-left: 3px solid var(--c-blue);
-    padding: 6px 10px; border-radius: 6px;
+    background: linear-gradient(90deg, rgba(46,92,138,.18), rgba(46,92,138,.06));
+    border-left: 4px solid var(--c-blue);
+    padding: 9px 12px; border-radius: 8px;
     margin-top: 8px;
+  }
+  .lunar-line.monthly .lunar-day {
+    font-size: 18px; font-weight: 700;
+  }
+  .lunar-line.monthly .lunar-day::before {
+    content: "●"; color: var(--c-blue); font-size: 8px;
+    margin-right: 8px; vertical-align: middle; opacity: .8;
   }
   .lunar-line.monthly .lunar-desc {
     color: var(--c-blue); font-weight: 500;
   }
-  /* Уровень 3 — Дючен (главные годовые праздники): золотая плашка, заметнее. */
+  /* Уровень 3 — Дючен (главные годовые праздники): золотая плашка, тёплое свечение. */
   .lunar-line.dychen {
-    background: linear-gradient(90deg, rgba(232,184,60,.22), rgba(198,134,40,.14));
-    border-left: 3px solid var(--gold);
-    padding: 6px 10px; border-radius: 6px;
-    margin-top: 8px;
+    background: linear-gradient(90deg, rgba(232,184,60,.28), rgba(198,134,40,.16));
+    border-left: 5px solid var(--gold);
+    padding: 12px 14px; border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 2px 12px rgba(232,184,60,.20);
   }
   .lunar-line.dychen .lunar-day {
-    color: var(--gold); font-size: 17px; text-transform: uppercase; letter-spacing: .03em;
+    color: var(--gold); font-size: 19px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+  .lunar-line.dychen .lunar-day::before {
+    content: "✦"; color: var(--gold); font-size: 14px;
+    margin-right: 8px; vertical-align: middle;
   }
   .lunar-line.dychen .lunar-desc {
-    display: block; margin-left: 0; margin-top: 2px;
+    display: block; margin-left: 0; margin-top: 3px;
     font-style: italic; color: var(--ink-2);
   }
 
