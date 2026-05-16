@@ -58,7 +58,7 @@
   .logo img, .logo svg { width: 100%; height: 100%; display: block; object-fit: cover; }
   .title { flex: 1 1 auto; min-width: 0; }
   .title small { color: var(--ink-3); font-size: 13px; display: block; margin-top: 4px; line-height: 1.3; }
-  /* Тибетский лунный день в шапке. Цифра яркая, описание тонкое (как был подзаголовок). */
+  /* Тибетский лунный день в шапке. Три уровня иерархии: обычный → особый → Дючен. */
   .lunar-line { margin-top: 6px; line-height: 1.35; }
   .lunar-line .lunar-day {
     font-family: "EB Garamond", "Iowan Old Style", "Charter", "Georgia", serif;
@@ -68,7 +68,11 @@
   .lunar-line .lunar-desc {
     color: var(--ink-3); font-size: 13px; margin-left: 6px;
   }
-  /* Дючен — крупные годовые праздники, отдельная стилизация. */
+  /* Уровень 2 — особый монастырский день (8/10/15/25/29/30): описание тёплым золотом. */
+  .lunar-line.monthly .lunar-desc {
+    color: var(--gold); font-weight: 500;
+  }
+  /* Уровень 3 — Дючен (главные годовые праздники): плашка с фоном. */
   .lunar-line.dychen {
     background: linear-gradient(90deg, rgba(232,184,60,.18), rgba(198,134,40,.12));
     border-left: 3px solid var(--gold);
@@ -3034,6 +3038,7 @@ $("#bell-banner-ok").addEventListener("click", () => {
           `<span class="lunar-desc">${dychen[1]}</span>` +
           `<span class="lunar-desc">${tibDay}-й лунный день · ${tibMonth}-й тиб. месяц · ${todayStr}${flagsStr}</span>`;
       } else if (monthlyDesc) {
+        host.classList.add("monthly");
         host.innerHTML =
           `<span class="lunar-day">${tibDay}-й лунный день</span>` +
           `<span class="lunar-desc">${monthlyDesc} · ${todayStr}${flagsStr}</span>`;
