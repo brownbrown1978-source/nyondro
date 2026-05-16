@@ -58,6 +58,30 @@
   .logo img, .logo svg { width: 100%; height: 100%; display: block; object-fit: cover; }
   .title { flex: 1 1 auto; min-width: 0; }
   .title small { color: var(--ink-3); font-size: 13px; display: block; margin-top: 4px; line-height: 1.3; }
+  /* Тибетский лунный день в шапке. Цифра яркая, описание тонкое (как был подзаголовок). */
+  .lunar-line { margin-top: 6px; line-height: 1.35; }
+  .lunar-line .lunar-day {
+    font-family: "EB Garamond", "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 16px; font-weight: 600; color: var(--c-blue);
+    letter-spacing: -.005em;
+  }
+  .lunar-line .lunar-desc {
+    color: var(--ink-3); font-size: 13px; margin-left: 6px;
+  }
+  /* Дючен — крупные годовые праздники, отдельная стилизация. */
+  .lunar-line.dychen {
+    background: linear-gradient(90deg, rgba(232,184,60,.18), rgba(198,134,40,.12));
+    border-left: 3px solid var(--gold);
+    padding: 6px 10px; border-radius: 6px;
+    margin-top: 8px;
+  }
+  .lunar-line.dychen .lunar-day {
+    color: var(--gold); font-size: 17px; text-transform: uppercase; letter-spacing: .03em;
+  }
+  .lunar-line.dychen .lunar-desc {
+    display: block; margin-left: 0; margin-top: 2px;
+    font-style: italic; color: var(--ink-2);
+  }
 
   /* === section nav === */
   /* Длинные «цитатные» названия из PDF — поэтому переносим текст и даём 2×3 даже на десктопе. */
@@ -697,7 +721,7 @@
     </div>
     <div class="title">
       <h1>Нёндро</h1>
-      <small id="section-subtitle">Общие внешние предварительные практики</small>
+      <div id="lunar-line" class="lunar-line"></div>
     </div>
     <button class="icon-btn" id="btn-settings-shortcut" title="Настройки" aria-label="Настройки">⚙</button>
   </header>
@@ -2059,7 +2083,7 @@ function renderStats() {
   const totalCircles = state.tuns.reduce((sum, t) => sum + (+t.circles || 0), 0);
   const totalTarget = Object.values(SECTIONS).reduce((s, x) => s + x.target, 0);
   const pct = totalTarget > 0 ? Math.min(100, Math.round((totalCircles / totalTarget) * 100)) : 0;
-  $("#section-subtitle").textContent = sec.title;
+  /* подзаголовок раздела убран — там теперь лунный день */
   $("#stat-week").textContent = `${weekTuns()}/${state.setWeek}`;
   $("#stat-total").textContent = state.tuns.length;
   $("#stat-pct").textContent = `${pct}%`;
@@ -2358,6 +2382,31 @@ renderAttrSelect();
 renderTextPicker();
 renderLiturgy();
 renderAll();
+
+/* ============================================================
+ *  ТИБЕТСКИЙ ЛУННЫЙ ДЕНЬ — словарь монастырских дней и Дючен.
+ *  Используется отдельным <script type="module"> ниже, который
+ *  подгружает tibetan-date-calculator с CDN.
+ * ========================================================== */
+window.LUNAR = {
+  /* Монастырские дни Drukpa-традиции, повторяющиеся каждый месяц. */
+  monthly: {
+    8:  "День Будды Медицины (Менла)",
+    10: "День Гуру Ринпоче",
+    15: "Полнолуние · День Будды Шакьямуни",
+    25: "День Дакини",
+    29: "День Дхармапал (защитников Дхармы)",
+    30: "Новолуние · День Будды Шакьямуни",
+  },
+  /* Дючен — четыре главных годовых праздника. Ключ "M-D" по тибетским месяцу и дню. */
+  dychen: {
+    "1-1":  ["Лосар", "Тибетский Новый год"],
+    "1-15": ["Чо Трюль Дючен", "День чудес Будды Шакьямуни. Заслуги практики умножаются в 100 миллионов раз."],
+    "4-15": ["Сака Дава Дючен", "Рождение, просветление и паринирвана Будды Шакьямуни. Самый священный день года."],
+    "6-4":  ["Чо Кхор Дючен", "Первое поворачивание Колеса Дхармы Буддой в Сарнатхе."],
+    "9-22": ["Лха Баб Дючен", "Нисхождение Будды Шакьямуни с небес Тушита."],
+  },
+};
 
 /* ============================================================
  *  WEB AUDIO BELL — мягкий тон поющей чаши
@@ -2941,6 +2990,36 @@ $("#bell-banner-ok").addEventListener("click", () => {
     console.info("[ngondro tests] " + 30 + "+ assertions OK");
   }
 })();
+</script>
+
+<!-- Тибетский лунный календарь (ESM-модуль с CDN). Графится без сервера. -->
+<script type="module">
+  try {
+    const mod = await import("https://cdn.jsdelivr.net/npm/tibetan-date-calculator@latest/+esm");
+    const TibetanDate = mod.TibetanDate || mod.default || mod;
+    const today = new TibetanDate();
+    const day = typeof today.getDay === "function" ? today.getDay() : today.day;
+    const month = typeof today.getMonth === "function" ? today.getMonth() : today.month;
+    const host = document.getElementById("lunar-line");
+    if (!host) return;
+
+    const L = window.LUNAR || {};
+    const dychenKey = `${month}-${day}`;
+    const dychen = L.dychen && L.dychen[dychenKey];
+    const monthlyDesc = L.monthly && L.monthly[day];
+
+    if (dychen) {
+      host.classList.add("dychen");
+      host.innerHTML = `<span class="lunar-day">${dychen[0]}</span><span class="lunar-desc">${dychen[1]}</span><span class="lunar-desc">${day}-й лунный день · ${month}-й месяц</span>`;
+    } else if (monthlyDesc) {
+      host.innerHTML = `<span class="lunar-day">${day}-й лунный день</span><span class="lunar-desc">${monthlyDesc}</span>`;
+    } else {
+      host.innerHTML = `<span class="lunar-day">${day}-й лунный день</span><span class="lunar-desc">обычный день · ${month}-й тибетский месяц</span>`;
+    }
+  } catch (e) {
+    /* Если CDN недоступен — тихо ничего не показываем, не ломаем приложение. */
+    console.warn("[ngondro] tibetan calendar not loaded:", e);
+  }
 </script>
 </body>
 </html>
