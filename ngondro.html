@@ -68,13 +68,19 @@
   .lunar-line .lunar-desc {
     color: var(--ink-3); font-size: 13px; margin-left: 6px;
   }
-  /* Уровень 2 — особый монастырский день (8/10/15/25/29/30): описание тёплым золотом. */
-  .lunar-line.monthly .lunar-desc {
-    color: var(--gold); font-weight: 500;
+  /* Уровень 2 — особый монастырский день (8/10/15/25/29/30): синяя плашка. */
+  .lunar-line.monthly {
+    background: linear-gradient(90deg, rgba(46,92,138,.12), rgba(46,92,138,.04));
+    border-left: 3px solid var(--c-blue);
+    padding: 6px 10px; border-radius: 6px;
+    margin-top: 8px;
   }
-  /* Уровень 3 — Дючен (главные годовые праздники): плашка с фоном. */
+  .lunar-line.monthly .lunar-desc {
+    color: var(--c-blue); font-weight: 500;
+  }
+  /* Уровень 3 — Дючен (главные годовые праздники): золотая плашка, заметнее. */
   .lunar-line.dychen {
-    background: linear-gradient(90deg, rgba(232,184,60,.18), rgba(198,134,40,.12));
+    background: linear-gradient(90deg, rgba(232,184,60,.22), rgba(198,134,40,.14));
     border-left: 3px solid var(--gold);
     padding: 6px 10px; border-radius: 6px;
     margin-top: 8px;
