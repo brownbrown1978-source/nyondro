@@ -2998,10 +2998,11 @@ $("#bell-banner-ok").addEventListener("click", () => {
   if (!host) { /* nothing to do */ }
   else {
     try {
-      /* API: import { TibetanDate } from "tibetan-date-calculator"; new TibetanDate() */
-      const mod = await import("https://esm.sh/tibetan-date-calculator@2");
-      const TibetanDate = mod.TibetanDate || mod.default;
-      if (!TibetanDate) throw new Error("TibetanDate export not found");
+      /* API: import { TibetanDate } from "tibetan-date-calculator"; new TibetanDate()
+         Last published: v1.2.1 (5 years ago). esm.sh конвертирует CJS/TS-сборку в ESM. */
+      const mod = await import("https://esm.sh/tibetan-date-calculator@1.2.1");
+      const TibetanDate = mod.TibetanDate || (mod.default && mod.default.TibetanDate) || mod.default;
+      if (!TibetanDate) throw new Error("TibetanDate export not found. keys: " + Object.keys(mod).join(","));
 
       const today = new TibetanDate();
       /* Внимание: getDay() — день недели (как у JS Date), getDate() — лунный день месяца (1–30). */
@@ -3039,7 +3040,9 @@ $("#bell-banner-ok").addEventListener("click", () => {
       }
     } catch (e) {
       console.warn("[ngondro] tibetan calendar not loaded:", e);
-      /* fallback — оставляем пустое поле без обвала */
+      /* Видимый дебаг — пока отлаживаем, потом уберём. */
+      host.innerHTML =
+        `<span class="lunar-desc" style="color:var(--c-red)">Лунный календарь не загружен: ${(e && e.message) || e}</span>`;
     }
   }
 </script>
