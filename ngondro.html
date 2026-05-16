@@ -2995,11 +2995,14 @@ $("#bell-banner-ok").addEventListener("click", () => {
 <!-- Тибетский лунный календарь (ESM-модуль с esm.sh CDN). Графится без сервера. -->
 <script type="module">
   const host = document.getElementById("lunar-line");
-  if (!host) { /* nothing to do */ }
-  else {
+  if (host) {
+    const westernToday = new Date();
+    const fmtDate = d => d.toLocaleDateString("ru-RU", { weekday: "short", day: "numeric", month: "long" });
+    const todayStr = fmtDate(westernToday);
+
     try {
       /* API: import { TibetanDate } from "tibetan-date-calculator"; new TibetanDate()
-         Last published: v1.2.1 (5 years ago). esm.sh конвертирует CJS/TS-сборку в ESM. */
+         Версия v1.2.1 (последняя на npm). esm.sh конвертирует TS-сборку в ESM. */
       const mod = await import("https://esm.sh/tibetan-date-calculator@1.2.1");
       const TibetanDate = mod.TibetanDate || (mod.default && mod.default.TibetanDate) || mod.default;
       if (!TibetanDate) throw new Error("TibetanDate export not found. keys: " + Object.keys(mod).join(","));
@@ -3018,31 +3021,31 @@ $("#bell-banner-ok").addEventListener("click", () => {
       const monthlyDesc = L.monthly && L.monthly[tibDay];
 
       const flags = [];
-      if (leapMo) flags.push("дублированный месяц");
-      if (leapDay) flags.push("дублированный день");
-      if (skipped) flags.push("пропущенный день");
-      const flagsStr = flags.length ? ` (${flags.join(", ")})` : "";
+      if (leapMo) flags.push("дубл. месяц");
+      if (leapDay) flags.push("дубл. день");
+      if (skipped) flags.push("пропущен");
+      const flagsStr = flags.length ? ` · ${flags.join(", ")}` : "";
 
       if (dychen) {
+        /* Дючен — выделенная плашка с подробностями. */
         host.classList.add("dychen");
         host.innerHTML =
           `<span class="lunar-day">${dychen[0]}</span>` +
           `<span class="lunar-desc">${dychen[1]}</span>` +
-          `<span class="lunar-desc">${tibDay}-й лунный день · ${tibMonth}-й месяц${flagsStr}</span>`;
+          `<span class="lunar-desc">${tibDay}-й лунный день · ${tibMonth}-й тиб. месяц · ${todayStr}${flagsStr}</span>`;
       } else if (monthlyDesc) {
         host.innerHTML =
           `<span class="lunar-day">${tibDay}-й лунный день</span>` +
-          `<span class="lunar-desc">${monthlyDesc}${flagsStr}</span>`;
+          `<span class="lunar-desc">${monthlyDesc} · ${todayStr}${flagsStr}</span>`;
       } else {
         host.innerHTML =
           `<span class="lunar-day">${tibDay}-й лунный день</span>` +
-          `<span class="lunar-desc">обычный день · ${tibMonth}-й тибетский месяц${flagsStr}</span>`;
+          `<span class="lunar-desc">${todayStr}${flagsStr}</span>`;
       }
     } catch (e) {
+      /* Тихий фолбэк: лунный календарь не подгрузился — показываем хотя бы обычную дату. */
       console.warn("[ngondro] tibetan calendar not loaded:", e);
-      /* Видимый дебаг — пока отлаживаем, потом уберём. */
-      host.innerHTML =
-        `<span class="lunar-desc" style="color:var(--c-red)">Лунный календарь не загружен: ${(e && e.message) || e}</span>`;
+      host.innerHTML = `<span class="lunar-desc">${todayStr}</span>`;
     }
   }
 </script>
