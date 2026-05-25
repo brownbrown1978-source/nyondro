@@ -1,0 +1,3094 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Нёндро</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Нёндро">
+<meta name="theme-color" content="#1F3F7A">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  /* === reset / base === */
+  *,*::before,*::after { box-sizing: border-box }
+  html, body { margin: 0; padding: 0 }
+  :root {
+    --c-blue:   #2E5C8A;
+    --c-white:  #F5F1E8;
+    --c-yellow: #E8B83C;
+    --c-red:    #C84B3C;
+    --c-green:  #5A8C3F;
+    --bg:       #FBF8F1;
+    --bg-2:     #F2EDE0;
+    --ink:      #1F1A14;
+    --ink-2:    #5A4F3F;
+    --ink-3:    #8A7E69;
+    --line:     #E2D9C4;
+    --gold:     #B68B2F;
+    --accent:   var(--c-blue);
+    --shadow:   0 1px 2px rgba(31,26,20,.06), 0 8px 24px rgba(31,26,20,.06);
+    --r:        14px;
+  }
+  body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  /* Заголовки и тексты молитв — EB Garamond (классический контемплативный серив). */
+  h1, h2, h3, h4 { font-family: "EB Garamond", "Iowan Old Style", "Charter", "Georgia", serif; font-weight: 600; letter-spacing: -.005em; }
+  h1 { font-size: 30px; margin: 0; line-height: 1.1; letter-spacing: -.01em; }
+  h2 { font-size: 18px; margin: 0 0 8px }
+  h3 { font-size: 15px; margin: 0 0 4px }
+  button { font-family: inherit; cursor: pointer; }
+  input, select, textarea, button { font-size: 14px; font-family: inherit; color: inherit; }
+
+  /* === layout === */
+  .app { max-width: 720px; margin: 0 auto; padding: 16px 16px 96px; }
+  header.top {
+    display: flex; align-items: center; gap: 16px;
+    padding: 12px 4px 18px; border-bottom: 1px solid var(--line); margin-bottom: 14px;
+  }
+  .logo {
+    width: 64px; height: 64px; border-radius: 12px; overflow: hidden;
+    flex: 0 0 64px; box-shadow: var(--shadow);
+  }
+  .logo img, .logo svg { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .title { flex: 1 1 auto; min-width: 0; }
+  .title small { color: var(--ink-3); font-size: 13px; display: block; margin-top: 4px; line-height: 1.3; }
+  /* Тибетский лунный день в шапке. Три уровня иерархии: обычный → особый → Дючен. */
+  .lunar-line { margin-top: 6px; line-height: 1.35; }
+  .lunar-line .lunar-day {
+    font-family: "EB Garamond", "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 16px; font-weight: 600; color: var(--c-blue);
+    letter-spacing: -.005em;
+  }
+  .lunar-line .lunar-desc {
+    color: var(--ink-3); font-size: 13px; margin-left: 6px;
+  }
+  /* Уровень 2 — особый монастырский день (8/10/15/25/29/30): синяя плашка с маркером. */
+  .lunar-line.monthly {
+    background: linear-gradient(90deg, rgba(46,92,138,.18), rgba(46,92,138,.06));
+    border-left: 4px solid var(--c-blue);
+    padding: 9px 12px; border-radius: 8px;
+    margin-top: 8px;
+  }
+  .lunar-line.monthly .lunar-day {
+    font-size: 18px; font-weight: 700;
+  }
+  .lunar-line.monthly .lunar-day::before {
+    content: "●"; color: var(--c-blue); font-size: 8px;
+    margin-right: 8px; vertical-align: middle; opacity: .8;
+  }
+  .lunar-line.monthly .lunar-desc {
+    color: var(--c-blue); font-weight: 500;
+  }
+  /* Уровень 3 — Дючен (главные годовые праздники): золотая плашка, тёплое свечение. */
+  .lunar-line.dychen {
+    background: linear-gradient(90deg, rgba(232,184,60,.28), rgba(198,134,40,.16));
+    border-left: 5px solid var(--gold);
+    padding: 12px 14px; border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 2px 12px rgba(232,184,60,.20);
+  }
+  .lunar-line.dychen .lunar-day {
+    color: var(--gold); font-size: 19px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+  .lunar-line.dychen .lunar-day::before {
+    content: "✦"; color: var(--gold); font-size: 14px;
+    margin-right: 8px; vertical-align: middle;
+  }
+  .lunar-line.dychen .lunar-desc {
+    display: block; margin-left: 0; margin-top: 3px;
+    font-style: italic; color: var(--ink-2);
+  }
+
+  /* === section nav === */
+  /* Длинные «цитатные» названия из PDF — поэтому переносим текст и даём 2×3 даже на десктопе. */
+  .section-nav {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-bottom: 12px;
+  }
+  .section-nav button {
+    position: relative; overflow: hidden;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px 14px 22px; font-size: 12px; line-height: 1.3;
+    cursor: pointer; text-align: center;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transition: transform .15s, box-shadow .15s, background .15s;
+    min-height: 96px;
+  }
+  /* Номер раздела — чуть крупнее основного шрифта, полупрозрачный, в верхнем правом углу. */
+  .section-nav button .sec-num {
+    position: absolute; top: 6px; right: 10px;
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 18px; font-weight: 600; color: var(--ink);
+    opacity: 0.28; line-height: 1;
+    pointer-events: none; font-variant-numeric: tabular-nums;
+    user-select: none;
+  }
+  .section-nav button .sec-name {
+    position: relative; z-index: 1;
+    font-weight: 600; text-align: center;
+    color: var(--sec-title-color, var(--ink-2));
+    hyphens: manual; word-break: normal; overflow-wrap: break-word;
+    /* Без правого padding — заголовок центрирован и номер в углу не мешает. */
+    max-width: 100%;
+  }
+  .section-nav button .sec-pct {
+    position: absolute; bottom: 6px; right: 10px;
+    font-size: 10px; color: var(--ink-3); font-variant-numeric: tabular-nums;
+    letter-spacing: .02em;
+  }
+  .section-nav button.active {
+    background: var(--bg);
+    box-shadow: var(--shadow);
+    border-color: transparent;
+    transform: translateY(-1px);
+  }
+  .section-nav button.active .sec-num { opacity: 0.42; }
+  .section-nav button.active .sec-pct { color: var(--ink-2); }
+  @media (max-width: 480px) {
+    .section-nav { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+    .section-nav button { font-size: 11px; padding: 10px 10px 18px; min-height: 80px; }
+    .section-nav button .sec-num { font-size: 16px; top: 5px; right: 8px; }
+  }
+
+  /* === stats card === */
+  .stats {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 14px 16px; box-shadow: var(--shadow);
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    margin-bottom: 14px;
+  }
+  .stats .stat { text-align: center }
+  .stats .num { font-family: "Iowan Old Style", "Charter", "Georgia", serif; font-size: 22px; font-weight: 600; color: var(--accent); }
+  .stats .lbl { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+  .progress-bar { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-top: 8px; }
+  .progress-bar > div { height: 100%; background: linear-gradient(90deg, var(--c-blue), var(--c-green) 35%, var(--c-yellow) 65%, var(--c-red)); border-radius: 999px; transition: width .3s; }
+
+  /* === CTA row === */
+  .cta-row { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; margin-bottom: 14px; }
+  .cta {
+    padding: 14px 16px; border: 0; border-radius: var(--r);
+    font-weight: 600; letter-spacing: .01em;
+    box-shadow: var(--shadow);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    cursor: pointer; transition: transform .12s, box-shadow .12s;
+  }
+  .cta-primary {
+    background: linear-gradient(135deg, #2E5C8A 0%, #1F3F5F 100%);
+    color: var(--bg); font-size: 16px;
+  }
+  .cta-primary:hover {
+    background: linear-gradient(135deg, #3A6FA3 0%, #2E5C8A 100%);
+    transform: translateY(-1px);
+  }
+  .cta-secondary { background: var(--bg-2); color: var(--ink-2); font-size: 13px; border: 1px solid var(--line); }
+  .cta-secondary:hover { background: var(--bg); color: var(--ink); }
+  .cta svg { display: block }
+  @media (max-width: 480px) {
+    .cta-row { grid-template-columns: 1fr; }
+    .cta-primary { font-size: 15px; }
+    .cta-secondary { font-size: 12px; padding: 10px 12px; }
+  }
+
+  /* === Wizard (Начать тхун) === */
+  .wizard-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: rgba(20, 16, 10, .55); backdrop-filter: blur(4px);
+    display: flex; align-items: stretch; justify-content: center;
+  }
+  .wizard-overlay[hidden] { display: none; }
+  .wizard {
+    width: 100%; max-width: 720px; margin: 0 auto;
+    background: var(--bg); display: flex; flex-direction: column;
+    max-height: 100vh; overflow: hidden;
+  }
+  .wizard-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px; border-bottom: 1px solid var(--line); background: var(--bg-2);
+    flex-shrink: 0;
+  }
+  .wizard-close {
+    background: transparent; border: 0; font-size: 24px; color: var(--ink-3);
+    width: 32px; height: 32px; border-radius: 50%; cursor: pointer; line-height: 1;
+  }
+  .wizard-close:hover { background: var(--line); color: var(--ink); }
+  .wizard-title { font-weight: 600; font-size: 16px; }
+  .wizard-stepper { display: flex; gap: 6px; margin-left: auto; }
+  .wizard-stepper .step {
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--line); color: var(--ink-3); font-size: 11px; font-weight: 700;
+    transition: background .2s;
+  }
+  .wizard-stepper .step.active { background: var(--c-blue); color: #fff; }
+  .wizard-stepper .step.done { background: var(--c-green); color: #fff; }
+  .wizard-body {
+    flex: 1 1 auto; overflow-y: auto;
+    padding: 18px 16px 100px;
+  }
+  .wizard-step h2 { font-size: 18px; margin: 0 0 12px; }
+  .wizard-step .hint { font-size: 13px; color: var(--ink-3); margin: 0 0 16px; }
+  .prep-checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .prep-checklist li {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden;
+  }
+  .prep-checklist label {
+    display: flex; gap: 10px; align-items: flex-start; cursor: pointer;
+    font-size: 14px; line-height: 1.45;
+  }
+  .prep-checklist input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; }
+  .prep-checklist details { width: 100%; }
+  .prep-checklist details > summary {
+    list-style: none;
+    padding: 12px 14px;
+    display: flex; gap: 10px; align-items: center;
+    cursor: pointer; user-select: none;
+    font-size: 14px; font-weight: 600; line-height: 1.4;
+    position: relative;
+  }
+  .prep-checklist details > summary::-webkit-details-marker { display: none; }
+  .prep-checklist details > summary::after {
+    content: "▾"; margin-left: auto; color: var(--ink-3);
+    font-size: 11px; transition: transform .2s;
+  }
+  .prep-checklist details[open] > summary::after { transform: rotate(180deg); }
+  .prep-checklist details > summary input[type="checkbox"] {
+    flex-shrink: 0; margin: 0;
+  }
+  .prep-checklist details > summary span { flex: 1; }
+  .prep-checklist details[open] > summary {
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .prep-detail {
+    padding: 12px 14px;
+    font-size: 13px; line-height: 1.55; color: var(--ink-2);
+    background: var(--bg);
+  }
+  /* === Always-open prep checklist (without <details>) === */
+  .prep-checklist-open li {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden;
+  }
+  .prep-row {
+    display: flex; gap: 10px; align-items: center;
+    padding: 12px 14px; cursor: pointer; user-select: none;
+    font-size: 14px; font-weight: 600; line-height: 1.4;
+    border-bottom: 1px solid var(--line); background: var(--bg);
+  }
+  .prep-row input[type="checkbox"] { margin: 0; flex-shrink: 0; }
+  .prep-name { flex: 1; }
+  .prep-stage {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; margin-bottom: 10px;
+  }
+  .prep-stage h3 { font-size: 14px; margin: 0 0 4px; }
+  .prep-stage .stage-desc { font-size: 12px; color: var(--ink-3); margin: 0 0 8px; }
+  .prep-stage .stage-note { font-size: 12px; color: var(--ink-3); margin: 8px 0 0; font-style: italic; line-height: 1.5; }
+  .prep-stage > label { display: flex; gap: 8px; align-items: center; font-size: 13px; cursor: pointer; }
+  .prep-stage details { margin: 8px 0; }
+  .prep-stage details summary { font-size: 12px; color: var(--ink-2); cursor: pointer; user-select: none; }
+  .liturgy-inline {
+    font-family: "EB Garamond", "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 15.5px; line-height: 1.7; color: var(--ink);
+    white-space: pre-wrap; background: var(--bg); border-radius: 8px;
+    padding: 12px 16px; margin-top: 8px; text-align: center;
+  }
+  /* Сущностные строки нёндро — единственный блок, где центровка ломает иерархию: тезис + объяснение. */
+  .liturgy-inline[data-liturgy="essential_lines"] {
+    text-align: left; white-space: normal;
+  }
+  /* Длинные молитвы (обет, посвящение, vow-form-body) — тоже слева, иначе текст
+     складывается «трапецией» из-за разной длины строк. */
+  .liturgy-inline[data-liturgy="vow"],
+  .liturgy-inline[data-liturgy="dedication"],
+  .liturgy-inline#vow-text-body {
+    text-align: left;
+  }
+  .liturgy-inline .essential-row { margin: 0 0 14px; }
+  .liturgy-inline .essential-row:last-child { margin-bottom: 0; }
+  .liturgy-inline .essential-row strong {
+    display: block; font-size: 17px; font-weight: 600; color: var(--ink);
+    margin-bottom: 4px; line-height: 1.35;
+  }
+  .liturgy-inline .essential-row span {
+    display: block; font-size: 16px; color: var(--ink-2); font-style: italic;
+    line-height: 1.45;
+  }
+  /* Двухколоночный билингв-блок (используется для Семистрочной молитвы). */
+  .bilingual {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    text-align: left; white-space: normal;
+  }
+  .bilingual-col {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .bilingual-label {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--ink-3);
+    margin-bottom: 8px;
+  }
+  .bilingual p {
+    margin: 0 0 6px; font-size: 14px; line-height: 1.55;
+    text-align: center;
+  }
+  .bilingual p:last-child { margin-bottom: 0; }
+  /* «ХУНГ» / «Хунг!» — зачин песнопения, отделён воздухом от семи строк. */
+  .bilingual .invocation {
+    font-weight: 700; font-size: 17px; letter-spacing: .06em;
+    margin-bottom: 14px;
+  }
+  /* Мантра — закрывает молитву, отделена воздухом от семи строк. */
+  .bilingual .mantra {
+    margin-top: 14px; font-weight: 700; letter-spacing: .04em;
+    font-size: 15px;
+  }
+  @media (max-width: 600px) {
+    /* На узком — друг под другом */
+    .bilingual { grid-template-columns: 1fr; gap: 8px; }
+  }
+  .shamatha-controls {
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0;
+  }
+  .shamatha-controls input[type="number"] {
+    width: 60px; border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; background: var(--bg);
+  }
+  .btn-small {
+    background: var(--ink); color: var(--bg); border: 0; border-radius: 8px;
+    padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer;
+  }
+  .btn-small:hover { background: #000; }
+  .mini-timer {
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 18px; font-weight: 600; color: var(--c-blue); font-variant-numeric: tabular-nums;
+    min-width: 70px; text-align: center;
+  }
+  .vow-form {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px; margin-bottom: 14px;
+    display: grid; gap: 12px; min-width: 0;
+  }
+  .vow-form label {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    font-size: 13px; font-weight: 600; min-width: 0;
+  }
+  .vow-form input, .vow-form select {
+    border: 1px solid var(--line); border-radius: 6px; padding: 6px 10px;
+    background: var(--bg); flex: 1 1 auto; min-width: 0; max-width: 60%;
+  }
+  @media (max-width: 480px) {
+    /* Stack label text on top, control beneath at full width — long select option
+       names won't push the row beyond viewport */
+    .vow-form label { flex-direction: column; align-items: stretch; gap: 4px; }
+    .vow-form input, .vow-form select { max-width: 100%; width: 100%; }
+  }
+  .vow-text { margin: 14px 0; }
+  label.confirm {
+    display: flex; gap: 10px; align-items: center; padding: 12px 14px;
+    background: rgba(232,184,60,.15); border-radius: 10px; cursor: pointer;
+    font-weight: 600;
+  }
+  .med-timer-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px;
+  }
+  .med-timer {
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 36px; font-weight: 700; color: var(--c-blue);
+    font-variant-numeric: tabular-nums; flex: 1;
+  }
+  .med-timer.paused { color: var(--ink-3); }
+  .med-timer-actions { display: flex; flex-direction: column; gap: 6px; }
+  .med-counter {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px;
+    align-items: center; margin-bottom: 16px;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px;
+  }
+  .circ-btn {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+    font-size: 24px; font-weight: 700; padding: 14px; cursor: pointer;
+    color: var(--ink);
+  }
+  .circ-btn:active { background: var(--line); }
+  .circ-display { text-align: center; }
+  .circ-num { font-family: "Iowan Old Style", "Charter", "Georgia", serif; font-size: 32px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .circ-label { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .08em; }
+  .med-recit {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px; max-height: 320px; overflow-y: auto;
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 15px; line-height: 1.7; white-space: pre-wrap; text-align: center;
+  }
+  .finish-block {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; margin-bottom: 12px;
+  }
+  .finish-block h3 { font-size: 14px; margin: 0 0 8px; }
+  .finish-block label { display: block; font-size: 12px; color: var(--ink-3); margin-top: 8px; }
+  .finish-block textarea {
+    width: 100%; border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 10px; background: var(--bg); font-family: inherit; font-size: 13px;
+    resize: vertical; margin-top: 4px;
+  }
+  .feel-stars { display: flex; gap: 4px; margin-top: 8px; }
+  .feel-stars button {
+    background: transparent; border: 0; font-size: 28px; cursor: pointer;
+    color: var(--line); padding: 4px 6px;
+  }
+  .feel-stars button.on, .feel-stars button:hover { color: var(--c-yellow); }
+  .wizard-footer {
+    border-top: 1px solid var(--line); background: var(--bg-2);
+    padding: 12px 16px; display: flex; gap: 8px; justify-content: space-between;
+    flex-shrink: 0;
+  }
+  .wizard-footer button {
+    flex: 1; padding: 12px 16px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; cursor: pointer; border: 0;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: #000; }
+  .btn-primary:disabled { background: var(--ink-3); cursor: not-allowed; opacity: .6; }
+  .btn-secondary { background: var(--bg); border: 1px solid var(--line); color: var(--ink-2); }
+  .btn-secondary:hover { background: var(--line); }
+  .bell-banner {
+    position: fixed; inset: 0; background: rgba(46,92,138,.92); color: #fff;
+    z-index: 200; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 16px; text-align: center; padding: 24px;
+    backdrop-filter: blur(8px);
+  }
+  .bell-banner[hidden] { display: none; }
+  .bell-banner h2 { font-size: 22px; margin: 0 0 8px; color: #fff; }
+  .bell-banner p { margin: 0; font-size: 14px; max-width: 360px; line-height: 1.5; opacity: .9; }
+  .bell-banner button {
+    margin-top: 8px; padding: 12px 24px; border-radius: 10px;
+    background: #fff; color: var(--c-blue); font-weight: 700; font-size: 14px; border: 0; cursor: pointer;
+  }
+
+  /* === tabs === */
+  /* Две вкладки 50/50 (Журнал · Прогресс). «Настройки» доступны через
+     иконку ⚙ в правом верхнем углу шапки — не загромождают таб-бар. */
+  .tabs {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 4px; margin-bottom: 14px;
+  }
+  .tabs button {
+    background: transparent; border: 0; padding: 10px; border-radius: 10px;
+    color: var(--ink-2); font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: background .15s, color .15s;
+  }
+  .tabs button.active { background: var(--bg); color: var(--ink); box-shadow: var(--shadow); font-weight: 600; }
+
+  /* === panes === */
+  .pane { display: none }
+  .pane.active { display: block }
+
+  /* === tun card === */
+  .tun-card {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 12px 14px; margin-bottom: 10px; box-shadow: var(--shadow);
+    display: grid; grid-template-columns: 8px 1fr auto; gap: 12px;
+  }
+  .tun-card .stripe { border-radius: 4px; align-self: stretch; }
+  .tun-card .meta { font-size: 12px; color: var(--ink-3); }
+  .tun-card .name { font-weight: 600; font-size: 14px; margin: 2px 0 4px; }
+  .tun-card .row { display: flex; flex-wrap: wrap; gap: 10px; font-size: 12px; color: var(--ink-2); }
+  .tun-card .row b { color: var(--ink); font-weight: 600 }
+  .tun-card .note { color: var(--ink-2); font-size: 13px; margin-top: 6px; font-style: italic; }
+  .tun-card .actions { display: flex; flex-direction: column; gap: 4px; align-items: end; }
+  .tun-card .feel { display: flex; gap: 1px; color: var(--c-yellow); font-size: 12px }
+  .icon-btn {
+    background: transparent; border: 0; color: var(--ink-3); padding: 4px;
+    font-size: 12px; cursor: pointer;
+  }
+  .icon-btn:hover { color: var(--c-red) }
+  /* Шестерёнка настроек в шапке — единственная точка входа в настройки,
+     поэтому хорошо заметная (но без агрессивного цвета). */
+  header.top .icon-btn {
+    font-size: 34px; color: var(--ink-2);
+    width: 52px; height: 52px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background .15s, color .15s, transform .25s;
+  }
+  header.top .icon-btn:hover {
+    background: var(--bg-2); color: var(--ink); transform: rotate(45deg);
+  }
+
+  .empty {
+    padding: 32px 16px; text-align: center; color: var(--ink-3); font-size: 14px;
+    background: var(--bg-2); border: 1px dashed var(--line); border-radius: var(--r);
+  }
+
+  /* === progress (attributes) === */
+  .group { margin-bottom: 18px }
+  .group h3 {
+    color: var(--ink-2); font-size: 12px; text-transform: uppercase;
+    letter-spacing: .08em; margin-bottom: 8px; font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block }
+
+  .attr {
+    display: grid; grid-template-columns: 24px 1fr auto; gap: 10px; align-items: center;
+    padding: 8px 12px; border-bottom: 1px solid var(--line);
+  }
+  .attr .num { color: var(--ink-3); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .attr .text { font-size: 14px; }
+  .attr .text small { color: var(--ink-3); display: block; font-size: 11px; margin-top: 2px; }
+  .attr .pct { font-variant-numeric: tabular-nums; font-size: 12px; color: var(--ink-2); min-width: 56px; text-align: right; }
+  .attr .pct b { color: var(--ink); font-weight: 600 }
+  .attr .mini-bar { grid-column: 1 / -1; height: 3px; background: var(--line); border-radius: 999px; overflow: hidden; margin-top: 4px; }
+  .attr .mini-bar > div { height: 100%; background: var(--accent); transition: width .3s; }
+  .attr.done .mini-bar > div { background: var(--c-green); }
+  .attr.done .num::before { content: "✓ "; color: var(--c-green); }
+
+  /* === text viewer === */
+  .reader {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 16px 18px; box-shadow: var(--shadow);
+  }
+  .reader-head { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 10px }
+  .reader-head select {
+    border: 1px solid var(--line); background: var(--bg); border-radius: 8px;
+    padding: 6px 10px; max-width: 100%;
+  }
+  .reader-body { font-size: 14px; line-height: 1.65; color: var(--ink); }
+  .reader-body p { margin: 0 0 10px; }
+  .reader-body .quote {
+    border-left: 3px solid var(--c-yellow); padding: 6px 12px; color: var(--ink-2);
+    background: rgba(232,184,60,.08); border-radius: 0 8px 8px 0;
+    margin: 8px 0;
+  }
+  .reader-body .recit {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+    padding: 12px 14px; margin: 12px 0;
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 14.5px; line-height: 1.7; color: var(--ink);
+    white-space: pre-wrap; text-align: center;
+  }
+  .reader-body .recit-title {
+    font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .08em;
+    margin-bottom: 8px; font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  }
+
+  /* === text subnav (Общие / Раздельные) === */
+  .text-subnav {
+    display: flex; gap: 6px; margin-bottom: 12px;
+    background: var(--bg-2); border: 1px solid var(--line);
+    border-radius: 10px; padding: 4px;
+  }
+  .text-subnav button {
+    flex: 1; padding: 8px 12px; font-size: 13px;
+    background: transparent; border: 0; border-radius: 8px;
+    color: var(--ink-3); font-weight: 600;
+  }
+  .text-subnav button.active {
+    background: var(--bg); color: var(--ink);
+    box-shadow: var(--shadow);
+  }
+  .text-sub { display: none; }
+  .text-sub.active { display: block; }
+  .text-hint { font-size: 12px; color: var(--ink-3); margin: 0 0 12px; }
+
+  /* === liturgy cards === */
+  .liturgy-card {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 14px 16px; box-shadow: var(--shadow); margin-bottom: 12px;
+  }
+  .liturgy-card h3 {
+    font-size: 15px; color: var(--ink); margin: 0 0 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .liturgy-card h3::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+    display: inline-block;
+  }
+  .liturgy-card .body {
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 14.5px; line-height: 1.7; color: var(--ink);
+    white-space: pre-wrap; text-align: center;
+  }
+
+  /* === settings === */
+  .settings-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin: -4px 0 14px;
+  }
+  .settings-head h2 { margin: 0; font-size: 20px; }
+  .settings-close {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: transparent; border: 1px solid var(--line);
+    color: var(--ink-2); font-size: 18px; line-height: 1;
+    cursor: pointer; transition: background .15s, color .15s;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .settings-close:hover { background: var(--bg-2); color: var(--ink); }
+  .settings { display: grid; gap: 14px }
+  .row-set {
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 12px 14px; box-shadow: var(--shadow);
+  }
+  .row-set label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px }
+  .row-set p { margin: 0 0 10px; color: var(--ink-3); font-size: 12px }
+  .row-set input[type="number"], .row-set select {
+    border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px;
+    background: var(--bg); width: 100%;
+  }
+  .row-set .strategy {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  }
+  .row-set .strategy button {
+    border: 1px solid var(--line); background: var(--bg); border-radius: 10px;
+    padding: 10px; text-align: left;
+  }
+  .row-set .strategy button.active {
+    border-color: var(--accent); background: var(--bg-2); box-shadow: 0 0 0 2px rgba(46,92,138,.12) inset;
+  }
+  .row-set .strategy small { color: var(--ink-3); display: block; font-weight: 400; font-size: 11px; margin-top: 2px }
+  .danger { color: var(--c-red); }
+  .btn-line {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 8px;
+    padding: 8px 14px; font-size: 13px;
+  }
+  .btn-line:hover { background: var(--bg-2) }
+
+  /* === modal === */
+  .modal-back {
+    position: fixed; inset: 0; background: rgba(31,26,20,.45);
+    display: none; align-items: flex-end; justify-content: center; z-index: 100;
+  }
+  .modal-back.show { display: flex }
+  .modal {
+    width: 100%; max-width: 720px; background: var(--bg);
+    border-radius: 18px 18px 0 0; padding: 18px 18px 22px;
+    max-height: 92vh; overflow-y: auto; box-shadow: 0 -8px 32px rgba(0,0,0,.2);
+  }
+  .modal h2 { display: flex; align-items: center; gap: 10px }
+  .modal .x {
+    margin-left: auto; background: transparent; border: 0; font-size: 22px;
+    color: var(--ink-3); cursor: pointer;
+  }
+  .modal label { display: block; font-size: 12px; color: var(--ink-3); margin: 12px 0 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em }
+  .modal input, .modal select, .modal textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--line);
+    border-radius: 10px; background: var(--bg-2); color: var(--ink);
+  }
+  .modal textarea { resize: vertical; min-height: 60px; font-family: inherit }
+  .modal .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+  .modal .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px }
+  .modal .feel-pick { display: flex; gap: 4px }
+  .modal .feel-pick button {
+    flex: 1; padding: 10px; border: 1px solid var(--line); background: var(--bg-2);
+    border-radius: 10px; font-size: 18px; color: var(--ink-3);
+  }
+  .modal .feel-pick button.active { background: var(--c-yellow); color: var(--ink); border-color: var(--c-yellow) }
+  .modal .save {
+    width: 100%; padding: 14px; margin-top: 18px; border: 0; border-radius: 12px;
+    background: var(--ink); color: var(--bg); font-size: 15px; font-weight: 600;
+  }
+  .modal .hint { color: var(--ink-3); font-size: 12px; margin-top: 6px }
+
+  /* === Техника 1 — структура === */
+  details.tech1 {
+    margin-top: 12px; border: 1px solid var(--line); border-radius: 12px;
+    background: var(--bg-2); overflow: hidden;
+  }
+  details.tech1 summary {
+    cursor: pointer; padding: 10px 14px; font-size: 13px; font-weight: 600;
+    color: var(--ink-2); display: flex; align-items: center; gap: 8px;
+    list-style: none;
+  }
+  details.tech1 summary::-webkit-details-marker { display: none }
+  details.tech1 summary::before {
+    content: "▸"; color: var(--ink-3); transition: transform .15s; display: inline-block;
+  }
+  details.tech1[open] summary::before { transform: rotate(90deg) }
+  .tech1-body { padding: 8px 14px 12px; font-size: 12px; color: var(--ink-2); }
+  .tech1-cols { display: grid; grid-template-columns: 22px 1fr 80px 90px; gap: 6px; padding: 4px 0; border-bottom: 1px solid var(--line); margin-bottom: 4px; font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .04em }
+  .tech1-step {
+    display: grid; grid-template-columns: 22px 1fr 80px 90px; gap: 6px; align-items: center;
+    padding: 5px 0; border-bottom: 1px dashed var(--line); font-size: 12px;
+  }
+  .tech1-step:last-of-type { border-bottom: 0 }
+  .t1-num {
+    width: 18px; height: 18px; border-radius: 50%; background: var(--c-yellow);
+    color: var(--ink); font-weight: 700; font-size: 11px;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .t1-c { font-variant-numeric: tabular-nums; color: var(--ink); }
+  .tech1-total {
+    display: grid; grid-template-columns: 22px 1fr 80px 90px; gap: 6px;
+    padding: 8px 0 0; margin-top: 4px; border-top: 1px solid var(--line);
+    font-size: 12px;
+  }
+
+  @media (min-width: 480px) {
+    .modal-back { align-items: center }
+    .modal { border-radius: 18px; max-height: 86vh }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Header -->
+  <header class="top">
+    <div class="logo" aria-hidden="true">
+      <!-- Логотип-мандала, кропнут из исходного флага дзогчен (EPS → PNG → base64) -->
+      <img src="data:image/png;base64,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" alt="">
+    </div>
+    <div class="title">
+      <h1>Нёндро</h1>
+      <div id="lunar-line" class="lunar-line"></div>
+    </div>
+    <button class="icon-btn" id="btn-settings-shortcut" title="Настройки" aria-label="Настройки">⚙</button>
+  </header>
+
+  <!-- Section selector -->
+  <nav class="section-nav" id="section-nav" role="tablist" aria-label="Разделы нёндро"></nav>
+
+  <!-- Stats -->
+  <section class="stats" id="stats">
+    <div class="stat">
+      <div class="num" id="stat-week">0/3</div>
+      <div class="lbl">Эта неделя</div>
+    </div>
+    <div class="stat">
+      <div class="num" id="stat-total">0</div>
+      <div class="lbl">Всего тхунов</div>
+    </div>
+    <div class="stat">
+      <div class="num" id="stat-pct">0%</div>
+      <div class="lbl">Прогресс</div>
+    </div>
+    <div style="grid-column: 1 / -1">
+      <div class="progress-bar"><div id="bar-overall" style="width:0%"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--ink-3);margin-top:4px">
+        <span id="circles-text">0 / 1000 кругов</span>
+        <span id="forecast">—</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA row -->
+  <div class="cta-row">
+    <button class="cta cta-primary" id="btn-start-thun">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Начать тхун
+    </button>
+    <button class="cta cta-secondary" id="btn-add">
+      Записать задним числом
+    </button>
+  </div>
+
+  <!-- Tabs: только 2 основных. «Настройки» открываются по ⚙ в шапке. -->
+  <nav class="tabs" role="tablist">
+    <button class="active" data-pane="journal">Журнал</button>
+    <button data-pane="progress">Прогресс</button>
+  </nav>
+
+  <!-- Pane: journal -->
+  <section class="pane active" id="pane-journal">
+    <div id="journal-list"></div>
+  </section>
+
+  <!-- Pane: progress -->
+  <section class="pane" id="pane-progress">
+    <div id="progress-list"></div>
+  </section>
+
+  <!-- Pane: settings (открывается из ⚙ в шапке, повторный клик закрывает; либо × ниже) -->
+  <section class="pane" id="pane-settings">
+    <div class="settings-head">
+      <h2>Настройки</h2>
+      <button class="settings-close" id="btn-settings-close" type="button" aria-label="Закрыть настройки">×</button>
+    </div>
+    <div class="settings">
+      <div class="row-set">
+        <label>Стратегия</label>
+        <p>Стратегия 1 — классическая (1000 кругов подряд по разделу). Стратегия 2 — 25/75: сначала 7 кругов на каждый признак, потом 21 на повторе.</p>
+        <div class="strategy">
+          <button data-strategy="1" class="active">Классическая<small>28 кр./признак, 16 кр./причина</small></button>
+          <button data-strategy="2">25/75<small>7 кр. + 21 кр. за два прохода</small></button>
+        </div>
+      </div>
+      <div class="row-set">
+        <label>Стандартная длина тхуна (минут)</label>
+        <p>Тибетский «час» = 24 ч / 30 = 48 мин. Можно ставить меньше — например 30 мин для возобновления.</p>
+        <input type="number" id="set-length" min="5" max="120" value="48">
+      </div>
+      <div class="row-set">
+        <label>Целевой темп (тхунов в неделю)</label>
+        <p>Рекомендуется 2–3 тхуна в неделю. При 3 тхун/нед раздел ДЧЖ закрывается за ~3,5 месяца.</p>
+        <input type="number" id="set-week" min="1" max="14" value="3">
+      </div>
+      <div class="row-set">
+        <label>Данные</label>
+        <p>Всё хранится в этом браузере (localStorage). Скачайте JSON, если меняете устройство.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn-line" id="btn-export">Экспорт JSON</button>
+          <button class="btn-line" id="btn-import">Импорт JSON</button>
+          <input type="file" id="import-file" accept="application/json" style="display:none">
+          <button class="btn-line danger" id="btn-reset">Сбросить всё</button>
+        </div>
+      </div>
+      <div class="row-set" style="font-size:12px;color:var(--ink-3)">
+        Источник данных: гайд раздела ДЧЖ (Дзогчен Шри Сингха) и фрагменты из «Слов моего всеблагого учителя» Патрула Ринпоче.
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- Add Tun Modal -->
+<div class="modal-back" id="modal-back">
+  <div class="modal" id="modal">
+    <h2>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span id="modal-title">Записать тхун</span>
+      <button class="x" id="modal-close" aria-label="Закрыть">×</button>
+    </h2>
+
+    <div class="grid-2">
+      <div>
+        <label>Дата</label>
+        <input type="date" id="f-date">
+      </div>
+      <div>
+        <label>Длительность, мин</label>
+        <input type="number" id="f-length" min="1" max="180" value="48">
+      </div>
+    </div>
+
+    <label>Признак / причина</label>
+    <select id="f-attr"></select>
+
+    <details class="tech1" id="tech1-guide">
+      <summary>Техника 1 — структура из 3 заходов</summary>
+      <div class="tech1-body">
+        <div class="tech1-cols">
+          <div></div>
+          <div><b>Шаг</b></div>
+          <div><b>Стр. 25/75</b></div>
+          <div><b>Стр. классич.</b></div>
+        </div>
+        <div class="tech1-step"><span class="t1-num">1</span><span>Размышление о признаке (30–40 сек)</span></div>
+        <div class="tech1-step"><span class="t1-num">2</span><span>Опорная строка «Я так благодарен…»</span><span class="t1-c">1 круг</span><span class="t1-c">1 круг</span></div>
+        <div class="tech1-step"><span class="t1-num">3</span><span>Строки о драгоценности</span><span class="t1-c">1 круг</span><span class="t1-c">1 круг</span></div>
+        <div class="tech1-step"><span class="t1-num">4</span><span>Медитация «А»</span></div>
+        <div class="tech1-step"><span class="t1-num">5</span><span>Все строки абзаца (1-й и 2-й заход)</span><span class="t1-c">¼ круга</span><span class="t1-c">1 круг</span></div>
+        <div class="tech1-step"><span class="t1-num">5</span><span>Все строки абзаца (3-й заход)</span><span class="t1-c">½ круга</span><span class="t1-c">2 круга</span></div>
+        <div class="tech1-total">
+          <span></span>
+          <span><b>Итого за тхун:</b></span>
+          <span><b>7 кругов</b></span>
+          <span><b>10 кругов</b></span>
+        </div>
+      </div>
+    </details>
+
+    <input type="hidden" id="f-tech" value="1">
+
+    <div class="grid-3">
+      <div>
+        <label>Кругов</label>
+        <input type="number" id="f-circles" min="0" max="50" value="10">
+      </div>
+      <div>
+        <label>Простирания</label>
+        <input type="number" id="f-prostr" min="0" max="100" value="3">
+      </div>
+      <div>
+        <label>Чувство</label>
+        <div class="feel-pick" id="f-feel">
+          <button type="button" data-v="1">★</button>
+          <button type="button" data-v="2">★</button>
+          <button type="button" data-v="3">★</button>
+          <button type="button" data-v="4">★</button>
+          <button type="button" data-v="5">★</button>
+        </div>
+      </div>
+    </div>
+
+    <label>Заметка</label>
+    <textarea id="f-note" placeholder="Что шло, что не шло, какую опорную строку выбирал…"></textarea>
+
+    <div class="hint" id="f-hint"></div>
+
+    <button class="save" id="f-save">Сохранить тхун</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     ВИЗАРД «Начать тхун» — 5 шагов: Приготовления → Подготовка →
+     Обет → Медитация → Завершение
+     ============================================================ -->
+<div class="wizard-overlay" id="wizard-overlay" hidden>
+  <div class="wizard">
+    <header class="wizard-header">
+      <button class="wizard-close" id="wizard-close" aria-label="Закрыть">×</button>
+      <div class="wizard-title">Тхун</div>
+      <div class="wizard-stepper">
+        <span class="step active" data-step="1">1</span>
+        <span class="step" data-step="2">2</span>
+        <span class="step" data-step="3">3</span>
+        <span class="step" data-step="4">4</span>
+        <span class="step" data-step="5">5</span>
+      </div>
+    </header>
+
+    <main class="wizard-body" id="wizard-body">
+
+      <!-- Шаг 1: Приготовления -->
+      <section class="wizard-step" data-step="1">
+        <h2>1 · Приготовления</h2>
+        <p class="hint">Подготовь место и тело до начала тхуна. Не давай приготовлениям решать, делать тхун или нет — лучше сделать тхун без некоторых, чем отложить навсегда.</p>
+        <ul class="prep-checklist prep-checklist-open">
+          <li>
+            <div class="prep-row"><span class="prep-name">Занятость</span></div>
+            <div class="prep-detail">Позаботиться о том, чтобы не было потребности заниматься какими-либо иными занятиями помимо занятия тхуна.</div>
+          </li>
+          <li>
+            <div class="prep-row"><span class="prep-name">Место</span></div>
+            <div class="prep-detail">Убедиться в чистоте места, обеспечить помещение свежим воздухом и светом, позаботиться о звукоизоляции и ограничить доступ к месту медитации.</div>
+          </li>
+          <li>
+            <div class="prep-row"><span class="prep-name">Условия</span></div>
+            <div class="prep-detail">Отключить звук у телефона и т. п. устройств, выключить активно работающие электрические, газовые и водные устройства (плиту, краны и т. п.).</div>
+          </li>
+          <li>
+            <div class="prep-row"><span class="prep-name">Инструменты</span></div>
+            <div class="prep-detail">Подготовить подношения на алтаре, подушку / стул для сидения, чётки и иные инструменты, тексты для изучения и практики, часы.</div>
+          </li>
+          <li>
+            <div class="prep-row"><span class="prep-name">Тело</span></div>
+            <div class="prep-detail">Сходить в туалет, прочистить нос, одеться в удобную для сидения и тёплую одежду, подготовить плед для ног при необходимости, носовые платки, воду в чашке или термосе.</div>
+          </li>
+          <li>
+            <div class="prep-row"><span class="prep-name">Содержание</span></div>
+            <div class="prep-detail">Решить, какой медитации будет посвящён тхун, сколько он будет выполняться, сколько будет выполняться та или иная часть тхуна и тому подобное.</div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Шаг 2: Подготовка тела, речи, ума -->
+      <section class="wizard-step" data-step="2" hidden>
+        <h2>2 · Подготовка</h2>
+        <p class="hint">Подготовь тело, речь и ум. Шаматха — основная часть; остальное короче.</p>
+
+        <div class="prep-stage">
+          <h3>Тело · семичастная поза Вайрочаны</h3>
+          <p class="stage-desc">Спина прямая. На подушке или стуле (при проблемах с ногами).</p>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Тело · шаматха</h3>
+          <p class="stage-desc">6 минут по умолчанию; дольше — для успокоения особо взволнованного ума. Диапазон 3–30 мин.</p>
+          <div class="shamatha-controls">
+            <label>Длительность:
+              <input type="number" id="shamatha-min" min="3" max="30" step="1" value="6">
+            </label>
+            <button id="shamatha-start" class="btn-small" type="button">Запустить</button>
+            <span id="shamatha-timer" class="mini-timer">06:00</span>
+          </div>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Речь · девятичастное дыхание</h3>
+          <p class="stage-desc">Три цикла по три вдоха-выдоха. Дыхание — это речь.</p>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · молитва мастерам линии передачи</h3>
+          <div class="liturgy-inline">Лама Чхен Лама Чхен Лама Чхенно!
+(3 раза)</div>
+          <p class="stage-note">Расширенно (для первого тхуна дня в ритрите или порой вне ритрита): молитва Линии Передачи Дзогчен Лонгчен Ньинтиг или Кхандро Ньинтиг из «Пути Будды».</p>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · принятие прибежища</h3>
+          <div class="liturgy-inline" data-liturgy="refuge"></div>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · взращивание четырёх безмерных</h3>
+          <div class="liturgy-inline" data-liturgy="four_immeasurables"></div>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · зарождение Бодхичитты</h3>
+          <div class="liturgy-inline" data-liturgy="bodhichitta"></div>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · благословение Коренного Мастера (семистрочная)</h3>
+          <div class="liturgy-inline" data-liturgy="seven_line"></div>
+        </div>
+
+        <div class="prep-stage">
+          <h3>Ум · сущностные подготовительные строки нёндро</h3>
+          <div class="liturgy-inline" data-liturgy="essential_lines"></div>
+        </div>
+      </section>
+
+      <!-- Шаг 3: Обет -->
+      <section class="wizard-step" data-step="3" hidden>
+        <h2>3 · Обет совершить тхун</h2>
+        <p class="hint">Чёткое намерение: длительность, признак, ориентир по кругам. Обет — серьёзно. Чем дольше его не нарушаешь, тем легче хранить.</p>
+        <div class="vow-form">
+          <label>Длительность тхуна (мин):
+            <input type="number" id="vow-length" min="5" max="180" value="48">
+          </label>
+          <label>Признак / часть раздела:
+            <select id="vow-attr"></select>
+          </label>
+          <label>Стратегия:
+            <span id="vow-strategy">—</span>
+          </label>
+          <label>Ориентир кругов:
+            <span id="vow-circles">—</span>
+          </label>
+        </div>
+        <div class="vow-text">
+          <div class="liturgy-inline" id="vow-text-body"></div>
+        </div>
+        <label class="confirm"><input type="checkbox" id="vow-confirm"> Я даю этот обет</label>
+      </section>
+
+      <!-- Шаг 4: Медитация -->
+      <section class="wizard-step" data-step="4" hidden>
+        <h2 id="med-title-h">4 · Медитация</h2>
+        <div class="med-timer-row">
+          <div class="med-timer" id="med-timer">48:00</div>
+          <div class="med-timer-actions">
+            <button id="med-pause" class="btn-small" type="button">Пауза</button>
+            <button id="med-bell-test" class="btn-small" type="button" style="background:var(--bg);color:var(--ink-2);border:1px solid var(--line)">Бэлл</button>
+          </div>
+        </div>
+        <div class="med-counter">
+          <button id="med-circ-minus" class="circ-btn" type="button">−</button>
+          <div class="circ-display">
+            <div class="circ-num" id="med-circles">0</div>
+            <div class="circ-label">кругов</div>
+          </div>
+          <button id="med-circ-plus" class="circ-btn" type="button">+</button>
+        </div>
+        <div class="med-recit recit" id="med-recit-body"></div>
+      </section>
+
+      <!-- Шаг 5: Завершение -->
+      <section class="wizard-step" data-step="5" hidden>
+        <h2>5 · Завершение</h2>
+        <p class="hint">Минуту-две на самопроверку и посвящение. Не формально.</p>
+
+        <div class="finish-block">
+          <h3>Самопроверка</h3>
+          <label>Ошибки / отвлечения:
+            <textarea id="finish-mistakes" rows="2" placeholder="Что пошло не так, где были отвлечения…"></textarea>
+          </label>
+          <label>Успехи / прозрения:
+            <textarea id="finish-successes" rows="2" placeholder="Новые переживания, прозрения, удавшееся…"></textarea>
+          </label>
+        </div>
+
+        <div class="finish-block">
+          <h3>Посвящение заслуг</h3>
+          <div class="liturgy-inline" data-liturgy="dedication"></div>
+          <label>Устремление (для себя / других):
+            <textarea id="finish-aspiration" rows="1" placeholder="Добродетельное желание…"></textarea>
+          </label>
+          <label>Обещание (новое или прежнее):
+            <textarea id="finish-promise" rows="1" placeholder="Добродетельное обещание…"></textarea>
+          </label>
+        </div>
+
+        <div class="finish-block">
+          <h3>Чувство</h3>
+          <div class="feel-stars" id="finish-feel" role="radiogroup">
+            <button type="button" data-feel="1" aria-label="1">★</button>
+            <button type="button" data-feel="2" aria-label="2">★</button>
+            <button type="button" data-feel="3" aria-label="3">★</button>
+            <button type="button" data-feel="4" aria-label="4">★</button>
+            <button type="button" data-feel="5" aria-label="5">★</button>
+          </div>
+        </div>
+
+        <div class="finish-block">
+          <label>Заметка (необязательно):
+            <textarea id="finish-note" rows="2" placeholder="Что хочется зафиксировать…"></textarea>
+          </label>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="wizard-footer">
+      <button id="wizard-prev" class="btn-secondary" type="button">Назад</button>
+      <button id="wizard-next" class="btn-primary" type="button">Далее</button>
+      <button id="wizard-save" class="btn-primary" type="button" hidden>Сохранить тхун</button>
+    </footer>
+  </div>
+</div>
+
+<!-- Бэлл-баннер на истечение таймера -->
+<div class="bell-banner" id="bell-banner" hidden>
+  <h2>Тхун завершён</h2>
+  <p>Поздравляю. Время перейти к самопроверке и посвящению заслуг.</p>
+  <button id="bell-banner-ok" type="button">Перейти к завершению</button>
+</div>
+
+<script>
+/* ============================================================
+ *  ДАННЫЕ — 6 разделов общих внешних предварительных практик
+ *  По Паттрулу Ринпоче, «Слова моего всеблагого учителя».
+ *
+ *  Каждый раздел = 1000 кругов. Раздел 1 (ДЧЖ) — точная разбивка
+ *  по Шри Сингха (28 кр./признак, 16 кр./причина). Разделы 2-6 —
+ *  каркас по структуре глав Паттрула с равномерным распределением
+ *  кругов; цифры будут уточнены при появлении точных PDF от Шри Сингха.
+ * ========================================================== */
+/* color — основной (для бэйджей/полос); titleColor — читаемый на cream-фоне,
+   используется как цвет заголовка раздела в section-nav. */
+const SECTIONS = {
+  s1: { num: 1, title: "«Человеческая жизнь драгоценна»",                       short: "«Человеческая жизнь драгоценна»",                       color: "#2E5C8A", titleColor: "#2E5C8A", target: 1000 },
+  s2: { num: 2, title: "«Жизнь непостоянна»",                                   short: "«Жизнь непостоянна»",                                   color: "#5A8C3F", titleColor: "#3D6829", target: 994 },
+  s3: { num: 3, title: "«Цепляние за самость — это самсара»",                   short: "«Цепляние за самость — это самсара»",                   color: "#C84B3C", titleColor: "#9A3528", target: 1002 },
+  s4: { num: 4, title: "«Закон причины и следствия безошибочен»",               short: "«Закон причины и следствия безошибочен»",               color: "#E8B83C", titleColor: "#9A7423", target: 1000 },
+  s5: { num: 5, title: "«Нирвана — это мышление без цепляния за самость»",      short: "«Нирвана — это мышление без цепляния за самость»",      color: "#7C5BB7", titleColor: "#5C4290", target: 1001 },
+  s6: { num: 6, title: "«Ваджрный Мастер — это воплощение Будды»",              short: "«Ваджрный Мастер — это воплощение Будды»",              color: "#B68B2F", titleColor: "#7E5C18", target: 1000 },
+};
+
+const ATTRS = {
+  /* === Раздел 1: ДЧЖ — 34 признака + 3 причины, 1000 кругов === */
+  freedoms: {
+    section: "s1",
+    title: "8 свобод",
+    color: "var(--c-blue)",
+    target: 28,
+    items: [
+      "Я не существо ада",
+      "Я не голодный дух",
+      "Я не животное",
+      "Я не следую пути насилия",
+      "Я не бог-долгожитель",
+      "Я не придерживаюсь ложных воззрений",
+      "Я не родился в тёмный временной цикл",
+      "Я не родился умственно неполноценным",
+    ],
+  },
+  advantagesOwn: {
+    section: "s1",
+    title: "5 собственных преимуществ",
+    color: "var(--c-yellow)",
+    target: 28,
+    items: [
+      "Я родился человеком",
+      "Я родился в центральной области Дхармы",
+      "Я обладаю функциональными органами способностей",
+      "Я не сошёл с пути Дхармы",
+      "Я обладаю верой в своё благое мышление",
+    ],
+  },
+  advantagesOther: {
+    section: "s1",
+    title: "5 преимуществ, зависящих от других",
+    color: "var(--c-red)",
+    target: 28,
+    items: [
+      "Будда появился в этом мире",
+      "Будда преподал Дхарму",
+      "Дхарма всё ещё есть в мире",
+      "Есть дхарма-центр, и я вошёл во врата",
+      "Я принят в ученики учителем",
+    ],
+  },
+  unfavSpontaneous: {
+    section: "s1",
+    title: "8 неподходящих состояний (внезапные условия)",
+    color: "var(--c-green)",
+    target: 28,
+    items: [
+      "Я не подчиняюсь пагубному мышлению",
+      "Я не являюсь умственно отсталым",
+      "Я не следую пагубному учителю",
+      "Я не ленюсь в практике Дхармы",
+      "Я не подавлен созреванием пагубной кармы",
+      "Я не нахожусь под властью других",
+      "Я не злоупотребляю Дхармой как средством от страха",
+      "Я не являюсь фальшивым практиком Дхармы",
+    ],
+  },
+  unfavAttachments: {
+    section: "s1",
+    title: "8 неподходящих состояний (несовместимые пристрастия)",
+    color: "#7C5BB7",
+    target: 28,
+    items: [
+      "Я не связан сильной привязанностью",
+      "Я не обладаю пагубным характером",
+      "Я не безразличен к страданиям самсары",
+      "Я не лишён веры в Дхарму и подлинных учителей Дхармы",
+      "Я не сорадуюсь недобродетелям",
+      "Я не теряю интереса к Дхарме",
+      "Я не нарушаю свои добродетельные обещания",
+      "Я не нарушаю свои самаи",
+    ],
+  },
+  reasons: {
+    section: "s1",
+    title: "3 причины ДЧЖ",
+    color: "var(--gold)",
+    target: 16,
+    isReason: true,
+    items: [
+      "Добродетельная нравственность прошлых жизней",
+      "Добродетельная щедрость прошлых жизней",
+      "Добродетельные устремления прошлых жизней",
+    ],
+  },
+
+  /* === Раздел 2: Жизнь непостоянна — 8 оснований + 18 примеров (PDF) === */
+  /* 8 × 50 + 18 × 33 = 400 + 594 = 994 */
+  impermanenceBases: {
+    section: "s2",
+    title: "8 оснований непостоянства",
+    color: "#5A8C3F",
+    target: 50,
+    items: [
+      "Непостоянство вселенной (внешнего вместилища)",
+      "Непостоянство существ (внутреннего содержимого)",
+      "Непостоянство просветлённых существ",
+      "Непостоянство временных лидеров",
+      "Различные аналогии непостоянства",
+      "Многочисленность условий смерти",
+      "Непостоянство составных феноменов",
+      "Заблуждение, что умирают только другие",
+    ],
+  },
+  impermanenceExamples: {
+    section: "s2",
+    title: "18 примеров непостоянства",
+    color: "#4A7C2F",
+    target: 33,
+    items: [
+      "Глобальная эволюция и вырождение существ великого цикла",
+      "Безостановочный цикл смены сезонов",
+      "Прошлое ушло, настоящее меняется, будущее не наступило",
+      "Богатые становятся бедными, уважаемые презираемыми",
+      "Смерть предков, родственников и друзей",
+      "Кумиры состарились, померкли, иссякли",
+      "Смерть домашних и бесчисленных животных",
+      "Все существа этого мира умирали, умирают и умрут",
+      "Всё составное распадётся, накопленное исчерпается",
+      "Вредоносные условия способны оборвать жизнь в один миг",
+      "Великие учителя прошлого ушли",
+      "Великие цари и империи исчезли",
+      "Тело меняется каждое мгновение",
+      "Дыхание непрерывно меняется",
+      "Мысли возникают и исчезают непрерывно",
+      "Времена года, день и ночь чередуются",
+      "Молодость превращается в старость",
+      "Здоровье превращается в болезнь",
+    ],
+  },
+
+  /* === Раздел 3: Цепляние за самость — это самсара (PDF) === */
+  /* 6 ядов / миров × 167 = 1002 */
+  samsaraPoisons: {
+    section: "s3",
+    title: "6 ядов — создатели миров самсары",
+    color: "#C84B3C",
+    target: 167,
+    items: [
+      "Гнев — создатель мира адов",
+      "Зависть — создатель мира полубогов",
+      "Жадность — создатель мира голодных духов",
+      "Гордость — создатель мира богов",
+      "Неведение — создатель мира животных",
+      "Привязанность — создатель мира людей",
+    ],
+  },
+
+  /* === Раздел 4: Закон причины и следствия безошибочен (PDF) === */
+  /* Монолит: 1 item × 1000. Счётчик един для всего раздела. */
+  karma: {
+    section: "s4",
+    title: "Закон причины и следствия",
+    color: "#E8B83C",
+    target: 1000,
+    isMonolith: true,
+    items: [
+      "Закон причины и следствия безошибочен",
+    ],
+  },
+
+  /* === Раздел 5: Нирвана — это мышление без цепляния (PDF) === */
+  /* 7 свобод × 143 = 1001 */
+  nirvanaFreedoms: {
+    section: "s5",
+    title: "7 свобод просветления",
+    color: "#7C5BB7",
+    target: 143,
+    items: [
+      "Свобода от гнева — милосердное умиротворение",
+      "Свобода от зависти — любящее, блаженное умиротворение",
+      "Свобода от жадности — щедрое умиротворение",
+      "Свобода от гордости — благородное, бессамостное умиротворение",
+      "Свобода от неведения — внимательное, светоносное умиротворение",
+      "Свобода от привязанности — мудрое, бесстрашное умиротворение",
+      "Свобода от цепляния за самость — Пробуждённое Всеведение",
+    ],
+  },
+
+  /* === Раздел 6: Ваджрный Мастер — воплощение Будды (PDF) === */
+  /* 333 + 334 + 333 = 1000 */
+  examineTeacher: {
+    section: "s6",
+    title: "Проверять учителя",
+    color: "#B68B2F",
+    target: 333,
+    items: [
+      "Качества подлинного учителя; как распознавать пагубного",
+    ],
+  },
+  followTeacher: {
+    section: "s6",
+    title: "Следовать учителю",
+    color: "#9A7423",
+    target: 334,
+    items: [
+      "Подлинная практика, смиренное служение, материальные дары",
+    ],
+  },
+  absorbTeacher: {
+    section: "s6",
+    title: "Усваивать (изучать → размышлять → медитировать)",
+    color: "#7E5C18",
+    target: 333,
+    items: [
+      "Изучить, размышлять, медитировать — что Ваджрный Мастер это Будда",
+    ],
+  },
+};
+
+/* ============================================================
+ *  ЛИТУРГИЯ — общие практики из PDF «Практика нёндро в туне»
+ *  (Дзогчен Шри Сингха). Порядок и тексты сохранены дословно
+ *  с учётом терминологии CONTEXT.md (тхун, шаматха, Бодхичитта, самсара).
+ * ========================================================== */
+const LITURGY = [
+  {
+    id: "masters",
+    title: "Молитва мастерам линии передачи",
+    body: `Лама Чхен Лама Чхен Лама Чхенно!
+(3 раза)
+
+Расширенно (для первого тхуна дня в ритрите или порой вне ритрита):
+молитва Линии Передачи Дзогчен Лонгчен Ньинтиг или Кхандро Ньинтиг из «Пути Будды».`,
+  },
+  {
+    id: "refuge",
+    title: "Принятие прибежища",
+    body: `Принимаю прибежище в Будде – моём проводнике.
+Принимаю прибежище в Дхарме – моём пути.
+Принимаю прибежище в Сангхе – моём спутнике.`,
+  },
+  {
+    id: "four_immeasurables",
+    title: "Взращивание четырёх безмерных",
+    body: `Да освободятся все существа от страданий и пагубного мышления.
+Да обретут все существа счастье и благое мышление.
+Да не отделятся никогда все существа от великого блаженства
+за пределами иллюзий и заблуждений.
+Да пребудут все существа в абсолютной равностности
+за пределами страха и надежды.`,
+  },
+  {
+    id: "bodhichitta",
+    title: "Зарождение Бодхичитты",
+    body: `Намо Буддая!
+Чтобы освободить всех существ от всего страдания
+и утвердить всех существ в истинном счастье,
+я стану Буддой в этой жизни как можно скорее.
+Для этого буду с радостью практиковать Путь Будды.`,
+  },
+  {
+    id: "seven_line",
+    title: "Получение благословения от Коренного Мастера",
+    body: `[Семистрочная молитва]
+
+ХУНГ. ОР ГЬЕН ЮЛ ГЬИ НУБ ЧЖАНГ ЦАМ
+ПЕД МА ГЕ САР ДОНГ ПО ЛА
+Я ЦЕН ЧОГ КИ НГО ДРУБ НЬЕ
+ПЕД МА ЧЖУНГ НЕ ШЕ СУ ДРАК
+КХОР ДУ КХАН ДРО МАНГ ПО КОР
+КЬЕ КЬИ ДЖЕ СУ ДАК ДРУБ ГЬИ
+ЧЖИН ГЬИ ЛОБ ЧИР ШЕК СУ СОЛ
+ГУРУ ПЕДМА СИДДХИ ХУНГ`,
+    /* Двухколоночный вид: тибетская транскрипция (слева) + русский перевод (справа). */
+    bodyHTML: `<div class="bilingual">
+      <div class="bilingual-col">
+        <div class="bilingual-label">Тибетский (транскрипция)</div>
+        <p class="invocation">ХУНГ</p>
+        <p>ОР ГЬЕН ЮЛ ГЬИ НУБ ЧЖАНГ ЦАМ</p>
+        <p>ПЕД МА ГЕ САР ДОНГ ПО ЛА</p>
+        <p>Я ЦЕН ЧОГ КИ НГО ДРУБ НЬЕ</p>
+        <p>ПЕД МА ЧЖУНГ НЕ ШЕ СУ ДРАК</p>
+        <p>КХОР ДУ КХАН ДРО МАНГ ПО КОР</p>
+        <p>КЬЕ КЬИ ДЖЕ СУ ДАК ДРУБ ГЬИ</p>
+        <p>ЧЖИН ГЬИ ЛОБ ЧИР ШЕК СУ СОЛ</p>
+        <p class="mantra">ГУРУ ПЕДМА СИДДХИ ХУНГ</p>
+      </div>
+      <div class="bilingual-col">
+        <div class="bilingual-label">Русский перевод</div>
+        <p class="invocation">Хунг!</p>
+        <p>В северо-западном краю священной Уддияны,</p>
+        <p>в сердце лотоса посреди озера Данакоша,</p>
+        <p>обладающий чудесными высшими достижениями,</p>
+        <p>прославленный как Лотосорождённый,</p>
+        <p>окружённый неисчислимыми дакинями и видьядхарами,</p>
+        <p>я буду практиковать для просветления, следуя тебе.</p>
+        <p>Молю, приди и благослови.</p>
+        <p class="mantra">ГУРУ ПЕДМА СИДДХИ ХУНГ</p>
+      </div>
+    </div>`,
+  },
+  {
+    id: "essential_lines",
+    title: "Сущностные подготовительные строки нёндро",
+    body: `Моё человеческое тело драгоценно,
+ведь свободы и дарования так редко обретаемы.
+Моя жизнь непостоянна,
+ведь время и обстоятельства смерти неизвестны.
+Самсара — это страдание,
+ведь это иллюзорный круговорот моего цепляния за самость.
+Карма безошибочна,
+ведь всё, что со мной происходит — это следствие моих намерений и действий.
+Нирвана — это свобода от страдания,
+ведь это просветлённое прекращение моего пагубного мышления.
+Ваджрный Мастер — воплощение всех Будд,
+ведь мой несравненный Гуру совершенно ведёт меня по Пути Будды.`,
+    bodyHTML: `<div class="essential-row"><strong>Моё человеческое тело драгоценно,</strong><span>ведь свободы и дарования так редко обретаемы.</span></div>
+<div class="essential-row"><strong>Моя жизнь непостоянна,</strong><span>ведь время и обстоятельства смерти неизвестны.</span></div>
+<div class="essential-row"><strong>Самсара — это страдание,</strong><span>ведь это иллюзорный круговорот моего цепляния за самость.</span></div>
+<div class="essential-row"><strong>Карма безошибочна,</strong><span>ведь всё, что со мной происходит — это следствие моих намерений и действий.</span></div>
+<div class="essential-row"><strong>Нирвана — это свобода от страдания,</strong><span>ведь это просветлённое прекращение моего пагубного мышления.</span></div>
+<div class="essential-row"><strong>Ваджрный Мастер — воплощение всех Будд,</strong><span>ведь мой несравненный Гуру совершенно ведёт меня по Пути Будды.</span></div>`,
+  },
+  {
+    id: "vow",
+    title: "Обет совершить тхун",
+    body: `Намо Буддая!
+Чтобы освободить всех существ от всего страдания
+и утвердить всех существ в истинном счастье,
+я стану Буддой в этой жизни как можно скорее.
+Для этого с этого момента и до XX:XX (в течение X минут / часов)
+я беру обет пребывать в этом месте и практиковать Дхарму.
+Я не сойду с этого места, даже если небеса упадут на землю.
+В это время я буду сосредотачиваться только на Дхарме,
+буду произносить только Дхарму и буду заниматься только Дхармой.
+Таково моё решение, таково моё обещание. Я никогда не нарушу это обещание.
+Все Будды, Просветлённые и Мастера Линии передачи,
+прошу благословите меня осуществить это обещание.`,
+  },
+  {
+    id: "dedication",
+    title: "Посвящение заслуг",
+    body: `Намо Буддая!
+Для истинного счастья всех существ
+я стану Буддой в этой жизни как можно скорее.
+Для этого так же, как посвящают все Будды и бодхисаттвы,
+я с радостью посвящаю все заслуги всем существам,
+чтобы каждое существо достигло непревзойдённого просветления.
+Да будут все мои посвящения чистыми как мудрость Манджушри.
+Да будут все мои посвящения исполнены как устремление Самантабхадры.`,
+  },
+];
+
+/* ============================================================
+ *  RECITATIONS — полные строки начитывания по PDF
+ *
+ *  Раздел 1 (ДЧЖ): каждый из 34 признаков — 14 строк по шаблону:
+ *    1. «Намо Буддая!»
+ *    2. Уникальная строка признака
+ *    3-14. Стандартный корпус (12 строк, одинаков для всех)
+ *
+ *  Разделы 2-6 — собственные блоки PDF.
+ * ========================================================== */
+const STANDARD_BODY_S1 = [
+  "Это человеческое тело так трудно обрести.",
+  "Я никогда не буду плохо обращаться со своим драгоценным человеческим телом.",
+  "Это драгоценное человеческое тело – бесценная опора для становления Буддой.",
+  "Я уважаю своё драгоценное человеческое тело и буду без цепляния заботиться о нём.",
+  "Это человеческое тело – не обуза и не диктатор для меня.",
+  "Я буду использовать своё драгоценное человеческое тело мудро, добродетельно и усердно.",
+  "Человеческое тело драгоценно.",
+  "Моё человеческое тело драгоценно.",
+  "Моя человеческая жизнь драгоценна.",
+  "Моя жизнь в Дхарме очень драгоценна.",
+  "Жизнь драгоценна.",
+  "Так драгоценна.",
+  "Драгоценна.",
+];
+
+function s1Recitation(uniqueLine) {
+  return ["Намо Буддая!", uniqueLine, ...STANDARD_BODY_S1];
+}
+
+const S1_UNIQUE_LINES = {
+  freedoms: [
+    "Я так благодарен, что я не существо ада.",
+    "Я так благодарен, что я не голодный дух.",
+    "Я так благодарен, что я не животное.",
+    "Я так благодарен, что я не следую пути насилия.",
+    "Я так благодарен, что я не бог-долгожитель.",
+    "Я так благодарен, что я не придерживаюсь ложных воззрений.",
+    "Я так благодарен, что я не родился в тёмный временной цикл.",
+    "Я так благодарен, что я не родился умственно неполноценным.",
+  ],
+  advantagesOwn: [
+    "Я так благодарен, что родился человеком.",
+    "Я так благодарен, что родился в центральной области Дхармы.",
+    "Я так благодарен, что обладаю функциональными органами способностей.",
+    "Я так благодарен, что не сошёл с пути Дхармы / мои действия не имеют пагубных последствий / не бросаю добродетель при возникновении препятствий.",
+    "Я так благодарен, что обладаю верой в своё благое мышление.",
+  ],
+  advantagesOther: [
+    "Я так благодарен, что Будда появился в этом мире.",
+    "Я так благодарен, что Будда преподал Дхарму в этом мире.",
+    "Я так благодарен, что в этом мире всё ещё есть Дхарма.",
+    "Я так благодарен, что у меня есть доступ к Дхарме и я могу войти в Дхарму / есть Дхарма-центр и я вошёл во врата / в этом мире есть практикующая Сангха.",
+    "Я так благодарен, что был принят в ученики учителем Дхармы.",
+  ],
+  unfavSpontaneous: [
+    "Я так благодарен, что не подчиняюсь своему пагубному мышлению.",
+    "Я так благодарен, что не являюсь умственно отсталым.",
+    "Я так благодарен, что не следую пагубному учителю.",
+    "Я так благодарен, что не ленюсь в своей практике Дхармы.",
+    "Я так благодарен, что не подавлен созреванием пагубной кармы.",
+    "Я так благодарен, что не нахожусь под властью других.",
+    "Я так благодарен, что не злоупотребляю Дхармой как средством от страха / во мне нет эгоистичных намерений.",
+    "Я так благодарен, что не являюсь фальшивым практиком Дхармы.",
+  ],
+  unfavAttachments: [
+    "Я так благодарен, что не связан сильной привязанностью / не отвлечён цеплянием за мирские цели / не спутан арканом привязанности.",
+    "Я так благодарен, что не обладаю пагубным характером.",
+    "Я так благодарен, что не безразличен к страданиям самсары.",
+    "Я так благодарен, что не лишён веры в Дхарму и подлинных учителей Дхармы.",
+    "Я так благодарен, что не сорадуюсь недобродетелям / мне не нравятся пагубные действия.",
+    "Я так благодарен, что не теряю интереса к Дхарме.",
+    "Я так благодарен, что не нарушаю свои добродетельные обещания.",
+    "Я так благодарен, что не нарушаю свои самаи.",
+  ],
+  // reasons: для 3 причин нет начитывания — только размышление (концепция).
+  // 16 кругов на причину = 16 раундов размышления, без строк.
+};
+
+/* Раздел 2: 8 оснований — общий рефрен + уникальные строки */
+const S2_BASES_TEMPLATE_TAIL = [
+  "Я не дам себе увязать в печали; я не буду цепляться за соблазнительные переживания.",
+  "Всё непостоянно. Моя жизнь непостоянна. Непостоянна.",
+  "Моя смерть гарантирована, однако когда я умру, как я умру и где я умру неизвестно.",
+  "Я не буду бояться умереть и не буду искать смерти.",
+  "Вся жизнь непостоянна. Моя жизнь непостоянна. Непостоянна.",
+  "Почти нет времени осуществить практику драгоценной Дхармы.",
+  "Как же я могу тратить впустую даже мгновение на практику пагубного мышления?",
+  "Поэтому я не дам себе погрязнуть в лени; я не буду цепляться только лишь за эту жизнь.",
+  "Я буду с радостью практиковать Дхарму каждое мгновение.",
+  "Всё непостоянно.",
+  "Вся жизнь непостоянна.",
+  "Моя жизнь непостоянна.",
+  "Непостоянна.",
+  "Непостоянна.",
+  "Непостоянна.",
+];
+
+const S2_BASES_UNIQUE = [
+  "Вся жизнь непостоянна, ведь когда я исследую внешнее вместилище, вселенную, я вижу, что она непрестанно меняется. Так я глубоко распознаю, что даже вселенная непостоянна.",
+  "Вся жизнь непостоянна, ведь когда я исследую внутреннее содержимое, всех существ, я вижу, что они непрестанно претерпевают цикл рождения и смерти. Так я глубоко распознаю, что все существа непостоянны.",
+  "Вся жизнь непостоянна, ведь когда я исследую просветлённых существ, я вижу, что они также являют рождение и смерть. Так я глубоко распознаю, что даже просветлённые существа непостоянны.",
+  "Вся жизнь непостоянна, ведь когда я исследую временных лидеров, я вижу, что они не свободны от цикла рождения и смерти. Так я глубоко распознаю, что все временные лидеры непостоянны.",
+  "Вся жизнь непостоянна, ведь когда я исследую различные аналогии, я вижу, что всё непостоянно и непрестанно меняется. Так я глубоко распознаю, что все эти примеры демонстрируют непостоянство.",
+  "Вся жизнь непостоянна, ведь когда я исследую условия смерти, я вижу, что они многочисленны. Так я глубоко распознаю, что меня окружают многочисленные условия смерти.",
+  "Вся жизнь непостоянна, ведь когда я сосредотачиваюсь на составных феноменах, я вижу, что всё меняется каждое мгновение. Так я глубоко распознаю, что все составные феномены непостоянны.",
+  "Вся жизнь непостоянна, хотя я и полагаю неведуще, что умерли, умирают и умрут все кроме меня. Так я глубоко распознаю, что всё меняется каждое мгновение, в том числе и я.",
+];
+
+/* Раздел 2: 18 примеров — общий рефрен + уникальные строки */
+const S2_EXAMPLES_TEMPLATE_HEAD = [
+  "Намо Буддая!",
+  "Я распознаю, что моя жизнь непостоянна. Моя смерть гарантирована.",
+  "Когда я умру, как я умру и где я умру неизвестно.",
+  "Я не буду бояться умереть и не буду искать смерти.",
+];
+
+const S2_EXAMPLES_TEMPLATE_TAIL = [
+  "Я вижу, что всё непрестанно меняется, включая меня.",
+  "Поэтому я буду усердно практиковать Дхарму.",
+  "Почти нет времени осуществить практику благого мышления, причину счастья.",
+  "Как же я могу тратить впустую даже мгновение на практику пагубного мышления и пагубных действий, причины страдания?",
+  "Я буду с радостью практиковать Дхарму каждое мгновение.",
+  "Всё непостоянно.",
+  "Вся жизнь непостоянна.",
+  "Моя жизнь непостоянна.",
+  "Непостоянна.",
+  "Непостоянна.",
+  "Непостоянна.",
+];
+
+const S2_EXAMPLES_UNIQUE = [
+  "Вся жизнь непостоянна. Так глобальные эволюция и вырождение существ этого великого вселенского временного цикла непрестанны.",
+  "Вся жизнь непостоянна. Так безостановочен цикл смены сезонов — весна, лето, осень и зима непостоянны.",
+  "Вся жизнь непостоянна. Так прошлое ушло, настоящее меняется, а будущее ещё не наступило. Дни, месяцы и годы непостоянны.",
+  "Вся жизнь непостоянна. Так богатые становятся бедными, бедные становятся богатыми, уважаемые становятся презираемыми, презираемые становятся уважаемыми, знаменитые становятся неизвестными, и неизвестные становятся известными.",
+  "Вся жизнь непостоянна. Так многих моих предков постигла смерть, оставив лишь их имена. Я видел, как умирали многие из моих родственников и друзей несмотря на свою живость в последние годы. Теперь я не знаю, где они переродились. Все друзья и близкие непостоянны.",
+  "Вся жизнь непостоянна. Так многих из моих кумиров нет в живых, и многие из них изменились. Их красота померкла. Их слава угасла. Их сила иссякла. Все мирские достижения непостоянны.",
+  "Вся жизнь непостоянна. Так множество моих домашних животных умерло. Бесчисленные животные умирают и находятся при смерти каждый день. Всех животных ждёт смерть.",
+  "Вся жизнь непостоянна. Так все существа в этом мире умирали, умирают и умрут. Никто не может избежать смерти.",
+  "Вся жизнь непостоянна. Так: Всё составное распадётся. Всё накопленное исчерпается. Всё возвысившееся падёт. Всё рождённое умрёт.",
+  "Есть много оснований для познания непостоянства. Для сохранения драгоценного человеческого тела требуются бессчётные поддерживающие условия, при этом я ежедневно сталкиваюсь со множеством вредоносных условий, способных в один миг оборвать мою жизнь.",
+  "Вся жизнь непостоянна. Так все великие учителя прошлого, чьи имена я слышу с почтением, оставили свои тела. Учителя непостоянны.",
+  "Вся жизнь непостоянна. Так все великие цари и империи прошлого исчезли, оставив лишь руины. Власть и государства непостоянны.",
+  "Вся жизнь непостоянна. Так моё тело меняется каждое мгновение — клетки рождаются и умирают, кожа стареет, силы убывают. Тело непостоянно.",
+  "Вся жизнь непостоянна. Так моё дыхание меняется непрерывно — каждый вдох и выдох уникален и не повторится. Дыхание непостоянно.",
+  "Вся жизнь непостоянна. Так мысли возникают и исчезают непрерывно — ни одна мысль не задерживается. Мышление непостоянно.",
+  "Вся жизнь непостоянна. Так времена года, день и ночь чередуются без остановки. Время непостоянно.",
+  "Вся жизнь непостоянна. Так юность неизбежно перерастает в старость. Молодость непостоянна.",
+  "Вся жизнь непостоянна. Так здоровье ухудшается в болезни, и силы иссякают. Здоровье непостоянно.",
+];
+
+/* Раздел 3: текст-обрамление + 6 ядов */
+const S3_INTRO = `Да реализую я, что самсара – это страдание, созданное цеплянием за "я".
+Я отрекаюсь от своего цепляния за "я", создателя миров самсары.
+Я отрекаюсь от своего пагубного мышления, создателя моего страдания.
+Моё пагубное мышление – это страдание!`;
+
+const S3_OUTRO = `Пагубное мышление – это страдание.
+Я усмирю всё своё пагубное мышление.
+Я предотвращу всё своё пагубное мышление.
+Я уничтожу всё своё пагубное мышление.`;
+
+const S3_POISONS_LINES = [
+  "Я отрекаюсь от своего гнева, создателя мира адов.",
+  "Я отрекаюсь от своей зависти, создателя мира полубогов.",
+  "Я отрекаюсь от своей жадности, создателя мира голодных духов.",
+  "Я отрекаюсь от своей гордости, создателя мира богов.",
+  "Я отрекаюсь от своего неведения, создателя мира животных.",
+  "Я отрекаюсь от своей привязанности, создателя мира людей.",
+];
+
+/* Раздел 4: монолит */
+const S4_KARMA_FULL = `Да реализую я, что карма – это сила мышления.
+Да реализую я, что всё мышление создаёт карму.
+Да реализую я, что моё благое мышление и благая карма —
+это единственная причина моего счастья и условие счастья всех существ.
+Я буду всегда увеличивать свою благую карму.
+Закон причины и следствия безошибочен.
+
+Да реализую я, что моё пагубное мышление и пагубная карма —
+это единственная причина моего страдания и условие страдания всех существ.
+Я буду всегда увеличивать свою благую карму.
+Закон причины и следствия безошибочен.
+
+Я не могу переживать следствие кармы, которую не создавал.
+Моя карма не рассеется без созревания или воздействия противоядия.
+Вся моя карма безошибочно созреет как мои переживания и феномены.
+Закон причины и следствия безошибочен.
+
+Моё пагубное мышление увеличивает мою пагубную карму и уменьшает мою благую карму.
+Моё благое мышление увеличивает мою благую карму и уменьшает мою пагубную карму.
+Закон причины и следствия безошибочен.`;
+
+/* Раздел 5: 7 свобод нирваны */
+const S5_INTRO = `Да реализую я, что нирвана означает просветление.
+Да реализую я, что просветление – это прекращение моего цепляния за самость.
+Да реализую я, что моё благое мышление –
+это умиротворение, счастье, радость и блаженство.
+Да реализую я, что каждое благое мышление – это следующий уровень просветления.
+Да реализую я, что каждое благое мышление – это следующий уровень Будды.
+Моё благое мышление – это умиротворение.`;
+
+const S5_FREEDOMS_LINES = [
+  "Свобода от гнева – это милосердное, могущественное умиротворение просветления.",
+  "Свобода от зависти – это любящее, блаженное умиротворение просветления.",
+  "Свобода от жадности – это щедрое, всеобъемлющее умиротворение просветления.",
+  "Свобода от гордости – это благородное, бессамостное умиротворение просветления.",
+  "Свобода от неведения – это внимательное, светоносное умиротворение просветления.",
+  "Свобода от привязанности – это мудрое, бесстрашное умиротворение просветления.",
+  "Свобода от цепляния за самость – это просветлённое, безграничное умиротворение Пробуждённого Всеведения.",
+];
+
+/* Раздел 6: 3 умения */
+const S6_INTRO = `Да осознаю я, что Ваджрный Мастер — воплощение всех Будд.`;
+
+const S6_PARTS = [
+  // Шаг 1: проверять
+  `1. Да буду я благоприятно воссоединяться со своим квалифицированным учителем.
+Да буду я преданно следовать учениям своего квалифицированного учителя.
+Да буду я с верой осуществлять устремления своего квалифицированного учителя.
+Учитель Дхармы — это Будда.`,
+  // Шаг 2: следовать
+  `2. Да реализую я, что моя подлинная практика — это наивысшее подношение Ваджрному Мастеру.
+Да реализую я, что моё смиренное служение — это превосходное подношение Ваджрному Мастеру.
+Да реализую я, что материальные дары — это прекрасное подношение Ваджрному Мастеру.
+Учитель Дхармы — это Будда.`,
+  // Шаг 3: усваивать
+  `3. Да буду я изучать и пойму, что Ваджрный Мастер — это Будда.
+Да буду я размышлять и переживу, что Ваджрный Мастер — это Будда.
+Да буду я медитировать и реализую, что Ваджрный Мастер — это Будда.
+Учитель Дхармы — это Будда.`,
+];
+
+/* Сборка финального объекта RECITATIONS:
+ *   RECITATIONS[groupKey][idx] = { title, lines: [string, ...] }
+ */
+const RECITATIONS = (() => {
+  const r = {};
+  // s1 признаки (34 шт): полные 15-строчные блоки начитывания.
+  // 3 причины ДЧЖ — без начитывания, только размышление; их в RECITATIONS НЕТ.
+  for (const gk of Object.keys(S1_UNIQUE_LINES)) {
+    r[gk] = S1_UNIQUE_LINES[gk].map((uniq, i) => ({
+      title: ATTRS[gk].items[i],
+      lines: s1Recitation(uniq),
+    }));
+  }
+  // s2 bases
+  r.impermanenceBases = S2_BASES_UNIQUE.map((uniq, i) => ({
+    title: ATTRS.impermanenceBases.items[i],
+    lines: ["Намо Буддая!", uniq, ...S2_BASES_TEMPLATE_TAIL],
+  }));
+  // s2 examples
+  r.impermanenceExamples = S2_EXAMPLES_UNIQUE.map((uniq, i) => ({
+    title: ATTRS.impermanenceExamples.items[i],
+    lines: [...S2_EXAMPLES_TEMPLATE_HEAD, uniq, ...S2_EXAMPLES_TEMPLATE_TAIL],
+  }));
+  // s3 poisons
+  r.samsaraPoisons = S3_POISONS_LINES.map((line, i) => ({
+    title: ATTRS.samsaraPoisons.items[i],
+    lines: [S3_INTRO, `${i + 1}. ${line}`, S3_OUTRO],
+  }));
+  // s4 karma — единый блок
+  r.karma = [{
+    title: ATTRS.karma.items[0],
+    lines: [S4_KARMA_FULL],
+  }];
+  // s5 nirvana freedoms
+  r.nirvanaFreedoms = S5_FREEDOMS_LINES.map((line, i) => ({
+    title: ATTRS.nirvanaFreedoms.items[i],
+    lines: [S5_INTRO, `${i + 1}. ${line}`],
+  }));
+  // s6 teacher
+  r.examineTeacher = [{ title: ATTRS.examineTeacher.items[0], lines: [S6_INTRO, S6_PARTS[0]] }];
+  r.followTeacher   = [{ title: ATTRS.followTeacher.items[0],   lines: [S6_INTRO, S6_PARTS[1]] }];
+  r.absorbTeacher   = [{ title: ATTRS.absorbTeacher.items[0],   lines: [S6_INTRO, S6_PARTS[2]] }];
+  return r;
+})();
+
+/* Краткие фрагменты Патрула Ринпоче, привязанные по группам / отдельным признакам.
+ * Где нет авторского фрагмента под конкретный признак — показывается общий по группе. */
+const READING = {
+  freedoms: {
+    intro: `«Свободы» подразумевают рождение не в одном из восьми неблагоприятных состояний, не оставляющих свобод, а в таком, которое позволяет практиковать возвышенную Дхарму.`,
+    perItem: [
+      `Если родишься в аду, нет никакой возможности следовать Дхарме, потому что постоянно мучают жара и холод. — Поразмышляй о существах ада, об интенсивности и длительности их страданий.`,
+      `У тех, кто родился голодным духом, нет никакой возможности следовать Дхарме, потому что постоянно мучают голод и жажда. — В течение многих сотен лет они даже не слышат слова «вода».`,
+      `В мире животных нет никакой возможности практиковать Дхарму потому, что животные страдают от порабощения и от нападений других животных. — Им можно сказать ОМ МАНИ ПАДМЭ ХУНГ, и они не услышат, не поймут, не смогут произнести.`,
+      `Если родишься в стране, где пьют насилие как путь к счастью, нет никакой возможности практиковать Дхарму, потому что там она неизвестна. — Эти люди особенно преуспели в пагубных действиях.`,
+      `Боги-долгожители проводят время в состоянии, лишенном восприятия, и не имеют никакой возможности практиковать Дхарму. — Когда карма исчерпывается, из-за ложных взглядов они перерождаются в низших мирах.`,
+      `Если родишься человеком, обладающим небуддийским воззрением, чьё мышление опутано ложными взглядами, у тебя нет возможности практиковать Дхарму. — Как монах Сунакшатра: 23 года при Будде и ни капли веры — переродился голодным духом.`,
+      `Если ты родился в тёмный временной цикл, ты не знаешь о Трёх Драгоценностях и не можешь отличить добро от зла. — Тёмным циклом называется период, когда нет будд.`,
+      `Если ты родился слабоумным, твоё мышление неполностью пригодно для того, чтобы слушать, изучать или медитировать. — Состояние человека подразумевает знание слов и понимание их значения.`,
+    ],
+  },
+  advantagesOwn: {
+    intro: `Пять собственных преимуществ по Нагарджуне: родиться человеком, в срединной стране, с совершенными органами чувств, вести достойный образ жизни и обладать верой в Дхарму.`,
+    perItem: [
+      `Если не родиться человеком, не будет возможности встретиться с Дхармой. Поэтому человеческое тело — благое преимущество.`,
+      `Если родиться в окраинной стране, где не знают о Дхарме, тоже не встретишься с Дхармой. Срединная страна — та, где Дхарма известна.`,
+      `Если родиться с неполноценными органами чувств, это будет помехой. Полноценные органы чувств — преимущество.`,
+      `Недостойный образ жизни не обходится без пагубных поступков, которые отвращают от Дхармы. Достойное дело и накопление заслуг — преимущество благого намерения.`,
+      `Если не иметь веры в учение Будды, не будет никакой склонности к Дхарме. Способность обратить мышление к Дхарме — преимущество веры.`,
+    ],
+  },
+  advantagesOther: {
+    intro: `Пять преимуществ, зависящих от других: появление Будды в этом мире, преподавание Дхармы, сохранение Дхармы, доступность общины и наличие учителя.`,
+    perItem: [
+      `Если бы Будда не появился в этом мире, никто не услышал бы Дхармы. Этот цикл — благой, поскольку в него явился Шакьямуни.`,
+      `Если бы Будда не преподал Дхарму, она бы не существовала для нас. Поразмышляй о бесчисленных учениях, оставленных им.`,
+      `Если бы Дхарма исчезла, передачи прервались бы. Сейчас живые линии передачи всё ещё доступны — это редкое стечение.`,
+      `Без сангхи и центров негде учиться и практиковать. У тебя есть место, и ты вошёл в его врата.`,
+      `Без учителя смысл текстов не раскроется. Принятие учителем в ученики — высшее из этих пяти.`,
+    ],
+  },
+  unfavSpontaneous: {
+    intro: `Восемь неподходящих состояний, возникающих внезапно и лишающих практики: даже имея ДЧЖ, можно потерять её плод из-за обстоятельств ума и кармы.`,
+    perItem: [
+      `Если ум подчинён пагубному мышлению — практика искажается изнутри. Сейчас твой ум направлен к благому.`,
+      `Отупение — состояние, когда нет ни боли, ни ясности; в нём не растёт мудрость. Ты сейчас не пребываешь в нём.`,
+      `Пагубный учитель уводит ученика от пути. Ты следуешь линии передачи, восходящей к Будде.`,
+      `Лень в практике Дхармы — главная причина того, что ДЧЖ остаётся неиспользованной. Сейчас ты решил действовать.`,
+      `Когда созревает пагубная карма прошлого, мышление подавлено и нет сил практиковать. У тебя сейчас есть силы.`,
+      `Под властью других нет свободы выбора практики. Ты сейчас можешь распоряжаться своим временем.`,
+      `Эгоистичные намерения превращают практику в усиление цепляния. Ты сейчас способен на Бодхичитту.`,
+      `Фальшивый практик имитирует форму без сути. Ты ставишь чувство и понимание выше формы.`,
+    ],
+  },
+  unfavAttachments: {
+    intro: `Восемь неподходящих состояний, возникающих от несовместимых пристрастий: они не вычёркивают ДЧЖ, но мешают плодам практики проявиться.`,
+    perItem: [
+      `Цепляние за мирские цели отвлекает ум от глубинной работы. Сейчас ты выделил время именно на практику.`,
+      `Пагубный характер делает накопление заслуг трудным. Сейчас твой характер обращён к благому.`,
+      `Безразличие к страданиям Самсары лишает практику топлива — отречения. Ты способен видеть её природу.`,
+      `Без веры в Дхарму ничто из учений не приживается. Вера — это влага для семян.`,
+      `Когда нравятся пагубные действия — практика и жизнь идут в разные стороны. Сейчас они идут в одну.`,
+      `Утрата интереса к Дхарме — медленная коррозия. Сейчас интерес жив.`,
+      `Нарушение добродетельных обетов разрушает основу. Сейчас она цела.`,
+      `Нарушение самаи отрезает от линии передачи и благословения. Сейчас связь жива.`,
+    ],
+  },
+  reasons: {
+    intro: `Три причины обретения ДЧЖ: нравственность, щедрость и чистые устремления прошлых жизней. Без этих трёх ДЧЖ не возникает.`,
+    perItem: [
+      `Добродетельная нравственность прошлых жизней — основа человеческого тела как опоры. Без неё рождаешься в низших мирах.`,
+      `Добродетельная щедрость прошлых жизней даёт условия — здоровье, средства, окружение, дающие время и силу для практики.`,
+      `Добродетельные устремления прошлых жизней направляют рождение к Дхарме — иначе даже человеческое тело и условия проходят мимо Пути.`,
+    ],
+  },
+
+  /* === Раздел 2: Жизнь непостоянна (PDF) === */
+  impermanenceBases: {
+    intro: `Восемь оснований непостоянства — восемь точек, через которые ум входит в острое осознание непостоянства всего: вселенной, существ, даже просветлённых, лидеров, аналогий, условий смерти, составных феноменов и иллюзии «умирают только другие».`,
+    perItem: [
+      `Внешнее вместилище — вселенная — меняется непрестанно. Если меняется она, что говорить о моей жизни.`,
+      `Внутреннее содержимое — все существа — без остановки рождаются и умирают.`,
+      `Даже просветлённые существа — будды, бодхисаттвы, великие учителя — являют рождение и смерть.`,
+      `Цари, президенты, временные лидеры — никто не свободен от цикла рождения и смерти.`,
+      `Все аналогии — капля росы, пузырь, эхо, отражение — указывают на одно: всё меняется.`,
+      `Условий смерти бесчисленно: болезнь, насилие, пища, лекарства, природные стихии — любое из них может оборваться сегодня.`,
+      `Все составные феномены меняются каждое мгновение. Я не исключение.`,
+      `Я ошибочно полагаю, что умирают только другие. На самом деле я меняюсь и умру наравне со всеми.`,
+    ],
+  },
+  impermanenceExamples: {
+    intro: `Восемнадцать примеров непостоянства — конкретные опоры для медитации, чтобы переживание непостоянства стало живым.`,
+    perItem: [
+      `Глобальная эволюция и вырождение существ великого цикла непрестанны.`,
+      `Безостановочный цикл смены сезонов — весна, лето, осень, зима — все они непостоянны.`,
+      `Прошлое ушло, настоящее меняется, будущее ещё не наступило. Дни, месяцы, годы непостоянны.`,
+      `Богатые становятся бедными, бедные — богатыми; уважаемые — презираемыми; знаменитые — забытыми.`,
+      `Многих моих предков, родственников, друзей уже нет. Все близкие непостоянны.`,
+      `Кумиры состарились, померкли, иссякли. Все мирские достижения непостоянны.`,
+      `Множество домашних и диких животных умирает каждый день. Все животные смертны.`,
+      `Все существа этого мира умирали, умирают и умрут. Никто не избежал смерти.`,
+      `Всё составное распадётся. Всё накопленное исчерпается. Всё возвысившееся падёт. Всё рождённое умрёт.`,
+      `Тело живо благодаря бессчётным поддерживающим условиям. Малейший сбой может оборвать жизнь в миг.`,
+      `Великие учителя прошлого, имена которых я слышу с почтением, оставили свои тела.`,
+      `Великие цари и империи прошлого исчезли, оставив лишь руины.`,
+      `Моё тело меняется каждое мгновение — клетки рождаются и умирают.`,
+      `Моё дыхание меняется непрерывно. Каждый вдох уникален.`,
+      `Мысли возникают и исчезают непрерывно. Ничто не задерживается в уме.`,
+      `Времена года, день и ночь чередуются без остановки. Время непостоянно.`,
+      `Юность неизбежно перерастает в старость.`,
+      `Здоровье ухудшается в болезни, силы иссякают.`,
+    ],
+  },
+
+  /* === Раздел 3: Цепляние за самость — это самсара (PDF) === */
+  samsaraPoisons: {
+    intro: `Самсара создаётся не вовне, а изнутри — цеплянием за «я». Шесть ядов цепляния порождают шесть миров. Распознавая яд, я отрекаюсь от него — и одновременно отрекаюсь от мира, который он создаёт.`,
+    perItem: [
+      `Гнев — создатель мира адов. Размышляй о горячих и холодных адах как о собственном гневе, видимом изнутри.`,
+      `Зависть — создатель мира полубогов (асуров). Размышляй о бесконечной борьбе и неспособности победить как о собственной зависти.`,
+      `Жадность — создатель мира голодных духов. Размышляй о столетиях голода и жажды как о собственной жадности.`,
+      `Гордость — создатель мира богов. Размышляй о приятном, но конечном состоянии богов как о собственной гордости, не видящей падения.`,
+      `Неведение — создатель мира животных. Размышляй о порабощении и неспособности к Дхарме как о собственном неведении.`,
+      `Привязанность — создатель мира людей. Размышляй о восьми страданиях человека как о следствии собственной привязанности.`,
+    ],
+  },
+
+  /* === Раздел 4: Закон причины и следствия безошибочен (PDF, монолит) === */
+  karma: {
+    intro: `Закон причины и следствия безошибочен. Карма — это сила мышления; всё мышление создаёт карму. Раздел построен как единое размышление в четырёх частях: благое мышление — причина счастья; пагубное — причина страдания; несозданная карма не созревает; благое мышление увеличивает благую карму и уменьшает пагубную.`,
+    perItem: [
+      `Размышляй о четырёх частях прозы PDF как о единой ткани. Счётчик един для всего раздела — это монолит, а не серия пунктов.`,
+    ],
+  },
+
+  /* === Раздел 5: Нирвана — это мышление без цепляния за самость (PDF) === */
+  nirvanaFreedoms: {
+    intro: `Нирвана — это просветление, прекращение цепляния за самость. Каждое благое мышление — следующий уровень просветления. Семь свобод — семь освобождений от шести ядов плюс свобода от самого цепляния за «я».`,
+    perItem: [
+      `Свобода от гнева — милосердное, могущественное умиротворение просветления.`,
+      `Свобода от зависти — любящее, блаженное умиротворение просветления.`,
+      `Свобода от жадности — щедрое, всеобъемлющее умиротворение просветления.`,
+      `Свобода от гордости — благородное, бессамостное умиротворение просветления.`,
+      `Свобода от неведения — внимательное, светоносное умиротворение просветления.`,
+      `Свобода от привязанности — мудрое, бесстрашное умиротворение просветления.`,
+      `Свобода от цепляния за самость — просветлённое, безграничное умиротворение Пробуждённого Всеведения.`,
+    ],
+  },
+
+  /* === Раздел 6: Ваджрный Мастер — воплощение Будды (PDF) === */
+  examineTeacher: {
+    intro: `Ваджрный Мастер — воплощение всех Будд. Первая часть — благоприятно воссоединяться с квалифицированным учителем и преданно следовать его учениям.`,
+    perItem: [
+      `Качества подлинного учителя: чистая линия передачи, глубокое сострадание, личный опыт практики, отсутствие восьми мирских забот. Пагубный — ищет учеников ради денег, славы, власти. Не торопиться. Проверять долго. Только потом принимать как коренного.`,
+    ],
+  },
+  followTeacher: {
+    intro: `Когда учитель найден и проверен — подношения через три двери: подлинная практика (наивысшее подношение), смиренное служение (превосходное), материальные дары (прекрасное).`,
+    perItem: [
+      `Подлинная практика — то подношение, ради которого учитель появляется в твоей жизни. Без неё все остальные подношения теряют смысл.`,
+    ],
+  },
+  absorbTeacher: {
+    intro: `Окончательное усвоение через трёхступенчатый процесс: изучить → размышлять → медитировать. На каждой ступени убедиться, что Ваджрный Мастер — это Будда.`,
+    perItem: [
+      `Изучить наставления, размышлять над ними до собственного переживания, медитировать до прямой реализации того, что Ваджрный Мастер — это Будда.`,
+    ],
+  },
+};
+
+/* Плоский список всех признаков для селекта. */
+function flatAttrs() {
+  const out = [];
+  for (const key of Object.keys(ATTRS)) {
+    const g = ATTRS[key];
+    g.items.forEach((name, i) => {
+      out.push({ groupKey: key, idx: i, name, section: g.section, isReason: !!g.isReason, color: g.color });
+    });
+  }
+  return out;
+}
+
+function groupsInSection(sectionKey) {
+  return Object.keys(ATTRS).filter(k => ATTRS[k].section === sectionKey);
+}
+function sectionTarget(sectionKey) { return SECTIONS[sectionKey].target; }
+function sectionCircles(sectionKey) {
+  return state.tuns
+    .filter(t => ATTRS[t.groupKey] && ATTRS[t.groupKey].section === sectionKey)
+    .reduce((s, t) => s + (Number(t.circles) || 0), 0);
+}
+
+/* ============================================================
+ *  ХРАНЕНИЕ
+ * ========================================================== */
+const STORE_KEY = "ngondro_dchz_v1";
+
+/* Миграция старых groupKey (до структурной правки 2026-05-13) → новые имена. */
+const GROUPKEY_MIGRATION = {
+  // s2
+  impermanence: "impermanenceExamples",
+  // s3
+  samsaraGeneral: "samsaraPoisons",
+  sixRealms: "samsaraPoisons",
+  // s4
+  nonVirtuous: "karma",
+  virtuous: "karma",
+  karmaGeneral: "karma",
+  // s5
+  liberationCause: "nirvanaFreedoms",
+  liberationFruit: "nirvanaFreedoms",
+};
+
+function migrateState(s) {
+  if (!s || !Array.isArray(s.tuns)) return s;
+  let migrated = 0;
+  s.tuns.forEach(t => {
+    if (GROUPKEY_MIGRATION[t.groupKey]) {
+      t.groupKey = GROUPKEY_MIGRATION[t.groupKey];
+      t.idx = 0; // безопасный сброс — items в новой группе могут не совпадать
+      migrated++;
+    }
+  });
+  if (migrated > 0) console.info(`[ngondro] migrated ${migrated} tun(s) to new groupKeys`);
+  return s;
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (!raw) return defaultState();
+    const s = migrateState(Object.assign(defaultState(), JSON.parse(raw)));
+    // Persist immediately after migration to avoid repeated runs on every load
+    if (raw !== JSON.stringify(s)) {
+      try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch (_) {}
+    }
+    return s;
+  } catch (e) { return defaultState(); }
+}
+function saveState() { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+function defaultState() {
+  return {
+    tuns: [],            // [{id, date, length, groupKey, idx, tech, circles, prostr, feel, note, selfCheck?, dedication?}]
+    strategy: "1",
+    setLength: 48,
+    setWeek: 3,
+    activeSection: "s1",
+    shamathaMin: 6,      // длительность шаматхи в подготовке (3–30 мин, дефолт 6)
+  };
+}
+let state = loadState();
+
+/* ============================================================
+ *  ВЫЧИСЛЕНИЯ
+ * ========================================================== */
+function attrTarget(groupKey) {
+  return ATTRS[groupKey].target;
+}
+function attrCircles(groupKey, idx) {
+  return state.tuns
+    .filter(t => t.groupKey === groupKey && t.idx === idx)
+    .reduce((s, t) => s + (Number(t.circles) || 0), 0);
+}
+function totalCircles() { return state.tuns.reduce((s, t) => s + (Number(t.circles) || 0), 0); }
+function totalTarget() {
+  return Object.values(SECTIONS).reduce((s, sec) => s + sec.target, 0);
+}
+function activeSection() { return state.activeSection || "s1"; }
+function weekTuns() {
+  const now = new Date();
+  const day = (now.getDay() + 6) % 7;       // понедельник = 0
+  const monday = new Date(now); monday.setHours(0,0,0,0); monday.setDate(now.getDate() - day);
+  return state.tuns.filter(t => new Date(t.date) >= monday).length;
+}
+function forecastWeeks() {
+  const left = totalTarget() - totalCircles();
+  if (left <= 0) return "раздел закрыт";
+  const fallback = state.strategy === "1" ? 10 : 7;   // Техника 1
+  const avgPerTun = state.tuns.length ? totalCircles() / state.tuns.length : fallback;
+  const tunsLeft = Math.ceil(left / Math.max(1, avgPerTun));
+  const wks = Math.ceil(tunsLeft / Math.max(1, state.setWeek));
+  return `~${wks} нед при ${state.setWeek} тхун/нед`;
+}
+
+/* ============================================================
+ *  РЕНДЕР
+ * ========================================================== */
+const $ = sel => document.querySelector(sel);
+const $$ = sel => document.querySelectorAll(sel);
+
+function fmtDate(s) {
+  const d = new Date(s);
+  return d.toLocaleDateString("ru-RU", { weekday: "short", day: "numeric", month: "short" });
+}
+function escapeHtml(s) { return (s || "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function renderSectionNav() {
+  const nav = $("#section-nav");
+  const cur = activeSection();
+  nav.innerHTML = Object.keys(SECTIONS).map(k => {
+    const sec = SECTIONS[k];
+    const have = sectionCircles(k);
+    const target = sectionTarget(k);
+    const pct = Math.min(100, Math.round((have / target) * 100));
+    const tc = sec.titleColor || sec.color;
+    return `
+      <button data-sec="${k}" class="${k === cur ? "active" : ""}" title="${escapeHtml(sec.title)}" style="--sec-title-color:${tc}">
+        <span class="sec-num">${sec.num}</span>
+        <span class="sec-name">${escapeHtml(sec.short)}</span>
+        <span class="sec-pct">${pct}%</span>
+      </button>`;
+  }).join("");
+  nav.querySelectorAll("button").forEach(b => b.onclick = () => {
+    state.activeSection = b.dataset.sec;
+    saveState();
+    renderAll();
+  });
+}
+
+function renderStats() {
+  const sec = SECTIONS[activeSection()];
+  // Общий прогресс по всем 6 разделам (per-section % уже в верхней навигации).
+  const totalCircles = state.tuns.reduce((sum, t) => sum + (+t.circles || 0), 0);
+  const totalTarget = Object.values(SECTIONS).reduce((s, x) => s + x.target, 0);
+  const pct = totalTarget > 0 ? Math.min(100, Math.round((totalCircles / totalTarget) * 100)) : 0;
+  /* подзаголовок раздела убран — там теперь лунный день */
+  $("#stat-week").textContent = `${weekTuns()}/${state.setWeek}`;
+  $("#stat-total").textContent = state.tuns.length;
+  $("#stat-pct").textContent = `${pct}%`;
+  $("#bar-overall").style.width = pct + "%";
+  $("#circles-text").textContent = `${totalCircles} / ${totalTarget} кругов · все разделы`;
+  $("#forecast").textContent = forecastWeeks();
+}
+
+function renderJournal() {
+  const list = $("#journal-list");
+  if (!state.tuns.length) {
+    list.innerHTML = `<div class="empty">Тхунов пока нет.<br>Начни с <b>«Записать тхун»</b> сверху.</div>`;
+    return;
+  }
+  const sorted = [...state.tuns].sort((a, b) => (b.date + b.id).localeCompare(a.date + a.id));
+  list.innerHTML = sorted.map(t => {
+    const a = ATTRS[t.groupKey].items[t.idx] || "—";
+    const stripe = ATTRS[t.groupKey].color;
+    const stars = "★".repeat(t.feel || 0).padEnd(5, "☆");
+    return `
+      <div class="tun-card">
+        <div class="stripe" style="background:${stripe}"></div>
+        <div>
+          <div class="meta">${fmtDate(t.date)} · ${t.length} мин · Техника ${t.tech}</div>
+          <div class="name">${escapeHtml(a)}</div>
+          <div class="row">
+            <span><b>${t.circles}</b> кругов</span>
+            <span>· ${ATTRS[t.groupKey].title}</span>
+            ${t.prostr ? `<span>· ${t.prostr} простир.</span>` : ""}
+          </div>
+          ${t.note ? `<div class="note">«${escapeHtml(t.note)}»</div>` : ""}
+        </div>
+        <div class="actions">
+          <div class="feel" title="Чувство">${stars}</div>
+          <button class="icon-btn" data-edit="${t.id}" title="Изменить">✎</button>
+          <button class="icon-btn" data-del="${t.id}" title="Удалить">✕</button>
+        </div>
+      </div>`;
+  }).join("");
+
+  list.querySelectorAll("[data-del]").forEach(b => b.onclick = () => {
+    if (!confirm("Удалить этот тхун?")) return;
+    state.tuns = state.tuns.filter(x => x.id !== b.dataset.del);
+    saveState(); renderAll();
+  });
+  list.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => openModal(b.dataset.edit));
+}
+
+function renderProgress() {
+  const list = $("#progress-list");
+  const cur = activeSection();
+  const groups = groupsInSection(cur);
+  const sec = SECTIONS[cur];
+  let html = `<div class="section-head">
+    <h2 style="margin:0;display:flex;align-items:center;gap:8px">
+      <span class="sec-num" style="background:${sec.color};color:${cur === "s5" ? "#1F1A14" : "#fff"};width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">${sec.num}</span>
+      ${escapeHtml(sec.title)}
+    </h2>
+    <small style="color:var(--ink-3)">${sectionCircles(cur)} / ${sec.target} кругов</small>
+  </div>`;
+  for (const key of groups) {
+    const g = ATTRS[key];
+    const target = g.target;
+    html += `<div class="group">
+      <h3><span class="dot" style="background:${g.color}"></span>${g.title}</h3>`;
+    g.items.forEach((name, i) => {
+      const c = attrCircles(key, i);
+      const pct = Math.min(100, Math.round((c / target) * 100));
+      const done = c >= target ? "done" : "";
+      html += `
+        <div class="attr ${done}" data-key="${key}" data-idx="${i}">
+          <div class="num">${i + 1}</div>
+          <div class="text">${escapeHtml(name)}<small>${c} / ${target} кругов</small></div>
+          <div class="pct"><b>${pct}%</b></div>
+          <div class="mini-bar"><div style="width:${pct}%"></div></div>
+        </div>`;
+    });
+    html += `</div>`;
+  }
+  list.innerHTML = html;
+  /* Раньше клик по признаку открывал вкладку «Практика нёндро». Сейчас эта
+     вкладка удалена — тексты живут внутри wizard. Чтобы избежать ложного
+     ощущения кликабельности, обработчик не вешаем. */
+}
+
+/* Вкладка «Практика нёндро» удалена — тексты молитв и начитывания живут
+   внутри wizard «Начать тхун». Функции ниже оставлены как no-op для
+   обратной совместимости со стартап-вызовами. */
+function switchTextSub() { /* no-op */ }
+function renderTextPicker() { /* no-op — вкладка удалена */ }
+function showText() { /* no-op — вкладка удалена */ }
+
+function renderLiturgy() {
+  const host = $("#liturgy-list");
+  if (!host) return;
+  host.innerHTML = LITURGY.map(item => `
+    <div class="liturgy-card" id="liturgy-${item.id}">
+      <h3>${escapeHtml(item.title)}</h3>
+      <div class="body">${escapeHtml(item.body)}</div>
+    </div>
+  `).join("");
+}
+
+function renderAttrSelect() {
+  const sel = $("#f-attr");
+  let html = "";
+  for (const sk of Object.keys(SECTIONS)) {
+    const sec = SECTIONS[sk];
+    for (const key of groupsInSection(sk)) {
+      const g = ATTRS[key];
+      html += `<optgroup label="${sec.num}. ${sec.short} · ${g.title}">`;
+      g.items.forEach((name, i) => {
+        html += `<option value="${key}:${i}">${i + 1}. ${escapeHtml(name)}</option>`;
+      });
+      html += `</optgroup>`;
+    }
+  }
+  sel.innerHTML = html;
+}
+
+function renderSettings() {
+  $$("#pane-settings .strategy button").forEach(b => {
+    b.classList.toggle("active", b.dataset.strategy === state.strategy);
+  });
+  $("#set-length").value = state.setLength;
+  $("#set-week").value = state.setWeek;
+}
+
+function renderAll() {
+  renderSectionNav();
+  renderStats();
+  renderJournal();
+  renderProgress();
+  renderSettings();
+}
+
+/* ============================================================
+ *  МОДАЛ — добавление / редактирование тхуна
+ * ========================================================== */
+let editingId = null;
+function defaultCirclesForStrategy() { return state.strategy === "1" ? 10 : 7; }
+
+function openModal(id) {
+  editingId = id || null;
+  const t = id ? state.tuns.find(x => x.id === id) : null;
+  $("#modal-title").textContent = t ? "Изменить тхун" : "Записать тхун";
+  $("#f-date").value = t ? t.date : new Date().toISOString().slice(0, 10);
+  $("#f-length").value = t ? t.length : state.setLength;
+  if (t) {
+    $("#f-attr").value = `${t.groupKey}:${t.idx}`;
+  } else {
+    // По умолчанию — первый признак активного раздела
+    const firstGroup = groupsInSection(activeSection())[0];
+    $("#f-attr").value = `${firstGroup}:0`;
+  }
+  $("#f-tech").value = t ? t.tech : "1";
+  $("#f-circles").value = t ? t.circles : defaultCirclesForStrategy();
+  $("#f-prostr").value = t ? (t.prostr ?? 3) : 3;
+  setFeel(t ? t.feel : 0);
+  $("#f-note").value = t ? (t.note || "") : "";
+  updateHint();
+  $("#modal-back").classList.add("show");
+}
+function closeModal() {
+  $("#modal-back").classList.remove("show");
+  editingId = null;
+}
+function setFeel(v) {
+  $$("#f-feel button").forEach(b => b.classList.toggle("active", +b.dataset.v <= v));
+  $("#f-feel").dataset.value = v || 0;
+}
+function updateHint() {
+  const [key, idxRaw] = $("#f-attr").value.split(":");
+  const idx = +idxRaw;
+  const have = attrCircles(key, idx);
+  const target = attrTarget(key);
+  const left = Math.max(0, target - have);
+  const expected = defaultCirclesForStrategy();
+  const stratLabel = state.strategy === "1" ? "классическая" : "25/75";
+  $("#f-hint").innerHTML = `По этому признаку: <b>${have}/${target}</b> кругов · осталось ${left}. Техника 1, стратегия ${stratLabel} → ориентир <b>${expected} кругов</b> за тхун.`;
+}
+
+$("#f-attr").addEventListener("change", updateHint);
+
+$("#f-feel").addEventListener("click", e => {
+  if (e.target.dataset.v) setFeel(+e.target.dataset.v);
+});
+
+$("#f-save").addEventListener("click", () => {
+  const [key, idxRaw] = $("#f-attr").value.split(":");
+  const tun = {
+    id: editingId || "t" + Date.now() + Math.random().toString(36).slice(2, 6),
+    date: $("#f-date").value,
+    length: +$("#f-length").value || 0,
+    groupKey: key,
+    idx: +idxRaw,
+    tech: $("#f-tech").value,
+    circles: +$("#f-circles").value || 0,
+    prostr: +$("#f-prostr").value || 0,
+    feel: +($("#f-feel").dataset.value || 0),
+    note: $("#f-note").value.trim(),
+  };
+  if (editingId) {
+    state.tuns = state.tuns.map(x => x.id === editingId ? tun : x);
+  } else {
+    state.tuns.push(tun);
+  }
+  saveState();
+  closeModal();
+  renderAll();
+});
+
+$("#modal-close").addEventListener("click", closeModal);
+$("#modal-back").addEventListener("click", e => { if (e.target.id === "modal-back") closeModal(); });
+
+/* ============================================================
+ *  ВКЛАДКИ + ПРОЧИЕ ОБРАБОТЧИКИ
+ * ========================================================== */
+function switchPane(name) {
+  $$(".tabs button").forEach(b => b.classList.toggle("active", b.dataset.pane === name));
+  $$(".pane").forEach(p => p.classList.toggle("active", p.id === "pane-" + name));
+}
+$$(".tabs button").forEach(b => b.addEventListener("click", () => switchPane(b.dataset.pane)));
+$("#btn-add").addEventListener("click", () => openModal());
+/* Шестерёнка работает как toggle: клик открывает «Настройки», повторный — возвращает к «Журналу». */
+let lastPaneBeforeSettings = "journal";
+$("#btn-settings-shortcut").addEventListener("click", () => {
+  const settingsPane = $("#pane-settings");
+  if (settingsPane && settingsPane.classList.contains("active")) {
+    switchPane(lastPaneBeforeSettings || "journal");
+  } else {
+    // Запомним, откуда пришли (Журнал или Прогресс), чтобы вернуться сюда
+    const active = document.querySelector(".pane.active");
+    if (active && active.id !== "pane-settings") lastPaneBeforeSettings = active.id.replace("pane-", "");
+    switchPane("settings");
+  }
+});
+// Дублирующий × внутри пана — то же действие
+const closeBtn = $("#btn-settings-close");
+if (closeBtn) closeBtn.addEventListener("click", () => switchPane(lastPaneBeforeSettings || "journal"));
+
+/* Subnav для вкладки «Практика нёндро» */
+$$(".text-subnav button").forEach(b => b.addEventListener("click", () => {
+  const sub = b.dataset.textsub;
+  $$(".text-subnav button").forEach(x => x.classList.toggle("active", x === b));
+  $$(".text-sub").forEach(s => {
+    const match = s.id === "text-sub-" + sub;
+    s.classList.toggle("active", match);
+    s.hidden = !match;
+  });
+}));
+
+/* Settings handlers */
+$$("#pane-settings .strategy button").forEach(b => b.addEventListener("click", () => {
+  state.strategy = b.dataset.strategy;
+  saveState(); renderSettings();
+}));
+$("#set-length").addEventListener("change", e => { state.setLength = +e.target.value || 48; saveState(); });
+$("#set-week").addEventListener("change", e => { state.setWeek = +e.target.value || 3; saveState(); renderStats(); });
+
+$("#btn-export").addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `ngondro-dchz-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+$("#btn-import").addEventListener("click", () => $("#import-file").click());
+$("#import-file").addEventListener("change", e => {
+  const file = e.target.files[0]; if (!file) return;
+  const r = new FileReader();
+  r.onload = () => {
+    try {
+      const obj = JSON.parse(r.result);
+      if (!obj.tuns) throw new Error("неверный файл");
+      if (!confirm(`Импортировать ${obj.tuns.length} тхунов? Текущие данные будут заменены.`)) return;
+      state = Object.assign(defaultState(), obj);
+      saveState(); renderAll();
+    } catch (err) { alert("Не удалось прочитать файл: " + err.message); }
+  };
+  r.readAsText(file);
+});
+$("#btn-reset").addEventListener("click", () => {
+  if (!confirm("Удалить все тхуны и настройки? Это нельзя отменить.")) return;
+  localStorage.removeItem(STORE_KEY);
+  state = defaultState();
+  renderAll();
+});
+
+/* ============================================================
+ *  СТАРТ
+ * ========================================================== */
+renderAttrSelect();
+renderTextPicker();
+renderLiturgy();
+renderAll();
+
+/* ============================================================
+ *  ТИБЕТСКИЙ ЛУННЫЙ ДЕНЬ — словарь монастырских дней и Дючен.
+ *  Используется отдельным <script type="module"> ниже, который
+ *  подгружает tibetan-date-calculator с CDN.
+ * ========================================================== */
+window.LUNAR = {
+  /* Монастырские дни Drukpa-традиции, повторяющиеся каждый месяц. */
+  monthly: {
+    8:  "День Будды Медицины (Менла)",
+    10: "День Гуру Ринпоче",
+    15: "Полнолуние · День Будды Шакьямуни",
+    25: "День Дакини",
+    29: "День Дхармапал (защитников Дхармы)",
+    30: "Новолуние · День Будды Шакьямуни",
+  },
+  /* Дючен — четыре главных годовых праздника. Ключ "M-D" по тибетским месяцу и дню. */
+  dychen: {
+    "1-1":  ["Лосар", "Тибетский Новый год"],
+    "1-15": ["Чо Трюль Дючен", "День чудес Будды Шакьямуни. Заслуги практики умножаются в 100 миллионов раз."],
+    "4-15": ["Сака Дава Дючен", "Рождение, просветление и паринирвана Будды Шакьямуни. Самый священный день года."],
+    "6-4":  ["Чо Кхор Дючен", "Первое поворачивание Колеса Дхармы Буддой в Сарнатхе."],
+    "9-22": ["Лха Баб Дючен", "Нисхождение Будды Шакьямуни с небес Тушита."],
+  },
+};
+
+/* ============================================================
+ *  WEB AUDIO BELL — мягкий тон поющей чаши
+ *  Несколько синусоидальных гармоник с экспоненциальным
+ *  затуханием. Без внешних сэмплов.
+ * ========================================================== */
+let _audioCtx = null;
+function getAudioCtx() {
+  if (!_audioCtx) {
+    try { _audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+    catch (e) { console.warn("Web Audio недоступен", e); return null; }
+  }
+  if (_audioCtx.state === "suspended") _audioCtx.resume();
+  return _audioCtx;
+}
+
+function ringBell({ pitch = 392, duration = 6 } = {}) {
+  // pitch = 392 Hz (G4) — тёплый средний регистр, ближе к маленькой поющей чаше
+  const ctx = getAudioCtx();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+  const master = ctx.createGain();
+  master.gain.value = 0.45;
+  master.connect(ctx.destination);
+  // Гармоники характерные для бронзовой чаши: 1 / 2.76 / 5.4 / 8.93 / 13.34 (упрощено)
+  const partials = [
+    { mul: 1.00, gain: 0.50, dur: duration },
+    { mul: 2.00, gain: 0.30, dur: duration * 0.75 },
+    { mul: 2.76, gain: 0.20, dur: duration * 0.65 },
+    { mul: 4.10, gain: 0.10, dur: duration * 0.55 },
+    { mul: 5.40, gain: 0.06, dur: duration * 0.45 },
+  ];
+  partials.forEach(p => {
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.value = pitch * p.mul;
+    g.gain.setValueAtTime(0, now);
+    g.gain.linearRampToValueAtTime(p.gain, now + 0.015);                     // быстрая атака
+    g.gain.exponentialRampToValueAtTime(0.0001, now + p.dur);                // долгое затухание
+    osc.connect(g); g.connect(master);
+    osc.start(now);
+    osc.stop(now + p.dur);
+  });
+  // Лёгкая «дыхательная» субмодуляция громкости — как у живой чаши
+  const lfo = ctx.createOscillator();
+  const lfoGain = ctx.createGain();
+  lfo.frequency.value = 4.2;
+  lfoGain.gain.value = 0.04;
+  lfo.connect(lfoGain); lfoGain.connect(master.gain);
+  lfo.start(now); lfo.stop(now + duration);
+}
+
+/* ============================================================
+ *  WIZARD — «Начать тхун»
+ *  Стейт визарда живёт в локальной переменной (не в state),
+ *  пока не сохранён — затем превращается в state.tuns запись.
+ * ========================================================== */
+const wizardState = {
+  step: 1,
+  prep: {},                  // checkboxes step 1+2
+  shamathaMin: 6,
+  shamathaTimer: null,
+  shamathaRemaining: 0,
+  vow: {
+    length: 48,
+    groupKey: "freedoms",
+    idx: 0,
+    targetCircles: 0,
+    confirmed: false,
+  },
+  med: {
+    timer: null,
+    startedAt: null,
+    elapsedBeforePause: 0,
+    paused: false,
+    durationSec: 48 * 60,
+    circles: 0,
+    bellRang: false,
+  },
+  finish: {
+    mistakes: "", successes: "",
+    aspiration: "", promise: "",
+    feel: 0, note: "",
+  },
+};
+
+function openWizard() {
+  // reset
+  wizardState.step = 1;
+  wizardState.prep = {};
+  wizardState.shamathaMin = state.shamathaMin || 6;
+  wizardState.shamathaRemaining = 0;
+  wizardState.vow.length = state.setLength || 48;
+  wizardState.vow.groupKey = state.activeSection ? firstGroupOfSection(state.activeSection) : "freedoms";
+  wizardState.vow.idx = 0;
+  wizardState.vow.confirmed = false;
+  wizardState.med = {
+    timer: null, startedAt: null, elapsedBeforePause: 0,
+    paused: false, durationSec: 48 * 60, circles: 0, bellRang: false,
+  };
+  wizardState.finish = { mistakes: "", successes: "", aspiration: "", promise: "", feel: 0, note: "" };
+
+  // populate liturgy inline blocks (bodyHTML — для сложной разметки, body — обычный текст)
+  $$('[data-liturgy]').forEach(el => {
+    const id = el.dataset.liturgy;
+    const lit = LITURGY.find(l => l.id === id);
+    if (!lit) return;
+    if (lit.bodyHTML) el.innerHTML = lit.bodyHTML;
+    else el.textContent = lit.body;
+  });
+
+  // shamatha defaults
+  $("#shamatha-min").value = wizardState.shamathaMin;
+  $("#shamatha-timer").textContent = formatMS(wizardState.shamathaMin * 60);
+
+  // populate vow attr select
+  populateVowAttrSelect();
+  $("#vow-length").value = wizardState.vow.length;
+
+  // reset checkboxes & form fields
+  $$('#wizard-overlay input[type="checkbox"]').forEach(c => c.checked = false);
+  ["finish-mistakes","finish-successes","finish-aspiration","finish-promise","finish-note"].forEach(id => {
+    const el = $("#" + id); if (el) el.value = "";
+  });
+  $$('#finish-feel button').forEach(b => b.classList.remove("on"));
+
+  showWizardStep(1);
+  $("#wizard-overlay").hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
+function closeWizard() {
+  // Stop active timers
+  if (wizardState.shamathaTimer) { clearInterval(wizardState.shamathaTimer); wizardState.shamathaTimer = null; }
+  if (wizardState.med.timer) { clearInterval(wizardState.med.timer); wizardState.med.timer = null; }
+  $("#wizard-overlay").hidden = true;
+  $("#bell-banner").hidden = true;
+  document.body.style.overflow = "";
+}
+
+function firstGroupOfSection(sk) {
+  for (const gk of Object.keys(ATTRS)) {
+    if (ATTRS[gk].section === sk) return gk;
+  }
+  return "freedoms";
+}
+
+function showWizardStep(n) {
+  wizardState.step = n;
+  $$('.wizard-step').forEach(s => s.hidden = +s.dataset.step !== n);
+  $$('.wizard-stepper .step').forEach(s => {
+    const sn = +s.dataset.step;
+    s.classList.toggle("active", sn === n);
+    s.classList.toggle("done", sn < n);
+  });
+  $("#wizard-prev").disabled = (n === 1);
+  $("#wizard-next").hidden = (n === 5);
+  $("#wizard-save").hidden = (n !== 5);
+  // Step-specific entry handlers
+  if (n === 3) refreshVow();
+  if (n === 4) startMeditation();
+  if (n === 5) stopMeditation();
+}
+
+function formatMS(totalSec) {
+  const m = Math.floor(totalSec / 60), s = totalSec % 60;
+  return String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+}
+
+/* === Step 2: шаматха-таймер === */
+function startShamatha() {
+  if (wizardState.shamathaTimer) {
+    clearInterval(wizardState.shamathaTimer);
+    wizardState.shamathaTimer = null;
+    $("#shamatha-start").textContent = "Запустить";
+    return;
+  }
+  const min = Math.max(3, Math.min(30, +$("#shamatha-min").value || 6));
+  wizardState.shamathaMin = min;
+  state.shamathaMin = min; saveState();
+  wizardState.shamathaRemaining = min * 60;
+  $("#shamatha-timer").textContent = formatMS(wizardState.shamathaRemaining);
+  $("#shamatha-start").textContent = "Стоп";
+  wizardState.shamathaTimer = setInterval(() => {
+    wizardState.shamathaRemaining--;
+    $("#shamatha-timer").textContent = formatMS(Math.max(0, wizardState.shamathaRemaining));
+    if (wizardState.shamathaRemaining <= 0) {
+      clearInterval(wizardState.shamathaTimer);
+      wizardState.shamathaTimer = null;
+      $("#shamatha-start").textContent = "Запустить";
+      ringBell({ pitch: 523, duration: 4 }); // более высокий, короткий — для шаматхи
+      $("#shamatha-timer").textContent = "✓";
+      const cb = document.querySelector('input[data-prep="shamatha"]');
+      if (cb) cb.checked = true;
+    }
+  }, 1000);
+}
+
+/* === Step 3: визард обета === */
+function populateVowAttrSelect() {
+  const sel = $("#vow-attr");
+  let html = "";
+  for (const sk of Object.keys(SECTIONS)) {
+    const sec = SECTIONS[sk];
+    for (const key of Object.keys(ATTRS)) {
+      const g = ATTRS[key]; if (g.section !== sk) continue;
+      html += `<optgroup label="${sec.num}. ${sec.short} · ${g.title}">`;
+      g.items.forEach((name, i) => {
+        html += `<option value="${key}:${i}">${i + 1}. ${escapeHtml(name)}</option>`;
+      });
+      html += `</optgroup>`;
+    }
+  }
+  sel.innerHTML = html;
+  sel.value = wizardState.vow.groupKey + ":" + wizardState.vow.idx;
+  sel.onchange = () => {
+    const [k, i] = sel.value.split(":");
+    wizardState.vow.groupKey = k;
+    wizardState.vow.idx = +i;
+    refreshVow();
+  };
+  $("#vow-length").onchange = () => {
+    wizardState.vow.length = Math.max(5, Math.min(180, +$("#vow-length").value || 48));
+    refreshVow();
+  };
+  $("#vow-confirm").onchange = e => {
+    wizardState.vow.confirmed = e.target.checked;
+  };
+}
+
+function refreshVow() {
+  const v = wizardState.vow;
+  const stratLabel = state.strategy === "2" ? "25/75 (Стратегия 2)" : "Классическая (Стратегия 1)";
+  const targetCircles = state.strategy === "2" ? 7 : 10;
+  v.targetCircles = targetCircles;
+  $("#vow-strategy").textContent = stratLabel;
+  $("#vow-circles").textContent = targetCircles + " (Техника 1, дефолт)";
+  // Format vow text with placeholders filled
+  const endTime = new Date(Date.now() + v.length * 60 * 1000);
+  const endHM = String(endTime.getHours()).padStart(2,"0") + ":" + String(endTime.getMinutes()).padStart(2,"0");
+  const vowLit = LITURGY.find(l => l.id === "vow").body;
+  const filled = vowLit
+    .replace("XX:XX", endHM)
+    .replace("X минут / часов", v.length + " мин");
+  $("#vow-text-body").textContent = filled;
+}
+
+/* === Step 4: медитация === */
+function startMeditation() {
+  const v = wizardState.vow;
+  const m = wizardState.med;
+  m.durationSec = v.length * 60;
+  m.circles = 0;
+  m.startedAt = Date.now();
+  m.elapsedBeforePause = 0;
+  m.paused = false;
+  m.bellRang = false;
+  $("#med-title-h").textContent = `4 · Медитация · ${ATTRS[v.groupKey].title} #${v.idx + 1}`;
+  $("#med-circles").textContent = "0";
+  // Show recitation text — или контемплятивную подсказку для 3 причин ДЧЖ
+  const rec = RECITATIONS[v.groupKey] && RECITATIONS[v.groupKey][v.idx];
+  const reading = READING[v.groupKey] || {};
+  const perItemText = (reading.perItem && reading.perItem[v.idx]) || reading.intro || "";
+  if (rec && rec.lines && rec.lines.length) {
+    $("#med-recit-body").textContent = rec.lines.join("\n");
+  } else if (ATTRS[v.groupKey].isReason) {
+    $("#med-recit-body").textContent =
+      "РАЗМЫШЛЕНИЕ (без начитывания)\n\n" +
+      ATTRS[v.groupKey].items[v.idx] + "\n\n" +
+      perItemText + "\n\n" +
+      "Один круг = одно завершённое размышление.";
+  } else {
+    $("#med-recit-body").textContent = perItemText || "(нет текста)";
+  }
+  updateMedTimerDisplay();
+  if (m.timer) clearInterval(m.timer);
+  m.timer = setInterval(tickMed, 250);
+}
+
+function tickMed() {
+  const m = wizardState.med;
+  if (m.paused) return;
+  const elapsedNow = m.elapsedBeforePause + (Date.now() - m.startedAt) / 1000;
+  const remaining = m.durationSec - elapsedNow;
+  if (remaining <= 0 && !m.bellRang) {
+    m.bellRang = true;
+    ringBell({ pitch: 392, duration: 7 });
+    showBellBanner();
+  }
+  updateMedTimerDisplay(Math.max(0, remaining));
+}
+
+function updateMedTimerDisplay(remaining) {
+  if (remaining === undefined) {
+    const m = wizardState.med;
+    const elapsedNow = m.elapsedBeforePause + (m.paused ? 0 : (Date.now() - m.startedAt) / 1000);
+    remaining = Math.max(0, m.durationSec - elapsedNow);
+  }
+  $("#med-timer").textContent = formatMS(Math.ceil(remaining));
+  $("#med-timer").classList.toggle("paused", wizardState.med.paused);
+}
+
+function stopMeditation() {
+  const m = wizardState.med;
+  if (m.timer) { clearInterval(m.timer); m.timer = null; }
+}
+
+function pauseMeditation() {
+  const m = wizardState.med;
+  if (m.paused) {
+    m.startedAt = Date.now();
+    m.paused = false;
+    $("#med-pause").textContent = "Пауза";
+  } else {
+    m.elapsedBeforePause += (Date.now() - m.startedAt) / 1000;
+    m.paused = true;
+    $("#med-pause").textContent = "Продолжить";
+  }
+}
+
+function showBellBanner() {
+  $("#bell-banner").hidden = false;
+}
+
+/* === Step 5: завершение → save tun === */
+function setFinishFeel(n) {
+  wizardState.finish.feel = n;
+  $$('#finish-feel button').forEach(b => b.classList.toggle("on", +b.dataset.feel <= n));
+}
+
+function collectFinish() {
+  wizardState.finish.mistakes   = $("#finish-mistakes").value.trim();
+  wizardState.finish.successes  = $("#finish-successes").value.trim();
+  wizardState.finish.aspiration = $("#finish-aspiration").value.trim();
+  wizardState.finish.promise    = $("#finish-promise").value.trim();
+  wizardState.finish.note       = $("#finish-note").value.trim();
+}
+
+function saveWizardTun() {
+  collectFinish();
+  const v = wizardState.vow;
+  const m = wizardState.med;
+  const f = wizardState.finish;
+  const tun = {
+    id: "w" + Date.now().toString(36),
+    date: new Date().toISOString().slice(0,10),
+    length: v.length,
+    groupKey: v.groupKey,
+    idx: v.idx,
+    tech: "1",
+    circles: m.circles,
+    prostr: 0,
+    feel: f.feel || 3,
+    note: f.note,
+    selfCheck: { mistakes: f.mistakes, successes: f.successes },
+    dedication: { aspiration: f.aspiration, promise: f.promise },
+    fromWizard: true,
+  };
+  state.tuns.unshift(tun);
+  saveState();
+  renderAll();
+  closeWizard();
+}
+
+/* === Validation per step (Далее →) === */
+function canAdvance() {
+  const s = wizardState.step;
+  if (s === 1) {
+    // Не блокируем, но рекомендуем все чекбоксы (мягкая валидация)
+    return true;
+  }
+  if (s === 2) {
+    // Тоже мягко
+    return true;
+  }
+  if (s === 3) {
+    return wizardState.vow.confirmed;
+  }
+  if (s === 4) {
+    return true;
+  }
+  return true;
+}
+
+/* === Wizard event wiring === */
+$("#btn-start-thun").addEventListener("click", () => {
+  getAudioCtx(); // unlock audio on user gesture
+  openWizard();
+});
+$("#wizard-close").addEventListener("click", () => {
+  if (confirm("Закрыть тхун без сохранения?")) closeWizard();
+});
+$("#wizard-prev").addEventListener("click", () => {
+  if (wizardState.step > 1) showWizardStep(wizardState.step - 1);
+});
+$("#wizard-next").addEventListener("click", () => {
+  if (!canAdvance()) {
+    if (wizardState.step === 3) alert("Сначала дай обет — отметь чекбокс «Я даю этот обет».");
+    return;
+  }
+  if (wizardState.step < 5) showWizardStep(wizardState.step + 1);
+});
+$("#wizard-save").addEventListener("click", saveWizardTun);
+
+$("#shamatha-start").addEventListener("click", startShamatha);
+
+$("#med-pause").addEventListener("click", pauseMeditation);
+$("#med-bell-test").addEventListener("click", () => ringBell({ pitch: 392, duration: 5 }));
+$("#med-circ-plus").addEventListener("click", () => {
+  wizardState.med.circles++;
+  $("#med-circles").textContent = wizardState.med.circles;
+});
+$("#med-circ-minus").addEventListener("click", () => {
+  wizardState.med.circles = Math.max(0, wizardState.med.circles - 1);
+  $("#med-circles").textContent = wizardState.med.circles;
+});
+
+$$('#finish-feel button').forEach(b => b.addEventListener("click", () => setFinishFeel(+b.dataset.feel)));
+
+$("#bell-banner-ok").addEventListener("click", () => {
+  $("#bell-banner").hidden = true;
+  showWizardStep(5);
+});
+
+/* ============================================================
+ *  ТЕСТЫ — самопроверка при загрузке
+ *  Все проверки должны проходить, иначе показывается баннер.
+ * ========================================================== */
+(function selfTests() {
+  const fails = [];
+  function assert(cond, msg) { if (!cond) fails.push(msg); }
+
+  // Структура SECTIONS
+  assert(Object.keys(SECTIONS).length === 6, "6 разделов в SECTIONS");
+  ["s1","s2","s3","s4","s5","s6"].forEach(sk => assert(SECTIONS[sk], `SECTIONS.${sk} существует`));
+
+  // ATTRS consistency
+  for (const gk of Object.keys(ATTRS)) {
+    const g = ATTRS[gk];
+    assert(g.section, `${gk}: есть section`);
+    assert(SECTIONS[g.section], `${gk}.section=${g.section} → существующий раздел`);
+    assert(Array.isArray(g.items) && g.items.length > 0, `${gk}: items не пуст`);
+    assert(typeof g.target === "number" && g.target > 0, `${gk}: target — положительное число`);
+  }
+
+  // Сумма кругов на раздел ≈ 1000 (±15)
+  for (const sk of Object.keys(SECTIONS)) {
+    let sum = 0;
+    for (const gk of Object.keys(ATTRS)) {
+      if (ATTRS[gk].section === sk) {
+        sum += ATTRS[gk].target * ATTRS[gk].items.length;
+      }
+    }
+    const diff = Math.abs(sum - 1000);
+    assert(diff <= 15, `${sk}: сумма кругов = ${sum}, |Δ1000| = ${diff} (>15)`);
+  }
+
+  // Раздел 1: 34 признака + 3 причины = 37 пунктов
+  let s1Total = 0;
+  Object.keys(ATTRS).filter(k => ATTRS[k].section === "s1").forEach(k => s1Total += ATTRS[k].items.length);
+  assert(s1Total === 37, `Раздел 1: 34 признака + 3 причины = 37 (получено ${s1Total})`);
+
+  // LITURGY: 8 общих практик
+  assert(LITURGY.length === 8, `LITURGY = 8 блоков (получено ${LITURGY.length})`);
+  LITURGY.forEach(b => {
+    assert(b.id && b.title && b.body, `LITURGY ${b.id || "?"}: id+title+body`);
+  });
+
+  // RECITATIONS: для каждого item каждого groupKey есть строки
+  // Исключение: 3 причины ДЧЖ — без начитывания (только размышление).
+  for (const gk of Object.keys(ATTRS)) {
+    if (ATTRS[gk].isReason) {
+      assert(!RECITATIONS[gk], `RECITATIONS[${gk}]: для причин не должно быть начитывания`);
+      continue;
+    }
+    const items = ATTRS[gk].items;
+    const recs = RECITATIONS[gk];
+    assert(Array.isArray(recs), `RECITATIONS[${gk}]: массив`);
+    if (Array.isArray(recs)) {
+      assert(recs.length === items.length, `RECITATIONS[${gk}]: ${recs.length} vs items ${items.length}`);
+      recs.forEach((rec, i) => {
+        assert(rec && Array.isArray(rec.lines) && rec.lines.length > 0, `${gk}[${i}]: непустые lines`);
+      });
+    }
+  }
+
+  // Стандартный корпус Р1: 13 строк
+  assert(STANDARD_BODY_S1.length === 13, `STANDARD_BODY_S1: 13 строк (есть ${STANDARD_BODY_S1.length})`);
+
+  // Р1 признаки (кроме reasons): ровно 15 строк (Намо Буддая + уникальная + 13 стандартных)
+  ["freedoms","advantagesOwn","advantagesOther","unfavSpontaneous","unfavAttachments"].forEach(gk => {
+    RECITATIONS[gk].forEach((rec, i) => {
+      assert(rec.lines.length === 15, `${gk}[${i}]: 15 строк (есть ${rec.lines.length})`);
+    });
+  });
+
+  // 3 причины ДЧЖ — без начитывания, только размышление
+  assert(ATTRS.reasons.isReason === true, "reasons: isReason=true");
+  assert(!RECITATIONS.reasons, "reasons: нет блока начитывания");
+
+  // Миграция: dry-run на тестовых tuns
+  const test = { tuns: [
+    { groupKey: "impermanence", idx: 5 },
+    { groupKey: "sixRealms", idx: 2 },
+    { groupKey: "karmaGeneral", idx: 0 },
+    { groupKey: "nonVirtuous", idx: 1 },
+    { groupKey: "virtuous", idx: 4 },
+    { groupKey: "liberationCause", idx: 0 },
+    { groupKey: "liberationFruit", idx: 0 },
+    { groupKey: "freedoms", idx: 0 }, // не должна меняться
+  ]};
+  migrateState(test);
+  assert(test.tuns[0].groupKey === "impermanenceExamples", "migrate: impermanence");
+  assert(test.tuns[1].groupKey === "samsaraPoisons",       "migrate: sixRealms");
+  assert(test.tuns[2].groupKey === "karma",                "migrate: karmaGeneral");
+  assert(test.tuns[3].groupKey === "karma",                "migrate: nonVirtuous");
+  assert(test.tuns[4].groupKey === "karma",                "migrate: virtuous");
+  assert(test.tuns[5].groupKey === "nirvanaFreedoms",      "migrate: liberationCause");
+  assert(test.tuns[6].groupKey === "nirvanaFreedoms",      "migrate: liberationFruit");
+  assert(test.tuns[7].groupKey === "freedoms",             "migrate: freedoms не трогаем");
+  assert(test.tuns[0].idx === 0, "migrate: idx сбрасывается в 0");
+
+  // Раздел 4 — монолит
+  assert(ATTRS.karma.items.length === 1, "karma: 1 item (монолит)");
+  assert(ATTRS.karma.target === 1000, "karma: target=1000");
+  assert(ATTRS.karma.isMonolith === true, "karma: isMonolith=true");
+
+  // Раздел 3 — 6 ядов по PDF
+  assert(ATTRS.samsaraPoisons.items.length === 6, "samsaraPoisons: 6 ядов");
+  assert(ATTRS.samsaraPoisons.items[0].includes("Гнев"), "samsaraPoisons[0]: Гнев первым");
+  assert(ATTRS.samsaraPoisons.items[5].includes("Привязанность"), "samsaraPoisons[5]: Привязанность последней");
+
+  // Раздел 5 — 7 свобод
+  assert(ATTRS.nirvanaFreedoms.items.length === 7, "nirvanaFreedoms: 7 свобод");
+
+  // Wizard: ID-обязательные LITURGY элементы
+  ["masters","refuge","four_immeasurables","bodhichitta","seven_line","essential_lines","vow","dedication"].forEach(id => {
+    assert(LITURGY.some(l => l.id === id), `LITURGY содержит id=${id}`);
+  });
+
+  // Wizard: HTML-узлы существуют (DOM-структура)
+  ["#wizard-overlay","#btn-start-thun","#wizard-prev","#wizard-next","#wizard-save",
+   "#med-timer","#med-circles","#shamatha-timer","#vow-text-body","#bell-banner",
+   "#finish-mistakes","#finish-successes","#finish-aspiration","#finish-promise","#finish-feel"
+  ].forEach(sel => {
+    assert(document.querySelector(sel), `Wizard DOM: ${sel}`);
+  });
+
+  // Wizard: 5 шагов в визарде
+  assert(document.querySelectorAll('.wizard-step').length === 5, "5 шагов в визарде");
+
+  // Wizard: Web Audio bell функция определена
+  assert(typeof ringBell === "function", "ringBell определён");
+  assert(typeof getAudioCtx === "function", "getAudioCtx определён");
+
+  // Wizard: state shamathaMin валиден
+  assert(typeof state.shamathaMin === "number" && state.shamathaMin >= 3 && state.shamathaMin <= 30,
+    `state.shamathaMin в [3..30] (есть ${state.shamathaMin})`);
+
+  // CSS [hidden] guard: элементы с display:flex/grid/block в CSS должны иметь
+  // явный override .selector[hidden] { display: none } — иначе атрибут hidden игнорируется.
+  // Регрессия 2026-05-13: bell-banner показывался при загрузке, потому что display:flex
+  // в .bell-banner перекрывал HTML-default display:none для [hidden].
+  ["#wizard-overlay","#bell-banner"].forEach(sel => {
+    const el = document.querySelector(sel);
+    if (el && el.hidden) {
+      const d = window.getComputedStyle(el).display;
+      assert(d === "none", `${sel}[hidden] → computed display="${d}" (ожидалось "none")`);
+    }
+  });
+
+  // Report
+  if (fails.length) {
+    console.error("[ngondro tests] FAILED " + fails.length + ":", fails);
+    const banner = document.createElement("div");
+    banner.style.cssText = "position:fixed;bottom:8px;left:8px;right:8px;background:#C84B3C;color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;z-index:9999;max-height:240px;overflow:auto;box-shadow:0 4px 16px rgba(0,0,0,.2);font-family:-apple-system,sans-serif";
+    banner.innerHTML = `<b>Тесты не прошли (${fails.length}):</b><br>` + fails.map(f => "• " + f).join("<br>");
+    document.body.appendChild(banner);
+  } else {
+    console.info("[ngondro tests] " + 30 + "+ assertions OK");
+  }
+})();
+</script>
+
+<!-- Тибетский лунный календарь (ESM-модуль с esm.sh CDN). Графится без сервера. -->
+<script type="module">
+  const host = document.getElementById("lunar-line");
+  if (host) {
+    const westernToday = new Date();
+    const fmtDate = d => d.toLocaleDateString("ru-RU", { weekday: "short", day: "numeric", month: "long" });
+    const todayStr = fmtDate(westernToday);
+
+    try {
+      /* API: import { TibetanDate } from "tibetan-date-calculator"; new TibetanDate()
+         Версия v1.2.1 (последняя на npm). esm.sh конвертирует TS-сборку в ESM. */
+      const mod = await import("https://esm.sh/tibetan-date-calculator@1.2.1");
+      const TibetanDate = mod.TibetanDate || (mod.default && mod.default.TibetanDate) || mod.default;
+      if (!TibetanDate) throw new Error("TibetanDate export not found. keys: " + Object.keys(mod).join(","));
+
+      const today = new TibetanDate();
+      /* Внимание: getDay() — день недели (как у JS Date), getDate() — лунный день месяца (1–30). */
+      const tibDay   = typeof today.getDate  === "function" ? today.getDate()  : today.date;
+      const tibMonth = typeof today.getMonth === "function" ? today.getMonth() : today.month;
+      const skipped  = today.isSkippedDay;
+      const leapDay  = today.isLeapDay;
+      const leapMo   = today.isLeapMonth || (today.monthObj && today.monthObj.isLeapMonth);
+
+      const L = window.LUNAR || {};
+      const dychenKey = `${tibMonth}-${tibDay}`;
+      const dychen = L.dychen && L.dychen[dychenKey];
+      const monthlyDesc = L.monthly && L.monthly[tibDay];
+
+      const flags = [];
+      if (leapMo) flags.push("дубл. месяц");
+      if (leapDay) flags.push("дубл. день");
+      if (skipped) flags.push("пропущен");
+      const flagsStr = flags.length ? ` · ${flags.join(", ")}` : "";
+
+      if (dychen) {
+        /* Дючен — выделенная плашка с подробностями. */
+        host.classList.add("dychen");
+        host.innerHTML =
+          `<span class="lunar-day">${dychen[0]}</span>` +
+          `<span class="lunar-desc">${dychen[1]}</span>` +
+          `<span class="lunar-desc">${tibDay}-й лунный день · ${tibMonth}-й тиб. месяц · ${todayStr}${flagsStr}</span>`;
+      } else if (monthlyDesc) {
+        host.classList.add("monthly");
+        host.innerHTML =
+          `<span class="lunar-day">${tibDay}-й лунный день</span>` +
+          `<span class="lunar-desc">${monthlyDesc} · ${todayStr}${flagsStr}</span>`;
+      } else {
+        host.innerHTML =
+          `<span class="lunar-day">${tibDay}-й лунный день</span>` +
+          `<span class="lunar-desc">${todayStr}${flagsStr}</span>`;
+      }
+    } catch (e) {
+      /* Тихий фолбэк: лунный календарь не подгрузился — показываем хотя бы обычную дату. */
+      console.warn("[ngondro] tibetan calendar not loaded:", e);
+      host.innerHTML = `<span class="lunar-desc">${todayStr}</span>`;
+    }
+  }
+</script>
+</body>
+</html>
