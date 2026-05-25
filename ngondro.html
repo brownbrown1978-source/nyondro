@@ -20,21 +20,26 @@
   *,*::before,*::after { box-sizing: border-box }
   html, body { margin: 0; padding: 0 }
   :root {
-    --c-blue:   #2E5C8A;
-    --c-white:  #F5F1E8;
-    --c-yellow: #E8B83C;
-    --c-red:    #C84B3C;
-    --c-green:  #5A8C3F;
-    --bg:       #FBF8F1;
-    --bg-2:     #F2EDE0;
-    --ink:      #1F1A14;
-    --ink-2:    #5A4F3F;
-    --ink-3:    #8A7E69;
-    --line:     #E2D9C4;
-    --gold:     #B68B2F;
-    --accent:   var(--c-blue);
-    --shadow:   0 1px 2px rgba(31,26,20,.06), 0 8px 24px rgba(31,26,20,.06);
-    --r:        14px;
+    --c-blue:       #2E5C8A;
+    --c-blue-dark:  #1F3F5F;   /* затемнённый синий — конец градиента CTA, ховеры */
+    --c-blue-light: #3A6FA3;   /* осветлённый синий — старт ховер-градиента CTA */
+    --c-white:      #F5F1E8;
+    --c-yellow:     #E8B83C;
+    --c-red:        #C84B3C;
+    --c-green:      #5A8C3F;
+    --bg:           #FBF8F1;
+    --bg-2:         #F2EDE0;
+    --ink:          #1F1A14;
+    --ink-2:        #5A4F3F;
+    --ink-3:        #6E6350;   /* затемнено с #8A7E69 — контраст 5.0+ для мелкого текста (WCAG AA) */
+    --line:         #E2D9C4;
+    --gold:         #B68B2F;   /* золото для ФОНА: плашки, полоски, точки */
+    --gold-text:    #856518;   /* золото для ТЕКСТА — контраст 5.1 на кремовом фоне (WCAG AA) */
+    --accent:       var(--c-blue);
+    --on-accent:    #FFFFFF;   /* текст/иконки на цветных подложках (синий, красный фон) */
+    --scrim-blue:   rgba(46,92,138,.92);  /* синий полупрозрачный фон полноэкранных оверлеев */
+    --shadow:       0 1px 2px rgba(31,26,20,.06), 0 8px 24px rgba(31,26,20,.06);
+    --r:            14px;
   }
   body {
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
@@ -101,11 +106,11 @@
     box-shadow: 0 2px 12px rgba(232,184,60,.20);
   }
   .lunar-line.dychen .lunar-day {
-    color: var(--gold); font-size: 19px; font-weight: 700;
+    color: var(--gold-text); font-size: 19px; font-weight: 700;
     text-transform: uppercase; letter-spacing: .04em;
   }
   .lunar-line.dychen .lunar-day::before {
-    content: "✦"; color: var(--gold); font-size: 14px;
+    content: "✦"; color: var(--gold-text); font-size: 14px;
     margin-right: 8px; vertical-align: middle;
   }
   .lunar-line.dychen .lunar-desc {
@@ -164,16 +169,41 @@
     .section-nav button .sec-num { font-size: 16px; top: 5px; right: 8px; }
   }
 
-  /* === stats card === */
+  /* === stats card ===
+     Карточка с одним главным счётчиком: круги в активном разделе.
+     Темп за неделю и общее число тхунов — второстепенные плашки. */
   .stats {
     background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
     padding: 14px 16px; box-shadow: var(--shadow);
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
     margin-bottom: 14px;
   }
-  .stats .stat { text-align: center }
-  .stats .num { font-family: "Iowan Old Style", "Charter", "Georgia", serif; font-size: 22px; font-weight: 600; color: var(--accent); }
-  .stats .lbl { font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; }
+  .stats .stat-lbl {
+    font-size: 11px; color: var(--ink-3); text-transform: uppercase;
+    letter-spacing: .06em; margin-bottom: 3px;
+  }
+  .stats .stat-hero { display: flex; align-items: baseline; gap: 7px; }
+  .stats .hero-num {
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 32px; font-weight: 700; color: var(--ink);
+    font-variant-numeric: tabular-nums; line-height: 1.05;
+  }
+  .stats .hero-of {
+    font-family: "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 18px; color: var(--ink-3); font-variant-numeric: tabular-nums;
+  }
+  .stats .stat-forecast { font-size: 11px; color: var(--ink-3); margin-top: 6px; }
+  .stats .stat-chips {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px;
+  }
+  .stats .chip {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 8px;
+    padding: 7px 10px;
+  }
+  .stats .chip-num {
+    font-size: 15px; font-weight: 600; color: var(--ink);
+    font-variant-numeric: tabular-nums; display: block;
+  }
+  .stats .chip-lbl { font-size: 10.5px; color: var(--ink-3); }
   .progress-bar { height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; margin-top: 8px; }
   .progress-bar > div { height: 100%; background: linear-gradient(90deg, var(--c-blue), var(--c-green) 35%, var(--c-yellow) 65%, var(--c-red)); border-radius: 999px; transition: width .3s; }
 
@@ -187,11 +217,11 @@
     cursor: pointer; transition: transform .12s, box-shadow .12s;
   }
   .cta-primary {
-    background: linear-gradient(135deg, #2E5C8A 0%, #1F3F5F 100%);
+    background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-dark) 100%);
     color: var(--bg); font-size: 16px;
   }
   .cta-primary:hover {
-    background: linear-gradient(135deg, #3A6FA3 0%, #2E5C8A 100%);
+    background: linear-gradient(135deg, var(--c-blue-light) 0%, var(--c-blue) 100%);
     transform: translateY(-1px);
   }
   .cta-secondary { background: var(--bg-2); color: var(--ink-2); font-size: 13px; border: 1px solid var(--line); }
@@ -220,9 +250,14 @@
     padding: 14px 16px; border-bottom: 1px solid var(--line); background: var(--bg-2);
     flex-shrink: 0;
   }
+  /* Закрывающая кнопка «×» — единый стиль для визарда, настроек и модалки.
+     Фон ховера зависит от поверхности: на --bg-2 (шапка визарда) — --line,
+     на --bg (настройки, модалка) — --bg-2. */
   .wizard-close {
-    background: transparent; border: 0; font-size: 24px; color: var(--ink-3);
+    background: transparent; border: 0; font-size: 22px; color: var(--ink-3);
     width: 32px; height: 32px; border-radius: 50%; cursor: pointer; line-height: 1;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background .15s, color .15s;
   }
   .wizard-close:hover { background: var(--line); color: var(--ink); }
   .wizard-title { font-weight: 600; font-size: 16px; }
@@ -233,8 +268,8 @@
     background: var(--line); color: var(--ink-3); font-size: 11px; font-weight: 700;
     transition: background .2s;
   }
-  .wizard-stepper .step.active { background: var(--c-blue); color: #fff; }
-  .wizard-stepper .step.done { background: var(--c-green); color: #fff; }
+  .wizard-stepper .step.active { background: var(--c-blue); color: var(--on-accent); }
+  .wizard-stepper .step.done { background: var(--c-green); color: var(--on-accent); }
   .wizard-body {
     flex: 1 1 auto; overflow-y: auto;
     padding: 18px 16px 100px;
@@ -370,10 +405,10 @@
     width: 60px; border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; background: var(--bg);
   }
   .btn-small {
-    background: var(--ink); color: var(--bg); border: 0; border-radius: 8px;
+    background: var(--c-blue); color: var(--on-accent); border: 0; border-radius: 8px;
     padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer;
   }
-  .btn-small:hover { background: #000; }
+  .btn-small:hover { background: var(--c-blue-dark); }
   .mini-timer {
     font-family: "Iowan Old Style", "Charter", "Georgia", serif;
     font-size: 18px; font-weight: 600; color: var(--c-blue); font-variant-numeric: tabular-nums;
@@ -463,23 +498,29 @@
     flex: 1; padding: 12px 16px; border-radius: 10px;
     font-size: 14px; font-weight: 600; cursor: pointer; border: 0;
   }
-  .btn-primary { background: var(--ink); color: var(--bg); }
-  .btn-primary:hover { background: #000; }
+  /* Главная кнопка действия — синий градиент, идентичный CTA на главном экране. */
+  .btn-primary {
+    background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-dark) 100%);
+    color: var(--on-accent);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--c-blue-light) 0%, var(--c-blue) 100%);
+  }
   .btn-primary:disabled { background: var(--ink-3); cursor: not-allowed; opacity: .6; }
   .btn-secondary { background: var(--bg); border: 1px solid var(--line); color: var(--ink-2); }
   .btn-secondary:hover { background: var(--line); }
   .bell-banner {
-    position: fixed; inset: 0; background: rgba(46,92,138,.92); color: #fff;
+    position: fixed; inset: 0; background: var(--scrim-blue); color: var(--on-accent);
     z-index: 200; display: flex; align-items: center; justify-content: center;
     flex-direction: column; gap: 16px; text-align: center; padding: 24px;
     backdrop-filter: blur(8px);
   }
   .bell-banner[hidden] { display: none; }
-  .bell-banner h2 { font-size: 22px; margin: 0 0 8px; color: #fff; }
+  .bell-banner h2 { font-size: 22px; margin: 0 0 8px; color: var(--on-accent); }
   .bell-banner p { margin: 0; font-size: 14px; max-width: 360px; line-height: 1.5; opacity: .9; }
   .bell-banner button {
     margin-top: 8px; padding: 12px 24px; border-radius: 10px;
-    background: #fff; color: var(--c-blue); font-weight: 700; font-size: 14px; border: 0; cursor: pointer;
+    background: var(--on-accent); color: var(--c-blue); font-weight: 700; font-size: 14px; border: 0; cursor: pointer;
   }
 
   /* === tabs === */
@@ -536,6 +577,32 @@
     padding: 32px 16px; text-align: center; color: var(--ink-3); font-size: 14px;
     background: var(--bg-2); border: 1px dashed var(--line); border-radius: var(--r);
   }
+  /* Тёплое пустое состояние журнала — первый запуск. Не заглушка, а вход. */
+  .empty-warm {
+    padding: 26px 20px 22px; text-align: center;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+  }
+  .empty-warm .mark { display: block; margin: 0 auto 10px; }
+  .empty-warm h3 {
+    font-family: "EB Garamond", "Iowan Old Style", "Charter", "Georgia", serif;
+    font-size: 18px; font-weight: 600; color: var(--ink); margin: 0 0 6px;
+  }
+  .empty-warm p {
+    font-size: 13px; color: var(--ink-2); line-height: 1.6;
+    max-width: 320px; margin: 0 auto 16px;
+  }
+  .empty-warm .hints { display: grid; gap: 8px; max-width: 340px; margin: 0 auto; text-align: left; }
+  .empty-warm .hint {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 12.5px; color: var(--ink-2); line-height: 1.4;
+  }
+  .empty-warm .hint b { color: var(--ink); font-weight: 600; }
+  .empty-warm .hint .ic {
+    flex: 0 0 26px; width: 26px; height: 26px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .empty-warm .hint .ic.primary { background: var(--c-blue); }
+  .empty-warm .hint .ic.secondary { background: var(--bg); border: 1px solid var(--line); }
 
   /* === progress (attributes) === */
   .group { margin-bottom: 18px }
@@ -635,8 +702,8 @@
   .settings-head h2 { margin: 0; font-size: 20px; }
   .settings-close {
     width: 32px; height: 32px; border-radius: 50%;
-    background: transparent; border: 1px solid var(--line);
-    color: var(--ink-2); font-size: 18px; line-height: 1;
+    background: transparent; border: 0;
+    color: var(--ink-3); font-size: 22px; line-height: 1;
     cursor: pointer; transition: background .15s, color .15s;
     display: inline-flex; align-items: center; justify-content: center;
   }
@@ -684,8 +751,12 @@
   .modal h2 { display: flex; align-items: center; gap: 10px }
   .modal .x {
     margin-left: auto; background: transparent; border: 0; font-size: 22px;
-    color: var(--ink-3); cursor: pointer;
+    color: var(--ink-3); cursor: pointer; line-height: 1;
+    width: 32px; height: 32px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background .15s, color .15s;
   }
+  .modal .x:hover { background: var(--bg-2); color: var(--ink); }
   .modal label { display: block; font-size: 12px; color: var(--ink-3); margin: 12px 0 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em }
   .modal input, .modal select, .modal textarea {
     width: 100%; padding: 10px 12px; border: 1px solid var(--line);
@@ -702,7 +773,11 @@
   .modal .feel-pick button.active { background: var(--c-yellow); color: var(--ink); border-color: var(--c-yellow) }
   .modal .save {
     width: 100%; padding: 14px; margin-top: 18px; border: 0; border-radius: 12px;
-    background: var(--ink); color: var(--bg); font-size: 15px; font-weight: 600;
+    background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-dark) 100%);
+    color: var(--on-accent); font-size: 15px; font-weight: 600; cursor: pointer;
+  }
+  .modal .save:hover {
+    background: linear-gradient(135deg, var(--c-blue-light) 0%, var(--c-blue) 100%);
   }
   .modal .hint { color: var(--ink-3); font-size: 12px; margin-top: 6px }
 
@@ -768,23 +843,21 @@
 
   <!-- Stats -->
   <section class="stats" id="stats">
-    <div class="stat">
-      <div class="num" id="stat-week">0/3</div>
-      <div class="lbl">Эта неделя</div>
+    <div class="stat-lbl" id="stat-section-label">Раздел · круги</div>
+    <div class="stat-hero">
+      <span class="hero-num" id="stat-circles">0</span>
+      <span class="hero-of" id="stat-circles-of">/ 1000</span>
     </div>
-    <div class="stat">
-      <div class="num" id="stat-total">0</div>
-      <div class="lbl">Всего тхунов</div>
-    </div>
-    <div class="stat">
-      <div class="num" id="stat-pct">0%</div>
-      <div class="lbl">Прогресс</div>
-    </div>
-    <div style="grid-column: 1 / -1">
-      <div class="progress-bar"><div id="bar-overall" style="width:0%"></div></div>
-      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--ink-3);margin-top:4px">
-        <span id="circles-text">0 / 1000 кругов</span>
-        <span id="forecast">—</span>
+    <div class="progress-bar"><div id="bar-overall" style="width:0%"></div></div>
+    <div class="stat-forecast" id="forecast">—</div>
+    <div class="stat-chips">
+      <div class="chip">
+        <span class="chip-num" id="stat-week">0/3</span>
+        <span class="chip-lbl">тхуна за неделю</span>
+      </div>
+      <div class="chip">
+        <span class="chip-num" id="stat-total">0</span>
+        <span class="chip-lbl">тхунов всего</span>
       </div>
     </div>
   </section>
@@ -2054,7 +2127,7 @@ let state = loadState();
  *  ВЫЧИСЛЕНИЯ
  * ========================================================== */
 function attrTarget(groupKey) {
-  return ATTRS[groupKey].target;
+  return ATTRS[groupKey] ? ATTRS[groupKey].target : 0;
 }
 function attrCircles(groupKey, idx) {
   return state.tuns
@@ -2072,10 +2145,13 @@ function weekTuns() {
   const monday = new Date(now); monday.setHours(0,0,0,0); monday.setDate(now.getDate() - day);
   return state.tuns.filter(t => new Date(t.date) >= monday).length;
 }
-function forecastWeeks() {
-  const left = totalTarget() - totalCircles();
+function forecastWeeks(secKey) {
+  // Прогноз по конкретному разделу: сколько недель до 1000 кругов при текущем темпе.
+  const k = secKey || activeSection();
+  const left = sectionTarget(k) - sectionCircles(k);
   if (left <= 0) return "раздел закрыт";
   const fallback = state.strategy === "1" ? 10 : 7;   // Техника 1
+  // Темп — средняя выработка кругов за тхун по всей практике (больше данных — стабильнее).
   const avgPerTun = state.tuns.length ? totalCircles() / state.tuns.length : fallback;
   const tunsLeft = Math.ceil(left / Math.max(1, avgPerTun));
   const wks = Math.ceil(tunsLeft / Math.max(1, state.setWeek));
@@ -2118,30 +2194,53 @@ function renderSectionNav() {
 }
 
 function renderStats() {
-  const sec = SECTIONS[activeSection()];
-  // Общий прогресс по всем 6 разделам (per-section % уже в верхней навигации).
-  const totalCircles = state.tuns.reduce((sum, t) => sum + (+t.circles || 0), 0);
-  const totalTarget = Object.values(SECTIONS).reduce((s, x) => s + x.target, 0);
-  const pct = totalTarget > 0 ? Math.min(100, Math.round((totalCircles / totalTarget) * 100)) : 0;
-  /* подзаголовок раздела убран — там теперь лунный день */
+  // Главный счётчик — круги в активном разделе (per-section % также в верхней навигации).
+  const cur = activeSection();
+  const sec = SECTIONS[cur];
+  const have = sectionCircles(cur);
+  const target = sectionTarget(cur);
+  const pct = target > 0 ? Math.min(100, Math.round((have / target) * 100)) : 0;
+  $("#stat-section-label").textContent = `Раздел ${sec.num} · круги`;
+  $("#stat-circles").textContent = have;
+  $("#stat-circles-of").textContent = `/ ${target}`;
+  $("#bar-overall").style.width = pct + "%";
+  $("#forecast").textContent = forecastWeeks(cur);
   $("#stat-week").textContent = `${weekTuns()}/${state.setWeek}`;
   $("#stat-total").textContent = state.tuns.length;
-  $("#stat-pct").textContent = `${pct}%`;
-  $("#bar-overall").style.width = pct + "%";
-  $("#circles-text").textContent = `${totalCircles} / ${totalTarget} кругов · все разделы`;
-  $("#forecast").textContent = forecastWeeks();
 }
 
 function renderJournal() {
   const list = $("#journal-list");
   if (!state.tuns.length) {
-    list.innerHTML = `<div class="empty">Тхунов пока нет.<br>Начни с <b>«Записать тхун»</b> сверху.</div>`;
+    list.innerHTML = `
+      <div class="empty-warm">
+        <svg class="mark" width="46" height="46" viewBox="0 0 46 46" fill="none" aria-hidden="true">
+          <circle cx="23" cy="23" r="20" style="stroke:var(--gold)" stroke-width="1.4" opacity=".55"/>
+          <circle cx="23" cy="23" r="13" style="stroke:var(--gold)" stroke-width="1.4" opacity=".8"/>
+          <circle cx="23" cy="23" r="5" style="fill:var(--gold)" opacity=".9"/>
+        </svg>
+        <h3>Журнал пока пуст</h3>
+        <p>Каждый завершённый тхун будет появляться здесь. Путь начинается с первого.</p>
+        <div class="hints">
+          <div class="hint">
+            <span class="ic primary"><svg width="9" height="9" viewBox="0 0 24 24" style="fill:var(--on-accent)"><polygon points="5 3 19 12 5 21 5 3"/></svg></span>
+            <span><b>«Начать тхун»</b> — провести сессию сейчас</span>
+          </div>
+          <div class="hint">
+            <span class="ic secondary"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="stroke:var(--ink-2)" stroke-width="2.4" stroke-linecap="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg></span>
+            <span><b>«Записать задним числом»</b> — внести выполненное</span>
+          </div>
+        </div>
+      </div>`;
     return;
   }
   const sorted = [...state.tuns].sort((a, b) => (b.date + b.id).localeCompare(a.date + a.id));
   list.innerHTML = sorted.map(t => {
-    const a = ATTRS[t.groupKey].items[t.idx] || "—";
-    const stripe = ATTRS[t.groupKey].color;
+    // Группа может отсутствовать (импорт старого JSON, удалённый groupKey) —
+    // не роняем весь журнал, показываем тхун с нейтральным запасным оформлением.
+    const g = ATTRS[t.groupKey];
+    const a = g ? (g.items[t.idx] || "—") : "—";
+    const stripe = g ? g.color : "var(--ink-3)";
     const stars = "★".repeat(t.feel || 0).padEnd(5, "☆");
     return `
       <div class="tun-card">
@@ -2151,7 +2250,7 @@ function renderJournal() {
           <div class="name">${escapeHtml(a)}</div>
           <div class="row">
             <span><b>${t.circles}</b> кругов</span>
-            <span>· ${ATTRS[t.groupKey].title}</span>
+            ${g ? `<span>· ${g.title}</span>` : ""}
             ${t.prostr ? `<span>· ${t.prostr} простир.</span>` : ""}
           </div>
           ${t.note ? `<div class="note">«${escapeHtml(t.note)}»</div>` : ""}
@@ -2179,7 +2278,7 @@ function renderProgress() {
   const sec = SECTIONS[cur];
   let html = `<div class="section-head">
     <h2 style="margin:0;display:flex;align-items:center;gap:8px">
-      <span class="sec-num" style="background:${sec.color};color:${cur === "s5" ? "#1F1A14" : "#fff"};width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">${sec.num}</span>
+      <span class="sec-num" style="background:${sec.color};color:${cur === "s5" ? "var(--ink)" : "var(--on-accent)"};width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">${sec.num}</span>
       ${escapeHtml(sec.title)}
     </h2>
     <small style="color:var(--ink-3)">${sectionCircles(cur)} / ${sec.target} кругов</small>
