@@ -254,8 +254,8 @@
      Фон ховера зависит от поверхности: на --bg-2 (шапка визарда) — --line,
      на --bg (настройки, модалка) — --bg-2. */
   .wizard-close {
-    background: transparent; border: 0; font-size: 22px; color: var(--ink-3);
-    width: 32px; height: 32px; border-radius: 50%; cursor: pointer; line-height: 1;
+    background: transparent; border: 0; font-size: 24px; color: var(--ink-3);
+    width: 44px; height: 44px; border-radius: 50%; cursor: pointer; line-height: 1;
     display: inline-flex; align-items: center; justify-content: center;
     transition: background .15s, color .15s;
   }
@@ -405,8 +405,9 @@
     width: 60px; border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; background: var(--bg);
   }
   .btn-small {
-    background: var(--c-blue); color: var(--on-accent); border: 0; border-radius: 8px;
-    padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer;
+    background: var(--c-blue); color: var(--on-accent); border: 0; border-radius: 10px;
+    padding: 0 16px; min-height: 44px; font-size: 13px; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
   }
   .btn-small:hover { background: var(--c-blue-dark); }
   .mini-timer {
@@ -486,7 +487,10 @@
   .feel-stars { display: flex; gap: 4px; margin-top: 8px; }
   .feel-stars button {
     background: transparent; border: 0; font-size: 28px; cursor: pointer;
-    color: var(--line); padding: 4px 6px;
+    color: var(--line);
+    min-width: 44px; min-height: 44px; padding: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 8px;
   }
   .feel-stars button.on, .feel-stars button:hover { color: var(--c-yellow); }
   .wizard-footer {
@@ -532,9 +536,10 @@
     padding: 4px; margin-bottom: 14px;
   }
   .tabs button {
-    background: transparent; border: 0; padding: 10px; border-radius: 10px;
+    background: transparent; border: 0; padding: 0 14px; min-height: 44px; border-radius: 10px;
     color: var(--ink-2); font-size: 14px; font-weight: 500;
     cursor: pointer; transition: background .15s, color .15s;
+    display: inline-flex; align-items: center; justify-content: center;
   }
   .tabs button.active { background: var(--bg); color: var(--ink); box-shadow: var(--shadow); font-weight: 600; }
 
@@ -554,13 +559,22 @@
   .tun-card .row { display: flex; flex-wrap: wrap; gap: 10px; font-size: 12px; color: var(--ink-2); }
   .tun-card .row b { color: var(--ink); font-weight: 600 }
   .tun-card .note { color: var(--ink-2); font-size: 13px; margin-top: 6px; font-style: italic; }
-  .tun-card .actions { display: flex; flex-direction: column; gap: 4px; align-items: end; }
+  /* Сетка для actions: звёзды чувства сверху во всю ширину,
+     ✎/✕ — два 44×44 квадрата в ряду снизу. */
+  .tun-card .actions {
+    display: grid; grid-template-columns: 44px 44px; gap: 2px;
+    align-content: end; justify-items: end;
+  }
+  .tun-card .actions .feel { grid-column: 1 / -1; }
   .tun-card .feel { display: flex; gap: 1px; color: var(--c-yellow); font-size: 12px }
   .icon-btn {
-    background: transparent; border: 0; color: var(--ink-3); padding: 4px;
-    font-size: 12px; cursor: pointer;
+    background: transparent; border: 0; color: var(--ink-3);
+    font-size: 14px; cursor: pointer;
+    width: 44px; height: 44px; border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: background .15s, color .15s;
   }
-  .icon-btn:hover { color: var(--c-red) }
+  .icon-btn:hover { color: var(--c-red); background: var(--bg); }
   /* Шестерёнка настроек в шапке — единственная точка входа в настройки,
      поэтому хорошо заметная (но без агрессивного цвета). */
   header.top .icon-btn {
@@ -663,9 +677,10 @@
     border-radius: 10px; padding: 4px;
   }
   .text-subnav button {
-    flex: 1; padding: 8px 12px; font-size: 13px;
+    flex: 1; padding: 0 12px; min-height: 44px; font-size: 13px;
     background: transparent; border: 0; border-radius: 8px;
     color: var(--ink-3); font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center;
   }
   .text-subnav button.active {
     background: var(--bg); color: var(--ink);
@@ -701,9 +716,9 @@
   }
   .settings-head h2 { margin: 0; font-size: 20px; }
   .settings-close {
-    width: 32px; height: 32px; border-radius: 50%;
+    width: 44px; height: 44px; border-radius: 50%;
     background: transparent; border: 0;
-    color: var(--ink-3); font-size: 22px; line-height: 1;
+    color: var(--ink-3); font-size: 24px; line-height: 1;
     cursor: pointer; transition: background .15s, color .15s;
     display: inline-flex; align-items: center; justify-content: center;
   }
@@ -733,7 +748,9 @@
   .danger { color: var(--c-red); }
   .btn-line {
     background: var(--bg); border: 1px solid var(--line); border-radius: 8px;
-    padding: 8px 14px; font-size: 13px;
+    padding: 0 16px; min-height: 44px; font-size: 13px;
+    display: inline-flex; align-items: center; justify-content: center;
+    cursor: pointer;
   }
   .btn-line:hover { background: var(--bg-2) }
 
@@ -750,9 +767,9 @@
   }
   .modal h2 { display: flex; align-items: center; gap: 10px }
   .modal .x {
-    margin-left: auto; background: transparent; border: 0; font-size: 22px;
+    margin-left: auto; background: transparent; border: 0; font-size: 24px;
     color: var(--ink-3); cursor: pointer; line-height: 1;
-    width: 32px; height: 32px; border-radius: 50%;
+    width: 44px; height: 44px; border-radius: 50%;
     display: inline-flex; align-items: center; justify-content: center;
     transition: background .15s, color .15s;
   }
@@ -767,8 +784,9 @@
   .modal .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px }
   .modal .feel-pick { display: flex; gap: 4px }
   .modal .feel-pick button {
-    flex: 1; padding: 10px; border: 1px solid var(--line); background: var(--bg-2);
-    border-radius: 10px; font-size: 18px; color: var(--ink-3);
+    flex: 1; padding: 0; min-height: 44px; border: 1px solid var(--line); background: var(--bg-2);
+    border-radius: 10px; font-size: 18px; color: var(--ink-3); cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
   }
   .modal .feel-pick button.active { background: var(--c-yellow); color: var(--ink); border-color: var(--c-yellow) }
   .modal .save {
