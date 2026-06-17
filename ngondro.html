@@ -1041,6 +1041,17 @@
     font-size: 20px; letter-spacing: .4em; font-weight: 600;
   }
   .path-spacer { height: 10px; }
+  .path-loading {
+    text-align: center; padding: 32px 16px;
+    color: var(--ink-3); font-style: italic; font-size: 14px;
+  }
+  .path-loading[hidden] { display: none; }
+  .path-mantra-count {
+    display: inline-block; margin-top: 4px;
+    font-size: 11.5px; color: var(--ink-3); font-style: italic;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    letter-spacing: 0; font-weight: 400;
+  }
 
   /* Счётчик мантры — компактный, под мантрой */
   .path-counter {
@@ -1432,7 +1443,7 @@
         <div class="sub">медитация · пребывание в покое</div>
         <div class="status" id="status-shamatha">пока ни одного сидения</div>
       </button>
-      <button class="path-card upcoming" data-go="sadhana" type="button" aria-label="Путь Будды — раздел собирается">
+      <button class="path-card" data-go="sadhana" type="button" aria-label="Путь Будды — садханы линии передачи">
         <div class="stripe" style="background:var(--gold-text)"></div>
         <div class="ttl">Путь Будды</div>
         <div class="sub">садханы линии передачи</div>
@@ -1573,10 +1584,12 @@
       </div>
       <button class="icon-btn" data-go="settings" title="Настройки" aria-label="Настройки"><svg class="gear-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
     </header>
-    <div class="path-intro">
-      <h2>Скоро здесь будет литургия</h2>
-      <div class="sub">Раздел собирается следующим шагом — «Путь Будды 2020», структурированный по разделам и шагам, со счётчиками мантр там, где они нужны.</div>
-    </div>
+    <nav class="path-toc" id="sadhana-toc" aria-label="Разделы садханы">
+      <h3>Разделы</h3>
+      <ol id="sadhana-toc-list"></ol>
+    </nav>
+    <div id="sadhana-content" class="path-content"></div>
+    <div id="sadhana-loading" class="path-loading">Загружаю садхану…</div>
   </section>
 
   <!-- =====================================================
@@ -3133,7 +3146,7 @@ function renderHomeCards() {
   // Путь Будды — пока не отслеживается, заполню при наполнении раздела
   const sa = $("#status-sadhana");
   if (sa) {
-    sa.textContent = "раздел собирается";
+    sa.textContent = "ежедневная садхана";
     sa.classList.add("empty");
   }
   // Внешнее Нёндро — реальный статус
@@ -3457,6 +3470,84 @@ function bindShamatha() {
 }
 
 /* ============================================================
+ *  ПУТЬ БУДДЫ — ленивая загрузка и рендер садханы
+ *  Данные лежат в sadhana.json (минифицированный массив блоков).
+ *  Подгружаются при первом открытии раздела, потом из памяти.
+ * ========================================================== */
+let sadhanaLoaded = false;
+let sadhanaLoading = false;
+
+const TYPE_MAP = { "1":"h1", "2":"h2", "3":"h3", "p":"prayer",
+                   "m":"mantra", "i":"instr", "k":"marker", "s":"spacer" };
+
+function escapeHTML(s) {
+  return (s || "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+}
+
+async function ensureSadhanaLoaded() {
+  if (sadhanaLoaded || sadhanaLoading) return;
+  sadhanaLoading = true;
+  const loading = $("#sadhana-loading");
+  try {
+    const resp = await fetch("sadhana.json");
+    if (!resp.ok) throw new Error("HTTP " + resp.status);
+    const blocks = await resp.json();
+    renderSadhana(blocks);
+    sadhanaLoaded = true;
+    if (loading) loading.hidden = true;
+  } catch (e) {
+    if (loading) loading.textContent = "Не удалось загрузить садхану: " + e.message;
+  } finally {
+    sadhanaLoading = false;
+  }
+}
+
+function renderSadhana(blocks) {
+  // Содержание
+  const tocList = $("#sadhana-toc-list");
+  if (tocList) {
+    let html = "";
+    let n = 0;
+    blocks.forEach((b, i) => {
+      if (b.t === "1" || b.t === "3") {
+        n++;
+        html += `<li><span class="toc-num">${n}</span><a href="#sb-${i}" data-toc="${i}">${escapeHTML(b.x)}</a></li>`;
+      }
+    });
+    tocList.innerHTML = html;
+    // плавный скролл по клику
+    tocList.querySelectorAll("a[data-toc]").forEach(a => {
+      a.addEventListener("click", e => {
+        e.preventDefault();
+        const target = document.getElementById("sb-" + a.dataset.toc);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
+
+  // Содержимое — собираем строкой для одного innerHTML (быстрее, чем 5000 элементов поштучно)
+  const content = $("#sadhana-content");
+  if (!content) return;
+  const parts = [];
+  blocks.forEach((b, i) => {
+    const id = (b.t === "1" || b.t === "3" || b.t === "2") ? ` id="sb-${i}"` : "";
+    switch (b.t) {
+      case "1": parts.push(`<h2 class="path-h1"${id}>${escapeHTML(b.x)}</h2>`); break;
+      case "2": parts.push(`<h3 class="path-h2"${id}>${escapeHTML(b.x)}</h3>`); break;
+      case "3": parts.push(`<h3 class="path-h3"${id}>${escapeHTML(b.x)}</h3>`); break;
+      case "p": parts.push(`<div class="path-prayer">${escapeHTML(b.x)}</div>`); break;
+      case "m":
+        parts.push(`<div class="path-mantra">${escapeHTML(b.x)}${b.c ? `<div class="path-mantra-count">${b.c} раз</div>` : ""}</div>`);
+        break;
+      case "i": parts.push(`<div class="path-instr">${escapeHTML(b.x)}</div>`); break;
+      case "k": parts.push(`<div class="path-marker">${escapeHTML(b.x)}</div>`); break;
+      case "s": parts.push(`<div class="path-spacer"></div>`); break;
+    }
+  });
+  content.innerHTML = parts.join("");
+}
+
+/* ============================================================
  *  МОДАЛ — добавление / редактирование тхуна
  * ========================================================== */
 let editingId = null;
@@ -3563,6 +3654,10 @@ function switchView(name) {
   if (validMain.includes(name)) {
     state.mainPane = name;
     try { saveState(); } catch (_) {}
+  }
+  // Лениво подгружаем садхану при первом открытии раздела
+  if (name === "sadhana" && typeof ensureSadhanaLoaded === "function") {
+    ensureSadhanaLoaded();
   }
   // jsdom не реализует scrollTo и шумит в virtualConsole — пропускаем в тестовой среде
   if (typeof navigator !== "undefined" && !/jsdom/i.test(navigator.userAgent || "")) {
