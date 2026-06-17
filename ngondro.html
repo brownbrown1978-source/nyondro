@@ -871,9 +871,9 @@
     padding: 14px 16px; box-shadow: var(--shadow);
     position: relative; overflow: hidden; cursor: pointer;
     transition: transform .12s, box-shadow .15s;
-    color: inherit;  /* убрать «синюю ссылку» если потом сделаем <a> */
-    text-decoration: none; display: block;
+    color: inherit; text-decoration: none; display: block;
     min-height: 70px;
+    text-align: center;
   }
   .path-card:hover {
     transform: translateY(-1px);
@@ -882,28 +882,28 @@
   .path-card .stripe {
     position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
   }
-  .path-card .orn {
-    position: absolute; top: 12px; right: 14px; opacity: .55;
-    color: inherit;
-  }
   .path-card .ttl {
     font-family: "EB Garamond", "Iowan Old Style", "Charter", "Georgia", serif;
     font-size: 19px; font-weight: 600; color: var(--ink);
-    padding-right: 36px; line-height: 1.2;
+    line-height: 1.2;
   }
   .path-card .sub {
     font-family: "EB Garamond", "Iowan Old Style", "Charter", "Georgia", serif;
     font-style: italic; font-size: 13px; color: var(--ink-3);
-    padding-right: 36px; margin-top: 1px; line-height: 1.35;
+    margin-top: 1px; line-height: 1.35;
   }
   .path-card .status {
-    margin-top: 8px; font-size: 12.5px; color: var(--ink-2);
+    margin-top: 8px; font-size: 12px; color: var(--ink-3);
     line-height: 1.45;
   }
-  .path-card .status b { color: var(--ink); font-weight: 600; }
+  .path-card .status b { color: var(--ink-2); font-weight: 600; }
   .path-card .status .miss { color: var(--c-red); }
   .path-card .status .done { color: var(--c-green); }
   .path-card .status .gold { color: var(--gold-text); }
+  /* «Пока ни одного…», «не открывал…» — тихо */
+  .path-card .status.empty {
+    font-size: 11.5px; font-style: italic; color: var(--ink-3); opacity: .8;
+  }
 
   /* Полоска «сегодня по плану…» сверху стартового */
   .today-plan {
@@ -1412,21 +1412,18 @@
     <nav class="path-cards" aria-label="Пути практики">
       <button class="path-card" data-go="shamatha" type="button">
         <div class="stripe" style="background:var(--c-green)"></div>
-        <div class="orn" style="color:var(--c-green)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg></div>
         <div class="ttl">Шаматха</div>
         <div class="sub">медитация · пребывание в покое</div>
         <div class="status" id="status-shamatha">пока ни одного сидения</div>
       </button>
       <button class="path-card" data-go="sadhana" type="button">
         <div class="stripe" style="background:var(--gold-text)"></div>
-        <div class="orn" style="color:var(--gold-text)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"><path d="M3 5 L12 7 L21 5 L21 19 L12 21 L3 19 Z"/><path d="M12 7 L12 21"/><path d="M6 9 L10 9.6 M6 12 L10 12.6 M6 15 L10 15.4"/><path d="M14 9.6 L18 9 M14 12.6 L18 12 M14 15.4 L18 15"/></svg></div>
-        <div class="ttl">Сборник практик</div>
+        <div class="ttl">Путь Будды</div>
         <div class="sub">садханы линии передачи</div>
         <div class="status" id="status-sadhana">пока не открывал</div>
       </button>
       <button class="path-card" data-go="ngondro" type="button">
         <div class="stripe" style="background:var(--c-blue)"></div>
-        <div class="orn" style="color:var(--c-blue)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg></div>
         <div class="ttl">Внешнее Нёндро</div>
         <div class="sub">отвращение ума от самсары</div>
         <div class="status" id="status-ngondro">пока ни одного тхуна</div>
@@ -1555,7 +1552,7 @@
         <img src="dzogchen_mandala.png" alt="" onerror="this.style.display='none'">
       </div>
       <div class="title">
-        <h1>Сборник практик</h1>
+        <h1>Путь Будды</h1>
         <small>садханы линии передачи</small>
       </div>
       <button class="icon-btn" data-go="settings" title="Настройки" aria-label="Настройки">⚙</button>
@@ -3117,19 +3114,21 @@ function renderAll() {
 
 /* Статусы на карточках стартового экрана */
 function renderHomeCards() {
-  // Шаматха — пока не отслеживается, заполню в шаге Шаматхи
-  const sh = $("#status-shamatha");
-  if (sh) sh.textContent = "пока ни одного сидения";
-  // Сборник практик — пока не отслеживается
+  // Путь Будды — пока не отслеживается, заполню при наполнении раздела
   const sa = $("#status-sadhana");
-  if (sa) sa.textContent = "пока не открывал";
+  if (sa) {
+    sa.textContent = "пока не открывал";
+    sa.classList.add("empty");
+  }
   // Внешнее Нёндро — реальный статус
   const ng = $("#status-ngondro");
   if (ng) {
     const tot = state.tuns.length;
     if (tot === 0) {
       ng.textContent = "пока ни одного тхуна";
+      ng.classList.add("empty");
     } else {
+      ng.classList.remove("empty");
       const cur = activeSection();
       const have = sectionCircles(cur);
       const target = sectionTarget(cur);
@@ -3143,7 +3142,9 @@ function renderHomeCards() {
     const meds = state.meditations || [];
     if (meds.length === 0) {
       shc.textContent = "пока ни одного сидения";
+      shc.classList.add("empty");
     } else {
+      shc.classList.remove("empty");
       const totMin = meds.reduce((s, m) => s + (m.completedMin || 0), 0);
       const streak = computeMedStreak();
       let parts = [`<b>${meds.length}</b> сидений · <b>${totMin}</b> мин`];
