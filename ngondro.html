@@ -1169,6 +1169,12 @@
     font-size: 11px; color: var(--ink-3); text-transform: uppercase;
     letter-spacing: .06em; margin: 0 0 8px; font-family: inherit; font-weight: 600;
   }
+  .med-ready .ready-quote {
+    font-family: "EB Garamond", "Iowan Old Style", Georgia, serif;
+    font-style: italic; font-size: 14.5px; color: var(--ink-2);
+    line-height: 1.65; margin: 0 0 12px;
+    padding: 4px 6px; text-align: center;
+  }
   .med-ready .ready-sub {
     font-size: 12px; color: var(--ink-3); font-style: italic;
     margin: 0 0 10px; line-height: 1.5;
@@ -1441,12 +1447,12 @@
         <div class="stripe" style="background:var(--c-green)"></div>
         <div class="ttl">Шаматха</div>
         <div class="sub">медитация · пребывание в покое</div>
-        <div class="status" id="status-shamatha">пока ни одного сидения</div>
+        <div class="status" id="status-shamatha">пока ни одной шаматхи</div>
       </button>
-      <button class="path-card" data-go="sadhana" type="button" aria-label="Путь Будды — садханы линии передачи">
+      <button class="path-card" data-go="sadhana" type="button" aria-label="Путь Будды — сборник практик">
         <div class="stripe" style="background:var(--gold-text)"></div>
         <div class="ttl">Путь Будды</div>
-        <div class="sub">садханы линии передачи</div>
+        <div class="sub">сборник практик</div>
         <div class="status" id="status-sadhana">пока не открывал</div>
       </button>
       <button class="path-card" data-go="ngondro" type="button">
@@ -1479,38 +1485,24 @@
       <section class="med-setup">
         <h2>Длительность</h2>
         <div class="med-presets" id="sham-presets">
-          <button class="med-preset" type="button" data-min="5">5 мин</button>
+          <button class="med-preset" type="button" data-min="6">6 мин</button>
           <button class="med-preset active" type="button" data-min="10">10 мин</button>
           <button class="med-preset" type="button" data-min="15">15 мин</button>
-          <button class="med-preset" type="button" data-min="20">20 мин</button>
-          <button class="med-preset" type="button" data-min="30">30 мин</button>
+          <button class="med-preset" type="button" data-min="24">24 мин</button>
         </div>
         <div class="med-custom-row">
           <label for="sham-custom">или своё:</label>
           <input id="sham-custom" type="number" min="1" max="180" step="1" placeholder="мин">
         </div>
-        <div class="med-interval-row">
-          <div>
-            <div class="lbl">Промежуточный бэлл</div>
-            <div class="sub">мягко напомнить о возвращении внимания</div>
-          </div>
-          <input id="sham-interval-min" type="number" min="1" max="30" value="5" hidden>
-          <button class="med-toggle" id="sham-interval-toggle" type="button" aria-label="Промежуточный бэлл вкл/выкл"></button>
-        </div>
-        <div class="med-interval-row" id="sham-interval-row" hidden>
-          <div class="lbl">Каждые</div>
-          <input id="sham-interval-min-real" type="number" min="1" max="30" value="5">
-          <div class="lbl">мин</div>
-        </div>
       </section>
 
       <section class="med-ready">
         <h2>Готовность</h2>
-        <div class="ready-sub">Маленький ритуал перед сидением. Когда все четыре отмечены — кнопка «Начать сидение» становится активной.</div>
-        <label class="med-ready-item"><input type="checkbox" data-ready="silent"><span>Телефон в беззвучном режиме</span></label>
+        <div class="ready-quote">Подготовьте удобное сиденье. Несколько минут тихо сидите, погружаясь в естественную ясность. Отпустите все дела, заботы и отвлечения. Расслабьте тело, пребывайте в безмолвии, успокойте ум.</div>
+        <div class="ready-sub">Отключи на телефоне всё, что может потянуть внимание на себя. Когда отметишь два обязательных пункта — кнопка «Начать сидение» активируется.</div>
+        <label class="med-ready-item"><input type="checkbox" data-ready="silent"><span>Беззвучный режим</span></label>
         <label class="med-ready-item"><input type="checkbox" data-ready="dnd"><span>«Не беспокоить» включён</span></label>
         <label class="med-ready-item"><input type="checkbox" data-ready="airplane"><span>Авиа-режим (по желанию)</span></label>
-        <label class="med-ready-item"><input type="checkbox" data-ready="posture"><span>Удобная поза, прямая спина</span></label>
       </section>
 
       <div class="med-start-wrap">
@@ -1580,7 +1572,7 @@
       </div>
       <div class="title">
         <h1>Путь Будды</h1>
-        <small>садханы линии передачи</small>
+        <small>сборник практик</small>
       </div>
       <button class="icon-btn" data-go="settings" title="Настройки" aria-label="Настройки"><svg class="gear-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
     </header>
@@ -2936,8 +2928,8 @@ function defaultState() {
     activeSection: "s1",
     shamathaMin: 6,      // длительность шаматхи в подготовке нёндро (3–30 мин)
     mainPane: "home",    // home | shamatha | sadhana | ngondro — текущий верхнеуровневый путь
-    meditations: [],     // [{id, date, durationMin, completedMin, interrupted?, intervalMin?}]
-    shamathaSetup: { duration: 10, intervalOn: false, intervalMin: 5 },
+    meditations: [],     // [{id, date, durationMin, completedMin, interrupted?}]
+    shamathaSetup: { duration: 10 },
   };
 }
 let state = loadState();
@@ -3184,14 +3176,24 @@ function renderAll() {
 }
 
 /* Статусы на карточках стартового экрана */
+// Правильное русское склонение существительного по числу.
+// forms = ["одна шаматха", "две шаматхи", "пять шаматх"]
+function plural(n, forms) {
+  const mod10 = n % 10, mod100 = n % 100;
+  if (mod100 >= 11 && mod100 <= 19) return forms[2];
+  if (mod10 === 1) return forms[0];
+  if (mod10 >= 2 && mod10 <= 4) return forms[1];
+  return forms[2];
+}
+
 function renderHomeCards() {
-  // Путь Будды — пока не отслеживается, заполню при наполнении раздела
+  // Путь Будды — пока без отслеживания, статичный подзаголовок
   const sa = $("#status-sadhana");
   if (sa) {
     sa.textContent = "ежедневная садхана";
     sa.classList.add("empty");
   }
-  // Внешнее Нёндро — реальный статус
+  // Внешнее Нёндро — реальный статус, склонения «тхун»
   const ng = $("#status-ngondro");
   if (ng) {
     const tot = state.tuns.length;
@@ -3204,22 +3206,29 @@ function renderHomeCards() {
       const have = sectionCircles(cur);
       const target = sectionTarget(cur);
       const secNum = SECTIONS[cur].num;
-      ng.innerHTML = `Раздел <b>${secNum}</b> · <b>${have} / ${target}</b> кругов · всего ${tot}`;
+      const tunWord = plural(tot, ["тхун", "тхуна", "тхунов"]);
+      ng.innerHTML = `Раздел <b>${secNum}</b> · <b>${have} / ${target}</b> кругов · <b>${tot}</b> ${tunWord}`;
     }
   }
-  // Шаматха — реальные данные
+  // Шаматха — реальные данные, склонения «шаматха»
   const shc = $("#status-shamatha");
   if (shc) {
     const meds = state.meditations || [];
-    if (meds.length === 0) {
-      shc.textContent = "пока ни одного сидения";
+    const n = meds.length;
+    if (n === 0) {
+      shc.textContent = "пока ни одной шаматхи";
       shc.classList.add("empty");
     } else {
       shc.classList.remove("empty");
       const totMin = meds.reduce((s, m) => s + (m.completedMin || 0), 0);
       const streak = computeMedStreak();
-      let parts = [`<b>${meds.length}</b> сидений · <b>${totMin}</b> мин`];
-      if (streak > 0) parts.push(`стрик <b>${streak}</b> дн.`);
+      const shamathaWord = plural(n, ["шаматха", "шаматхи", "шаматх"]);
+      const minWord = plural(totMin, ["минута", "минуты", "минут"]);
+      const parts = [`<b>${n}</b> ${shamathaWord} · <b>${totMin}</b> ${minWord}`];
+      if (streak > 1) {
+        const dayWord = plural(streak, ["день", "дня", "дней"]);
+        parts.push(`<b>${streak}</b> ${dayWord} подряд`);
+      }
       shc.innerHTML = parts.join(" · ");
     }
   }
@@ -3231,30 +3240,21 @@ function renderHomeCards() {
 const shamathaState = {
   phase: "setup",          // setup | active | done
   duration: 10,            // выбранная длительность в минутах
-  intervalOn: false,
-  intervalMin: 5,
-  readiness: { silent: false, dnd: false, airplane: false, posture: false },
+  readiness: { silent: false, dnd: false, airplane: false },
   startTs: 0,
   pausedAt: null,
   pausedTotalMs: 0,
   ticker: null,
-  lastIntervalBell: 0,
   wakeLock: null,
 };
 
 function loadShamathaSetup() {
   const s = state.shamathaSetup || {};
   shamathaState.duration = s.duration || 10;
-  shamathaState.intervalOn = !!s.intervalOn;
-  shamathaState.intervalMin = s.intervalMin || 5;
 }
 
 function saveShamathaSetup() {
-  state.shamathaSetup = {
-    duration: shamathaState.duration,
-    intervalOn: shamathaState.intervalOn,
-    intervalMin: shamathaState.intervalMin,
-  };
+  state.shamathaSetup = { duration: shamathaState.duration };
   try { saveState(); } catch (_) {}
 }
 
@@ -3266,17 +3266,9 @@ function renderShamathaSetup() {
   // кастомный инпут
   const custom = $("#sham-custom");
   if (custom) {
-    const isPreset = [5, 10, 15, 20, 30].includes(shamathaState.duration);
+    const isPreset = [6, 10, 15, 24].includes(shamathaState.duration);
     custom.value = isPreset ? "" : shamathaState.duration;
   }
-  // переключатель интервального бэлла
-  const tog = $("#sham-interval-toggle");
-  if (tog) tog.classList.toggle("on", shamathaState.intervalOn);
-  // строка ввода интервала
-  const ir = $("#sham-interval-row");
-  if (ir) ir.hidden = !shamathaState.intervalOn;
-  const ir2 = $("#sham-interval-min-real");
-  if (ir2) ir2.value = shamathaState.intervalMin;
   // готовность
   $$("#main-shamatha .med-ready-item").forEach(lbl => {
     const cb = lbl.querySelector('input[type="checkbox"]');
@@ -3293,8 +3285,8 @@ function updateShamathaStartButton() {
   const btn = $("#sham-start");
   if (!btn) return;
   const r = shamathaState.readiness;
-  // достаточно трёх обязательных (авиа-режим — по желанию)
-  const required = r.silent && r.dnd && r.posture;
+  // достаточно двух обязательных (авиа-режим — по желанию)
+  const required = r.silent && r.dnd;
   btn.disabled = !required || shamathaState.duration < 1;
 }
 
@@ -3323,15 +3315,6 @@ function shamathaTick() {
   const eEl = $("#sham-elapsed");
   if (tEl) tEl.textContent = fmtMS(remaining > 0 ? remaining : 0);
   if (eEl) eEl.textContent = `${shamathaState.duration} мин · прошло ${fmtMS(elapsed)}`;
-  // интервальный бэлл
-  if (shamathaState.intervalOn && remaining > 0) {
-    const ivMs = shamathaState.intervalMin * 60 * 1000;
-    if (ivMs > 0 && elapsed - shamathaState.lastIntervalBell >= ivMs) {
-      shamathaState.lastIntervalBell = elapsed;
-      try { ringBell({ pitch: 392, duration: 3 }); } catch (_) {}
-    }
-  }
-  // конец
   if (remaining <= 0) {
     finishShamatha(false);
   }
@@ -3339,11 +3322,10 @@ function shamathaTick() {
 
 async function startShamatha() {
   const r = shamathaState.readiness;
-  if (!(r.silent && r.dnd && r.posture)) return;
+  if (!(r.silent && r.dnd)) return;
   shamathaState.startTs = Date.now();
   shamathaState.pausedTotalMs = 0;
   shamathaState.pausedAt = null;
-  shamathaState.lastIntervalBell = 0;
   setShamathaPhase("active");
   // удерживаем экран
   if (navigator.wakeLock) {
@@ -3389,7 +3371,6 @@ function finishShamatha(interrupted) {
     durationMin: shamathaState.duration,
     completedMin,
     interrupted: !!interrupted,
-    intervalMin: shamathaState.intervalOn ? shamathaState.intervalMin : 0,
   };
   state.meditations = (state.meditations || []).concat([rec]);
   try { saveState(); } catch (_) {}
@@ -3468,22 +3449,6 @@ function bindShamatha() {
       renderShamathaSetup();
     }
   });
-  // тоггл интервала
-  const tog = $("#sham-interval-toggle");
-  if (tog) tog.addEventListener("click", () => {
-    shamathaState.intervalOn = !shamathaState.intervalOn;
-    saveShamathaSetup();
-    renderShamathaSetup();
-  });
-  // изменение интервала
-  const iv = $("#sham-interval-min-real");
-  if (iv) iv.addEventListener("input", () => {
-    const v = parseInt(iv.value, 10);
-    if (v >= 1 && v <= 30) {
-      shamathaState.intervalMin = v;
-      saveShamathaSetup();
-    }
-  });
   // готовность
   $$("#main-shamatha .med-ready-item input[type=checkbox]").forEach(cb => {
     cb.addEventListener("change", () => {
@@ -3509,7 +3474,7 @@ function bindShamatha() {
   const again = $("#sham-again");
   if (again) again.addEventListener("click", () => {
     // сбросим готовность для нового ритуала
-    shamathaState.readiness = { silent: false, dnd: false, airplane: false, posture: false };
+    shamathaState.readiness = { silent: false, dnd: false, airplane: false };
     setShamathaPhase("setup");
     renderShamathaSetup();
   });
@@ -3702,7 +3667,6 @@ function tgFormatShamathaMessage(rec) {
   msg += `${rec.completedMin} мин`;
   if (rec.durationMin !== rec.completedMin) msg += ` (из ${rec.durationMin})`;
   if (rec.interrupted) msg += ` · прервано раньше`;
-  if (rec.intervalMin) msg += `\nИнтервальный бэлл каждые ${rec.intervalMin} мин`;
   return msg;
 }
 
