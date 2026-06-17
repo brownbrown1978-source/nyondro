@@ -1319,7 +1319,7 @@
   }
   .med-end-btn:hover { background: var(--c-blue-dark); }
 
-  /* После сидения — короткое тёплое */
+  /* После шаматхи — короткое тёплое */
   .med-done {
     background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
     padding: 24px 18px; text-align: center; box-shadow: var(--shadow);
@@ -1365,7 +1365,7 @@
   }
   .med-stat-lbl { font-size: 10.5px; color: var(--ink-3); margin-top: 2px; }
 
-  /* История сидений — компактные карточки */
+  /* История шаматх — компактные карточки */
   .med-history-title {
     font-size: 11px; color: var(--ink-3); text-transform: uppercase;
     letter-spacing: .06em; margin: 0 0 8px; font-weight: 600;
@@ -1626,7 +1626,7 @@
       </section>
     </div>
 
-    <!-- Фаза 3: после сидения -->
+    <!-- Фаза 3: после шаматхи -->
     <div id="sham-done" hidden>
       <section class="med-done">
         <svg class="mark" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12 L11 15 L16 9"/></svg>
@@ -1642,7 +1642,7 @@
       <div class="med-stats-grid">
         <div class="med-stat-cell">
           <div class="med-stat-num" id="sham-stat-count">0</div>
-          <div class="med-stat-lbl">СИДЕНИЙ</div>
+          <div class="med-stat-lbl">ШАМАТХ</div>
         </div>
         <div class="med-stat-cell">
           <div class="med-stat-num" id="sham-stat-min">0</div>
@@ -1655,9 +1655,9 @@
       </div>
     </section>
 
-    <!-- История последних сидений -->
+    <!-- История последних шаматх -->
     <div id="sham-history-wrap" hidden style="margin-top:14px">
-      <h3 class="med-history-title">Последние сидения</h3>
+      <h3 class="med-history-title">Последние шаматхи</h3>
       <div class="med-history" id="sham-history"></div>
     </div>
   </section>
@@ -3382,7 +3382,7 @@ function renderHomeCards() {
 }
 
 /* ============================================================
- *  ШАМАТХА — таймер сидения с поющей чашей
+ *  ШАМАТХА — таймер шаматхи с поющей чашей
  * ========================================================== */
 const shamathaState = {
   phase: "setup",          // setup | active | done
@@ -3511,7 +3511,7 @@ function finishShamatha(interrupted) {
   if (typeof tgQueueOrSend === "function") {
     try { tgQueueOrSend(tgFormatShamathaMessage(rec)); } catch (_) {}
   }
-  // экран после сидения
+  // экран после шаматхи
   const t = $("#sham-done-title");
   const sb = $("#sham-done-sub");
   if (t) t.textContent = interrupted ? "Шаматха прервана" : "Шаматха завершена";
