@@ -1532,7 +1532,7 @@
       <div class="med-start-wrap">
         <button class="med-start" id="sham-start" type="button" disabled>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-          Начать сидение
+          Начать шаматху
         </button>
       </div>
     </div>
@@ -1553,9 +1553,9 @@
     <div id="sham-done" hidden>
       <section class="med-done">
         <svg class="mark" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12 L11 15 L16 9"/></svg>
-        <h2 id="sham-done-title">Сидение завершено</h2>
+        <h2 id="sham-done-title">Шаматха завершена</h2>
         <p id="sham-done-sub">10 мин · записано в журнал</p>
-        <button class="again" id="sham-again" type="button">Ещё одно сидение</button>
+        <button class="again" id="sham-again" type="button">Ещё одна шаматха</button>
       </section>
     </div>
 
@@ -3405,7 +3405,7 @@ function finishShamatha(interrupted) {
   // экран после сидения
   const t = $("#sham-done-title");
   const sb = $("#sham-done-sub");
-  if (t) t.textContent = interrupted ? "Сидение прервано" : "Сидение завершено";
+  if (t) t.textContent = interrupted ? "Шаматха прервана" : "Шаматха завершена";
   if (sb) sb.textContent = `${completedMin} мин · записано в журнал`;
   setShamathaPhase("done");
   renderShamathaStats();
@@ -3536,7 +3536,7 @@ function bindShamatha() {
   // завершить (досрочно)
   const end = $("#sham-end");
   if (end) end.addEventListener("click", () => {
-    if (confirm("Завершить сидение раньше срока?")) finishShamatha(true);
+    if (confirm("Завершить шаматху раньше срока?")) finishShamatha(true);
   });
   // ещё одно
   const again = $("#sham-again");
