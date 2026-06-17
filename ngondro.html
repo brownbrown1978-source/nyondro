@@ -1052,6 +1052,36 @@
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     letter-spacing: 0; font-weight: 400;
   }
+  /* Подвал садханы — итог + кнопка «Записать тхун» */
+  .sadhana-footer {
+    margin-top: 28px; padding: 18px 16px 22px;
+    background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--r);
+    text-align: center; box-shadow: var(--shadow);
+  }
+  .sadhana-footer:empty { display: none; }
+  .sadhana-footer-summary {
+    font-size: 13px; color: var(--ink-2); margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .sadhana-footer-summary b { color: var(--ink); }
+  .sadhana-footer-summary:empty { display: none; }
+  .sadhana-record {
+    min-height: 50px; padding: 0 28px; border: 0; border-radius: 12px;
+    background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-dark) 100%);
+    color: var(--on-accent); font-size: 15px; font-weight: 600; cursor: pointer;
+    font-family: inherit;
+  }
+  .sadhana-record:hover {
+    background: linear-gradient(135deg, var(--c-blue-light) 0%, var(--c-blue) 100%);
+  }
+  .sadhana-record:disabled {
+    background: var(--bg); border: 1px solid var(--line); color: var(--c-green);
+    cursor: default;
+  }
+  .sadhana-footer-note {
+    margin-top: 10px; font-size: 11.5px; color: var(--ink-3);
+    font-style: italic;
+  }
 
   /* Счётчик мантры — компактный, под мантрой */
   .path-counter {
@@ -1110,7 +1140,7 @@
     letter-spacing: .06em; margin: 0 0 12px; font-family: inherit; font-weight: 600;
   }
   .med-presets {
-    display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 10px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 10px;
   }
   .med-preset {
     background: var(--bg); border: 1px solid var(--line); border-radius: 8px;
@@ -1453,7 +1483,7 @@
         <div class="stripe" style="background:var(--gold-text)"></div>
         <div class="ttl">Путь Будды</div>
         <div class="sub">сборник практик</div>
-        <div class="status" id="status-sadhana">пока не открывал</div>
+        <div class="status" id="status-sadhana">пока ни одного тхуна</div>
       </button>
       <button class="path-card" data-go="ngondro" type="button">
         <div class="stripe" style="background:var(--c-blue)"></div>
@@ -1477,7 +1507,6 @@
         <h1>Шаматха</h1>
         <small>пребывание в покое</small>
       </div>
-      <button class="icon-btn" data-go="settings" title="Настройки" aria-label="Настройки"><svg class="gear-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
     </header>
 
     <!-- Фаза 1: подготовка -->
@@ -1497,12 +1526,7 @@
       </section>
 
       <section class="med-ready">
-        <h2>Готовность</h2>
         <div class="ready-quote">Подготовьте удобное сиденье. Несколько минут тихо сидите, погружаясь в естественную ясность. Отпустите все дела, заботы и отвлечения. Расслабьте тело, пребывайте в безмолвии, успокойте ум.</div>
-        <div class="ready-sub">Отключи на телефоне всё, что может потянуть внимание на себя. Когда отметишь два обязательных пункта — кнопка «Начать сидение» активируется.</div>
-        <label class="med-ready-item"><input type="checkbox" data-ready="silent"><span>Беззвучный режим</span></label>
-        <label class="med-ready-item"><input type="checkbox" data-ready="dnd"><span>«Не беспокоить» включён</span></label>
-        <label class="med-ready-item"><input type="checkbox" data-ready="airplane"><span>Авиа-режим (по желанию)</span></label>
       </section>
 
       <div class="med-start-wrap">
@@ -1574,13 +1598,13 @@
         <h1>Путь Будды</h1>
         <small>сборник практик</small>
       </div>
-      <button class="icon-btn" data-go="settings" title="Настройки" aria-label="Настройки"><svg class="gear-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
     </header>
     <nav class="path-toc" id="sadhana-toc" aria-label="Разделы садханы">
       <h3>Разделы</h3>
       <ol id="sadhana-toc-list"></ol>
     </nav>
     <div id="sadhana-content" class="path-content"></div>
+    <div id="sadhana-footer" class="sadhana-footer"></div>
     <div id="sadhana-loading" class="path-loading">Загружаю садхану…</div>
   </section>
 
@@ -1597,7 +1621,6 @@
         <h1>Внешнее Нёндро</h1>
         <div id="lunar-line" class="lunar-line"></div>
       </div>
-      <button class="icon-btn" data-go="settings" title="Настройки" aria-label="Настройки"><svg class="gear-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
     </header>
 
 
@@ -2930,6 +2953,7 @@ function defaultState() {
     mainPane: "home",    // home | shamatha | sadhana | ngondro — текущий верхнеуровневый путь
     meditations: [],     // [{id, date, durationMin, completedMin, interrupted?}]
     shamathaSetup: { duration: 10 },
+    sadhanaReadings: [], // [{id, date}] — каждое полное чтение «Путь Будды»
   };
 }
 let state = loadState();
@@ -3187,11 +3211,25 @@ function plural(n, forms) {
 }
 
 function renderHomeCards() {
-  // Путь Будды — пока без отслеживания, статичный подзаголовок
+  // Путь Будды — счёт «тхунов» (каждое полное чтение садханы), склонения как в нёндро
   const sa = $("#status-sadhana");
   if (sa) {
-    sa.textContent = "ежедневная садхана";
-    sa.classList.add("empty");
+    const readings = state.sadhanaReadings || [];
+    const n = readings.length;
+    if (n === 0) {
+      sa.textContent = "пока ни одного тхуна";
+      sa.classList.add("empty");
+    } else {
+      sa.classList.remove("empty");
+      const streak = computeSadhanaStreak();
+      const tunWord = plural(n, ["тхун", "тхуна", "тхунов"]);
+      const parts = [`<b>${n}</b> ${tunWord}`];
+      if (streak > 1) {
+        const dayWord = plural(streak, ["день", "дня", "дней"]);
+        parts.push(`<b>${streak}</b> ${dayWord} подряд`);
+      }
+      sa.innerHTML = parts.join(" · ");
+    }
   }
   // Внешнее Нёндро — реальный статус, склонения «тхун»
   const ng = $("#status-ngondro");
@@ -3240,7 +3278,6 @@ function renderHomeCards() {
 const shamathaState = {
   phase: "setup",          // setup | active | done
   duration: 10,            // выбранная длительность в минутах
-  readiness: { silent: false, dnd: false, airplane: false },
   startTs: 0,
   pausedAt: null,
   pausedTotalMs: 0,
@@ -3269,25 +3306,13 @@ function renderShamathaSetup() {
     const isPreset = [6, 10, 15, 24].includes(shamathaState.duration);
     custom.value = isPreset ? "" : shamathaState.duration;
   }
-  // готовность
-  $$("#main-shamatha .med-ready-item").forEach(lbl => {
-    const cb = lbl.querySelector('input[type="checkbox"]');
-    const key = cb && cb.dataset.ready;
-    if (cb && key) {
-      cb.checked = !!shamathaState.readiness[key];
-      lbl.classList.toggle("done", cb.checked);
-    }
-  });
   updateShamathaStartButton();
 }
 
 function updateShamathaStartButton() {
   const btn = $("#sham-start");
   if (!btn) return;
-  const r = shamathaState.readiness;
-  // достаточно двух обязательных (авиа-режим — по желанию)
-  const required = r.silent && r.dnd;
-  btn.disabled = !required || shamathaState.duration < 1;
+  btn.disabled = shamathaState.duration < 1;
 }
 
 function setShamathaPhase(phase) {
@@ -3321,8 +3346,7 @@ function shamathaTick() {
 }
 
 async function startShamatha() {
-  const r = shamathaState.readiness;
-  if (!(r.silent && r.dnd)) return;
+  if (shamathaState.duration < 1) return;
   shamathaState.startTs = Date.now();
   shamathaState.pausedTotalMs = 0;
   shamathaState.pausedAt = null;
@@ -3392,18 +3416,72 @@ function finishShamatha(interrupted) {
 function computeMedStreak() {
   const meds = state.meditations || [];
   if (meds.length === 0) return 0;
-  // уникальные даты с медитациями
   const dates = new Set(meds.map(m => m.date));
+  return streakFromDates(dates);
+}
+
+function computeSadhanaStreak() {
+  const readings = state.sadhanaReadings || [];
+  if (readings.length === 0) return 0;
+  const dates = new Set(readings.map(r => r.date));
+  return streakFromDates(dates);
+}
+
+function streakFromDates(dates) {
   let streak = 0;
   const today = new Date(); today.setHours(0,0,0,0);
   let cur = new Date(today);
-  // если сегодня нет — стартуем с вчера
   if (!dates.has(today.toISOString().slice(0,10))) cur.setDate(cur.getDate() - 1);
   while (dates.has(cur.toISOString().slice(0,10))) {
     streak++;
     cur.setDate(cur.getDate() - 1);
   }
   return streak;
+}
+
+function recordSadhanaReading() {
+  const today = new Date().toISOString().slice(0, 10);
+  const rec = {
+    id: "sb" + Date.now() + Math.random().toString(36).slice(2, 6),
+    date: today,
+  };
+  state.sadhanaReadings = (state.sadhanaReadings || []).concat([rec]);
+  try { saveState(); } catch (_) {}
+  if (typeof tgQueueOrSend === "function") {
+    try { tgQueueOrSend(tgFormatSadhanaMessage(rec)); } catch (_) {}
+  }
+  renderHomeCards();
+  renderSadhanaFooter();
+}
+
+function renderSadhanaFooter() {
+  const footer = $("#sadhana-footer");
+  if (!footer) return;
+  const today = new Date().toISOString().slice(0, 10);
+  const readings = state.sadhanaReadings || [];
+  const doneToday = readings.some(r => r.date === today);
+  const n = readings.length;
+  const streak = computeSadhanaStreak();
+  let summary = "";
+  if (n > 0) {
+    const tunWord = plural(n, ["тхун", "тхуна", "тхунов"]);
+    summary = `<b>${n}</b> ${tunWord}`;
+    if (streak > 1) {
+      const dayWord = plural(streak, ["день", "дня", "дней"]);
+      summary += ` · <b>${streak}</b> ${dayWord} подряд`;
+    }
+  }
+  footer.innerHTML = `
+    <div class="sadhana-footer-summary">${summary}</div>
+    <button class="sadhana-record" id="sadhana-record-btn" type="button" ${doneToday ? "disabled" : ""}>
+      ${doneToday ? "Сегодня уже записан" : "Записать тхун"}
+    </button>
+    <div class="sadhana-footer-note">Нажми, когда полностью прошёл садхану.</div>
+  `;
+  const btn = $("#sadhana-record-btn");
+  if (btn && !doneToday) {
+    btn.addEventListener("click", () => recordSadhanaReading());
+  }
 }
 
 function renderShamathaStats() {
@@ -3449,16 +3527,6 @@ function bindShamatha() {
       renderShamathaSetup();
     }
   });
-  // готовность
-  $$("#main-shamatha .med-ready-item input[type=checkbox]").forEach(cb => {
-    cb.addEventListener("change", () => {
-      const key = cb.dataset.ready;
-      shamathaState.readiness[key] = cb.checked;
-      const lbl = cb.closest(".med-ready-item");
-      if (lbl) lbl.classList.toggle("done", cb.checked);
-      updateShamathaStartButton();
-    });
-  });
   // старт
   const start = $("#sham-start");
   if (start) start.addEventListener("click", () => startShamatha());
@@ -3473,8 +3541,6 @@ function bindShamatha() {
   // ещё одно
   const again = $("#sham-again");
   if (again) again.addEventListener("click", () => {
-    // сбросим готовность для нового ритуала
-    shamathaState.readiness = { silent: false, dnd: false, airplane: false };
     setShamathaPhase("setup");
     renderShamathaSetup();
   });
@@ -3504,6 +3570,7 @@ async function ensureSadhanaLoaded() {
     if (!resp.ok) throw new Error("HTTP " + resp.status);
     const blocks = await resp.json();
     renderSadhana(blocks);
+    renderSadhanaFooter();
     sadhanaLoaded = true;
     if (loading) loading.hidden = true;
   } catch (e) {
@@ -3667,6 +3734,21 @@ function tgFormatShamathaMessage(rec) {
   msg += `${rec.completedMin} мин`;
   if (rec.durationMin !== rec.completedMin) msg += ` (из ${rec.durationMin})`;
   if (rec.interrupted) msg += ` · прервано раньше`;
+  return msg;
+}
+
+function tgFormatSadhanaMessage(rec) {
+  const d = new Date(rec.date);
+  const dateStr = d.toLocaleDateString("ru-RU", { weekday: "short", day: "numeric", month: "long" });
+  const n = (state.sadhanaReadings || []).length;
+  const streak = computeSadhanaStreak();
+  let msg = `📜 <b>Путь Будды</b> · ${dateStr}\n`;
+  const tunWord = plural(n, ["тхун", "тхуна", "тхунов"]);
+  msg += `Садхана прочитана · всего ${n} ${tunWord}`;
+  if (streak > 1) {
+    const dayWord = plural(streak, ["день", "дня", "дней"]);
+    msg += ` · ${streak} ${dayWord} подряд`;
+  }
   return msg;
 }
 
