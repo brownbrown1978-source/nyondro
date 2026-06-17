@@ -1082,6 +1082,57 @@
     margin-top: 10px; font-size: 11.5px; color: var(--ink-3);
     font-style: italic;
   }
+  /* Плавающий навигатор внутри Путь Будды */
+  .sadhana-nav {
+    position: fixed; right: 14px; bottom: 18px; z-index: 70;
+    max-width: 320px;
+  }
+  .sadhana-nav[hidden] { display: none; }
+  .sadhana-nav-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--bg); border: 1px solid var(--line); border-radius: 999px;
+    padding: 10px 14px; min-height: 44px;
+    box-shadow: 0 4px 14px rgba(31,26,20,.12), 0 1px 2px rgba(31,26,20,.06);
+    color: var(--ink-2); font-family: inherit; font-size: 12.5px;
+    cursor: pointer; max-width: 100%;
+  }
+  .sadhana-nav-btn:hover { color: var(--ink); background: var(--bg-2); }
+  .sadhana-nav-label {
+    flex: 1; min-width: 0; white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis; text-align: left;
+    font-family: "EB Garamond", Georgia, serif; font-style: italic;
+    font-size: 13px; color: var(--ink);
+  }
+  .sadhana-nav-arrow { flex-shrink: 0; color: var(--ink-3); }
+  .sadhana-nav.open .sadhana-nav-arrow { transform: rotate(180deg); }
+  .sadhana-nav-pop {
+    position: absolute; right: 0; bottom: calc(100% + 8px);
+    background: var(--bg); border: 1px solid var(--line); border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(31,26,20,.16), 0 2px 4px rgba(31,26,20,.06);
+    min-width: 260px; max-width: 80vw;
+    max-height: 70vh; overflow-y: auto;
+    padding: 6px 0;
+  }
+  .sadhana-nav-pop[hidden] { display: none; }
+  .sadhana-nav-pop ol {
+    list-style: none; margin: 0; padding: 0;
+  }
+  .sadhana-nav-pop li {
+    display: flex; gap: 8px; align-items: baseline;
+    padding: 9px 14px; cursor: pointer;
+    border-bottom: 1px dashed var(--line);
+    font-size: 13.5px; color: var(--ink);
+    line-height: 1.35;
+  }
+  .sadhana-nav-pop li:last-child { border-bottom: 0; }
+  .sadhana-nav-pop li:hover { background: var(--bg-2); }
+  .sadhana-nav-pop li.current {
+    background: var(--bg-2); color: var(--c-blue); font-weight: 600;
+  }
+  .sadhana-nav-pop .num {
+    color: var(--ink-3); font-size: 12px; font-variant-numeric: tabular-nums;
+    min-width: 18px; text-align: right;
+  }
 
   /* Счётчик мантры — компактный, под мантрой */
   .path-counter {
@@ -1606,6 +1657,17 @@
     <div id="sadhana-content" class="path-content"></div>
     <div id="sadhana-footer" class="sadhana-footer"></div>
     <div id="sadhana-loading" class="path-loading">Загружаю садхану…</div>
+
+    <!-- Плавающий навигатор: показывает текущий раздел, по тапу — мини-оглавление -->
+    <div id="sadhana-nav" class="sadhana-nav" hidden>
+      <button class="sadhana-nav-btn" id="sadhana-nav-btn" type="button" aria-label="Перейти к разделу">
+        <span class="sadhana-nav-label" id="sadhana-nav-label">Оглавление</span>
+        <svg class="sadhana-nav-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+      </button>
+      <div class="sadhana-nav-pop" id="sadhana-nav-pop" hidden>
+        <ol id="sadhana-nav-list"></ol>
+      </div>
+    </div>
   </section>
 
   <!-- =====================================================
@@ -1621,6 +1683,7 @@
         <h1>Внешнее Нёндро</h1>
         <div id="lunar-line" class="lunar-line"></div>
       </div>
+      <button class="icon-btn" data-go="ngondro-settings" title="Настройки нёндро" aria-label="Настройки нёндро"><svg class="gear-ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
     </header>
 
 
@@ -1679,10 +1742,11 @@
   
   </section><!-- /main-ngondro -->
 
-  <section class="pane" id="pane-settings">
+  <!-- НАСТРОЙКИ НЁНДРО (стратегия + длина + темп) — открывается из ⚙ в Нёндро -->
+  <section class="pane" id="pane-ngondro-settings">
     <div class="settings-head">
-      <h2>Настройки</h2>
-      <button class="settings-close" id="btn-settings-close" type="button" aria-label="Закрыть настройки">×</button>
+      <h2>Настройки нёндро</h2>
+      <button class="settings-close" id="btn-ngondro-settings-close" type="button" aria-label="Закрыть настройки">×</button>
     </div>
     <div class="settings">
       <div class="row-set">
@@ -1703,6 +1767,19 @@
         <p>Рекомендуется 2–3 тхуна в неделю. При 3 тхун/нед раздел ДЧЖ закрывается за ~3,5 месяца.</p>
         <input type="number" id="set-week" min="1" max="14" value="3">
       </div>
+      <div class="row-set" style="font-size:12px;color:var(--ink-3)">
+        Источник данных: гайд раздела ДЧЖ (Дзогчен Шри Сингха) и фрагменты из «Слов моего всеблагого учителя» Патрула Ринпоче.
+      </div>
+    </div>
+  </section>
+
+  <!-- ОБЩИЕ НАСТРОЙКИ (Telegram + Данные) — открывается из ⚙ на доме -->
+  <section class="pane" id="pane-settings">
+    <div class="settings-head">
+      <h2>Настройки</h2>
+      <button class="settings-close" id="btn-settings-close" type="button" aria-label="Закрыть настройки">×</button>
+    </div>
+    <div class="settings">
       <div class="row-set">
         <label>Резервная копия в Telegram</label>
         <p>После каждой сессии (тхун или сидение шаматхи) короткая запись улетает в твой личный чат с ботом — как дневник практики, всегда под рукой.</p>
@@ -1754,9 +1831,6 @@
           <input type="file" id="import-file" accept="application/json" style="display:none">
           <button class="btn-line danger" id="btn-reset">Сбросить всё</button>
         </div>
-      </div>
-      <div class="row-set" style="font-size:12px;color:var(--ink-3)">
-        Источник данных: гайд раздела ДЧЖ (Дзогчен Шри Сингха) и фрагменты из «Слов моего всеблагого учителя» Патрула Ринпоче.
       </div>
     </div>
   </section>
@@ -3623,6 +3697,111 @@ function renderSadhana(blocks) {
     }
   });
   content.innerHTML = parts.join("");
+
+  // Заполним плавающий навигатор тем же оглавлением
+  buildSadhanaNavMenu(blocks);
+  setupSadhanaNavTracking();
+}
+
+/* Плавающий навигатор: пилюля справа снизу с текущим разделом и мини-оглавлением */
+let sadhanaNavSections = [];   // [{id, text, num}]
+let sadhanaScrollHandler = null;
+
+function buildSadhanaNavMenu(blocks) {
+  sadhanaNavSections = [];
+  let n = 0;
+  blocks.forEach((b, i) => {
+    if (b.t === "1" || b.t === "3") {
+      n++;
+      sadhanaNavSections.push({ id: "sb-" + i, text: b.x, num: n });
+    }
+  });
+  const list = $("#sadhana-nav-list");
+  if (!list) return;
+  list.innerHTML = sadhanaNavSections.map(s =>
+    `<li data-target="${s.id}"><span class="num">${s.num}</span><span>${escapeHTML(s.text)}</span></li>`
+  ).join("");
+  list.querySelectorAll("li[data-target]").forEach(li => {
+    li.addEventListener("click", () => {
+      const target = document.getElementById(li.dataset.target);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      hideSadhanaNavPop();
+    });
+  });
+}
+
+function setupSadhanaNavTracking() {
+  const wrap = $("#sadhana-nav");
+  const btn = $("#sadhana-nav-btn");
+  const pop = $("#sadhana-nav-pop");
+  if (!wrap || !btn || !pop) return;
+  // Тоггл попапа
+  btn.onclick = e => {
+    e.stopPropagation();
+    if (pop.hidden) showSadhanaNavPop(); else hideSadhanaNavPop();
+  };
+  // Клик вне — закрыть попап
+  document.addEventListener("click", e => {
+    if (!pop.hidden && !wrap.contains(e.target)) hideSadhanaNavPop();
+  });
+  // Скролл-трекинг
+  if (sadhanaScrollHandler) {
+    window.removeEventListener("scroll", sadhanaScrollHandler);
+  }
+  sadhanaScrollHandler = () => updateSadhanaNav();
+  window.addEventListener("scroll", sadhanaScrollHandler, { passive: true });
+  updateSadhanaNav();
+}
+
+function updateSadhanaNav() {
+  const wrap = $("#sadhana-nav");
+  const label = $("#sadhana-nav-label");
+  if (!wrap || !label) return;
+  // Показывать только если в Пути Будды и пролистнули мимо оглавления
+  const inSadhana = $("#main-sadhana") && $("#main-sadhana").classList.contains("active");
+  const toc = $("#sadhana-toc");
+  const scrollY = window.scrollY || window.pageYOffset || 0;
+  const tocBottom = toc ? toc.getBoundingClientRect().bottom + scrollY : 0;
+  const shouldShow = inSadhana && scrollY > tocBottom - 60;
+  wrap.hidden = !shouldShow;
+  if (!shouldShow) return;
+  // Найти текущий раздел: последний h1/h3 с offsetTop ниже scrollY + небольшой запас
+  const anchor = scrollY + 100;
+  let current = null;
+  for (const s of sadhanaNavSections) {
+    const el = document.getElementById(s.id);
+    if (!el) continue;
+    if (el.offsetTop <= anchor) current = s;
+    else break;
+  }
+  if (current) {
+    label.textContent = current.text;
+    // Подсветить активный пункт в попапе
+    $$("#sadhana-nav-list li").forEach(li => {
+      li.classList.toggle("current", li.dataset.target === current.id);
+    });
+  } else {
+    label.textContent = "Оглавление";
+  }
+}
+
+function showSadhanaNavPop() {
+  const wrap = $("#sadhana-nav");
+  const pop = $("#sadhana-nav-pop");
+  if (!wrap || !pop) return;
+  pop.hidden = false;
+  wrap.classList.add("open");
+  // Скроллим активный элемент в видимую зону попапа
+  const current = pop.querySelector("li.current");
+  if (current) current.scrollIntoView({ block: "nearest" });
+}
+
+function hideSadhanaNavPop() {
+  const wrap = $("#sadhana-nav");
+  const pop = $("#sadhana-nav-pop");
+  if (!wrap || !pop) return;
+  pop.hidden = true;
+  wrap.classList.remove("open");
 }
 
 /* ============================================================
@@ -3938,12 +4117,14 @@ let lastMainBeforeSettings = "home";
 
 function switchView(name) {
   const validMain = ["home", "shamatha", "sadhana", "ngondro"];
-  const isSettings = name === "settings";
+  const overlayName = (name === "settings" || name === "ngondro-settings") ? name : null;
   $$(".main-pane").forEach(p => {
-    p.classList.toggle("active", !isSettings && p.id === "main-" + name);
+    p.classList.toggle("active", !overlayName && p.id === "main-" + name);
   });
-  const settingsPane = $("#pane-settings");
-  if (settingsPane) settingsPane.classList.toggle("active", isSettings);
+  const globalSettings = $("#pane-settings");
+  const ngondroSettings = $("#pane-ngondro-settings");
+  if (globalSettings) globalSettings.classList.toggle("active", overlayName === "settings");
+  if (ngondroSettings) ngondroSettings.classList.toggle("active", overlayName === "ngondro-settings");
   if (validMain.includes(name)) {
     state.mainPane = name;
     try { saveState(); } catch (_) {}
@@ -3951,35 +4132,44 @@ function switchView(name) {
   // Лениво подгружаем садхану при первом открытии раздела
   if (name === "sadhana" && typeof ensureSadhanaLoaded === "function") {
     ensureSadhanaLoaded();
+    // Обновим навигатор после открытия (виден только в этой вкладке)
+    if (typeof updateSadhanaNav === "function") setTimeout(updateSadhanaNav, 30);
+  } else {
+    // Не в Пути Будды — спрятать навигатор и попап
+    if (typeof hideSadhanaNavPop === "function") hideSadhanaNavPop();
+    const navWrap = $("#sadhana-nav");
+    if (navWrap) navWrap.hidden = true;
   }
-  // jsdom не реализует scrollTo и шумит в virtualConsole — пропускаем в тестовой среде
   if (typeof navigator !== "undefined" && !/jsdom/i.test(navigator.userAgent || "")) {
     try { window.scrollTo(0, 0); } catch (_) {}
   }
 }
 
-// Делегирование кликов: любой элемент с data-go="..." переключает вид.
-// ⚙ — toggle: первый клик в Настройки, повторный — возврат к предыдущему пути.
+// Делегирование кликов: data-go переключает вид; ⚙ — toggle.
 document.body.addEventListener("click", e => {
   const t = e.target.closest("[data-go]");
   if (!t) return;
   const target = t.dataset.go;
-  if (target === "settings") {
-    const settingsPane = $("#pane-settings");
-    if (settingsPane && settingsPane.classList.contains("active")) {
+  const isOverlay = target === "settings" || target === "ngondro-settings";
+  if (isOverlay) {
+    const paneId = target === "settings" ? "pane-settings" : "pane-ngondro-settings";
+    const pane = $("#" + paneId);
+    if (pane && pane.classList.contains("active")) {
       switchView(lastMainBeforeSettings || "home");
     } else {
       lastMainBeforeSettings = state.mainPane || "home";
-      switchView("settings");
+      switchView(target);
     }
   } else {
     switchView(target);
   }
 });
 
-// × внутри пана Настроек — возврат к предыдущему пути
+// × внутри обоих панов настроек — возврат к предыдущему пути
 const closeBtn = $("#btn-settings-close");
 if (closeBtn) closeBtn.addEventListener("click", () => switchView(lastMainBeforeSettings || "home"));
+const closeNgondroBtn = $("#btn-ngondro-settings-close");
+if (closeNgondroBtn) closeNgondroBtn.addEventListener("click", () => switchView(lastMainBeforeSettings || "home"));
 
 // Инициализация: восстановим последний путь (или home по умолчанию)
 switchView(state.mainPane || "home");
