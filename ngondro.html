@@ -903,9 +903,15 @@
   .path-card .status .miss { color: var(--c-red); }
   .path-card .status .done { color: var(--c-green); }
   .path-card .status .gold { color: var(--gold-text); }
-  /* «Пока ни одного…», «не открывал…» — тихо */
+  /* «Пока ни одного…», «не открывал…» — тихо.
+     Сбрасываем фон/рамку, унаследованные от общего .empty (журнал нёндро). */
   .path-card .status.empty {
     font-size: 11.5px; font-style: italic; color: var(--ink-3); opacity: .8;
+    background: transparent; border: 0; padding: 0;
+  }
+  /* То же для приглушённой upcoming-карточки */
+  .path-card.upcoming .status {
+    background: transparent; border: 0; padding: 0;
   }
   /* Карточка-«заглушка» — раздел собирается. Полупрозрачная, без hover-эффекта,
      намёк, что клик пока не приведёт к содержательному экрану. */
