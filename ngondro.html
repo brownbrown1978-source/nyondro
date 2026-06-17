@@ -1397,6 +1397,32 @@
   }
   .tg-summary-btn:hover { background: var(--bg-2); color: var(--ink); }
 
+  .opt-tag {
+    display: inline-block; margin-left: 8px; vertical-align: middle;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.02em;
+    color: var(--ink-3); background: var(--bg);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 2px 8px;
+  }
+  .tg-intro { color: var(--ink-2); font-size: 13px; line-height: 1.5; margin: 4px 0 10px; }
+  .tg-priv  { color: var(--ink-3); font-size: 12px; line-height: 1.5; margin: 10px 0 6px; }
+  .tg-example {
+    margin: 6px 0 10px;
+    border: 1px solid var(--line); border-radius: 12px;
+    background: var(--bg); padding: 10px 12px;
+  }
+  .tg-example-head {
+    font-size: 11px; color: var(--ink-3); text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 6px;
+  }
+  .tg-example-bubble {
+    background: var(--bg-2);
+    border-radius: 10px; padding: 10px 12px;
+    font-size: 13px; line-height: 1.55; color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  }
+  .tg-example-bubble div + div { margin-top: 2px; }
+
   .tg-status {
     display: inline-flex; align-items: center; gap: 6px;
     font-size: 12px;
@@ -1781,13 +1807,22 @@
     </div>
     <div class="settings">
       <div class="row-set">
-        <label>Резервная копия в Telegram</label>
-        <p>После каждой сессии (тхун или сидение шаматхи) короткая запись улетает в твой личный чат с ботом — как дневник практики, всегда под рукой.</p>
+        <label>Дневник практики в Telegram <span class="opt-tag">не обязательно</span></label>
+        <p class="tg-intro">Если хочешь — приложение может после каждого тхуна, шаматхи или прочтения садханы отправлять короткую запись в твой личный чат с Telegram-ботом. Получится живой дневник: всегда в кармане, доступен с любого устройства, и заодно страховка — статистика останется, даже если сменишь телефон или почистишь браузер.</p>
+        <div class="tg-example" aria-label="Пример сообщения">
+          <div class="tg-example-head">Так выглядит сообщение</div>
+          <div class="tg-example-bubble">
+            <div><b>🪷 Тхун · 9 июня</b></div>
+            <div>48 мин · 10 кругов · 3 простирания</div>
+            <div>Чувство: ★★★★☆</div>
+          </div>
+        </div>
+        <p class="tg-priv">Бот свой и личный — ты создаёшь его сам в Telegram, никто кроме тебя его не видит. Это не наш сервер: сообщения идут напрямую из браузера в Telegram.</p>
         <div class="tg-summary">
           <span class="tg-status" id="tg-status"><span class="tg-dot"></span><span id="tg-status-text">не настроено</span></span>
         </div>
         <details class="tg-setup" id="tg-setup">
-          <summary>Как настроить?</summary>
+          <summary>Как настроить (5 шагов)</summary>
           <div class="tg-body">
             <ol class="tg-steps">
               <li>Открой Telegram, найди бота <code>@BotFather</code>, отправь ему <code>/newbot</code>. Придумай имя и адрес (он должен заканчиваться на <code>bot</code>).</li>
