@@ -1689,6 +1689,48 @@
         <input type="number" id="set-week" min="1" max="14" value="3">
       </div>
       <div class="row-set">
+        <label>Резервная копия в Telegram</label>
+        <p>После каждой сессии (тхун или сидение шаматхи) короткая запись улетает в твой личный чат с ботом — как дневник практики, всегда под рукой.</p>
+        <div class="tg-summary">
+          <span class="tg-status" id="tg-status"><span class="tg-dot"></span><span id="tg-status-text">не настроено</span></span>
+        </div>
+        <details class="tg-setup" id="tg-setup">
+          <summary>Как настроить?</summary>
+          <div class="tg-body">
+            <ol class="tg-steps">
+              <li>Открой Telegram, найди бота <code>@BotFather</code>, отправь ему <code>/newbot</code>. Придумай имя и адрес (он должен заканчиваться на <code>bot</code>).</li>
+              <li>BotFather пришлёт токен — длинная строка <code>123456:AAAA…</code>. Скопируй её.</li>
+              <li>Найди свой только что созданный бот по адресу, нажми <code>Start</code> — это разрешает ему писать тебе.</li>
+              <li>Открой бота <code>@userinfobot</code> — он ответит твоим <code>Chat ID</code> (число).</li>
+              <li>Вставь токен и Chat ID в поля ниже, нажми «Проверить связь». Если придёт тестовое сообщение в Telegram — всё в порядке, включай отправку.</li>
+            </ol>
+            <div class="tg-fields">
+              <div>
+                <label for="tg-token">Токен бота</label>
+                <input id="tg-token" type="text" autocomplete="off" placeholder="123456789:AAFsome-long-string-here">
+              </div>
+              <div>
+                <label for="tg-chat">Chat ID</label>
+                <input id="tg-chat" type="text" autocomplete="off" inputmode="numeric" placeholder="123456789">
+              </div>
+            </div>
+            <div class="tg-actions">
+              <button class="tg-test" id="tg-test" type="button">Проверить связь</button>
+              <button class="tg-save" id="tg-save" type="button">Сохранить</button>
+              <button class="tg-clear" id="tg-clear" type="button">Удалить настройки</button>
+            </div>
+            <div class="tg-result" id="tg-result" hidden></div>
+            <div class="tg-enable-row">
+              <span class="lbl">Отправлять автоматически</span>
+              <button class="med-toggle" id="tg-enabled-toggle" type="button" aria-label="Автоотправка вкл/выкл"></button>
+            </div>
+            <div class="tg-revoke-hint">
+              Если потерял телефон — отзови токен через <code>@BotFather</code> командой <code>/revoke</code>, и текущий перестанет работать.
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="row-set">
         <label>Данные</label>
         <p>Всё хранится в этом браузере (localStorage). Скачайте JSON, если меняете устройство.</p>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -3351,6 +3393,10 @@ function finishShamatha(interrupted) {
   };
   state.meditations = (state.meditations || []).concat([rec]);
   try { saveState(); } catch (_) {}
+  // Telegram-бекап
+  if (typeof tgQueueOrSend === "function") {
+    try { tgQueueOrSend(tgFormatShamathaMessage(rec)); } catch (_) {}
+  }
   // экран после сидения
   const t = $("#sham-done-title");
   const sb = $("#sham-done-sub");
@@ -3548,6 +3594,197 @@ function renderSadhana(blocks) {
 }
 
 /* ============================================================
+ *  TELEGRAM-БЕКАП
+ *  Отправляет короткие сообщения в личный чат пользователя
+ *  через его собственного бота. Очередь при оффлайне.
+ * ========================================================== */
+const TG_CFG_KEY = "ngondro_tg_v1";
+const TG_QUEUE_KEY = "ngondro_tg_queue_v1";
+
+function tgLoadConfig() {
+  try {
+    const raw = localStorage.getItem(TG_CFG_KEY);
+    if (!raw) return { token: "", chat: "", enabled: false };
+    return Object.assign({ token: "", chat: "", enabled: false }, JSON.parse(raw));
+  } catch (_) { return { token: "", chat: "", enabled: false }; }
+}
+function tgSaveConfig(cfg) {
+  try { localStorage.setItem(TG_CFG_KEY, JSON.stringify(cfg)); } catch (_) {}
+}
+function tgLoadQueue() {
+  try {
+    const raw = localStorage.getItem(TG_QUEUE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (_) { return []; }
+}
+function tgSaveQueue(q) {
+  try { localStorage.setItem(TG_QUEUE_KEY, JSON.stringify(q)); } catch (_) {}
+}
+
+async function tgSendMessage(token, chatId, text) {
+  const url = `https://api.telegram.org/bot${encodeURIComponent(token)}/sendMessage`;
+  const resp = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ chat_id: chatId, text, parse_mode: "HTML", disable_web_page_preview: true }),
+  });
+  const data = await resp.json();
+  if (!data.ok) throw new Error(data.description || ("HTTP " + resp.status));
+  return data;
+}
+
+async function tgFlushQueue() {
+  const cfg = tgLoadConfig();
+  if (!cfg.enabled || !cfg.token || !cfg.chat) return;
+  let q = tgLoadQueue();
+  if (!q.length) return;
+  const remaining = [];
+  for (const msg of q) {
+    try {
+      await tgSendMessage(cfg.token, cfg.chat, msg);
+    } catch (_) {
+      remaining.push(msg);  // оставим в очереди на следующий раз
+    }
+  }
+  tgSaveQueue(remaining);
+  tgUpdateStatus();
+}
+
+function tgQueueOrSend(text) {
+  const cfg = tgLoadConfig();
+  if (!cfg.enabled || !cfg.token || !cfg.chat) return;
+  // Попытка отправить, в случае ошибки — в очередь
+  tgSendMessage(cfg.token, cfg.chat, text).catch(() => {
+    const q = tgLoadQueue();
+    q.push(text);
+    tgSaveQueue(q);
+    tgUpdateStatus();
+  });
+}
+
+function tgUpdateStatus() {
+  const cfg = tgLoadConfig();
+  const q = tgLoadQueue();
+  const status = $("#tg-status");
+  const text = $("#tg-status-text");
+  if (!status || !text) return;
+  status.className = "tg-status";
+  if (!cfg.token || !cfg.chat) {
+    text.textContent = "не настроено";
+  } else if (!cfg.enabled) {
+    text.textContent = "настроено, отправка выключена";
+  } else if (q.length) {
+    status.classList.add("queue");
+    text.textContent = `в очереди ${q.length} запис${q.length === 1 ? "ь" : (q.length < 5 ? "и" : "ей")}`;
+  } else {
+    status.classList.add("connected");
+    text.textContent = "подключено, отправляет автоматически";
+  }
+}
+
+function tgFormatTunMessage(tun, attrName, sectionName) {
+  const d = new Date(tun.date);
+  const dateStr = d.toLocaleDateString("ru-RU", { weekday: "short", day: "numeric", month: "long" });
+  const stars = "★".repeat(tun.feel || 0).padEnd(5, "☆");
+  let msg = `🪷 <b>Тхун</b> · ${dateStr}, ${tun.length} мин\n`;
+  msg += `«${attrName}» · <b>${tun.circles}</b> кругов`;
+  if (tun.prostr) msg += ` · ${tun.prostr} простираний`;
+  msg += `\n${sectionName}\n`;
+  msg += `Чувство: ${stars}`;
+  if (tun.note) msg += `\n«${tun.note}»`;
+  return msg;
+}
+
+function tgFormatShamathaMessage(rec) {
+  const d = new Date(rec.date);
+  const dateStr = d.toLocaleDateString("ru-RU", { weekday: "short", day: "numeric", month: "long" });
+  let msg = `🕯 <b>Шаматха</b> · ${dateStr}\n`;
+  msg += `${rec.completedMin} мин`;
+  if (rec.durationMin !== rec.completedMin) msg += ` (из ${rec.durationMin})`;
+  if (rec.interrupted) msg += ` · прервано раньше`;
+  if (rec.intervalMin) msg += `\nИнтервальный бэлл каждые ${rec.intervalMin} мин`;
+  return msg;
+}
+
+function tgBind() {
+  const cfg = tgLoadConfig();
+  const tokenEl = $("#tg-token");
+  const chatEl = $("#tg-chat");
+  const tgl = $("#tg-enabled-toggle");
+  if (tokenEl) tokenEl.value = cfg.token || "";
+  if (chatEl) chatEl.value = cfg.chat || "";
+  if (tgl) tgl.classList.toggle("on", !!cfg.enabled);
+
+  const test = $("#tg-test");
+  const save = $("#tg-save");
+  const clear = $("#tg-clear");
+  const result = $("#tg-result");
+
+  function showResult(ok, text) {
+    if (!result) return;
+    result.hidden = false;
+    result.className = "tg-result " + (ok ? "ok" : "fail");
+    result.textContent = text;
+  }
+
+  if (test) test.addEventListener("click", async () => {
+    const token = tokenEl.value.trim();
+    const chat = chatEl.value.trim();
+    if (!token || !chat) { showResult(false, "Введи токен и Chat ID"); return; }
+    test.disabled = true;
+    test.textContent = "Проверяю…";
+    try {
+      await tgSendMessage(token, chat,
+        "✓ <b>Связь работает.</b>\nЭто тестовое сообщение из приложения «Дзогчен Шри Сингха». Проверь, что оно пришло в нужный чат.");
+      showResult(true, "Сообщение отправлено — проверь Telegram. Если пришло, нажми «Сохранить» и включи автоотправку.");
+    } catch (e) {
+      showResult(false, "Не получилось: " + e.message + ". Чаще всего причина — бот не написал тебе первым (нажми Start в чате с ним) или неверный Chat ID.");
+    } finally {
+      test.disabled = false;
+      test.textContent = "Проверить связь";
+    }
+  });
+
+  if (save) save.addEventListener("click", () => {
+    const token = tokenEl.value.trim();
+    const chat = chatEl.value.trim();
+    if (!token || !chat) { showResult(false, "Введи токен и Chat ID"); return; }
+    const cur = tgLoadConfig();
+    tgSaveConfig({ token, chat, enabled: cur.enabled });
+    showResult(true, "Настройки сохранены. Включи автоотправку, чтобы записи начали уходить.");
+    tgUpdateStatus();
+  });
+
+  if (clear) clear.addEventListener("click", () => {
+    if (!confirm("Удалить настройки Telegram? Очередь неотправленного тоже очистится.")) return;
+    tgSaveConfig({ token: "", chat: "", enabled: false });
+    tgSaveQueue([]);
+    if (tokenEl) tokenEl.value = "";
+    if (chatEl) chatEl.value = "";
+    if (tgl) tgl.classList.remove("on");
+    if (result) result.hidden = true;
+    tgUpdateStatus();
+  });
+
+  if (tgl) tgl.addEventListener("click", () => {
+    const cur = tgLoadConfig();
+    if (!cur.token || !cur.chat) {
+      showResult(false, "Сначала сохрани токен и Chat ID");
+      return;
+    }
+    cur.enabled = !cur.enabled;
+    tgSaveConfig(cur);
+    tgl.classList.toggle("on", cur.enabled);
+    tgUpdateStatus();
+    if (cur.enabled) tgFlushQueue();
+  });
+
+  tgUpdateStatus();
+  // При старте — попытка дослать накопленное
+  if (cfg.enabled && cfg.token && cfg.chat) tgFlushQueue();
+}
+
+/* ============================================================
  *  МОДАЛ — добавление / редактирование тхуна
  * ========================================================== */
 let editingId = null;
@@ -3613,12 +3850,22 @@ $("#f-save").addEventListener("click", () => {
     feel: +($("#f-feel").dataset.value || 0),
     note: $("#f-note").value.trim(),
   };
-  if (editingId) {
+  const isEdit = !!editingId;
+  if (isEdit) {
     state.tuns = state.tuns.map(x => x.id === editingId ? tun : x);
   } else {
     state.tuns.push(tun);
   }
   saveState();
+  // Telegram-бекап только для новых записей, не для правок
+  if (!isEdit && typeof tgQueueOrSend === "function") {
+    try {
+      const attr = ATTRS[key] || {};
+      const attrName = (attr.items && attr.items[+idxRaw]) || "—";
+      const sec = SECTIONS[attr.section] || { title: "" };
+      tgQueueOrSend(tgFormatTunMessage(tun, attrName, sec.title));
+    } catch (_) {}
+  }
   closeModal();
   renderAll();
 });
@@ -3751,6 +3998,7 @@ loadShamathaSetup();
 bindShamatha();
 renderShamathaSetup();
 setShamathaPhase("setup");
+tgBind();
 renderAll();
 
 /* ============================================================
