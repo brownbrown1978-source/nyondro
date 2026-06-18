@@ -1005,8 +1005,10 @@
   .path-h1 {
     font-family: "EB Garamond", Georgia, serif;
     font-size: 22px; font-weight: 700; color: var(--ink);
-    text-align: center; margin: 32px 0 16px;
-    padding-bottom: 10px; border-bottom: 1px solid var(--line);
+    text-align: center; margin: 96px 0 24px;
+    padding: 24px 0 14px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     letter-spacing: -.01em;
   }
   .path-h1:first-child { margin-top: 10px; }
@@ -1029,6 +1031,39 @@
     font-family: "EB Garamond", "Iowan Old Style", Georgia, serif;
     font-size: 15.5px; line-height: 1.55; color: var(--ink);
     text-align: center; margin: 0;
+  }
+  /* Нумерованный подзаголовок «1. Мантра благословения…» — отделяем
+     полужирным курсивом и большим отступом сверху, чтобы было видно
+     начало новой молитвы. */
+  .path-nh {
+    font-family: "EB Garamond", Georgia, serif;
+    font-style: italic; font-weight: 700;
+    font-size: 16px; color: var(--ink);
+    text-align: center;
+    margin: 28px 0 10px;
+  }
+  /* Финал практики «Этим завершается…» — центрированно,
+     с двумя лотос-орнаментами по краям. */
+  .path-end {
+    display: flex; align-items: center; justify-content: center;
+    gap: 14px; margin: 36px auto 24px; padding: 18px 16px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    max-width: 36em;
+  }
+  .path-end-text {
+    font-family: "EB Garamond", Georgia, serif;
+    font-style: italic; font-size: 15px;
+    color: var(--ink-2); text-align: center; flex: 0 1 auto;
+  }
+  .path-end-orn {
+    width: 28px; height: auto; opacity: 0.55;
+    flex: 0 0 auto;
+    /* Лотос — белый на чёрном; инвертируем под светлую тему */
+    filter: invert(1);
+  }
+  @media (prefers-color-scheme: dark) {
+    .path-end-orn { filter: none; opacity: 0.7; }
   }
   .path-mantra {
     font-family: "EB Garamond", Georgia, serif;
@@ -3745,12 +3780,14 @@ function renderSadhana(blocks) {
   if (!content) return;
   const parts = [];
   blocks.forEach((b, i) => {
-    const id = (b.t === "1" || b.t === "3" || b.t === "2" || (b.t === "p" && b.n)) ? ` id="sb-${i}"` : "";
+    const id = (b.t === "1" || b.t === "3" || b.t === "2" || ((b.t === "p" || b.t === "nh") && b.n)) ? ` id="sb-${i}"` : "";
     switch (b.t) {
       case "1": parts.push(`<h2 class="path-h1"${id}>${escapeHTML(b.x)}</h2>`); break;
       case "2": parts.push(`<h3 class="path-h2"${id}>${escapeHTML(b.x)}</h3>`); break;
       case "3": parts.push(`<h3 class="path-h3${b.i ? " sub" : ""}"${id}>${escapeHTML(b.x)}</h3>`); break;
       case "p": parts.push(`<div class="path-prayer">${escapeHTML(b.x)}</div>`); break;
+      case "nh": parts.push(`<div class="path-nh"${id}>${escapeHTML(b.x)}</div>`); break;
+      case "d": parts.push(`<div class="path-end"${id}><img class="path-end-orn" src="ornament_lotus.png" alt=""><div class="path-end-text">${escapeHTML(b.x)}</div><img class="path-end-orn" src="ornament_lotus.png" alt=""></div>`); break;
       case "m":
         parts.push(`<div class="path-mantra">${escapeHTML(b.x)}${b.c ? `<div class="path-mantra-count">${b.c} раз</div>` : ""}</div>`);
         break;
