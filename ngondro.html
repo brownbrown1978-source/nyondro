@@ -3721,10 +3721,10 @@ function renderSadhana(blocks) {
     let html = "";
     let n = 0;
     blocks.forEach((b, i) => {
-      const inNav = (b.t === "1" || b.t === "3" || (b.t === "2" && b.n));
+      const inNav = (b.t === "1" || b.t === "3" || ((b.t === "2" || b.t === "p") && b.n));
       if (inNav) {
         n++;
-        const sub = b.i || (b.t === "2");
+        const sub = b.i || (b.t === "2") || (b.t === "p");
         const cls = sub ? ' class="sub"' : '';
         html += `<li${cls}><span class="toc-num">${n}</span><a href="#sb-${i}" data-toc="${i}">${escapeHTML(b.x)}</a></li>`;
       }
@@ -3745,7 +3745,7 @@ function renderSadhana(blocks) {
   if (!content) return;
   const parts = [];
   blocks.forEach((b, i) => {
-    const id = (b.t === "1" || b.t === "3" || b.t === "2") ? ` id="sb-${i}"` : "";
+    const id = (b.t === "1" || b.t === "3" || b.t === "2" || (b.t === "p" && b.n)) ? ` id="sb-${i}"` : "";
     switch (b.t) {
       case "1": parts.push(`<h2 class="path-h1"${id}>${escapeHTML(b.x)}</h2>`); break;
       case "2": parts.push(`<h3 class="path-h2"${id}>${escapeHTML(b.x)}</h3>`); break;
@@ -3774,10 +3774,10 @@ function buildSadhanaNavMenu(blocks) {
   sadhanaNavSections = [];
   let n = 0;
   blocks.forEach((b, i) => {
-    const inNav = (b.t === "1" || b.t === "3" || (b.t === "2" && b.n));
+    const inNav = (b.t === "1" || b.t === "3" || ((b.t === "2" || b.t === "p") && b.n));
     if (inNav) {
       n++;
-      const sub = !!b.i || b.t === "2";
+      const sub = !!b.i || b.t === "2" || b.t === "p";
       sadhanaNavSections.push({ id: "sb-" + i, text: b.x, num: n, sub });
     }
   });
