@@ -1005,13 +1005,27 @@
   .path-h1 {
     font-family: "EB Garamond", Georgia, serif;
     font-size: 22px; font-weight: 700; color: var(--ink);
-    text-align: center; margin: 96px 0 24px;
-    padding: 24px 0 14px;
+    text-align: center; margin: 32px 0 24px;
+    padding: 14px 0;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     letter-spacing: -.01em;
   }
   .path-h1:first-child { margin-top: 10px; }
+  /* Hero-иллюстрация перед практикой — символ-обложка раздела.
+     Большой воздух сверху создаёт эффект «новой страницы». */
+  .path-hero {
+    text-align: center;
+    margin: 80px auto 0;
+    padding-top: 12px;
+  }
+  .path-hero img {
+    max-width: 220px; width: 80%; height: auto;
+    opacity: 0.95;
+    /* Лёгкая обводка чтобы линейные рисунки не тонули в фоне */
+  }
+  /* После hero у h1 верхний margin не нужен */
+  .path-hero + .path-h1 { margin-top: 14px; }
   .path-h2 {
     font-family: "EB Garamond", Georgia, serif;
     font-size: 18px; font-weight: 600; color: var(--ink);
@@ -3749,6 +3763,17 @@ async function ensureSadhanaLoaded() {
   }
 }
 
+// Соответствие крупных практик иллюстрациям из PDF «Путь Будды»
+const SADHANA_HEROES = {
+  "ПРЕДВАРИТЕЛЬНАЯ ПРАКТИКА": "predvaritelnaya.png",  // Слон шаматхи (9 стадий)
+  "ПРАКТИКА ИЗУЧЕНИЯ":         "izucheniya.png",       // Манджушри
+  "ПРАКТИКА СУТРЫ":            "sutry.png",            // Будда Шакьямуни
+  "ПРАКТИКА БОДХИЧИТТЫ":       "bodhichitty.png",      // Авалокитешвара (4-х рукий)
+  "ПРАКТИКА ТАНТРЫ":           "tantry.png",           // Падмасамбхава
+  "ПРАКТИКА ДЗОГЧЕН":          "dzogchen.png",         // Ваджрасаттва
+  "ЗАКЛЮЧИТЕЛЬНАЯ ПРАКТИКА":   "zaklyuchitelnaya.png", // Тара
+};
+
 function renderSadhana(blocks) {
   // Содержание
   const tocList = $("#sadhana-toc-list");
@@ -3782,7 +3807,12 @@ function renderSadhana(blocks) {
   blocks.forEach((b, i) => {
     const id = (b.t === "1" || b.t === "3" || b.t === "2" || ((b.t === "p" || b.t === "nh") && b.n)) ? ` id="sb-${i}"` : "";
     switch (b.t) {
-      case "1": parts.push(`<h2 class="path-h1"${id}>${escapeHTML(b.x)}</h2>`); break;
+      case "1": {
+        const hero = SADHANA_HEROES[b.x.trim()];
+        if (hero) parts.push(`<div class="path-hero"><img src="hero/${hero}" alt=""></div>`);
+        parts.push(`<h2 class="path-h1"${id}>${escapeHTML(b.x)}</h2>`);
+        break;
+      }
       case "2": parts.push(`<h3 class="path-h2"${id}>${escapeHTML(b.x)}</h3>`); break;
       case "3": parts.push(`<h3 class="path-h3${b.i ? " sub" : ""}"${id}>${escapeHTML(b.x)}</h3>`); break;
       case "p": parts.push(`<div class="path-prayer">${escapeHTML(b.x)}</div>`); break;
