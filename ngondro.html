@@ -1121,6 +1121,16 @@
     /* нет border-bottom — линия только сверху, как разделитель */
   }
   .path-spacer { height: 6px; }
+  .path-spacer.big { height: 18px; }
+  /* «(N) …» — начало пронумерованного упражнения, как в PDF: визуальный «воздух» сверху */
+  .path-prayer.numbered,
+  .path-mantra.numbered,
+  .path-instr.numbered { margin-top: 14px; }
+  /* «~ N ~» — мелкий разделитель внутри длинного нумерованного списка (37 наставлений и т.п.) */
+  .path-prayer.divider-n {
+    font-size: 13px; font-style: italic; color: var(--ink-3);
+    margin: 22px 0 4px; opacity: 0.75; letter-spacing: .15em;
+  }
   .path-loading {
     text-align: center; padding: 32px 16px;
     color: var(--ink-3); font-style: italic; font-size: 14px;
@@ -3816,20 +3826,33 @@ function renderSadhana(blocks) {
       case "1": parts.push(`<h2 class="path-h1"${id}>${escapeHTML(b.x)}</h2>`); break;
       case "2": parts.push(`<h3 class="path-h2"${id}>${escapeHTML(b.x)}</h3>`); break;
       case "3": parts.push(`<h3 class="path-h3${b.i ? " sub" : ""}"${id}>${escapeHTML(b.x)}</h3>`); break;
-      case "p": parts.push(`<div class="path-prayer">${escapeHTML(b.x)}</div>`); break;
+      case "p": {
+        // «(N) …» — начало пронумерованного упражнения: чуть больше воздуха сверху
+        const numCls = /^\s*\(\d+\)/.test(b.x) ? " numbered" : "";
+        // «~ N ~» — пронумерованный разделитель внутри длинного списка (37 пунктов и т.п.)
+        const divCls = /^\s*~\s*\d+\s*~\s*$/.test(b.x) ? " divider-n" : "";
+        parts.push(`<div class="path-prayer${numCls}${divCls}">${escapeHTML(b.x)}</div>`);
+        break;
+      }
       case "nh": parts.push(`<div class="path-nh"${id}>${escapeHTML(b.x)}</div>`); break;
       case "d": parts.push(`<div class="path-end"${id}><img class="path-end-orn" src="ornament_lotus.png" alt=""><div class="path-end-text">${escapeHTML(b.x)}</div><img class="path-end-orn" src="ornament_lotus.png" alt=""></div>`); break;
-      case "m":
-        parts.push(`<div class="path-mantra">${escapeHTML(b.x)}${b.c ? `<div class="path-mantra-count">(Повторите ${b.c} ${plural(b.c, ["раз","раза","раз"])})</div>` : ""}</div>`);
+      case "m": {
+        const numCls = /^\s*\(\d+\)/.test(b.x) ? " numbered" : "";
+        parts.push(`<div class="path-mantra${numCls}">${escapeHTML(b.x)}${b.c ? `<div class="path-mantra-count">(Повторите ${b.c} ${plural(b.c, ["раз","раза","раз"])})</div>` : ""}</div>`);
         break;
-      case "i": parts.push(`<div class="path-instr">${escapeHTML(b.x)}</div>`); break;
+      }
+      case "i": {
+        const numCls = /^\s*\(\d+\)/.test(b.x) ? " numbered" : "";
+        parts.push(`<div class="path-instr${numCls}">${escapeHTML(b.x)}</div>`);
+        break;
+      }
       case "k": parts.push(`<div class="path-marker${b.big ? " big" : ""}">${escapeHTML(b.x)}</div>`); break;
       case "img": {
         const cls = b.size ? ` ${b.size}` : "";
         parts.push(`<div class="path-img${cls}"><img src="pb/${b.src}" alt="" loading="lazy"></div>`);
         break;
       }
-      case "s": parts.push(`<div class="path-spacer"></div>`); break;
+      case "s": parts.push(`<div class="path-spacer${b.big ? " big" : ""}"></div>`); break;
     }
   });
   content.innerHTML = parts.join("");
