@@ -1094,15 +1094,19 @@
     font-family: "EB Garamond", Georgia, serif;
     font-size: 20px; letter-spacing: .4em; font-weight: 600;
   }
-  /* «Большой» маркер — для четырёх благородных истин: широкий разрыв и
-     отчётливый поджо́г: видно, где начинается следующая истина */
+  /* «Большой» маркер — для четырёх благородных истин.
+     ВАЖНО: должен быть ВТОРИЧЕН относительно заголовка раздела h3,
+     просто отделять одну истину от другой. Никакого синего и борды. */
   .path-marker.big {
-    margin: 36px auto 14px;
-    font-size: 16px; letter-spacing: .04em; font-weight: 700;
-    color: var(--ink); max-width: 32em; line-height: 1.4;
-    padding: 10px 14px;
+    margin: 32px auto 10px;
+    font-family: "EB Garamond", Georgia, serif;
+    font-size: 14px; font-style: italic; font-weight: 500;
+    letter-spacing: 0; line-height: 1.4;
+    color: var(--ink-3);
+    max-width: 28em;
+    padding-top: 14px;
     border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    /* нет border-bottom — линия только сверху, как разделитель */
   }
   .path-spacer { height: 6px; }
   .path-loading {
@@ -3822,7 +3826,7 @@ function renderSadhana(blocks) {
         parts.push(`<div class="path-mantra">${escapeHTML(b.x)}${b.c ? `<div class="path-mantra-count">${b.c} раз</div>` : ""}</div>`);
         break;
       case "i": parts.push(`<div class="path-instr">${escapeHTML(b.x)}</div>`); break;
-      case "k": parts.push(`<div class="path-marker">${escapeHTML(b.x)}</div>`); break;
+      case "k": parts.push(`<div class="path-marker${b.big ? " big" : ""}">${escapeHTML(b.x)}</div>`); break;
       case "s": parts.push(`<div class="path-spacer"></div>`); break;
     }
   });
