@@ -2196,7 +2196,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 #main-sadhana .page p.lit-count{text-align:center;}
 #main-sadhana .page [data-screen-label]{margin-top:2.8em;padding-top:1.1em;border-top:1px solid var(--rule);}
 #main-sadhana .page [data-screen-label][id="sec-0"],#main-sadhana .page .cover [data-screen-label]{border-top:0;padding-top:0;margin-top:0;}
-#main-sadhana .page p.lit-num{margin-top:2em;margin-bottom:.2em;font-size:19px;font-weight:700;font-style:italic;color:var(--ink);line-height:1.28;}
+#main-sadhana .page p.lit-num{margin-top:2em;margin-bottom:.2em;font-size:18px;font-weight:400;font-style:normal;color:var(--ink);line-height:1.4;}
 #main-sadhana .pb-home{position:fixed;left:14px;top:14px;z-index:41;display:flex;align-items:center;justify-content:center;background:rgba(42,32,24,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#F2E4C8;border:1px solid rgba(255,240,210,.25);border-radius:999px;width:40px;height:40px;font-size:22px;line-height:1;cursor:pointer;}
 
 
@@ -2457,10 +2457,47 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 <p style="text-align:center" class="lit-sub"><i><b>I. Рассвет пробуждения</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:12px"><i><b>1. Випашьяна дыхание шаматха</b></i></p>
-<p style="text-align:center"><i>Во-первых, подготовьте удобное сиденье. Несколько минут тихо сидите, погружаясь в естественную ясность. Отпустите все дела, заботы  
- и отвлечения. Расслабьте тело, пребывайте в безмолвии, успокойте ум.  
- Во-вторых, умиротворённо и радостно выполняйте практику девяти дыханий.  
- В-третьих, внимательно сосчитайте двадцать одно дыхание (три цикла по семь).</i></p>
+<p style="text-align:center"><i>Во-первых, подготовьте удобное сиденье. Несколько минут тихо сидите, погружаясь в естественную ясность. Отпустите все дела, заботы и отвлечения. Расслабьте тело, пребывайте в безмолвии, успокойте ум.<br>Во-вторых, умиротворённо и радостно выполняйте практику девяти дыханий.<br>В-третьих, внимательно сосчитайте двадцать одно дыхание (три цикла по семь).</i></p>
+<div class="sb-timer" id="sbt" role="group" aria-label="Таймер шаматхи">
+<div class="sbt-cap">Шаматха — пребывание в покое перед практикой</div>
+<div id="sbt-setup">
+<div class="sbt-presets" id="sbt-presets">
+<button class="sbt-p on" type="button" data-min="6">6</button>
+<button class="sbt-p" type="button" data-min="10">10</button>
+<button class="sbt-p" type="button" data-min="15">15</button>
+<button class="sbt-p" type="button" data-min="24">24</button>
+<input class="sbt-custom" id="sbt-custom" type="number" min="1" max="180" step="1" placeholder="своё" aria-label="свои минуты">
+</div>
+<button class="sbt-go" id="sbt-go" type="button">Начать</button>
+</div>
+<div id="sbt-run" hidden>
+<div class="sbt-time" id="sbt-time">06:00</div>
+<div class="sbt-row">
+<button id="sbt-pause" type="button">Пауза</button>
+<button id="sbt-stop" type="button">Завершить</button>
+</div>
+</div>
+</div>
+<script>(function(){
+var root=document.getElementById('sbt');if(!root)return;
+var mins=6,tmr=null,remain=0,paused=false,wl=null;
+var setup=document.getElementById('sbt-setup'),run=document.getElementById('sbt-run');
+var timeEl=document.getElementById('sbt-time'),custom=document.getElementById('sbt-custom');
+var pauseBtn=document.getElementById('sbt-pause');
+function fmt(s){var m=Math.floor(s/60),x=s%60;return(m<10?'0':'')+m+':'+(x<10?'0':'')+x;}
+function setOn(b){[].forEach.call(root.querySelectorAll('.sbt-p'),function(x){x.classList.toggle('on',x===b);});}
+document.getElementById('sbt-presets').addEventListener('click',function(e){var b=e.target.closest('.sbt-p');if(!b)return;mins=+b.dataset.min;custom.value='';setOn(b);});
+custom.addEventListener('input',function(){var v=parseInt(custom.value,10);if(v>0){mins=Math.min(v,180);[].forEach.call(root.querySelectorAll('.sbt-p'),function(x){x.classList.remove('on');});}});
+async function lock(){try{if('wakeLock'in navigator){wl=await navigator.wakeLock.request('screen');}}catch(_){}}
+function unlock(){try{if(wl){wl.release();wl=null;}}catch(_){}}
+function tick(){if(paused)return;remain--;timeEl.textContent=fmt(remain);if(remain<=0)finish();}
+function start(){remain=mins*60;paused=false;timeEl.textContent=fmt(remain);setup.hidden=true;run.hidden=false;pauseBtn.textContent='Пауза';tmr=setInterval(tick,1000);lock();}
+function finish(){if(tmr){clearInterval(tmr);tmr=null;}unlock();run.hidden=true;setup.hidden=false;}
+document.getElementById('sbt-go').addEventListener('click',start);
+document.getElementById('sbt-stop').addEventListener('click',finish);
+pauseBtn.addEventListener('click',function(){paused=!paused;pauseBtn.textContent=paused?'Продолжить':'Пауза';if(paused)unlock();else lock();});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&tmr&&!paused)lock();});
+})();</script>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:12px"><i><b>2. Осознанные простирания</b></i></p>
 <p style="text-align:center"><b>Намо Буддая, Намо Дхармая, Намо Сангхая,</b></p>
@@ -2500,15 +2537,15 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
  на теле, речи и уме. Практикуйте эти йогические упражнения,  
  синхронизируя мантру, мудру и самадхи.</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p class="lit-num" style="text-align:center;margin-bottom:4px">(1) Намо Гуру Дэва Дакиния!</p>
+<p class="lit-num" style="text-align:center;margin-bottom:4px"><b>(1) Намо Гуру Дэва Дакиния!</b></p>
 <p style="text-align:center">Для Истинного Счастья всех существ</p>
 <p style="text-align:center">я очищу все свои омрачения и реализую изначального Будду в этой жизни,</p>
 <p style="text-align:center">для этого я буду с радостью практиковать</p>
 <p style="text-align:center">предварительную практику Ваджра Тантра Йоги!</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p class="lit-num" style="text-align:center">(2) Рам Ям Кхам</p><p class="lit-count">(много раз)</p>
+<p class="lit-num" style="text-align:center"><b>(2) Рам Ям Кхам</b></p><p class="lit-count">(много раз)</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p class="lit-num" style="text-align:center">(3) Ом А Хунг</p><p class="lit-count">(много раз)</p>
+<p class="lit-num" style="text-align:center"><b>(3) Ом А Хунг</b></p><p class="lit-count">(много раз)</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p class="lit-num" style="text-align:center">(4) Пусть все, кто меня видит, слышит, касается и вспоминает меня, 
 станут Истинным Счастьем! </p>
@@ -2553,7 +2590,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 <p style="text-align:center">пагубные действия и страдание!</p>
 <p style="text-align:center"><b>Ха! Ха! Ха! Ха!</b></p>
 <p style="text-align:center;margin-bottom:12px"><b>Бхахаха! Бхахаха! Бхахаха!</b></p>
-<p class="lit-num" style="text-align:center;margin-bottom:12px">(14) Ом Гатэ Гатэ Парагатэ Парасамгатэ Бодхи Соха</p><p class="lit-count">(3 раза)</p>
+<p class="lit-num" style="text-align:center;margin-bottom:12px"><b>(14) Ом Гатэ Гатэ Парагатэ Парасамгатэ Бодхи Соха</b></p><p class="lit-count">(3 раза)</p>
 <p class="lit-num" style="text-align:center">(15) Я очищаю своё драгоценное тело. 
 Пусть моё тело преобразится в Кая Ваджру светоносного Будды Медицины 
 и пусть я обширно проявлю просветлённые каи всем существам.</p>
@@ -2608,7 +2645,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>Поднимите свою ёмкость с водой и внимательно практикуйте йогу воды.</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p class="lit-num" style="text-align:center">(27) Намо Гуру Бхэ!</p>
+<p class="lit-num" style="text-align:center"><b>(27) Намо Гуру Бхэ!</b></p>
 <p style="text-align:center">Все Будды и просветлённые существа,</p>
 <p style="text-align:center">и особенно все Коренные Мастера и Мастера Линии Передачи,</p>
 <p style="text-align:center">даруйте нам благословения, посвящения и достижения!</p>
@@ -2652,46 +2689,6 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 <div class="d-gap" style="height:1.8em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>II. Самоисцеление силой мудрости</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<div class="sb-timer" id="sbt" role="group" aria-label="Таймер шаматхи">
-<div class="sbt-cap">Шаматха — пребывание в покое перед практикой</div>
-<div id="sbt-setup">
-<div class="sbt-presets" id="sbt-presets">
-<button class="sbt-p on" type="button" data-min="6">6</button>
-<button class="sbt-p" type="button" data-min="10">10</button>
-<button class="sbt-p" type="button" data-min="15">15</button>
-<button class="sbt-p" type="button" data-min="24">24</button>
-<input class="sbt-custom" id="sbt-custom" type="number" min="1" max="180" step="1" placeholder="своё" aria-label="свои минуты">
-</div>
-<button class="sbt-go" id="sbt-go" type="button">Начать</button>
-</div>
-<div id="sbt-run" hidden>
-<div class="sbt-time" id="sbt-time">06:00</div>
-<div class="sbt-row">
-<button id="sbt-pause" type="button">Пауза</button>
-<button id="sbt-stop" type="button">Завершить</button>
-</div>
-</div>
-</div>
-<script>(function(){
-var root=document.getElementById('sbt');if(!root)return;
-var mins=6,tmr=null,remain=0,paused=false,wl=null;
-var setup=document.getElementById('sbt-setup'),run=document.getElementById('sbt-run');
-var timeEl=document.getElementById('sbt-time'),custom=document.getElementById('sbt-custom');
-var pauseBtn=document.getElementById('sbt-pause');
-function fmt(s){var m=Math.floor(s/60),x=s%60;return(m<10?'0':'')+m+':'+(x<10?'0':'')+x;}
-function setOn(b){[].forEach.call(root.querySelectorAll('.sbt-p'),function(x){x.classList.toggle('on',x===b);});}
-document.getElementById('sbt-presets').addEventListener('click',function(e){var b=e.target.closest('.sbt-p');if(!b)return;mins=+b.dataset.min;custom.value='';setOn(b);});
-custom.addEventListener('input',function(){var v=parseInt(custom.value,10);if(v>0){mins=Math.min(v,180);[].forEach.call(root.querySelectorAll('.sbt-p'),function(x){x.classList.remove('on');});}});
-async function lock(){try{if('wakeLock'in navigator){wl=await navigator.wakeLock.request('screen');}}catch(_){}}
-function unlock(){try{if(wl){wl.release();wl=null;}}catch(_){}}
-function tick(){if(paused)return;remain--;timeEl.textContent=fmt(remain);if(remain<=0)finish();}
-function start(){remain=mins*60;paused=false;timeEl.textContent=fmt(remain);setup.hidden=true;run.hidden=false;pauseBtn.textContent='Пауза';tmr=setInterval(tick,1000);lock();}
-function finish(){if(tmr){clearInterval(tmr);tmr=null;}unlock();run.hidden=true;setup.hidden=false;}
-document.getElementById('sbt-go').addEventListener('click',start);
-document.getElementById('sbt-stop').addEventListener('click',finish);
-pauseBtn.addEventListener('click',function(){paused=!paused;pauseBtn.textContent=paused?'Продолжить':'Пауза';if(paused)unlock();else lock();});
-document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&tmr&&!paused)lock();});
-})();</script>
 <p style="text-align:center"><i>Пожалуйста, наблюдайте свой ум. Поместив правую руку<br>на сердечный центр, однонаправленно сосредоточьтесь.<br>Произносите сильно и величественно, подобно рыку льва:</i></p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center">В прошлом я безначально перерождался.</p>
