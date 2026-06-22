@@ -2204,6 +2204,19 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 #main-sadhana .d-llist .li{display:grid;grid-template-columns:1.5em 1fr;column-gap:.45em;margin-bottom:.4em;}
 #main-sadhana .d-llist .li .mk{text-align:right;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;}
 #main-sadhana .d-llist .li .tx{text-align:left;}
+
+#main-sadhana .sb-timer{max-width:22em;margin:1.5em auto;padding:1.05em 1em;border-top:1px solid var(--rule,#DDCDA6);border-bottom:1px solid var(--rule,#DDCDA6);text-align:center;font-family:Inter,system-ui,sans-serif;}
+#main-sadhana .sb-timer .sbt-cap{font-family:var(--serif,'EB Garamond',serif);font-size:15px;font-style:italic;color:var(--ink-soft,#6B5B45);letter-spacing:.01em;margin-bottom:.75em;}
+#main-sadhana .sb-timer .sbt-presets{display:flex;flex-wrap:wrap;gap:.4em;justify-content:center;align-items:center;margin-bottom:.65em;}
+#main-sadhana .sb-timer .sbt-p{font:inherit;font-size:14px;padding:.3em .72em;border:1px solid var(--rule,#DDCDA6);border-radius:999px;background:transparent;color:var(--ink,#2A2018);cursor:pointer;line-height:1;}
+#main-sadhana .sb-timer .sbt-p.on{border-color:var(--gold,#C68A2B);background:rgba(198,138,43,.12);}
+#main-sadhana .sb-timer .sbt-custom{width:3.6em;font:inherit;font-size:14px;text-align:center;border:1px solid var(--rule,#DDCDA6);border-radius:999px;padding:.32em .2em;background:transparent;color:var(--ink,#2A2018);}
+#main-sadhana .sb-timer .sbt-go{font:inherit;font-size:15px;letter-spacing:.05em;background:none;border:none;color:var(--cinnabar,#B23A22);cursor:pointer;padding:.25em .5em;}
+#main-sadhana .sb-timer .sbt-go:hover{text-decoration:underline;}
+#main-sadhana .sb-timer .sbt-time{font-family:var(--serif,'EB Garamond',serif);font-size:40px;color:var(--ink,#2A2018);font-variant-numeric:tabular-nums;line-height:1.05;}
+#main-sadhana .sb-timer .sbt-row{display:flex;gap:1.4em;justify-content:center;margin-top:.55em;}
+#main-sadhana .sb-timer .sbt-row button{font:inherit;font-size:14px;background:none;border:none;color:var(--ink-soft,#6B5B45);cursor:pointer;}
+#main-sadhana .sb-timer .sbt-row button:hover{color:var(--cinnabar,#B23A22);}
 </style>
 </head>
 <body>
@@ -2640,6 +2653,46 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 <div class="d-gap" style="height:1.8em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>II. Самоисцеление силой мудрости</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
+<div class="sb-timer" id="sbt" role="group" aria-label="Таймер шаматхи">
+<div class="sbt-cap">Шаматха — пребывание в покое перед практикой</div>
+<div id="sbt-setup">
+<div class="sbt-presets" id="sbt-presets">
+<button class="sbt-p on" type="button" data-min="6">6</button>
+<button class="sbt-p" type="button" data-min="10">10</button>
+<button class="sbt-p" type="button" data-min="15">15</button>
+<button class="sbt-p" type="button" data-min="24">24</button>
+<input class="sbt-custom" id="sbt-custom" type="number" min="1" max="180" step="1" placeholder="своё" aria-label="свои минуты">
+</div>
+<button class="sbt-go" id="sbt-go" type="button">Начать</button>
+</div>
+<div id="sbt-run" hidden>
+<div class="sbt-time" id="sbt-time">06:00</div>
+<div class="sbt-row">
+<button id="sbt-pause" type="button">Пауза</button>
+<button id="sbt-stop" type="button">Завершить</button>
+</div>
+</div>
+</div>
+<script>(function(){
+var root=document.getElementById('sbt');if(!root)return;
+var mins=6,tmr=null,remain=0,paused=false,wl=null;
+var setup=document.getElementById('sbt-setup'),run=document.getElementById('sbt-run');
+var timeEl=document.getElementById('sbt-time'),custom=document.getElementById('sbt-custom');
+var pauseBtn=document.getElementById('sbt-pause');
+function fmt(s){var m=Math.floor(s/60),x=s%60;return(m<10?'0':'')+m+':'+(x<10?'0':'')+x;}
+function setOn(b){[].forEach.call(root.querySelectorAll('.sbt-p'),function(x){x.classList.toggle('on',x===b);});}
+document.getElementById('sbt-presets').addEventListener('click',function(e){var b=e.target.closest('.sbt-p');if(!b)return;mins=+b.dataset.min;custom.value='';setOn(b);});
+custom.addEventListener('input',function(){var v=parseInt(custom.value,10);if(v>0){mins=Math.min(v,180);[].forEach.call(root.querySelectorAll('.sbt-p'),function(x){x.classList.remove('on');});}});
+async function lock(){try{if('wakeLock'in navigator){wl=await navigator.wakeLock.request('screen');}}catch(_){}}
+function unlock(){try{if(wl){wl.release();wl=null;}}catch(_){}}
+function tick(){if(paused)return;remain--;timeEl.textContent=fmt(remain);if(remain<=0)finish();}
+function start(){remain=mins*60;paused=false;timeEl.textContent=fmt(remain);setup.hidden=true;run.hidden=false;pauseBtn.textContent='Пауза';tmr=setInterval(tick,1000);lock();}
+function finish(){if(tmr){clearInterval(tmr);tmr=null;}unlock();run.hidden=true;setup.hidden=false;}
+document.getElementById('sbt-go').addEventListener('click',start);
+document.getElementById('sbt-stop').addEventListener('click',finish);
+pauseBtn.addEventListener('click',function(){paused=!paused;pauseBtn.textContent=paused?'Продолжить':'Пауза';if(paused)unlock();else lock();});
+document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&tmr&&!paused)lock();});
+})();</script>
 <p style="text-align:center"><i>Пожалуйста, наблюдайте свой ум. Поместив правую руку<br>на сердечный центр, однонаправленно сосредоточьтесь.<br>Произносите сильно и величественно, подобно рыку льва:</i></p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center">В прошлом я безначально перерождался.</p>
