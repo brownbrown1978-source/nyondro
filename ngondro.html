@@ -5728,8 +5728,10 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
           <button class="btn-line" id="btn-export">Экспорт JSON</button>
           <button class="btn-line" id="btn-import">Импорт JSON</button>
           <input type="file" id="import-file" accept="application/json" style="display:none">
+          <button class="btn-line" id="btn-restore-bak">Восстановить из копии</button>
           <button class="btn-line danger" id="btn-reset">Сбросить всё</button>
         </div>
+        <p style="font-size:12px;color:var(--ink-3);margin-top:6px">Перед «Импортом» и «Сбросом» автоматически сохраняется копия — её можно вернуть кнопкой «Восстановить из копии».</p>
       </div>
     </div>
   </section>
@@ -6912,9 +6914,22 @@ function loadState() {
       try { localStorage.setItem(STORE_KEY, JSON.stringify(s)); } catch (_) {}
     }
     return s;
-  } catch (e) { return defaultState(); }
+  } catch (e) {
+    try { const b = readBackup(); if (b) return migrateState(Object.assign(defaultState(), JSON.parse(b.data))); } catch (_) {}
+    return defaultState();
+  }
 }
 function saveState() { localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+const BAK_KEY = STORE_KEY + "__bak";
+function snapshotBackup(reason) {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (raw) localStorage.setItem(BAK_KEY, JSON.stringify({ at: new Date().toISOString(), reason: reason || "", data: raw }));
+  } catch (_) {}
+}
+function readBackup() {
+  try { const b = JSON.parse(localStorage.getItem(BAK_KEY) || "null"); return (b && b.data) ? b : null; } catch (_) { return null; }
+}
 function defaultState() {
   return {
     tuns: [],            // [{id, date, length, groupKey, idx, tech, circles, prostr, feel, note, selfCheck?, dedication?}]
@@ -8135,6 +8150,7 @@ $("#import-file").addEventListener("change", e => {
       const obj = JSON.parse(r.result);
       if (!obj.tuns) throw new Error("неверный файл");
       if (!confirm(`Импортировать ${obj.tuns.length} тхунов? Текущие данные будут заменены.`)) return;
+      snapshotBackup("import");
       state = Object.assign(defaultState(), obj);
       saveState(); renderAll();
     } catch (err) { alert("Не удалось прочитать файл: " + err.message); }
@@ -8143,9 +8159,20 @@ $("#import-file").addEventListener("change", e => {
 });
 $("#btn-reset").addEventListener("click", () => {
   if (!confirm("Удалить все тхуны и настройки? Это нельзя отменить.")) return;
+  snapshotBackup("reset");
   localStorage.removeItem(STORE_KEY);
   state = defaultState();
   renderAll();
+});
+$("#btn-restore-bak").addEventListener("click", () => {
+  const b = readBackup();
+  if (!b) { alert("Автокопии пока нет — она создаётся перед Импортом и Сбросом."); return; }
+  let n = 0; try { n = (JSON.parse(b.data).tuns || []).length; } catch (_) {}
+  const when = new Date(b.at).toLocaleString("ru-RU");
+  if (!confirm(`Восстановить копию от ${when} (${n} тхунов)? Текущие данные будут заменены.`)) return;
+  snapshotBackup("pre-restore");
+  try { state = migrateState(Object.assign(defaultState(), JSON.parse(b.data))); saveState(); renderAll(); alert("Восстановлено."); }
+  catch (err) { alert("Не удалось восстановить: " + err.message); }
 });
 
 /* ============================================================
