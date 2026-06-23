@@ -2002,19 +2002,19 @@ html,#main-sadhana{margin:0;}
 /* алфавит санскрита: 2 колонки тибетский | русский; транслит — чёрный, не киноварь */
 .alph-grid{display:grid;grid-template-columns:auto auto;column-gap:30px;row-gap:6px;
   justify-content:center;align-items:center;margin:10px 0 12px;}
-.alph-grid .tib{font-family:var(--tib);text-align:right;font-size:21px;line-height:1.25;color:var(--ink);}
+.alph-grid .tib{font-family:var(--tib);text-align:right;font-size:30px;line-height:1.15;color:var(--ink);}
 .alph-grid .ru{text-align:left;font-weight:700;font-size:16px;color:var(--ink);letter-spacing:.01em;white-space:nowrap;}
 .page p.alph-ru > b{color:var(--ink)!important;}
 /* линии передачи: фиксированная ширина — все группы выровнены в один столбец, блок по центру */
-.lineage{display:grid;grid-template-columns:1.7em 1fr;column-gap:.55em;row-gap:.24em;margin:.55em auto .2em;width:min(20em,100%);text-align:left;}
+.lineage{display:grid;grid-template-columns:1.9em 1fr;column-gap:.6em;row-gap:.3em;margin:.6em auto .3em;width:min(26em,100%);text-align:left;font-size:18px;}
 .lineage .ln{display:contents;}
 .lineage .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap;}
 .lineage .nm{text-align:left;color:var(--ink);min-width:0;}
 .lineage .lnfull .nm{grid-column:1 / -1;text-align:center;}
 .lineage .lgap{grid-column:1 / -1;height:.45em;}
 @media (max-width:430px){
-  .lineage{font-size:15px;column-gap:.45em;}
-  .lineage .n{font-size:14px;}
+  .lineage{font-size:17px;column-gap:.5em;}
+  .lineage .n{font-size:16px;}
 }
 /* сворачиваемая линия передачи (экономит место) */
 details.lin{display:block;text-align:center;margin:.5em auto 1.1em;}
@@ -2103,7 +2103,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 .d-gap{flex:none;}
 
 /* tibetan lines a touch larger for legibility */
-.page p:lang(bo){font-family:var(--tib);}
+.page p:lang(bo){font-family:var(--tib);font-size:27px;line-height:1.5;}
 
 /* ── bottom navigator ── */
 .nav{position:fixed;left:50%;transform:translateX(-50%);bottom:max(14px,env(safe-area-inset-bottom));
@@ -2365,7 +2365,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 <div class="d-gap" style="height:1.35em"></div>
 </div><p style="text-align:center" class="lit-step" id="sec-fm" data-screen-label="Начало"><i><b>Сердечная молитва</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>ЛАМА ЧХЕН   ЛАМА ЧХЕН   ЛАМА ЧХЕННО</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">ЛАМА ЧХЕН</span>   <span style="white-space:nowrap">ЛАМА ЧХЕН</span>   <span style="white-space:nowrap">ЛАМА ЧХЕННО</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Намо добрый Коренной Мастер, воплощение всех Будд,</p>
 <p style="text-align:center">пожалуйста, даруй нам свои благословения!</p>
@@ -2388,7 +2388,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 <p style="text-align:center">Намо Локапалы всех направлений,</p>
 <p style="text-align:center">пожалуйста даруйте нам свои благословения!</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>НАМО БУДДАЯ   НАМО ДХАРМАЯ   НАМО САНГХАЯ</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">НАМО БУДДАЯ</span>   <span style="white-space:nowrap">НАМО ДХАРМАЯ</span>   <span style="white-space:nowrap">НАМО САНГХАЯ</span></b></p>
 <p style="text-align:center"><b>НАМО ГУРУ ДЭВА ДАКИНИЯ</b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Ради воцарения мира во всем мире,</p>
@@ -2409,7 +2409,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 <div class="d-gap" style="height:0.8em"></div>
 <p style="text-align:center"><i><b>Мирная огненная пуджа</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>РАМ ЯМ КХАМ   ОМ А ХУНГ</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Перед Высшими Буддами,</p>
 <p style="text-align:center">Просветлёнными Мастерами,</p>
@@ -2520,8 +2520,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Все свои душевные раны <b>отбрасываю, отбрасываю!</b></p>
 <p style="text-align:center">Все свои сожаления <b>отбрасываю, отбрасываю!</b></p>
 <p style="text-align:center;margin-bottom:8px">Все свои угрызения <b>отбрасываю, отбрасываю!</b></p>
-<p style="text-align:center;margin-bottom:4px"><b>Отбрасываю! Отбрасываю! Отбрасываю!</b></p>
-<p style="text-align:center;margin-bottom:8px"><b>ХАА! ХАА! ХАА! ХАА!</b></p>
+<p style="text-align:center;margin-bottom:4px"><b><span style="white-space:nowrap">Отбрасываю!</span> <span style="white-space:nowrap">Отбрасываю!</span> <span style="white-space:nowrap">Отбрасываю!</span></b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">ХАА!</span> <span style="white-space:nowrap">ХАА!</span> <span style="white-space:nowrap">ХАА!</span> <span style="white-space:nowrap">ХАА!</span></b></p>
 <p style="text-align:center" class="lit-count"><i>(С усилием произнесите эти четыре слога, сопровождая каждый слог мудрой отбрасывания и концентрируясь на разрушении пагубных мыслей и эмоций.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Впредь я не замыслю дурного.</p>
@@ -2588,8 +2588,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p class="lit-num" style="text-align:center">(13) Пусть я уничтожу всё моё труднопреодолимое пагубное мышление,</p>
 <p style="text-align:center">пагубную карму, пагубное поведение, пагубное отношение,</p>
 <p style="text-align:center">пагубные действия и страдание!</p>
-<p style="text-align:center"><b>Ха! Ха! Ха! Ха!</b></p>
-<p style="text-align:center;margin-bottom:12px"><b>Бхахаха! Бхахаха! Бхахаха!</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Ха!</span> <span style="white-space:nowrap">Ха!</span> <span style="white-space:nowrap">Ха!</span> <span style="white-space:nowrap">Ха!</span></b></p>
+<p style="text-align:center;margin-bottom:12px"><b><span style="white-space:nowrap">Бхахаха!</span> <span style="white-space:nowrap">Бхахаха!</span> <span style="white-space:nowrap">Бхахаха!</span></b></p>
 <p class="lit-num" style="text-align:center;margin-bottom:12px"><b>(14) Ом Гатэ Гатэ Парагатэ Парасамгатэ Бодхи Соха</b></p><p class="lit-count">(3 раза)</p>
 <p class="lit-num" style="text-align:center">(15) Я очищаю своё драгоценное тело. 
 Пусть моё тело преобразится в Кая Ваджру светоносного Будды Медицины 
@@ -2626,8 +2626,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>Oм Акашагарбха Соха</b></p><p class="lit-count">(3 раза)</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p class="lit-num" style="text-align:center">(23) Я накапливаю великие заслуги. Пусть вся моя добродетельная карма будет доведена до полноты подобно неизмеримым заслугам Кшитигарбхи!</p>
-<p style="text-align:center"><b>Oм Сумбханэн Сумбха   Хара Цара   Маха Паща Мáрута</b></p>
-<p style="text-align:center"><b>Ахмогха   Бэдзра Сато Соха</b></p><p class="lit-count">(3 раза)</p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Oм Сумбханэн Сумбха</span>   <span style="white-space:nowrap">Хара Цара</span>   <span style="white-space:nowrap">Маха Паща Мáрута</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Ахмогха</span>   <span style="white-space:nowrap">Бэдзра Сато Соха</span></b></p><p class="lit-count">(3 раза)</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p class="lit-num" style="text-align:center">(24) Я благословляю все свои добродетельные цели.</p>
 <p style="text-align:center">Пусть мои добродетельные цели скоро и полностью осуществятся 
@@ -2723,7 +2723,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Любить всех существ.</p>
 <p style="text-align:center">Любить Любить Любить</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>А   А   А</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>Смотри во все направления.</b></p>
 <p style="text-align:center"><b>Наблюдай всё пространство.</b></p>
@@ -2751,7 +2751,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Верить в Будду.</p>
 <p style="text-align:center">Верить Верить Верить</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>А   А   А</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Каждый миг бесчисленные обычные существа становятся просветлёнными.</p>
 <p style="text-align:center;margin-bottom:8px">Каждый миг бесчисленные просветлённые существа становятся Буддами.</p>
@@ -2760,7 +2760,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да постигну я, что бесчисленные Будды спонтанно благословляют меня.</p>
 <p style="text-align:center">Да постигну я, что бесчисленные Будды никогда не покидают меня.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>Намо Буддая   Намо Буддая   Намо Буддая</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Намо Буддая</span>   <span style="white-space:nowrap">Намо Буддая</span>   <span style="white-space:nowrap">Намо Буддая</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px">Все феномены — естественным образом 
 единство пустоты и взаимозависимости.
@@ -2801,7 +2801,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Я — бесстрашная мудрость.</p>
 <p style="text-align:center">Я — бесстрашное милосердие.</p>
 <p style="text-align:center;margin-bottom:8px">Я — бесстрашное могущество.</p>
-<p style="text-align:center"><b>Я Будда! Я Будда! Я Будда!</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Я Будда!</span> <span style="white-space:nowrap">Я Будда!</span> <span style="white-space:nowrap">Я Будда!</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>ОМ А ХУНГ СО ХА</b></p>
 <p style="text-align:center" class="lit-count"><i>(5 раз)</i></p>
@@ -2812,7 +2812,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i><b>1. Мантра благословения подношений</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><b>РАМ ЯМ КХАМ   ОМ А ХУНГ</b></p>
+<p style="text-align:center;margin-bottom:12px"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <p style="text-align:center"><b>ОМ СВАБХАВА ШУДДА САРВА ДХАРМА</b></p>
 <p style="text-align:center;margin-bottom:12px"><b>СВАБХАВА ШУДДО ХАНГ</b></p>
 <p style="text-align:center"><b>ОМ БЕДЗРА АМРИТА КУНДАЛИ</b></p>
@@ -2820,8 +2820,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i><b>2. Мантра благословения речи</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px">ཨ ཨཱ ཨི ཨཱི ཨུ ཨཱུ རྀ རཱྀ ལྀ ལཱྀ ཨེ ཨཻ ཨོ ཨཽ ཨཾ ཨཿ</p>
-<p style="text-align:center;margin-bottom:10px" class="alph-ru"><b>А аа  Ы ыы  У уу  Р Рр  Л Лл  Э Ээ  О оо  Ам А</b></p>
+<p style="text-align:center;margin-bottom:8px" lang="bo">ཨ ཨཱ ཨི ཨཱི ཨུ ཨཱུ རྀ རཱྀ ལྀ ལཱྀ ཨེ ཨཻ ཨོ ཨཽ ཨཾ ཨཿ</p>
+<p style="text-align:center;margin-bottom:10px" class="alph-ru"><b><span style="white-space:nowrap">А аа</span>  <span style="white-space:nowrap">Ы ыы</span>  <span style="white-space:nowrap">У уу</span>  <span style="white-space:nowrap">Р Рр</span>  <span style="white-space:nowrap">Л Лл</span>  <span style="white-space:nowrap">Э Ээ</span>  <span style="white-space:nowrap">О оо</span>  <span style="white-space:nowrap">Ам А</span></b></p>
 <div class="alph-grid">
 <div class="tib">ཀ ཁ ག གྷ ང །</div><div class="ru">Ка  Кха  Га  Гха  Нга</div>
 <div class="tib">ཙ ཚ ཛ ཛྷ ཉ །</div><div class="ru">Ца  Цха  Дза  Дзха  Нья</div>
@@ -2850,7 +2850,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да будут все мои посвящения чистыми как мудрость Манджушри.</p>
 <p style="text-align:center">Да будут все мои посвящения исполнены как устремление Самантабхадры.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b> Этим завершается Предварительная Практика </b></p>
+<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Предварительная Практика</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img02.png" alt="Эмблема"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -2885,9 +2885,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">освобождающий всех существ из темницы самсары.</p>
 <p style="text-align:center">В твоей правой руке меч осознавания,</p>
 <p style="text-align:center;margin-bottom:12px">разрубающий заблуждение цепляния за самость.</p>
-<p style="text-align:center"><b>НАМО МАНДЖУШРИ! НАМО МАНДЖУШРИ! НАМО МАНДЖУШРИ!</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">НАМО МАНДЖУШРИ!</span> <span style="white-space:nowrap">НАМО МАНДЖУШРИ!</span> <span style="white-space:nowrap">НАМО МАНДЖУШРИ!</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center">ༀ་ཨ་ར་པ་ཙ་ན་དྷཱི༔</p>
+<p style="text-align:center" lang="bo">ༀ་ཨ་ར་པ་ཙ་ན་དྷཱི༔</p>
 <p style="text-align:center;margin-bottom:4px"><b>ОМ А РА ПА ЦА НА ДХИ</b></p>
 <p style="text-align:center;margin-bottom:12px" class="lit-count"><i>(повторяйте от 21 до 108 раз)</i></p>
 <p style="text-align:center;margin-bottom:4px"><b>НАМО МАНДЖУШРИ!</b></p>
@@ -2959,8 +2959,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Не надо практиковать путь».</p>
 <div class="d-gap" style="height:1.8em"></div>
 <p style="text-align:center"><i><b>7. Четыре благородные истины Пути Будды Дзогчен</b></i></p>
-<p style="text-align:center"><i><b>Как осознанно практиковать четыре благородные</b></i></p>
-<p style="text-align:center"><i><b>истины просветлённых</b></i></p>
+<p style="text-align:center"><i>Как осознанно практиковать четыре благородные</i></p>
+<p style="text-align:center"><i>истины просветлённых</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:16px"><i><b>~ Первая просветлённая истина — истина относительно страдания ~</b></i></p>
 <p style="text-align:center;margin-bottom:8px"><b>Намо Буддая!</b></p>
@@ -3084,7 +3084,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Единственный абсолютный результат — Будда.</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>В учении Дзогчен все буддийские учения</b></p>
-<p style="text-align:center;margin-bottom:4px"><b>Собраны целиком      Раскрыты совершенно      Преподаны полностью</b></p>
+<p style="text-align:center;margin-bottom:4px"><b><span style="white-space:nowrap">Собраны целиком</span>      <span style="white-space:nowrap">Раскрыты совершенно</span>      <span style="white-space:nowrap">Преподаны полностью</span></b></p>
 <p style="text-align:center" class="lit-count"><i>(Произнесите один раз, сопровождая мудрой)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center">Этим завершается Практика Изучения</p>
@@ -3122,13 +3122,13 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Намо Мастера-держатели Линии передачи Винаи,</p>
 <p style="text-align:center;margin-bottom:8px">пожалуйста, пробудите в моём уме драгоценную дисциплину отречения.</p>
-<div class="d-row"><img style="width:23.5%" src="sb/img08.png"><img style="width:23.5%" src="sb/img09.png"><img style="width:23.5%" src="sb/img10.png"><img style="width:23.5%" src="sb/img11.png"></div>
-<div class="d-row"><img style="width:23.5%" src="sb/img12.png"><img style="width:23.5%" src="sb/img13.png"><img style="width:23.5%" src="sb/img14.png"><img style="width:23.5%" src="sb/img15.png"></div>
 <p style="text-align:center">Намо Мастера-держатели Линии передачи Сутры,</p>
 <p style="text-align:center;margin-bottom:8px">пожалуйста, пробудите в моём уме драгоценную медитацию милосердия.</p>
 <p style="text-align:center">Намо Мастера-держатели Линии передачи Абхидхармы,</p>
 <p style="text-align:center">пожалуйста, пробудите в моём уме драгоценное знание мудрости.</p>
 <div class="d-gap" style="height:1.8em"></div>
+<div class="d-row"><img style="width:23.5%" src="sb/img08.png"><img style="width:23.5%" src="sb/img09.png"><img style="width:23.5%" src="sb/img10.png"><img style="width:23.5%" src="sb/img11.png"></div>
+<div class="d-row"><img style="width:23.5%" src="sb/img12.png"><img style="width:23.5%" src="sb/img13.png"><img style="width:23.5%" src="sb/img14.png"><img style="width:23.5%" src="sb/img15.png"></div>
 <p style="text-align:center"><i>Восемь благоприятных символов</i></p>
 <p style="text-align:center" class="lit-sub"><i><b>II. Концептуальная медитация стадии пути Сутры</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -3384,10 +3384,10 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Пожалуйста, даруй своё благословение!</p>
 <p style="text-align:center">Пожалуйста, даруй своё благословение!</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center">ཨོམ་མུ་ནི་མུ་ནི་མཧྭ་མུ་ནི་ཡེ་སཱ་ཧྭ།</p>
+<p style="text-align:center" lang="bo">ཨོམ་མུ་ནི་མུ་ནི་མཧྭ་མུ་ནི་ཡེ་སཱ་ཧྭ།</p>
 <p style="text-align:center"><b>ОМ МУНИ МУНИ МАХА МУНА Е СОХА</b></p>
 <p style="text-align:center;margin-bottom:8px" class="lit-count"><i>(Произносите или пойте мелодично на умиротворённый лад 108 раз или более.)</i></p>
-<p style="text-align:center">ན་མོ་བུ་དྡྷ་ཡ་</p>
+<p style="text-align:center" lang="bo">ན་མོ་བུ་དྡྷ་ཡ་</p>
 <p style="text-align:center"><b>НАМО БУДДАЯ</b></p>
 <p style="text-align:center"><i>(В сутре сказано: «Благодаря простому слушанию этой мантры вы без труда обретёте великие заслуги. Благодаря одному повторению этой мантры  
  все проступки, совершенные во многих жизнях, будут очищены».)</i></p>
@@ -3396,13 +3396,13 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Намо Гуру Будда Шакьямунае!</p>
 <p style="text-align:center">Пожалуйста, растворись в моём сердце!</p>
 <p style="text-align:center;margin-bottom:8px">Растворись в моём сердце! Растворись в моём сердце!</p>
-<p style="text-align:center;margin-bottom:8px"><b>А   А   А</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px" class="lit-sub"><i><b>III. Неконцептуальная медитация: </b> <b>
 </b> <b>расслабление во внутреннем исцелении Шаматхи</b></i></p>
 <div class="d-llist"><div class="li"><span class="mk">•</span><span class="tx">Подготовьте удобное сиденье.</span></div><div class="li"><span class="mk">•</span><span class="tx">Сядьте естественным образом с прямой спиной.</span></div><div class="li"><span class="mk">•</span><span class="tx">Расположите симметрично ладони на коленях.</span></div><div class="li"><span class="mk">•</span><span class="tx">Дышите мягко через рот.</span></div><div class="li"><span class="mk">•</span><span class="tx">Направьте взгляд так, чтобы уравновесить ум.</span></div><div class="li"><span class="mk">•</span><span class="tx">Будьте устойчивы как гора и расслабьтесь.</span></div><div class="li"><span class="mk">•</span><span class="tx">Пребывайте в неконцептуальной медитации.</span></div></div>
-<p style="text-align:center;margin-bottom:8px"><b>Внимателен     Естественен     Расслаблен     Умиротворён</b></p>
-<p style="text-align:center;margin-bottom:12px"><b>А   А   А</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">Внимателен</span>     <span style="white-space:nowrap">Естественен</span>     <span style="white-space:nowrap">Расслаблен</span>     <span style="white-space:nowrap">Умиротворён</span></b></p>
+<p style="text-align:center;margin-bottom:12px"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <p style="text-align:center"><i>(Практикуйте медитацию Шаматхи. Можно использовать умиротворяющие звуки природы или музыки, если вам это помогает.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Да достигну я благодаря этой практике состояния Будды.</p>
@@ -3570,9 +3570,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>Намо Буддая!</b></p>
 <p style="text-align:center;margin-bottom:8px">Да достигнут скоро все существа просветления Будды!</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>НАМО БУДДАЯ!   НАМО БУДДАЯ!   НАМО БУДДАЯ!</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">НАМО БУДДАЯ!</span> <span style="white-space:nowrap">НАМО БУДДАЯ!</span> <span style="white-space:nowrap">НАМО БУДДАЯ!</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:16px"><b>А   А   А   А   А</b></p>
+<p style="text-align:center;margin-bottom:16px"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <p style="text-align:center"><i>(Пребывайте в пустоте великой равностности — абсолютной истине.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center">Да свершу я добродетельный путь накопления.</p>
@@ -3585,7 +3585,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>в практике «Пути Будды». Необходимо повторять эту мантру ежедневно, когда вы сидите, стоите, ходите или работаете, как можно чаще, в любых жизненных обстоятельствах. Практикующему рекомендуется вести счёт повторениям мантры, и со временем произнести мантру «Намо Буддая»</i></p>
 <p style="text-align:center"><i>как минимум один миллион раз.)</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><b> Этим завершается Практика Сутры </b></p>
+<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Сутры</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
 <div class="d-img d-tall"><img src="sb/img18.png"></div>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
@@ -4003,7 +4003,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Приди      Приди      Приди</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px">ཨོཾ་མ་ཎི་པདྨེ་ཧཱུྃ་ཧྲཱིཿ</p>
+<p style="text-align:center;margin-bottom:8px" lang="bo">ཨོཾ་མ་ཎི་པདྨེ་ཧཱུྃ་ཧྲཱིཿ</p>
 <p style="text-align:center;margin-bottom:8px"><b>ОМ МАНИ ПЕДМЕ ХУНГ ШРИ</b></p>
 <p style="text-align:center" class="lit-count"><i>(не менее 11 раз)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4013,7 +4013,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Я рад героически помогать всем существам.</p>
 <p style="text-align:center">Да обретут все существа как можно скорее Великое Пробуждение.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>А   А   А</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <div class="d-img"><img src="sb/img19.png"></div>
 <div class="d-gap" style="height:1.15em"></div>
 <p style="text-align:center"><b>НАМО АВАЛОКИТЕШВАРА</b></p>
@@ -4027,7 +4027,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Иди      Иди      Иди</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px">ཨོཾ་མ་ཎི་པདྨེ་ཧཱུྃ་ཧྲཱིཿ</p>
+<p style="text-align:center;margin-bottom:8px" lang="bo">ཨོཾ་མ་ཎི་པདྨེ་ཧཱུྃ་ཧྲཱིཿ</p>
 <p style="text-align:center;margin-bottom:8px"><b>ОМ МАНИ ПЕДМЕ ХУНГ ШРИ</b></p>
 <p style="text-align:center" class="lit-count"><i>(повторите не менее 11 раз)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4037,7 +4037,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Я рад героически помогать всем существам.</p>
 <p style="text-align:center">Да обретут все существа как можно скорее Великое Пробуждение.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>А   А   А</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <p style="text-align:center"><i></i></p><p class="lit-count">( Вдыхая, медитативно визуализируйте, что забираете страдания других,  
  а выдыхая — что отдаёте другим своё счастье. Повторяйте это упражнение ума для развития бодхичитты много раз. Начните это упражнение, используя  
  в качестве объектов тех, кого вы любите, затем распространите практику  
@@ -4068,7 +4068,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Так как в соответствии с буддийской наукой причины нашего счастья и страдания находятся в наших собственных умах, то в действительности невозможно ни взять страдание, ни отдать счастье другим.   Вместо этого, благодаря нашим добродетельным намерениям и действиям, мы можем создать условия, которые принесут пользу другим существам. Тем не менее, степень получаемой пользы зависит от тех причин, которые находятся в умах этих существ. Для глубокого осмысления этой темы вам необходимо исследовать значение таких понятий, как «ум», «причина» и «условия» в соответствии с учениями Будды.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><b> Этим завершается Практика Бодхичитты </b></p>
+<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Бодхичитты</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img20.png" alt="Эмблема"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -4127,10 +4127,10 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:1.35em"></div>
 <p style="text-align:center"><i><b>Стослоговая мантра Ваджрасаттвы</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center">ཨོཾ་བཛྲ་སཏྭ་ས་མ་ཡ། མ་ནུ་པཱ་ལ་ཡ། བཛྲ་སཏྭ་ཏྭེ་ནོ་པ། ཏིཥྛ་དྲྀ་ཌྷོ་མེ་བྷ་ཝ།</p>
-<p style="text-align:center">སུ་ཏོཥྱོ་མེ་བྷ་ཝ། སུ་པོཥྱོ་མེ་བྷ་ཝ། ཨ་ནུ་རཀྟོ་མེ་བྷ་ཝ། སརྦ་སིདྡྷི་མྨེཔྲ་ཡཙྪ།</p>
-<p style="text-align:center">སརྦ་ཀརྨ་སུ་ཙ་མེ། ཙིཏྟཾ་ཤྲཱི་ཡཾཿ ཀུ་རུ་ཧཱུྃཿ ཧ་ཧ་ཧ་ཧ་ཧོ། བྷ་ག་ཝན།</p>
-<p style="text-align:center;margin-bottom:8px">སརྦ་ཏ་ཐཱ་ག་ཏ་བཛྲ་མ་མེ་མུཉྩ། བཛྲི་བྷ་ཝ། མ་ཧཱ་ས་མ་ཡ་སཏྭ་ཨཱཿ</p>
+<p style="text-align:center" lang="bo">ཨོཾ་བཛྲ་སཏྭ་ས་མ་ཡ། མ་ནུ་པཱ་ལ་ཡ། བཛྲ་སཏྭ་ཏྭེ་ནོ་པ། ཏིཥྛ་དྲྀ་ཌྷོ་མེ་བྷ་ཝ།</p>
+<p style="text-align:center" lang="bo">སུ་ཏོཥྱོ་མེ་བྷ་ཝ། སུ་པོཥྱོ་མེ་བྷ་ཝ། ཨ་ནུ་རཀྟོ་མེ་བྷ་ཝ། སརྦ་སིདྡྷི་མྨེཔྲ་ཡཙྪ།</p>
+<p style="text-align:center" lang="bo">སརྦ་ཀརྨ་སུ་ཙ་མེ། ཙིཏྟཾ་ཤྲཱི་ཡཾཿ ཀུ་རུ་ཧཱུྃཿ ཧ་ཧ་ཧ་ཧ་ཧོ། བྷ་ག་ཝན།</p>
+<p style="text-align:center;margin-bottom:8px" lang="bo">སརྦ་ཏ་ཐཱ་ག་ཏ་བཛྲ་མ་མེ་མུཉྩ། བཛྲི་བྷ་ཝ། མ་ཧཱ་ས་མ་ཡ་སཏྭ་ཨཱཿ</p>
 <p style="text-align:center"><b>ОМ БEДЗРА САТО САМАЯ</b></p>
 <p style="text-align:center"><b>МАНУПАЛАЯ БЕДЗРА САТО ТЕНОПА</b></p>
 <p style="text-align:center"><b>ТИШТРА ДРИ ДРО МЕБХАВА</b></p>
@@ -4155,7 +4155,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Растворись в моём сердце!</p>
 <p style="text-align:center">Растворись в моём уме!</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>ХУНГ   ХУНГ   ХУНГ</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">ХУНГ</span>   <span style="white-space:nowrap">ХУНГ</span>   <span style="white-space:nowrap">ХУНГ</span></b></p>
 <p style="text-align:center">Я Ваджрасаттва.   Я Ваджрасаттва.   Я Ваджрасаттва.</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Сущность всех элементов растворяется в моём теле.</p>
@@ -4164,7 +4164,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Свет всех просветлённых растворяется в моём оке мудрости.</p>
 <p style="text-align:center">Благоприятная сила всех вселенных растворяется в моих чакрах.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px">ཨོཾ་བཛྲ་སཏྭ་ཧཱུྃཿ</p>
+<p style="text-align:center;margin-bottom:8px" lang="bo">ཨོཾ་བཛྲ་སཏྭ་ཧཱུྃཿ</p>
 <p style="text-align:center;margin-bottom:4px"><b>ОМ БЕДЗРА САТО ХУНГ</b></p>
 <p style="text-align:center" class="lit-count"><i>(много раз)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4173,7 +4173,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Свет благословения излучается из моего сердца.</p>
 <p style="text-align:center">Целительный свет заполняет все миры.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px">ཨོཾ་བཛྲ་སཏྭ་ཧཱུྃཿ</p>
+<p style="text-align:center;margin-bottom:8px" lang="bo">ཨོཾ་བཛྲ་སཏྭ་ཧཱུྃཿ</p>
 <p style="text-align:center;margin-bottom:4px"><b>ОМ БЕДЗРА САТО ХУНГ</b></p>
 <p style="text-align:center" class="lit-count"><i>(много раз)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4181,11 +4181,11 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Все Ваджрасаттвы растворяются в абсолютной истине.</p>
 <p style="text-align:center">Все Ваджрасаттвы растворяются в Великом Пробуждении.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>А  А  А  А  А</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">А</span>  <span style="white-space:nowrap">А</span>  <span style="white-space:nowrap">А</span>  <span style="white-space:nowrap">А</span>  <span style="white-space:nowrap">А</span></b></p>
 <p style="text-align:center"><i>(Пойте «А» на мотив океанской волны, растворяясь в нерушимой мудрости-блаженстве своего просветлённого Мастера.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px">ཨོཾ ཨཱཿ ཧཱུྃཿ</p>
-<p style="text-align:center"><b>ОМ  А  ХУНГ</b></p>
+<p style="text-align:center;margin-bottom:8px" lang="bo">ཨོཾ ཨཱཿ ཧཱུྃཿ</p>
+<p style="text-align:center"><b><span style="white-space:nowrap">ОМ</span>  <span style="white-space:nowrap">А</span>  <span style="white-space:nowrap">ХУНГ</span></b></p>
 <p style="text-align:center"><i><b>2. Ваджра Тантра Йога</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>О, Нирманакая Лама, пожалуйста, даруй мне свои благословения.</b></p>
@@ -4210,7 +4210,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>Лама Чхенно, да реализую я десять мандал</b></p>
 <p style="text-align:center">Херук в моей тайной чакре.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>АВАДУТИ     РАСАНА     ЛАЛАНА</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">АВАДУТИ</span>     <span style="white-space:nowrap">РАСАНА</span>     <span style="white-space:nowrap">ЛАЛАНА</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>УШНИША ЧАКРА</b></p>
 <p style="text-align:center"><b>МАХАСУКХА ЧАКРА</b></p>
@@ -4219,7 +4219,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>НИРМАНА ЧАКРА</b></p>
 <p style="text-align:center"><b>СУКХАПАЛА ЧАКРА</b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>ШРИ  ОМ  А  ХУНГ  СО  ХА</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">ШРИ</span>  <span style="white-space:nowrap">ОМ</span>  <span style="white-space:nowrap">А</span>  <span style="white-space:nowrap">ХУНГ</span>  <span style="white-space:nowrap">СО</span>  <span style="white-space:nowrap">ХА</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px"><i></i></p><p class="lit-count">(Здесь можно повторять про себя слоги  <b>Ом А Хунг</b>  21 раз и более следующим образом: вдыхайте с  <b>Ом</b> , задерживайте дыхание с  <b>А</b>  и выдыхайте с  <b>Хунг</b> .)</p>
 <p style="text-align:center"><i></i></p><p class="lit-count">(Это можно также сопровождать различными движениями йоги. Для занятия полной практикой Ваджра Тантра Йоги необходимо выполнять упражнения подлинной линии передачи Тантры, такие как: упражнения с тремя нади,</i></p>
@@ -4266,7 +4266,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Только Мудрость     Только Мудрость</p>
 <p style="text-align:center">Только Будда</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>КАЯ БЕДЗРА ОМ   ВАККА БЕДЗРА А   ЦИТТА БЕДЗРА ХУНГ</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">КАЯ БЕДЗРА ОМ</span>   <span style="white-space:nowrap">ВАККА БЕДЗРА А</span>   <span style="white-space:nowrap">ЦИТТА БЕДЗРА ХУНГ</span></b></p>
 <p style="text-align:center;margin-bottom:8px"><b>ОМ А ХУНГ</b></p>
 <p style="text-align:center">(трижды, вместе с ваджра мудрой)</p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4312,7 +4312,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Для того, чтобы сохранить силу мудрости и целостность своей личной практики, а также для того, чтобы уберечь её от препятствий, особенно важно с достоинством сохранять в тайне свои личные сердечные наставления, тантрические практики, переживания в медитации, внутренние постижения, чудотворную деятельность и священные объекты. Это одна из главных коренных самай всех подлинных тантр.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b> Этим завершается Практика Тантры </b></p>
+<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Тантры</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -4367,7 +4367,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i><b>3. Призывание просветлённого Мастера</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>О ЛАМА ЧХЕН   ЛАМА ЧХЕН   ЛАМА ЧХЕННО</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">О ЛАМА ЧХЕН</span>   <span style="white-space:nowrap">ЛАМА ЧХЕН</span>   <span style="white-space:nowrap">ЛАМА ЧХЕННО</span></b></p>
 <p style="text-align:center">Единственное прибежище, благодатный Ваджрный Мастер,</p>
 <p style="text-align:center">пребывающий в распустившемся лотосе веры</p>
 <p style="text-align:center">в центре моей сердечной чакры,</p>
@@ -4444,14 +4444,14 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Пожалуйста, благослови меня своей неограниченной любящей речью.</p>
 <p style="text-align:center">Пожалуйста, благослови меня своей непорочной светоносной мудростью.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center">ཨོཾ་ཨཱཿཧཱུྃཿབཛྲ་གུ་རུ་པདྨ་སིདྡྷི་ཧཱུྃཿ</p>
+<p style="text-align:center" lang="bo">ཨོཾ་ཨཱཿཧཱུྃཿབཛྲ་གུ་རུ་པདྨ་སིདྡྷི་ཧཱུྃཿ</p>
 <p style="text-align:center"><b>ОМ А ХУНГ БЕДЗРА ГУРУ ПЕДМА СИДДХИ ХУНГ</b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i></i></p><p class="lit-count">(Произносите мантру непрерывно, подобно течению реки. Порой напевайте её  
  на разные чудесные мелодии. Время от времени добавляйте:</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px"><i>ཧཱུྃཿ</i></p>
-<p style="text-align:center"><b>ХУНГ  ХУНГ  ХУНГ  ХУНГ  ХУНГ</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">ХУНГ</span>  <span style="white-space:nowrap">ХУНГ</span>  <span style="white-space:nowrap">ХУНГ</span>  <span style="white-space:nowrap">ХУНГ</span>  <span style="white-space:nowrap">ХУНГ</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>Эта мантра устраняет все препятствия и спонтанно исполняет все благие пожелания. Благодаря практике этой мантры вас благословят бескрайние океаны Будд, а Дакини Мудрости даруют вам великое блаженство и пророческие посвящения. Постоянно удерживайте Ваджрного Мастера в глубине своего сердца, и вы услышите голос мудрости из своего сердца, который будет направлять вас в этой и будущих жизнях. Несомненно, преданно практикуя</i></p>
 <p style="text-align:center"><i>Гуру Йогу, вы обретёте рождение в славной чистой земле Медноцветной горы — непревзойдённом чистом мире устремлений мудрости.</i></p>
@@ -4501,10 +4501,10 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>Доверьтесь, доверьтесь плоду Махасандхи —</b></p>
 <p style="text-align:center">осознавание, осознавание, осознавание, осознавание и осознавание.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>А   А   А</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <p style="text-align:center" class="lit-sub"><i><b>IV. Дзогчен Випашьяна Самадхи</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>О ЛАМА ЧХЕН     ЛАМА ЧХЕН     ЛАМА ЧХЕННО!</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">О ЛАМА ЧХЕН</span>     <span style="white-space:nowrap">ЛАМА ЧХЕН</span>     <span style="white-space:nowrap">ЛАМА ЧХЕННО!</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Да реализую я природу ума!</p>
 <p style="text-align:center">Да реализую я осознавание Дзогчен!</p>
@@ -4541,7 +4541,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>Иногда пойте  <b>А</b> , выполняя мудры. Повторяя эти практики  
  снова и снова в сочетании с Гуру Йогой, вы непременно достигните  
  Тела Мудрости Великого Пробуждения за одну жизнь.)</p>
-<p style="text-align:center">ཨ</p>
+<p style="text-align:center" lang="bo">ཨ</p>
 <p style="text-align:center" class="lit-sub"><i><b>V. Превосходные молитвы Дзогчен</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:12px"><i><b>1. Трое врат просветления</b></i></p>
@@ -4561,7 +4561,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:4px">Да постигну я разницу междудвойственным умом и чистым осознаванием!</p>
 <p style="text-align:center">Да постигну я разницу между сознанием и изначальной мудростью!</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>А   А</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <p style="text-align:center"><i></i></p><p class="lit-count">( Практикуйте это упражнение  Дзогчен  
  по различению самсары  и  н ирваны . )</p>
 <div class="d-gap" style="height:0.95em"></div>
@@ -4576,7 +4576,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:8px"><b>А!</b></p>
 <p style="text-align:center;margin-bottom:8px">Да постигну я, что все мысли освобождаются в отсутствии усилий!</p>
 <p style="text-align:center;margin-bottom:8px"><b>А!</b></p>
-<p style="text-align:center;margin-bottom:8px"><b>А   А   А</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <p style="text-align:center"><i>(Пребывайте в неконцептуальном осознавании  
  изначального Будды Самантабхадры.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4608,7 +4608,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Чудесен сердечный смысл этих слов —</p>
 <p style="text-align:center">само сердце в вашей ладони.</p>
 <p style="text-align:center;margin-bottom:8px">Да будут являться эти слова до конца времён!</p>
-<p style="text-align:center;margin-bottom:8px"><b>А   А   А</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <p style="text-align:center;margin-bottom:8px">(Распевайте протяжно)</p>
 <p style="text-align:center"><i>(Это спел великий Мастер Дзогчен Сенге Вангчуг за мгновение до того, как обрёл Радужное Тело.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4660,14 +4660,14 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да позволю я этому скитающемуся и заблуждающемуся уму</p>
 <p style="text-align:center">отдыхать в естественном великом совершенстве.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>А   А   А</b></p>
-<p style="text-align:center"><b>А   А</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <p style="text-align:center"><b>А</b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Молитва Бардо несёт особое благо в двух случаях. Во-первых, когда вы чувствуете особенно сильную привязанность к этой жизни, необходимо глубоко задуматься об умирании, смерти и бардо, и читать эту молитву. Во-вторых,  
  эту молитву можно читать в случае чьей-либо смерти. Читая эту молитву для других, нужно заменить «да … я» на «да … имя».)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><b> Этим завершается Практика Дзогчен </b></p>
+<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Дзогчен</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
 <div class="d-gap" style="height:1.25em"></div>
 <p style="text-align:center" class="lit-section" id="sec-7" data-screen-label="Деятельность"><b>ПРАКТИКА </b><b>
 </b><b>ДХАРМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ</b></p>
@@ -4834,7 +4834,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i><b>1. Подношение защитникам Дхармы</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>РАМ ЯМ КХАМ   ОМ А ХУНГ</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <p style="text-align:center">Хо, ваджрные защитники, пожалуйста, внемлите мне!</p>
 <p style="text-align:center;margin-bottom:8px">(Произнесите это призывание 3 раза медленно и величественно, голосом, подобным львиному рыку)</p>
 <p style="text-align:center">Я искренне призываю всех Будд — источник всей Дхармы;</p>
@@ -4860,8 +4860,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Незамедлительно осуществите деяния объединения, умиротворения, накопления, подчинения, освобождения и освещения.</p>
 <p style="text-align:center;margin-bottom:8px">Громко бейте в победный барабан Дхармы 
 Просветлённого Царства Великого Пробуждения!</p>
-<p style="text-align:center"><b>Ки! Ки! Ки!                     Со! Со! Со!</b></p>
-<p style="text-align:center"><b>Лха Гьял Ло!                  Лха Гьял Ло!                   Лха Гьял Ло!</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Ки! Ки! Ки!</span>                     <span style="white-space:nowrap">Со! Со! Со!</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Лха Гьял Ло!</span> <span style="white-space:nowrap">Лха Гьял Ло!</span> <span style="white-space:nowrap">Лха Гьял Ло!</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Выполняя подношение Защитникам Дхармы, необходимо поднести им, по крайней мере, первую часть лучшего вина или чая.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4871,7 +4871,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>(Дышите свободно и произносите могуче,  
  ритмично стуча в барабан на каждый слог.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>РАМ ЯМ КХАМ   ОМ А ХУНГ</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px"><i>Мантра сокровищ заполняющих небо</i></p>
 <p style="text-align:center;margin-bottom:8px">Да преобразятся эти субстанции подношения во все мирские 
@@ -4946,14 +4946,14 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Громко бейте в победный барабан Дхармы 
 Просветлённого Царства Великого Пробуждения!</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>Ки! Ки! Ки!                     Со! Со! Со!</b></p>
-<p style="text-align:center"><b>Лха Гьял Ло!                  Лха Гьял Ло!                   Лха Гьял Ло!</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Ки! Ки! Ки!</span>                     <span style="white-space:nowrap">Со! Со! Со!</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Лха Гьял Ло!</span> <span style="white-space:nowrap">Лха Гьял Ло!</span> <span style="white-space:nowrap">Лха Гьял Ло!</span></b></p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i>(Тем, кто курил, а также тем, кто употряблял вещества и наркотики, изменяющие сознание, в период прошедших до этого мгновения двенадцати месяцев, воспрещается прикасаться к чаше Дхармапал и подношениям для них.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i><b>4. Краткая молитва пиршественного подношения</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>РАМ ЯМ КХАМ   ОМ А ХУНГ</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Высшим Буддам, Превосходным Бодхисаттвам,</p>
 <p style="text-align:center">Добрым Гуру, Драгоценным Дэвам, Могущественным Дакиням</p>
@@ -4995,7 +4995,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-img"><img src="sb/img26.png"></div>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center;margin-bottom:12px"><i><b>5. Молитва подношения света Дхармы</b></i></p>
-<p style="text-align:center;margin-bottom:8px"><b>РАМ ЯМ КХАМ   ОМ А ХУНГ</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <p style="text-align:center">Высшим Буддам, добрым Бодхисаттвам,</p>
 <p style="text-align:center">просветлённым Мастерам и могущественным Дакиням</p>
 <p style="text-align:center">я подношу безмерный элементный внешний свет,</p>
@@ -5064,9 +5064,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i><b>2. Ваджрная песня Дзогчен</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>Э Ма Ки Ри Ки Ри   Мас Та Вали Вали</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Э Ма Ки Ри Ки Ри</span>   <span style="white-space:nowrap">Мас Та Вали Вали</span></b></p>
 <p style="text-align:center"><b>Са Ми Та Су Ру Су Ру Ку Та Ли Ма Су Ма Су</b></p>
-<p style="text-align:center"><b>Э Ка Ра Су Ли Ба Та Йе    Ци Ки  РА Бху Ли Ба Ла Йе</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Э Ка Ра Су Ли Ба Та Йе</span>    <span style="white-space:nowrap">Ци Ки</span>  <span style="white-space:nowrap">РА Бху Ли Ба Ла Йе</span></b></p>
 <p style="text-align:center"><b>Са Мун Та Ца Рья Су Гха Я</b></p>
 <p style="text-align:center"><b>Би Та Са На Бхья Ку Ла Йи</b></p>
 <p style="text-align:center"><b>Са Ка Ри Дху Ка На Ма Та Ри Би Та На</b></p>
@@ -5078,8 +5078,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>Гу Ра Гу Ра Са Га Кха Ра На Лам</b></p>
 <p style="text-align:center"><b>На Ра На РаИ Тха Ра Па Ка Лам</b></p>
 <p style="text-align:center"><b>Си Ра Нра Си Ра Нра Бхе Са Ра Са Па Ла</b></p>
-<p style="text-align:center"><b>Бхун Дха Бхун Дха Цхи Кха Са  Ке Лам</b></p>
-<p style="text-align:center;margin-bottom:8px"><b>Са Саа Ри Рии Ли Лии  И Ии  Ми Мии  Ра Ра Раа</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Бхун Дха Бхун Дха Цхи Кха Са</span>  <span style="white-space:nowrap">Ке Лам</span></b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">Са Саа Ри Рии Ли Лии</span>  <span style="white-space:nowrap">И Ии</span>  <span style="white-space:nowrap">Ми Мии</span>  <span style="white-space:nowrap">Ра Ра Раа</span></b></p>
 <p style="text-align:center"><i>(Пребывая в состоянии осознавания Дзогчен, пойте эту песню на мелодии Дакинь, играя в колокольчик и дамару.)</i></p>
 <p style="text-align:center"><i><b>3. Победная песнь Дхармы</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -5088,23 +5088,23 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i><b>4. Танец барабана Дхармы</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>Эма Эмахо   Эма Эмахо   Эма Эмахо…</b></p>
-<p style="text-align:center"><b>Манджушри   Авалокитешвара   Ваджрапани…</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Эма Эмахо</span>   <span style="white-space:nowrap">Эма Эмахо</span>   <span style="white-space:nowrap">Эма Эмахо…</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Манджушри</span>   <span style="white-space:nowrap">Авалокитешвара</span>   <span style="white-space:nowrap">Ваджрапани…</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>Будда   Будда   Будда…</b></p>
-<p style="text-align:center"><b>Дхарма   Дхарма   Дхарма…</b></p>
-<p style="text-align:center"><b>Сангха   Сангха   Сангха…</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Будда</span>   <span style="white-space:nowrap">Будда</span>   <span style="white-space:nowrap">Будда…</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Дхарма</span>   <span style="white-space:nowrap">Дхарма</span>   <span style="white-space:nowrap">Дхарма…</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Сангха</span>   <span style="white-space:nowrap">Сангха</span>   <span style="white-space:nowrap">Сангха…</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>Падмакара   Падмакара   Падмакара…</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Падмакара</span>   <span style="white-space:nowrap">Падмакара</span>   <span style="white-space:nowrap">Падмакара…</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>Тара   Тара   Тара…</b></p>
-<p style="text-align:center"><b>Дхи   Дхи   Дхи   Дхи   Дхи…</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Тара</span>   <span style="white-space:nowrap">Тара</span>   <span style="white-space:nowrap">Тара…</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Дхи</span>   <span style="white-space:nowrap">Дхи</span>   <span style="white-space:nowrap">Дхи</span>   <span style="white-space:nowrap">Дхи</span>   <span style="white-space:nowrap">Дхи…</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>Любовь   Любовь   Любовь…</b></p>
-<p style="text-align:center"><b>Счастье   Счастье   Счастье…</b></p>
-<p style="text-align:center"><b>Покой   Покой   Покой…</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Любовь</span>   <span style="white-space:nowrap">Любовь</span>   <span style="white-space:nowrap">Любовь…</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Счастье</span>   <span style="white-space:nowrap">Счастье</span>   <span style="white-space:nowrap">Счастье…</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Покой</span>   <span style="white-space:nowrap">Покой</span>   <span style="white-space:nowrap">Покой…</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>Алала Алалахо   Алала Алалахо   Алала Алалахо…</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">Алала Алалахо</span>   <span style="white-space:nowrap">Алала Алалахо</span>   <span style="white-space:nowrap">Алала Алалахо…</span></b></p>
 <p style="text-align:center"><i>(Радостно пойте, играйте в барабан и танцуйте с радостной непринуждённостью в спонтанной мудрости.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i><b>5. Благостная песнь дитя мудрости</b></i></p>
@@ -5167,13 +5167,13 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:8px">Не будь существом — будь Буддой.</p>
 <p style="text-align:center"><b>Да! Да! Я бесстрашное дитя Будды.</b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>Ха Ха Ха Ха Ха!      Хи Хи Хи Хи Хи!      Ху Ху Ху Ху Ху!</b></p>
-<p style="text-align:center"><b>Хр Хр Хр Хр Хр!   Хл Хл Хл Хл Хл!   Хе Хе Хе Хе Хе!</b></p>
-<p style="text-align:center"><b>Хо Хо Хо Хо Хо!       Хм Хм Хм Хм Хм!</b></p>
-<p style="text-align:center;margin-bottom:8px"><b>Хее Хее Хее Хее Хее!      Ха Ха Ха Ха Ха!</b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Ха Ха Ха Ха Ха!</span>      <span style="white-space:nowrap">Хи Хи Хи Хи Хи!</span>      <span style="white-space:nowrap">Ху Ху Ху Ху Ху!</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Хр Хр Хр Хр Хр!</span>   <span style="white-space:nowrap">Хл Хл Хл Хл Хл!</span>   <span style="white-space:nowrap">Хе Хе Хе Хе Хе!</span></b></p>
+<p style="text-align:center"><b><span style="white-space:nowrap">Хо Хо Хо Хо Хо!</span>       <span style="white-space:nowrap">Хм Хм Хм Хм Хм!</span></b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">Хее Хее Хее Хее Хее!</span>      <span style="white-space:nowrap">Ха Ха Ха Ха Ха!</span></b></p>
 <p style="text-align:center"><i>(Свободно рассмейся необусловленным ваджрным смехом в высшем счастье Безумной Мудрости.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b> Это завершает Практику Дхармической Деятельности </b></p>
+<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Практику Дхармической Деятельности</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -5226,7 +5226,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i><b>2. Мантра для освобождения шести миров</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center">འ ཨ ཤ ས མ ཧ །</p>
+<p style="text-align:center" lang="bo">འ ཨ ཤ ས མ ཧ །</p>
 <p style="text-align:center;margin-bottom:8px"><b>АА А ША СА МА ХА</b></p>
 <p style="text-align:center"><i></p><p class="lit-count">(Для того, чтобы спонтанно освобождать всех существ шести миров, повторяйте эту мантру не менее шести раз.</i>)</p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -5389,42 +5389,42 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i><b>2. Молитва сердечной связи</b></i></p>
 <p style="text-align:center"><i><b>к доброму Коренному Мастеру</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center">དཔལ་ལྡན་རྩ་བའི་བླ་མ་རིན་པོ་ཆེ།</p>
+<p style="text-align:center" lang="bo">དཔལ་ལྡན་རྩ་བའི་བླ་མ་རིན་པོ་ཆེ།</p>
 <p style="text-align:center">ПАЛ ДЕН ЦА ВЕЙ ЛА МА РИН ПО ЧЕ</p>
 <p style="text-align:center;margin-bottom:12px">Славный коренной Мастер, Драгоценный,</p>
-<p style="text-align:center">བདག་གི་སྙིང་གར་པདྨའི་གདན་བཞུགས་ལ།</p>
+<p style="text-align:center" lang="bo">བདག་གི་སྙིང་གར་པདྨའི་གདན་བཞུགས་ལ།</p>
 <p style="text-align:center">ДАК ГИ НЬИН КАР ПЕД МЕ ДЕН ШУК ЛА</p>
 <p style="text-align:center;margin-bottom:12px">пожалуйста, воссядь на лотосовый трон в моём сердце.</p>
-<p style="text-align:center">བཀའ་དྲིན་ཆེན་པོའི་སྒོ་ནས་རྗེས་བཟུང་སྟེ།</p>
+<p style="text-align:center" lang="bo">བཀའ་དྲིན་ཆེན་པོའི་སྒོ་ནས་རྗེས་བཟུང་སྟེ།</p>
 <p style="text-align:center">КА ДРИН ЧЕН ПОЙ ГО НЕЙ ДЖЕ ЗУНГ ТЕ</p>
 <p style="text-align:center;margin-bottom:12px">Прими меня с безграничной добротой и благослови достижениями</p>
-<p style="text-align:center">སྐུ་གསུང་ཐུགས་ཀྱི་དངོས་གྲུབ་སྩལ་དུ་གསོལ།</p>
+<p style="text-align:center" lang="bo">སྐུ་གསུང་ཐུགས་ཀྱི་དངོས་གྲུབ་སྩལ་དུ་གསོལ།</p>
 <p style="text-align:center">КУ СУНГ ТУГ КЬИ НГО ДРУП ЦАЛ ДУ СОЛ</p>
 <p style="text-align:center;margin-bottom:8px">твоего просветлённого тела, речи и ума.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center">དཔལ་ལྡན་བླ་མའི་རྣམ་པ་ཐར་པ་ལ།</p>
+<p style="text-align:center" lang="bo">དཔལ་ལྡན་བླ་མའི་རྣམ་པ་ཐར་པ་ལ།</p>
 <p style="text-align:center">ПАЛ ДЕН ЛА МЕЙ НАМ ПА ТАР ПА ЛА</p>
 <p style="text-align:center;margin-bottom:12px">Да не возникнет у меня даже на мгновение ложный взгляд</p>
-<p style="text-align:center">སྐད་ཅིག་ཙམ་ཡང་ལོག་ལྟ་མི་སྐྱེ་ཞིང་།</p>
+<p style="text-align:center" lang="bo">སྐད་ཅིག་ཙམ་ཡང་ལོག་ལྟ་མི་སྐྱེ་ཞིང་།</p>
 <p style="text-align:center">КХЕД ЧИК ЦАМ ЯНГ ЛОК ТА МИ КЬЕ ШИНГ</p>
 <p style="text-align:center;margin-bottom:12px">на деятельность святого Ваджрного Мастера.</p>
-<p style="text-align:center">ཅི་མཛད་ལེགས་པར་མཐོང་བའི་མོས་གུས་ཀྱིས།</p>
+<p style="text-align:center" lang="bo">ཅི་མཛད་ལེགས་པར་མཐོང་བའི་མོས་གུས་ཀྱིས།</p>
 <p style="text-align:center">ЧИ ДЗЕД ЛЕК ПАР ТОНГ ВЕЙ МОЙ ГУ КЬИ</p>
 <p style="text-align:center;margin-bottom:12px">Благодаря знанию-преданности восприятия каждого действия как учения</p>
-<p style="text-align:center">བླ་མའི་བྱིན་རླབས་སེམས་ལ་འཇུག་པར་ཤོག།</p>
+<p style="text-align:center" lang="bo">བླ་མའི་བྱིན་རླབས་སེམས་ལ་འཇུག་པར་ཤོག།</p>
 <p style="text-align:center">ЛА МЕЙ ДЖИН ЛАП СЕМ ЛА ДЖЮГ ПАР ШОК</p>
 <p style="text-align:center;margin-bottom:8px">да войдут высшие благословения Мастера в мой ум.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center">སྐྱེ་བ་ཀུན་ཏུ་ཡང་དག་བླ་མ་དང་།</p>
+<p style="text-align:center" lang="bo">སྐྱེ་བ་ཀུན་ཏུ་ཡང་དག་བླ་མ་དང་།</p>
 <p style="text-align:center">КЬЕ ВА КУН ТУ ЯНГ ДАК ЛА МА ДАНГ</p>
 <p style="text-align:center;margin-bottom:12px">Да не буду я разделён во всех рождениях со святым Мастером.</p>
-<p style="text-align:center">འབྲལ་མེད་ཆོས་ཀྱི་དཔལ་ལ་ལོངས་སྤྱོད་ནས།</p>
+<p style="text-align:center" lang="bo">འབྲལ་མེད་ཆོས་ཀྱི་དཔལ་ལ་ལོངས་སྤྱོད་ནས།</p>
 <p style="text-align:center">ДРЕЛ МЕД ЧОЙ КИ ПЕЛ ЛА ЛОНГ ЧОД НЕ</p>
 <p style="text-align:center;margin-bottom:12px">И, наслаждаясь славным значением Дхармы,</p>
-<p style="text-align:center">ས་དང་ལམ་གྱི་ཡོན་ཏན་རབ་རྫོགས་ཏེ།</p>
+<p style="text-align:center" lang="bo">ས་དང་ལམ་གྱི་ཡོན་ཏན་རབ་རྫོགས་ཏེ།</p>
 <p style="text-align:center">СА ДАНГ ЛАМ ГЬИ ЙОН ТЕН РАБ ДЗОГ ТЕ</p>
 <p style="text-align:center;margin-bottom:12px">да доведу я до совершенства качества путей и уровней просветления.</p>
-<p style="text-align:center">རྡོ་རྗེ་འཆང་གི་གོ་འཕང་མྱུར་ཐོབ་ཤོག།</p>
+<p style="text-align:center" lang="bo">རྡོ་རྗེ་འཆང་གི་གོ་འཕང་མྱུར་ཐོབ་ཤོག།</p>
 <p style="text-align:center">ДОР ДЖЕ ЧАНГ ГИ ГО ПАНГ НЬЮР ТХОБ ШОК</p>
 <p style="text-align:center">Да достигну я быстро пробуждённого состояния всеведущего Ваджрадхары.</p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -5432,17 +5432,17 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i><b>Молитва о сохранении и распространении традиций Дзогчен</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center">ཐུབ་བསྟན་མཛེས་པའི་རྒྱན་གཅིག་ཀློང་ཆེན་པ།</p>
+<p style="text-align:center" lang="bo">ཐུབ་བསྟན་མཛེས་པའི་རྒྱན་གཅིག་ཀློང་ཆེན་པ།</p>
 <p style="text-align:center">ТХУП ТЕН ДЗЕ ПЕЙ ГЬЕН ЧИК ЛОНГ ЧЕН ПА</p>
 <p style="text-align:center;margin-bottom:12px">Всеведущий Лонгченпа, единственное прекрасное украшение учений Будд,</p>
-<p style="text-align:center">བཤད་སྒྲུབ་བསྟན་པའི་མངའ་བདག་འཇིགས་མེད་གླིང།</p>
+<p style="text-align:center" lang="bo">བཤད་སྒྲུབ་བསྟན་པའི་མངའ་བདག་འཇིགས་མེད་གླིང།</p>
 <p style="text-align:center">ШЕЙ ДРУП ТЕН ПЕЙ НГА ДАК ДЖИГ МЕ ЛИНГ</p>
 <p style="text-align:center;margin-bottom:12px">открыватель сокровищ Джигме Лингпа, владыка учения и практики Дхармы,</p>
-<p style="text-align:center">མཚུངས་མེད་བླ་མའི་བསྟན་པ་སྲིད་མཐའི་བར།</p>
+<p style="text-align:center" lang="bo">མཚུངས་མེད་བླ་མའི་བསྟན་པ་སྲིད་མཐའི་བར།</p>
 <p style="text-align:center">ЦУНГ МЕ ЛА МЕЙ ТЕН ПА СИ ТЕ ПАР</p>
 <p style="text-align:center;margin-bottom:12px">пусть учения и традиция Дзогчен обоих несравненных Лам 
 будут сохраняться</p>
-<p style="text-align:center">བཤད་སྒྲུབ་ཐོས་བསམ་སྒོམ་པས་འཛིན་གྱུར་ཅིག།</p>
+<p style="text-align:center" lang="bo">བཤད་སྒྲུབ་ཐོས་བསམ་སྒོམ་པས་འཛིན་གྱུར་ཅིག།</p>
 <p style="text-align:center">ШЕЙ ДРУП ТХО САМ ГОМ ПЕЙ ДЗИН ГЬЮР ЧИК</p>
 <p style="text-align:center">посредством практик изучения, размышления,</p>
 <p style="text-align:center">медитации и преподавания до самого конца самсары.</p>
@@ -5467,16 +5467,16 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i><b>Молитва о пребывании в Дзогчен</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center">སྣང་གྲགས་རིག་གསུམ་ལྷ་སྔགས་ཆོས་སྐུའི་ངང་།</p>
+<p style="text-align:center" lang="bo">སྣང་གྲགས་རིག་གསུམ་ལྷ་སྔགས་ཆོས་སྐུའི་ངང་།</p>
 <p style="text-align:center">НАНГ ДРАК РИГ СУМ ЛХА НГАК ЧО КУ НГАНГ</p>
 <p style="text-align:center;margin-bottom:12px">Все феномены, звуки и сознания — по природе Дэва, Мантра и Дхармакая,</p>
-<p style="text-align:center">སྐུ་དང་ཡེ་ཤེས་རོལ་པར་འབྱམས་ཀླས་པས།</p>
+<p style="text-align:center" lang="bo">སྐུ་དང་ཡེ་ཤེས་རོལ་པར་འབྱམས་ཀླས་པས།</p>
 <p style="text-align:center">КУ ДАНГ Е ШЕ РОЛ ПАР ДЖАМ ЛЕ ПЕЙ</p>
 <p style="text-align:center;margin-bottom:12px">бесконечно беспредельные — представление Кай и Джян.</p>
-<p style="text-align:center">ཟབ་གསང་རྣལ་འབྱོར་ཆེན་པོའི་ཉམས་ལེན་ལ།</p>
+<p style="text-align:center" lang="bo">ཟབ་གསང་རྣལ་འབྱོར་ཆེན་པོའི་ཉམས་ལེན་ལ།</p>
 <p style="text-align:center">ЗАБ САНГ НАЛ ДЖОР ЧЕН ПО НЬЯМ ЛЕН ЛА</p>
 <p style="text-align:center;margin-bottom:12px">Так, пусть в глубокой и тайной практике Великой Йоги</p>
-<p style="text-align:center">དབྱེར་མེད་ཐུགས་ཀྱི་ཐིག་ལེར་རོ་གཅིག་ཤོག</p>
+<p style="text-align:center" lang="bo">དབྱེར་མེད་ཐུགས་ཀྱི་ཐིག་ལེར་རོ་གཅིག་ཤོག</p>
 <p style="text-align:center">ЕР МЕД ТУК ЧИ ТИК ЛЕР РО ЧИГ ШОК</p>
 <p style="text-align:center">сфера сердечной сущности нераздельно сольётся в единовкусие.</p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -5494,7 +5494,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>«Да освобожу я моих матерей — всех существ — от страданий  
  и приведу их к Совершенному Просветлению».</i></p>
 <div class="d-gap" style="height:1.15em"></div>
-<p style="text-align:center"><b> Это завершает Заключительную Практику </b></p></div>
+<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Заключительную Практику</i> <svg class="wheel-mk"><use href="#dw"/></svg></p></div>
 <nav class="nav" id="nav">
   <div class="nav-menu" id="navMenu"></div>
   <div class="nav-bar" id="navBar">
