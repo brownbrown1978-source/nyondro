@@ -2008,9 +2008,9 @@ html,#main-sadhana{margin:0;}
 /* линии передачи: фиксированная ширина — все группы выровнены в один столбец, блок по центру */
 .lineage{display:grid;grid-template-columns:1.9em 1fr;column-gap:.6em;row-gap:.3em;margin:.6em auto .3em;width:min(26em,100%);text-align:left;font-size:18px;}
 .lineage .ln{display:contents;}
-.lineage .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap;}
-.lineage .nm{text-align:left;color:var(--ink);min-width:0;}
-.lineage .lnfull .nm{grid-column:1 / -1;text-align:center;}
+.lineage .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap;font-style:normal;}
+.lineage .nm{text-align:left;color:var(--ink);min-width:0;font-style:normal;}
+.lineage .lnfull .nm{grid-column:1 / -1;text-align:center;font-style:italic;font-size:0.8em;color:var(--ink-soft);}
 .lineage .lgap{grid-column:1 / -1;height:.45em;}
 @media (max-width:430px){
   .lineage{font-size:17px;column-gap:.5em;}
@@ -2084,10 +2084,10 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 /* крупная высокая диаграмма (слон шаматхи) */
 .d-img.d-tall img{max-width:88%;}
 /* колесо Дхармы — декоративные маркеры */
-.wheel-lg{width:30px;height:30px;color:var(--cinnabar);display:inline-block;vertical-align:middle;}
-.wheel-mk{width:15px;height:15px;color:var(--gold-dk);display:inline-block;vertical-align:-2px;}
-.dir-row{display:flex;align-items:center;justify-content:center;gap:.45em;margin:.2em 0 .35em;}
-.dir-row .dir-w{font-style:italic;font-weight:700;font-size:18px;color:var(--ink);letter-spacing:.02em;}
+.wheel-lg{width:26px;height:26px;color:var(--ink);display:inline-block;}
+.wheel-mk{width:13px;height:13px;color:var(--ink);display:inline-block;vertical-align:-1px;}
+.dir-row{display:flex;align-items:center;justify-content:center;gap:.22em;margin:.2em 0 .35em;}
+.dir-row .dir-w{font-style:italic;font-weight:700;font-size:18px;color:var(--ink);letter-spacing:.02em;margin:0 .55em;}
 /* эмблема-розетка над разделом */
 .d-img.d-emblem{margin:8px 0 2px;}
 .d-img.d-emblem img{max-width:26%;}
@@ -2217,7 +2217,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 #main-sadhana .sb-timer .sbt-row{display:flex;gap:1.4em;justify-content:center;margin-top:.55em;}
 #main-sadhana .sb-timer .sbt-row button{font:inherit;font-size:14px;background:none;border:none;color:var(--ink-soft,#6B5B45);cursor:pointer;}
 #main-sadhana .sb-timer .sbt-row button:hover{color:var(--cinnabar,#B23A22);}
-</style>
+.page p.lit-section.sec-open::before{display:none;}.page p.lit-section.sec-open{margin-top:.1em;padding-top:0;}</style>
 </head>
 <body>
 
@@ -2353,7 +2353,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 
 
 <main>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="dw" viewBox="0 0 100 100"><g fill="none" stroke="currentColor" stroke-width="5"><circle cx="50" cy="50" r="44"/><circle cx="50" cy="50" r="13"/></g><g stroke="currentColor" stroke-width="5"><line x1="50" y1="6" x2="50" y2="94"/><line x1="6" y1="50" x2="94" y2="50"/><line x1="19" y1="19" x2="81" y2="81"/><line x1="81" y1="19" x2="19" y2="81"/></g><circle cx="50" cy="50" r="6" fill="currentColor"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="dw" viewBox="0 0 100 100"><g fill="currentColor"><ellipse cx="50" cy="25" rx="8.5" ry="19" transform="rotate(0 50 50)"/><ellipse cx="50" cy="25" rx="8.5" ry="19" transform="rotate(45 50 50)"/><ellipse cx="50" cy="25" rx="8.5" ry="19" transform="rotate(90 50 50)"/><ellipse cx="50" cy="25" rx="8.5" ry="19" transform="rotate(135 50 50)"/><ellipse cx="50" cy="25" rx="8.5" ry="19" transform="rotate(180 50 50)"/><ellipse cx="50" cy="25" rx="8.5" ry="19" transform="rotate(225 50 50)"/><ellipse cx="50" cy="25" rx="8.5" ry="19" transform="rotate(270 50 50)"/><ellipse cx="50" cy="25" rx="8.5" ry="19" transform="rotate(315 50 50)"/><circle cx="50" cy="50" r="12" fill="var(--paper,#FBF4E2)"/><circle cx="50" cy="50" r="6.5"/></g></symbol></svg>
 <div class="page">
 <div class="cover" id="sec-0" data-screen-label="Обложка"><div class="d-img cover-emblem"><img src="sb/img01.png" alt="Дзогчен"></div>
 <div class="d-gap" style="height:1.8em"></div>
@@ -2407,7 +2407,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 <p style="text-align:center"><i>(Перед началом определённой практики можно произносить  
  её название вместо общего названия в последней строке молитвы.)</i></p>
 <div class="d-gap" style="height:0.8em"></div>
-<p style="text-align:center"><i><b>Мирная огненная пуджа</b></i></p>
+<p style="text-align:center"><b><i>Мирная огненная пуджа</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -2444,9 +2444,9 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Обязательно вымойте лицо и руки перед совершением огненной пуджи. В огненную мандалу подносятся только чистые части благоприятных субстанций, таких как лекарственные травы, еда, драгоценности и амрита. Никогда не подносите ядовитые, испорченные или грязные вещества.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>Зарождение драгоценной бодхичитты</b></i></p>
+<p style="text-align:center"><b><i>Зарождение драгоценной бодхичитты</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая!</b></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая!</p>
 <p style="text-align:center">Чтобы освободить всех существ от всего страдания</p>
 <p style="text-align:center">и утвердить всех существ в Истинном Счастье</p>
 <p style="text-align:center">я стану Буддой в этой жизни как можно скорее,</p>
@@ -2456,7 +2456,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 
 <p style="text-align:center" class="lit-sub"><i><b>I. Рассвет пробуждения</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>1. Випашьяна дыхание шаматха</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>1. Випашьяна дыхание шаматха</i></b></p>
 <p style="text-align:center"><i>Во-первых, подготовьте удобное сиденье. Несколько минут тихо сидите, погружаясь в естественную ясность. Отпустите все дела, заботы и отвлечения. Расслабьте тело, пребывайте в безмолвии, успокойте ум.<br>Во-вторых, умиротворённо и радостно выполняйте практику девяти дыханий.<br>В-третьих, внимательно сосчитайте двадцать одно дыхание (три цикла по семь).</i></p>
 <div class="sb-timer" id="sbt" role="group" aria-label="Таймер шаматхи">
 <div class="sbt-cap">Шаматха — пребывание в покое перед практикой</div>
@@ -2499,7 +2499,7 @@ pauseBtn.addEventListener('click',function(){paused=!paused;pauseBtn.textContent
 document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible'&&tmr&&!paused)lock();});
 })();</script>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>2. Осознанные простирания</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>2. Осознанные простирания</i></b></p>
 <p style="text-align:center"><b>Намо Буддая, Намо Дхармая, Намо Сангхая,</b></p>
 <p style="text-align:center;margin-bottom:4px"><b>Намо Гуру, Дэва, Дакиния</b></p>
 <p style="text-align:center;margin-bottom:12px" class="lit-count"><i>(3 раза с мудрой простирания)</i></p>
@@ -2507,19 +2507,19 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Я всегда скромен. Во мне нет эгоизма.</p>
 <p style="text-align:center">Я почитаю всех существ как Будду, Дхарму и Сангху.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>3. Полное очищение</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>3. Полное очищение</i></b></p>
 <p style="text-align:center">Будды и Бодхисаттвы — внемлите мне!</p>
 <p style="text-align:center">Пожалуйста, очистите всю мою пагубную карму и пагубные эмоции.</p>
 <p style="text-align:center">Перед всеми Буддами я честно признаю все свои ошибки.</p>
 <p style="text-align:center">Я искренне сожалею обо всех моих пагубных помыслах и поступках.</p>
 <p style="text-align:center">Я полностью избавляюсь от своего пагубного мышления и пагубных эмоций</p>
 <p style="text-align:center;margin-bottom:8px">Я полностью избавляюсь от своих пороков и пагубной кармы.</p>
-<p style="text-align:center">Всё своё пагубное мышление <b>отбрасываю, отбрасываю!</b></p>
-<p style="text-align:center">Все свои пагубные эмоции <b>отбрасываю, отбрасываю!</b></p>
-<p style="text-align:center">Всё своё несчастье <b>отбрасываю, отбрасываю!</b></p>
-<p style="text-align:center">Все свои душевные раны <b>отбрасываю, отбрасываю!</b></p>
-<p style="text-align:center">Все свои сожаления <b>отбрасываю, отбрасываю!</b></p>
-<p style="text-align:center;margin-bottom:8px">Все свои угрызения <b>отбрасываю, отбрасываю!</b></p>
+<p style="text-align:center"><b>Всё своё пагубное мышление <b>отбрасываю, отбрасываю!</b></b></p>
+<p style="text-align:center"><b>Все свои пагубные эмоции <b>отбрасываю, отбрасываю!</b></b></p>
+<p style="text-align:center"><b>Всё своё несчастье <b>отбрасываю, отбрасываю!</b></b></p>
+<p style="text-align:center"><b>Все свои душевные раны <b>отбрасываю, отбрасываю!</b></b></p>
+<p style="text-align:center"><b>Все свои сожаления <b>отбрасываю, отбрасываю!</b></b></p>
+<p style="text-align:center;margin-bottom:8px"><b>Все свои угрызения <b>отбрасываю, отбрасываю!</b></b></p>
 <p style="text-align:center;margin-bottom:4px"><b><span style="white-space:nowrap">Отбрасываю!</span> <span style="white-space:nowrap">Отбрасываю!</span> <span style="white-space:nowrap">Отбрасываю!</span></b></p>
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">ХАА!</span> <span style="white-space:nowrap">ХАА!</span> <span style="white-space:nowrap">ХАА!</span> <span style="white-space:nowrap">ХАА!</span></b></p>
 <p style="text-align:center" class="lit-count"><i>(С усилием произнесите эти четыре слога, сопровождая каждый слог мудрой отбрасывания и концентрируясь на разрушении пагубных мыслей и эмоций.)</i></p>
@@ -2530,9 +2530,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:4px"><b>ОМ БЕДЗРА САТО ХУНГ</b></p>
 <p style="text-align:center;margin-bottom:12px" class="lit-count"><i>(21 раз)</i></p>
 <p style="text-align:center;margin-bottom:4px">Я чист. Я свободен. Я прозрачен. Я сияю.</p><p class="lit-count">(3 раза)</p>
-<p style="text-align:center" id="sec-vtj" data-screen-label="Ваджра тантра йога"><i><b>Предварительные упражнения ваджра тантра йоги</b></i></p>
+<p style="text-align:center" id="sec-vtj" data-screen-label="Ваджра тантра йога"><b><i>Предварительные упражнения ваджра тантра йоги</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p style="text-align:center"><i>Святые Ваджрные Мастера, превосходные учителя Дхармы и драгоценная Сангха, внемлите мне. Пожалуйста, сосредоточьте внимательное осознавание  
  на теле, речи и уме. Практикуйте эти йогические упражнения,  
  синхронизируя мантру, мудру и самадхи.</i></p>
@@ -2810,7 +2810,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>Дхармы Дзогчен или флагом Дзогчен.)</i></p>
 <p style="text-align:center" class="lit-sub"><i><b>III. Мантры ваджрного благословения</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Мантра благословения подношений</b></i></p>
+<p style="text-align:center"><b><i>1. Мантра благословения подношений</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:12px"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <p style="text-align:center"><b>ОМ СВАБХАВА ШУДДА САРВА ДХАРМА</b></p>
@@ -2818,7 +2818,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>ОМ БЕДЗРА АМРИТА КУНДАЛИ</b></p>
 <p style="text-align:center"><b>ХАНА ХАНА ХУНГ ПХЕТ</b></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>2. Мантра благословения речи</b></i></p>
+<p style="text-align:center"><b><i>2. Мантра благословения речи</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px" lang="bo">ཨ ཨཱ ཨི ཨཱི ཨུ ཨཱུ རྀ རཱྀ ལྀ ལཱྀ ཨེ ཨཻ ཨོ ཨཽ ཨཾ ཨཿ</p>
 <p style="text-align:center;margin-bottom:10px" class="alph-ru"><b><span style="white-space:nowrap">А аа</span>  <span style="white-space:nowrap">Ы ыы</span>  <span style="white-space:nowrap">У уу</span>  <span style="white-space:nowrap">Р Рр</span>  <span style="white-space:nowrap">Л Лл</span>  <span style="white-space:nowrap">Э Ээ</span>  <span style="white-space:nowrap">О оо</span>  <span style="white-space:nowrap">Ам А</span></b></p>
@@ -2835,12 +2835,12 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(это алфавит санскрита)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>3.  Мантра благословения чёток</b></i></p>
+<p style="text-align:center"><b><i>3.  Мантра благословения чёток</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>ОМ РУЦИРАМАНИ ПРАВАДАЙЕ СОХА</b></p>
 <p style="text-align:center" class="lit-count"><i>(Повторяйте мантру 3 раза, потирая чётки в руках)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>Чистое посвящение</b></i></p>
+<p style="text-align:center"><b><i>Чистое посвящение</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Намо Буддая! Для истинного счастья всех существ</p>
 <p style="text-align:center">я стану Буддой в этой жизни как можно скорее.</p>
@@ -2850,7 +2850,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да будут все мои посвящения чистыми как мудрость Манджушри.</p>
 <p style="text-align:center">Да будут все мои посвящения исполнены как устремление Самантабхадры.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Предварительная Практика</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
+<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Предварительная Практика</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img02.png" alt="Эмблема"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -2858,7 +2858,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.7em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>I. Открытие глаза мудрости</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Молитва великому солнцу мудрости</b></i></p>
+<p style="text-align:center"><b><i>1. Молитва великому солнцу мудрости</i></b></p>
 <p style="text-align:center">Намо Будды всех направлений, пожалуйста, откройте мой ум.</p>
 <p style="text-align:center">Намо Бодхисаттвы десяти бхуми, пожалуйста, пробудите мою любовь.</p>
 <p style="text-align:center">Намо Гуру трёх линий передачи Дзогчен, 
@@ -2866,7 +2866,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Намо Дэва четырёх Тантр, пожалуйста, пробудите моё милосердие.</p>
 <p style="text-align:center">Намо Дакини трёх миров, пожалуйста, пробудите мою силу.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>2. Молитва превосходному Манджушри</b></i></p>
+<p style="text-align:center"><b><i>2. Молитва превосходному Манджушри</i></b></p>
 <div class="d-img"><img src="sb/img03.png"></div>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>НАМО МАНДЖУШРИ!</b></p>
@@ -2898,7 +2898,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Пожалуйста, устрани все мои заблуждения и пороки.</p>
 <p style="text-align:center;margin-bottom:8px">Пожалуйста, пробуди естественную мудрость в моём уме.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>3. Подношение мандалы</b></i></p>
+<p style="text-align:center"><b><i>3. Подношение мандалы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Для совершенного просветления всех существ</p>
 <p style="text-align:center">я подношу Буддам свои тело, речь и ум,</p>
@@ -2918,7 +2918,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:16px"><i>(Повторяйте с мудрой подношения мандалы. Можно делать материальные подношения благих символов Дхармы или драгоценных субстанций, таких как алмазы, золото, серебро или мука, рис, ячмень, а также целительные вещества).</i></p>
 <div class="d-img d-wide"><img src="sb/img04.png"></div>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>4. Искренняя просьба даровать учение Дхармы</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>4. Искренняя просьба даровать учение Дхармы</i></b></p>
 <p style="text-align:center">Просветлённые Ваджрные Мастера,</p>
 <p style="text-align:center">Пожалуйста, даруйте мне драгоценные учения Дхармы.</p>
 <p style="text-align:center">Пожалуйста, поверните колесо драгоценного учения Сутры.</p>
@@ -2928,17 +2928,17 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да получу я самые подходящие учения на благо моего ума.</p>
 <p style="text-align:center;margin-bottom:8px">Да реализуют все существа покой и счастье самовозникающей мудрости.</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>5.1  Сущностная мантра взаимозависимого возникновения</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>5.1  Сущностная мантра взаимозависимого возникновения</i></b></p>
 <p style="text-align:center;margin-bottom:4px"><b>ОМ ЙЕДХАРМА ХЕТУПРАБХАВА ХЕТУНТЕКХАН</b></p>
 <p style="text-align:center;margin-bottom:4px"><b>ТАТХАГАТО ХАЙОВАДАТ ТЕКХАНЦАЙО</b></p>
 <p style="text-align:center;margin-bottom:4px"><b>НИРОДХА ЭВАМВАДИ МАХАШРАМАНА СОХА</b></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>5.2  Мантра Праджняпарамиты</b></i></p>
-<p style="text-align:center;margin-bottom:4px"><b>ОМ ГАТЕ ГАТЕ ПАРАГАТЕ ПАРАСАМГАТЕ БОДХИ СОХА </b></p><p class="lit-count">(4 раза)</p>
+<p style="text-align:center;margin-bottom:12px"><b><i>5.2  Мантра Праджняпарамиты</i></b></p>
+<p style="text-align:center;margin-bottom:4px"><b>ОМ ГАТЕ ГАТЕ ПАРАГАТЕ ПАРАСАМГАТЕ БОДХИ СОХА</b></p><p class="lit-count">(4 раза)</p>
 <div class="d-img d-buddha"><img src="sb/img05.png"></div>
 <div class="d-gap" style="height:1.8em"></div>
-<p style="text-align:center"><i><b>6. Памятование четырёх благородных истин просветлённых</b></i></p>
-<p style="text-align:center;margin-bottom:12px"><i><b>Первое учение Будды</b></i></p>
+<p style="text-align:center"><b><i>6. Памятование четырёх благородных истин просветлённых</i></b></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>Первое учение Будды</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">В сутре Будда сказал:</p>
 <p style="text-align:center">«Это истина просветлённых относительно страдания.</p>
@@ -2958,12 +2958,12 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Не надо достигать прекращения.</p>
 <p style="text-align:center">Не надо практиковать путь».</p>
 <div class="d-gap" style="height:1.8em"></div>
-<p style="text-align:center"><i><b>7. Четыре благородные истины Пути Будды Дзогчен</b></i></p>
+<p style="text-align:center"><b><i>7. Четыре благородные истины Пути Будды Дзогчен</i></b></p>
 <p style="text-align:center"><i>Как осознанно практиковать четыре благородные</i></p>
 <p style="text-align:center"><i>истины просветлённых</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:16px"><i><b>~ Первая просветлённая истина — истина относительно страдания ~</b></i></p>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая!</b></p>
+<p style="text-align:center;margin-bottom:16px"><b><i>~ Первая просветлённая истина — истина относительно страдания ~</i></b></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая!</p>
 <p style="text-align:center">Всё моё страдание —</p>
 <p style="text-align:center">это следствие моего пагубного мышления и пагубной кармы как причины,</p>
 <p style="text-align:center;margin-bottom:8px">а также пагубного мышления и пагубной кармы всех существ как условия.</p>
@@ -2982,8 +2982,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:8px">Поэтому, чтобы прекратить страдание всех существ, я достигну совершенства своего благого мышления и благой кармы.</p>
 <p style="text-align:center;margin-bottom:8px">Дзая Дзая Судзая!</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:16px"><i><b>~ Вторая просветлённая истина — истина относительно начал ~</b></i></p>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая!</b></p>
+<p style="text-align:center;margin-bottom:16px"><b><i>~ Вторая просветлённая истина — истина относительно начал ~</i></b></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:8px">Моё пагубное мышление и пагубная карма —
 это причина всего моего страдания и условие страдания всех существ.</p>
 <p style="text-align:center">Так, пагубное мышление и пагубная карма — причины страдания, 
@@ -3001,9 +3001,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 о Будде, Дхарме и Сангхе.</p>
 <p style="text-align:center">Дзая Дзая Судзая!</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>~ Третья просветлённая истина — истина относительно прекращения ~</b></i></p>
+<p style="text-align:center"><b><i>~ Третья просветлённая истина — истина относительно прекращения ~</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая!</b></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая!</p>
 <p style="text-align:center">Всё моё счастье —</p>
 <p style="text-align:center">это следствие моего благого мышления и благой кармы как причины,</p>
 <p style="text-align:center">а также благословений всех Будд вместе с благим мышлением</p>
@@ -3024,9 +3024,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:8px">я достигну прекращения своего пагубного мышления и пагубной кармы.</p>
 <p style="text-align:center">Дзая Дзая Судзая!</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>~ Четвёртая просветлённая истина — истина относительно пути ~</b></i></p>
+<p style="text-align:center"><b><i>~ Четвёртая просветлённая истина — истина относительно пути ~</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая!</b></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:8px">Моё благое мышление и благая карма —
 это причина всего моего счастья и условие счастья всех существ.</p>
 <p style="text-align:center">Так, благое мышление и благая карма — путь счастья, 
@@ -3050,13 +3050,13 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>Сарва Мангалам!</b></p>
 <div class="d-gap" style="height:1.15em"></div>
-<p style="text-align:center"><i>~ Для Удзе: ~</i></p>
+<p style="text-align:center"><b><i>~ Для Удзе: ~</i></b></p>
 <p style="text-align:center"><i>Пожалуйста, мягко потянитесь и глубоко подышите.</i></p>
 <p style="text-align:center"><i>С радостью расслабьтесь и попейте немного воды.</i></p>
 <p style="text-align:center"><i>Теперь искренне помолительс Будде.</i></p>
 <p style="text-align:center"><i>Зародите  чистое намерение от всего сердца</i></p>
 <p style="text-align:center"><i>и поддерживайте корректное воззрение и  поведение в Дхарме:</i></p>
-<p style="text-align:center"><i><b>~ Зарождение намерения по отношению к Учению ~</b></i></p>
+<p style="text-align:center"><b><i>~ Зарождение намерения по отношению к Учению ~</i></b></p>
 <p style="text-align:center">Намо Буддая! Для истинного счастья всех существ</p>
 <p style="text-align:center">я стану Буддой в этой жизни как можно скорее.</p>
 <p style="text-align:center"><b>Для этого я буду с радостью</b></p>
@@ -3087,7 +3087,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:4px"><b><span style="white-space:nowrap">Собраны целиком</span>      <span style="white-space:nowrap">Раскрыты совершенно</span>      <span style="white-space:nowrap">Преподаны полностью</span></b></p>
 <p style="text-align:center" class="lit-count"><i>(Произнесите один раз, сопровождая мудрой)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center">Этим завершается Практика Изучения</p>
+<p style="text-align:center"><i>Этим завершается Практика Изучения</i></p>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -3101,19 +3101,19 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Намо Будда Шакьямунае</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Первые пять превосходных учеников Будды</b></i></p>
+<p style="text-align:center"><b><i>Первые пять превосходных учеников Будды</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">1.</span><span class="nm">Намо Архат Каундинья</span></div><div class="ln"><span class="n">2.</span><span class="nm">Намо Архат Ашваджит</span></div><div class="ln"><span class="n">3.</span><span class="nm">Намо Архат Маханама</span></div><div class="ln"><span class="n">4.</span><span class="nm">Намо Архат Вашпа</span></div><div class="ln"><span class="n">5.</span><span class="nm">Намо Архат Бхадрика</span></div></div>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Первые семь преемников учения в линии передачи Сутры</b></i></p>
+<p style="text-align:center"><b><i>Первые семь преемников учения в линии передачи Сутры</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">6.</span><span class="nm">Намо Архат Махакашьяпа</span></div><div class="ln"><span class="n">7.</span><span class="nm">Намо Архат Ананда</span></div><div class="ln"><span class="n">8.</span><span class="nm">Намо Архат Шанавасика</span></div><div class="ln"><span class="n">9.</span><span class="nm">Намо Архат Упагупта</span></div><div class="ln"><span class="n">10.</span><span class="nm">Намо Архат Дхитика</span></div><div class="ln"><span class="n">11.</span><span class="nm">Намо Архат Кришна</span></div><div class="ln"><span class="n">12.</span><span class="nm">Намо Архат Махасударшана</span></div></div>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Шестнадцать старейшин или «Шодаша Ставираха»</b></i></p>
+<p style="text-align:center"><b><i>Шестнадцать старейшин или «Шодаша Ставираха»</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">13.</span><span class="nm">Намо Архат Ангаджа</span></div><div class="ln"><span class="n">14.</span><span class="nm">Намо Архат Аджита</span></div><div class="ln"><span class="n">15.</span><span class="nm">Намо Архат Ванавасин</span></div><div class="ln"><span class="n">16.</span><span class="nm">Намо Архат Махакалика</span></div><div class="ln"><span class="n">17.</span><span class="nm">Намо Архат Ваджрипутра</span></div><div class="lgap"></div><div class="ln"><span class="n">18.</span><span class="nm">Намо Архат Шрибхадра</span></div><div class="ln"><span class="n">19.</span><span class="nm">Намо Архат Канакаватса</span></div><div class="ln"><span class="n">20.</span><span class="nm">Намо Архат Канакабхарадваджа</span></div><div class="ln"><span class="n">21.</span><span class="nm">Намо Архат Бакула</span></div><div class="ln"><span class="n">22.</span><span class="nm">Намо Архат Рахула</span></div><div class="ln"><span class="n">23.</span><span class="nm">Намо Архат Чудапантхака</span></div><div class="ln"><span class="n">24.</span><span class="nm">Намо Архат Пиндола Барадваджа</span></div><div class="ln"><span class="n">25.</span><span class="nm">Намо Архат Пантхака</span></div><div class="ln"><span class="n">26.</span><span class="nm">Намо Архат Нагасена</span></div><div class="ln"><span class="n">27.</span><span class="nm">Намо Архат Гопака</span></div><div class="ln"><span class="n">28.</span><span class="nm">Намо Архат Абхеда</span></div></div>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>Непрерывная линия передачи Сутры</b></i></p>
+<p style="text-align:center"><b><i>Непрерывная линия передачи Сутры</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">1.</span><span class="nm">Намо Архат Шарипутра</span></div><div class="ln"><span class="n">2.</span><span class="nm">Намо Архат Маудгальяяна</span></div><div class="ln"><span class="n">3.</span><span class="nm">Намо Архат Упали</span></div><div class="lgap"></div><div class="ln"><span class="n">4.</span><span class="nm">Намо Архат Шрикирти</span></div><div class="ln"><span class="n">5.</span><span class="nm">Намо Архат Рахулагупта</span></div><div class="ln"><span class="n">6.</span><span class="nm">Намо Брахмин Рахулагупта</span></div><div class="ln"><span class="n">7.</span><span class="nm">Намо Нагаарджуна</span></div><div class="lgap"></div><div class="ln"><span class="n">8.</span><span class="nm">Намо Лег Ден Че</span></div><div class="ln"><span class="n">9.</span><span class="nm">Намо Шригупта</span></div><div class="ln"><span class="n">10.</span><span class="nm">Намо Джнянагарбха</span></div><div class="ln"><span class="n">11.</span><span class="nm">Намо Шантаракшита</span></div><div class="lgap"></div><div class="ln"><span class="n">12.</span><span class="nm">Ба Пел Янг Чхенно</span></div><div class="ln"><span class="n">13.</span><span class="nm">Цанг Рабсел Чхенно</span></div><div class="ln"><span class="n">14.</span><span class="nm">Ла Чен Гонгпа Рабсел Чхенно</span></div><div class="ln"><span class="n">15.</span><span class="nm">Лу Ме Цултрим Шераб Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">16.</span><span class="nm">Зу Дордже Гьялцен Чхенно</span></div><div class="ln"><span class="n">17.</span><span class="nm">Панг Тон Друбпа Шераб Чхенно</span></div><div class="ln"><span class="n">18.</span><span class="nm">Не По Драг Гьял Чхенно</span></div><div class="ln"><span class="n">19.</span><span class="nm">Дре Шераб Бар Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">20.</span><span class="nm">Ча Дул Цон Дру Бар Чхенно</span></div><div class="ln"><span class="n">21.</span><span class="nm">Ци Дул Щон-ну Сенг-ге Чхенно</span></div><div class="ln"><span class="n">22.</span><span class="nm">Дро Тон Дудци Драк Чхенно</span></div><div class="ln"><span class="n">23.</span><span class="nm">Чим Намкха Драг Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">24.</span><span class="nm">Дракпа Шераб Чхенно</span></div><div class="ln"><span class="n">25.</span><span class="nm">Чим Лобсанг Драг Па Чхенно</span></div><div class="ln"><span class="n">26.</span><span class="nm">Кхенчен Кун Гьялва Чхенно</span></div><div class="ln"><span class="n">27.</span><span class="nm">Пан Чен Гедун Друб Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">28.</span><span class="nm">Кунга Де Лег Чхенно</span></div><div class="ln"><span class="n">29.</span><span class="nm">Гедун Гьяцо Чхенно</span></div><div class="ln"><span class="n">30.</span><span class="nm">Гелег Палзанг Чхенно</span></div><div class="ln"><span class="n">31.</span><span class="nm">Сонам Гьяцо Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">32.</span><span class="nm">Дам Чо Яр Пал Чхенно</span></div><div class="ln"><span class="n">33.</span><span class="nm">Лобсанг Чо Ки Гьялцен Чхенно</span></div><div class="ln"><span class="n">34.</span><span class="nm">Нга Ванг Лобсанг Гьяцо Чхенно</span></div><div class="ln"><span class="n">35.</span><span class="nm">Лочен Дхарма Шри Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">36.</span><span class="nm">Сенгтрук Пема Таши Чхенно</span></div><div class="ln"><span class="n">37.</span><span class="nm">Гьялсе Шенпен Тае Чхенно</span></div><div class="ln"><span class="n">38.</span><span class="nm">Кхенчен Пема Дордже Чхенно</span></div><div class="ln"><span class="n">39.</span><span class="nm">Ургьен Тензин Норбу Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">40.</span><span class="nm">Гьякунг Кхенчен Щенга Чхенно</span></div><div class="ln"><span class="n">41.</span><span class="nm">Тхубга Йищин Норбу Чхенно</span></div><div class="ln"><span class="n">42.</span><span class="nm">Кхенчен Тхубтен Ньендрак Чхенно</span></div><div class="ln"><span class="n">43.</span><span class="nm">Кхенпо Тхубтен Норбу Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">44.</span><span class="nm">Генла Пема Озер Чхенно</span></div><div class="ln"><span class="n">45.</span><span class="nm">Кхенчен Пема Цеванг Чхенно</span></div><div class="ln"><span class="n">46.</span><span class="nm">Тхубтен Дамчо Озер Чхенно</span></div><div class="ln lnfull"><span class="nm">Дринчен Цавей Лама Чхенно</span></div></div>
 <div class="d-gap" style="height:0.55em"></div>
@@ -3132,31 +3132,31 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>Восемь благоприятных символов</i></p>
 <p style="text-align:center" class="lit-sub"><i><b>II. Концептуальная медитация стадии пути Сутры</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Слова истины</b></i></p>
+<p style="text-align:center"><b><i>1. Слова истины</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Визуализируя светоносное тело Будды, пребывайте в уверенности:</p>
 <p style="text-align:center">«Будда истинно пребывает в этом месте». В это мгновение Будда</p>
 <p style="text-align:center">в действительности находится там, где вы его визуализируете.</p>
 <p style="text-align:center">Тело мудрости Будды запредельно рождению и смерти,</p>
 <p style="text-align:center;margin-bottom:12px">величине и времени, приближённости и отдалённости.</p>
-<p style="text-align:center;margin-bottom:4px"><i><b>В Самадхираджа-сутре Будда сказал:</b></i></p>
+<p style="text-align:center;margin-bottom:4px"><b><i>В Самадхираджа-сутре Будда сказал:</i></b></p>
 <p style="text-align:center"><i>«Будда непрерывно пребывает перед всеми,</i></p>
 <p style="text-align:center"><i>кто памятует луноподобного Будду,</i></p>
 <p style="text-align:center"><i>когда ходит, сидит, встаёт или ложится;</i></p>
 <p style="text-align:center;margin-bottom:12px"><i>все они достигнут полного просветления».</i></p>
-<p style="text-align:center;margin-bottom:4px"><i><b>В этой сутре Будда также сказал:</b></i></p>
+<p style="text-align:center;margin-bottom:4px"><b><i>В этой сутре Будда также сказал:</i></b></p>
 <p style="text-align:center"><i>«Наделённый телом мудрости, подобным золотому свету,</i></p>
 <p style="text-align:center"><i>Защитник вселенной обладает величайшей красотой.</i></p>
 <p style="text-align:center"><i>Все те, кто сосредотачивает свой ум на Будде —</i></p>
 <p style="text-align:center;margin-bottom:12px"><i>бодхисаттвы, практикующие абсолютную медитацию».</i></p>
-<p style="text-align:center;margin-bottom:4px"><i><b>В другой сутре Будда объясняет:</b></i></p>
+<p style="text-align:center;margin-bottom:4px"><b><i>В другой сутре Будда объясняет:</i></b></p>
 <p style="text-align:center"><i>«Кто бы ни визуализировал Будду,</i></p>
 <p style="text-align:center"><i>перед теми Будда пребывает.</i></p>
 <p style="text-align:center"><i>Будда непрерывно дарует благословения</i></p>
 <p style="text-align:center"><i>и полностью освобождает от всех изъянов».</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:12px">Визуализируя Победоносного Будду, вы не только накапливаете заслуги, но и создаёте неисчерпаемый корень заслуг, который не будет утрачен вовек.</p>
-<p style="text-align:center;margin-bottom:4px"><i><b>В Аватамсака-сутре Будда сказал:</b></i></p>
+<p style="text-align:center;margin-bottom:4px"><b><i>В Аватамсака-сутре Будда сказал:</i></b></p>
 <p style="text-align:center"><i>«От созерцания, слушания и совершения подношений</i></p>
 <p style="text-align:center"><i>Победоносному Будде вырастает бесконечное множество заслуг. 
  Пока все беспокоящие эмоции и страдания самсары не будут преодолены, 
@@ -3164,7 +3164,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:12px">Все благожелательные устремления, произнесённые перед Буддой,
 воистину будут исполнены.</p>
-<p style="text-align:center;margin-bottom:4px"><i><b>В Манджушри-кшетравьюха-сутре Будда сказал:</b></i></p>
+<p style="text-align:center;margin-bottom:4px"><b><i>В Манджушри-кшетравьюха-сутре Будда сказал:</i></b></p>
 <p style="text-align:center"><i>«Все феномены возникают согласно условиям</i></p>
 <p style="text-align:center"><i>и полностью зависят от ваших намерений.</i></p>
 <p style="text-align:center"><i>Зародив правильные устремления,</i></p>
@@ -3174,8 +3174,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 но не имеют собственной природы, выполняйте 
 практику почитания нашего Несравненного Учителя, Будды.</p>
 <p style="text-align:center"><i>(Все приведённые цитаты сутр взяты из подлинной Сутра Питаки Махаяны.)</i></p>
-<p style="text-align:center;margin-bottom:4px"><i><b>2. Медитация Будды Шакьямуни</b></i></p>
-<p style="text-align:center;margin-bottom:16px"><i><b>Визуализация светоносности</b></i></p>
+<p style="text-align:center;margin-bottom:4px"><b><i>2. Медитация Будды Шакьямуни</i></b></p>
+<p style="text-align:center;margin-bottom:16px"><b><i>Визуализация светоносности</i></b></p>
 <div class="d-img d-buddha"><img src="sb/img16.png"></div>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">А! Союз нерождённой пустоты и непрерывных взаимозависимых явлений</p>
@@ -3202,9 +3202,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Подношу тебе свои тело, речь, ум,</p>
 <p style="text-align:center">все удовольствия, все заслуги и все вселенные.</p>
 <p style="text-align:center;margin-bottom:12px">Пожалуйста, преобразуй мои тело, речь и ум в твою милосердную мудрость.</p>
-<p style="text-align:center"><i></i></p><p class="lit-count">( По д д ерживайте визуализацию Будды Шакьямуни в течение последующих практик этого раздела, вплоть до  «С тадии завершения ».)</p>
-<p style="text-align:center"><i><b>3. Принятие прибежища в Трёх Драгоценностях:</b></i></p>
-<p style="text-align:center;margin-bottom:8px"><i><b>Будде, Дхарме и Сангхе</b></i></p>
+<p style="text-align:center"><i></i></p><p class="lit-count">(Поддерживайте визуализацию Будды Шакьямуни в течение последующих практик этого раздела, вплоть до «Стадии завершения».)</p>
+<p style="text-align:center"><b><i>3. Принятие прибежища в Трёх Драгоценностях:</i></b></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>Будде, Дхарме и Сангхе</i></b></p>
 <p style="text-align:center"><i>(Произносите молитву прибежища с глубокой верой, от всего сердца.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>Да постигну я, что Будда — это безмерное счастье!</b></p>
@@ -3218,7 +3218,6 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Будда — условие всего счастья.</p>
 <p style="text-align:center">Всем сердцем:</p>
 <p style="text-align:center;margin-bottom:8px">Верю! Обещаю! Уверен!</p>
-<div class="d-img d-figure"><img src="sb/img17.png" alt="Три Драгоценности"></div>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>Да постигну я, что Дхарма — это благое мышление!</b></p>
 <p style="text-align:center;margin-bottom:8px"><b>Да постигну я, что Дхарма — это чистое видение!</b></p>
@@ -3243,11 +3242,12 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Сангха — сияние всего счастья.</p>
 <p style="text-align:center">Всем сердцем:</p>
 <p style="text-align:center">Верю! Обещаю! Уверен!</p>
+<div class="d-img d-figure"><img src="sb/img17.png" alt="Три Драгоценности"></div>
 <div class="d-gap" style="height:1.15em"></div>
-<p style="text-align:center;margin-bottom:8px"><i><b>4. Естественный закон страдания и счастья</b></i></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>4. Естественный закон страдания и счастья</i></b></p>
 <p style="text-align:center"><i>(Будда постоянно учил этим безошибочным принципам относительной истины.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Воздержание от десяти недобродетельных действий</b></i></p>
+<p style="text-align:center"><b><i>Воздержание от десяти недобродетельных действий</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Ради блага всех существ</p>
 <p style="text-align:center">я не буду убивать живых существ;</p>
@@ -3262,7 +3262,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">я отвергну вредоносные намерения;</p>
 <p style="text-align:center">я отвергну неверные воззрения.</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>Совершение десяти добродетельных действий</b></i></p>
+<p style="text-align:center"><b><i>Совершение десяти добродетельных действий</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Ради блага всех существ</p>
 <p style="text-align:center">я буду защищать живых существ;</p>
@@ -3276,8 +3276,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">я буду практиковать любящую доброту;</p>
 <p style="text-align:center">я буду практиковать верные воззрения.</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>5. Принятие трёх буддийских обетов:</b></i></p>
-<p style="text-align:center"><i><b>Пратимокши, Бодхичитты и Самаи</b></i></p>
+<p style="text-align:center"><b><i>5. Принятие трёх буддийских обетов:</i></b></p>
+<p style="text-align:center"><b><i>Пратимокши, Бодхичитты и Самаи</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Перед Буддой, с чистым отречением</p>
 <p style="text-align:center;margin-bottom:4px">я обещаю никогда не вредить существам.</p>
@@ -3286,7 +3286,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Перед Буддой, с чистым видением</p>
 <p style="text-align:center">я обещаю почитать всех существ как Будду.</p>
 <div class="d-gap" style="height:1.15em"></div>
-<p style="text-align:center"><i><b>6.  Отвращение ума от самсары</b></i></p>
+<p style="text-align:center"><b><i>6.  Отвращение ума от самсары</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px">Намо Гуру Будда Шакьямунае!</p>
 <p style="text-align:center">Да постигну я, что рождение человеком драгоценно.</p>
@@ -3317,8 +3317,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Будда!</p>
 <p style="text-align:center">Будда!</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>7. Воззрения трёх колесниц:</b></i></p>
-<p style="text-align:center"><i><b>Шравакаяны, Махаяны и Ваджраяны</b></i></p>
+<p style="text-align:center"><b><i>7. Воззрения трёх колесниц:</i></b></p>
+<p style="text-align:center"><b><i>Шравакаяны, Махаяны и Ваджраяны</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px">Намо Гуру Будда Шакьямунае!</p>
 <p style="text-align:center;margin-bottom:8px">Да реализую я, что ни в одной вселенной не существует “я”!</p>
@@ -3326,55 +3326,55 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 это единство пустоты и взаимозависимости!</p>
 <p style="text-align:center">Да реализую я, что все существа — по природе Будда!</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>8. Вращение колеса Дхармы</b></i></p>
+<p style="text-align:center"><b><i>8. Вращение колеса Дхармы</i></b></p>
 <div class="d-gap" style="height:0.3em"></div>
 <p style="text-align:center;margin-bottom:4px"><svg class="wheel-lg"><use href="#dw"/></svg></p>
-<p style="text-align:center"><i><b>Непрерывно вращайте колесо Дхармы в своём уме.</b></i></p>
-<p style="text-align:center"><i><b>Благодаря этому изменится ваша жизнь, и вы станете</b></i></p>
-<p style="text-align:center"><i><b>естественным образом распространять покой на других.</b></i></p>
-<p style="text-align:center"><i><b>Это преобразит страх в покой, страдание в счастье, гнев</b></i></p>
-<p style="text-align:center"><i><b>в милосердие, зависть в любовь и неведение в мудрость.</b></i></p>
-<p style="text-align:center"><i><b>Вы очень скоро достигните состояния Будды.</b></i></p>
+<p style="text-align:center"><b><i>Непрерывно вращайте колесо Дхармы в своём уме.</i></b></p>
+<p style="text-align:center"><b><i>Благодаря этому изменится ваша жизнь, и вы станете</i></b></p>
+<p style="text-align:center"><b><i>естественным образом распространять покой на других.</i></b></p>
+<p style="text-align:center"><b><i>Это преобразит страх в покой, страдание в счастье, гнев</i></b></p>
+<p style="text-align:center"><b><i>в милосердие, зависть в любовь и неведение в мудрость.</i></b></p>
+<p style="text-align:center"><b><i>Вы очень скоро достигните состояния Будды.</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p class="dir-row"><b><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg><span class="dir-w">Восток</span><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg></b></p>
+<p class="dir-row"><b><i><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg><span class="dir-w">Восток</span><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg></i></b></p>
 <p style="text-align:center">Намо Гуру Будда Шакьямунае!</p>
 <p style="text-align:center;margin-bottom:4px">Пожалуйста, пробуди отречение в моём уме.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center">Ты полностью свободен от цепляния за самость.</p>
 <p style="text-align:center">Да освобожусь я от страдания и причин страдания.</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p class="dir-row"><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg><span class="dir-w">Юг</span><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg></p>
 <p style="text-align:center">Намо Гуру Будда Шакьямунае!</p>
 <p style="text-align:center;margin-bottom:4px">Пожалуйста, пробуди милосердие в моём уме.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center">Ты полностью свободен от страдания.</p>
 <p style="text-align:center">Да освободятся все существа, мои матери,</p>
 <p style="text-align:center">от страдания и причин страдания.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p class="dir-row"><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg><span class="dir-w">Запад</span><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg></p>
+<p class="dir-row"><b><i><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg><span class="dir-w">Запад</span><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg></i></b></p>
 <p style="text-align:center">Намо Гуру Будда Шакьямунае!</p>
 <p style="text-align:center;margin-bottom:4px">Пожалуйста, пробуди веру в моём уме.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center">Ты — неизменное высшее счастье.</p>
 <p style="text-align:center">Да обрету я счастье и причины счастья.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p class="dir-row"><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg><span class="dir-w">Север</span><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg></p>
+<p class="dir-row"><b><i><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg><span class="dir-w">Север</span><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg></i></b></p>
 <p style="text-align:center">Намо Гуру Будда Шакьямунае!</p>
 <p style="text-align:center;margin-bottom:4px">Пожалуйста, пробуди любовь в моём уме.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center">Ты — необусловленная любящая доброта.</p>
 <p style="text-align:center">Да обретут все существа, мои матери,</p>
 <p style="text-align:center">счастье и причины счастья.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p class="dir-row"><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg><span class="dir-w">Центр</span><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg></p>
+<p class="dir-row"><b><i><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg><span class="dir-w">Центр</span><svg class="wheel-mk"><use href="#dw"/></svg><svg class="wheel-mk"><use href="#dw"/></svg></i></b></p>
 <p style="text-align:center">Намо Гуру Будда Шакьямунае!</p>
 <p style="text-align:center;margin-bottom:4px">Пожалуйста, пробуди мудрость в моём уме.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center">Ты — мудрость Великого Пробуждения.</p>
 <p style="text-align:center">Да освободятся все существа, мои матери,</p>
 <p style="text-align:center">от неведения и причин неведения.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><i><b>9. Мантра Будды Шакьямуни</b></i></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>9. Мантра Будды Шакьямуни</i></b></p>
 <p style="text-align:center">Намо Гуру Будда Шакьямунае!</p>
 <p style="text-align:center">Пожалуйста, омой меня своим светом!</p>
 <p style="text-align:center">Пожалуйста, омой меня своим светом!</p>
@@ -3392,15 +3392,14 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>(В сутре сказано: «Благодаря простому слушанию этой мантры вы без труда обретёте великие заслуги. Благодаря одному повторению этой мантры  
  все проступки, совершенные во многих жизнях, будут очищены».)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>10. Стадия завершения</b></i></p>
+<p style="text-align:center"><b><i>10. Стадия завершения</i></b></p>
 <p style="text-align:center">Намо Гуру Будда Шакьямунае!</p>
 <p style="text-align:center">Пожалуйста, растворись в моём сердце!</p>
 <p style="text-align:center;margin-bottom:8px">Растворись в моём сердце! Растворись в моём сердце!</p>
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px" class="lit-sub"><i><b>III. Неконцептуальная медитация: </b> <b>
-</b> <b>расслабление во внутреннем исцелении Шаматхи</b></i></p>
-<div class="d-llist"><div class="li"><span class="mk">•</span><span class="tx">Подготовьте удобное сиденье.</span></div><div class="li"><span class="mk">•</span><span class="tx">Сядьте естественным образом с прямой спиной.</span></div><div class="li"><span class="mk">•</span><span class="tx">Расположите симметрично ладони на коленях.</span></div><div class="li"><span class="mk">•</span><span class="tx">Дышите мягко через рот.</span></div><div class="li"><span class="mk">•</span><span class="tx">Направьте взгляд так, чтобы уравновесить ум.</span></div><div class="li"><span class="mk">•</span><span class="tx">Будьте устойчивы как гора и расслабьтесь.</span></div><div class="li"><span class="mk">•</span><span class="tx">Пребывайте в неконцептуальной медитации.</span></div></div>
+<p style="text-align:center;margin-bottom:8px" class="lit-sub"><i><b>III. Неконцептуальная медитация:</b><br><b>расслабление во внутреннем исцелении Шаматхи</b></i></p>
+<div class="d-llist"><div class="li"><span class="mk"><svg class="wheel-mk"><use href="#dw"/></svg></span><span class="tx">Подготовьте удобное сиденье.</span></div><div class="li"><span class="mk"><svg class="wheel-mk"><use href="#dw"/></svg></span><span class="tx">Сядьте естественным образом с прямой спиной.</span></div><div class="li"><span class="mk"><svg class="wheel-mk"><use href="#dw"/></svg></span><span class="tx">Расположите симметрично ладони на коленях.</span></div><div class="li"><span class="mk"><svg class="wheel-mk"><use href="#dw"/></svg></span><span class="tx">Дышите мягко через рот.</span></div><div class="li"><span class="mk"><svg class="wheel-mk"><use href="#dw"/></svg></span><span class="tx">Направьте взгляд так, чтобы уравновесить ум.</span></div><div class="li"><span class="mk"><svg class="wheel-mk"><use href="#dw"/></svg></span><span class="tx">Будьте устойчивы как гора и расслабьтесь.</span></div><div class="li"><span class="mk"><svg class="wheel-mk"><use href="#dw"/></svg></span><span class="tx">Пребывайте в неконцептуальной медитации.</span></div></div>
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">Внимателен</span>     <span style="white-space:nowrap">Естественен</span>     <span style="white-space:nowrap">Расслаблен</span>     <span style="white-space:nowrap">Умиротворён</span></b></p>
 <p style="text-align:center;margin-bottom:12px"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
 <p style="text-align:center"><i>(Практикуйте медитацию Шаматхи. Можно использовать умиротворяющие звуки природы или музыки, если вам это помогает.)</i></p>
@@ -3409,26 +3408,26 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да утвержу я всех существ без единого исключения</p>
 <p style="text-align:center">в совершенном состоянии Будды.</p>
 <p style="text-align:center;margin-bottom:12px" class="lit-sub"><i><b>IV. Устремления просветлённого пути</b></i></p>
-<p style="text-align:center;margin-bottom:8px"><i><b>1. Устремления к четырём внутренним осознаваниям</b></i></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>1. Устремления к четырём внутренним осознаваниям</i></b></p>
 <p style="text-align:center">Да реализую я, что моё тело бессущностно.</p>
 <p style="text-align:center">Да реализую я, что мои чувства неистинны.</p>
 <p style="text-align:center">Да реализую я, что у моего ума нет основы.</p>
 <p style="text-align:center">Да реализую я, что все феномены — пустота.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><i><b>2. Устремления к освобождению от четырёх мар</b></i></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>2. Устремления к освобождению от четырёх мар</i></b></p>
 <p style="text-align:center">Да освобожусь я от пороков неведения.</p>
 <p style="text-align:center">Да освобожусь я от привязанностей цепляния за самость.</p>
 <p style="text-align:center">Да освобожусь я от страхов непостоянства.</p>
 <p style="text-align:center">Да освобожусь я от очарований иллюзии.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><i><b>3. Устремления к пяти способностям Дхармы</b></i></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>3. Устремления к пяти способностям Дхармы</i></b></p>
 <p style="text-align:center">Да буду я взращивать способность непоколебимой веры.</p>
 <p style="text-align:center">Да буду я взращивать способность неуклонного усердия.</p>
 <p style="text-align:center">Да буду я взращивать способность уверенного памятования.</p>
 <p style="text-align:center">Да буду я взращивать способность устойчивого сосредоточения.</p>
 <p style="text-align:center">Да буду я взращивать способность прозревающей мудрости.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><i><b>4. Устремления к семи видам чистоты просветления</b></i></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>4. Устремления к семи видам чистоты просветления</i></b></p>
 <p style="text-align:center">Да буду я практиковать чистое памятование.</p>
 <p style="text-align:center">Да буду я практиковать чистый анализ.</p>
 <p style="text-align:center">Да буду я практиковать чистое усердие.</p>
@@ -3436,7 +3435,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да буду я практиковать чистую лёгкость.</p>
 <p style="text-align:center">Да буду я практиковать чистую равность.</p>
 <p style="text-align:center">Да буду я практиковать чистое мастерство.</p>
-<p style="text-align:center;margin-bottom:8px"><i><b>5. Устремления к восьмеричному пути просветлённых</b></i></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>5. Устремления к восьмеричному пути просветлённых</i></b></p>
 <p style="text-align:center">Да буду я развивать совершенное глубокое воззрение.</p>
 <p style="text-align:center">Да буду я развивать совершенное благое размышление.</p>
 <p style="text-align:center">Да буду я развивать совершенную доброжелательную речь.</p>
@@ -3446,7 +3445,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да буду я развивать совершенную постоянную внимательность.</p>
 <p style="text-align:center">Да буду я развивать совершенное надлежащее сосредоточение.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><i><b>6. Устремления к семи драгоценностям просветлённых существ</b></i></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>6. Устремления к семи драгоценностям просветлённых существ</i></b></p>
 <p style="text-align:center">Да овладею я драгоценностью веры.</p>
 <p style="text-align:center">Да овладею я драгоценностью дисциплины.</p>
 <p style="text-align:center">Да овладею я драгоценностью изучения.</p>
@@ -3513,61 +3512,61 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Осознавание — это Дзогчен.</p>
 <p style="text-align:center">Мудрость — это Просветление.</p>
 <p style="text-align:center;margin-bottom:8px"><b>Я верю в Будду.</b></p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да освободятся все существа от страдания и причин страдания.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да освободятся все существа от болезней и причин болезней.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да освободятся все существа от голода и причин голода.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:15px">Да освободятся все существа от насилия и причин насилия.</p>
 <p style="text-align:center;margin-bottom:8px"><b>Я предан Будде.</b></p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да освободятся все существа от страха и причин страха.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да освободятся все существа от беспокойства и причин беспокойства.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:15px">Да освободятся все существа от уныния и причин уныния.</p>
-<p style="text-align:center;margin-bottom:8px">Я принимаю прибежище в Будде.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center;margin-bottom:8px"><b>Я принимаю прибежище в Будде.</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center">Да освободятся все существа от пагубного мышления</p>
 <p style="text-align:center;margin-bottom:4px">и причин пагубного мышления.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да освободятся все существа от гордости и причин гордости.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да освободятся все существа от гнева и причин гнева.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да освободятся все существа от зависти и причин зависти.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:15px">Да освободятся все существа от неведения и причин неведения.</p>
 <p style="text-align:center;margin-bottom:8px"><b>Я верю в Будду.</b></p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да обретут все существа благое мышление и причины благого мышления.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:15px">Да обретут все существа счастье и причины счастья.</p>
 <p style="text-align:center;margin-bottom:7px"><b>Я пребываю в Великом Пробуждении.</b></p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да обретут все существа умиротворение и причины умиротворения.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да обретут все существа радость и причины радости.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да обретут все существа веру и причины веры.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center">Да обретут все существа заслуги и причины заслуг.</p>
 <p style="text-align:center;margin-bottom:8px"><b>Я достигаю Великого Пробуждения.</b></p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да обретут все существа милосердие и причины милосердия.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да обретут все существа любовь и причины любви.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да обретут все существа осознавание и причины осознавания.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:4px">Да обретут все существа мудрость и причины мудрости.</p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center">Да реализуют все существа природу ума.</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px"><b>Я растворяюсь в Великом Пробуждении.</b></p>
-<p style="text-align:center"><b>Намо Буддая!</b></p>
+<p style="text-align:center">Намо Буддая!</p>
 <p style="text-align:center;margin-bottom:8px">Да достигнут скоро все существа просветления Будды!</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b><span style="white-space:nowrap">НАМО БУДДАЯ!</span> <span style="white-space:nowrap">НАМО БУДДАЯ!</span> <span style="white-space:nowrap">НАМО БУДДАЯ!</span></b></p>
@@ -3583,9 +3582,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i></i></p><p class="lit-count">(Мантра «Намо Буддая» — это сущность всех мантр. Она чрезвычайно важна</i></p>
 <p style="text-align:center"><i>в практике «Пути Будды». Необходимо повторять эту мантру ежедневно, когда вы сидите, стоите, ходите или работаете, как можно чаще, в любых жизненных обстоятельствах. Практикующему рекомендуется вести счёт повторениям мантры, и со временем произнести мантру «Намо Буддая»</i></p>
-<p style="text-align:center"><i>как минимум один миллион раз.)</p>
+<p style="text-align:center"><i><i>как минимум один миллион раз.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Сутры</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
+<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Сутры</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-img d-tall"><img src="sb/img18.png"></div>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
@@ -3600,13 +3599,13 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Намо Будда Шакьямунае</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>Восемь близких сыновей Будды</b></i></p>
+<p style="text-align:center"><b><i>Восемь близких сыновей Будды</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Среди бесчисленных Бодхисаттв-учеников Будды, «Восемь близких сыновей» — это восемь великих Бодхисаттв, постоянно пребывающих с Буддой.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">1.</span><span class="nm">Намо Бодхисаттва Манджушри</span></div><div class="ln"><span class="n">2.</span><span class="nm">Намо Бодхисаттва Ваджрапани</span></div><div class="ln"><span class="n">3.</span><span class="nm">Намо Бодхисаттва Авалокитешвара</span></div><div class="ln"><span class="n">4.</span><span class="nm">Намо Бодхисаттва Кшитигарбха</span></div><div class="ln"><span class="n">5.</span><span class="nm">Намо Бодхисаттва Ниваранавишкамбхин</span></div><div class="ln"><span class="n">6.</span><span class="nm">Намо Бодхисаттва Акашагарбха</span></div><div class="ln"><span class="n">7.</span><span class="nm">Намо Бодхисаттва Майтрея</span></div><div class="ln"><span class="n">8.</span><span class="nm">Намо Бодхисаттва Самантабхадра</span></div></div>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>Шесть Украшений этого мира, Джамбудвипы</b></i></p>
+<p style="text-align:center"><b><i>Шесть Украшений этого мира, Джамбудвипы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">9.</span><span class="nm">Намо Бодхисаттва Нагарджуна</span></div><div class="ln"><span class="n">10.</span><span class="nm">Намо Бодхисаттва Арьядева</span></div></div>
 <p style="text-align:center"><i>(Украшения Мадхьямики)</i></p>
@@ -3617,15 +3616,15 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="lineage"><div class="ln"><span class="n">13.</span><span class="nm">Намо Махапандита Дигнага</span></div><div class="ln"><span class="n">14.</span><span class="nm">Намо Махапандита Дхармакирти</span></div></div>
 <p style="text-align:center"><i>(Украшения Праманы)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>Двое Превосходных</b></i></p>
+<p style="text-align:center"><b><i>Двое Превосходных</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">15.</span><span class="nm">Намо Махапандита Шакья Прабха</span></div><div class="ln"><span class="n">16.</span><span class="nm">Намо Махапандита Гуна Прабха</span></div></div>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>Двое Высших</b></i></p>
+<p style="text-align:center"><b><i>Двое Высших</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">17.</span><span class="nm">Намо Бодхисаттва Чандракирти</span></div><div class="ln"><span class="n">18.</span><span class="nm">Намо Бодхисаттва Шантидева</span></div></div>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>Непрерывная линия передачи Бодхичитты Махаяны</b></i></p>
+<p style="text-align:center"><b><i>Непрерывная линия передачи Бодхичитты Махаяны</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">19.</span><span class="nm">Намо Элабхадра</span></div><div class="ln"><span class="n">20.</span><span class="nm">Намо Махашриратна</span></div><div class="ln"><span class="n">21.</span><span class="nm">Намо Бхававаджра</span></div><div class="ln"><span class="n">22.</span><span class="nm">Намо Дхармакирти</span></div><div class="ln"><span class="n">23.</span><span class="nm">Намо Дипанкара</span></div><div class="ln"><span class="n">24.</span><span class="nm">Намо Сумати</span></div><div class="lgap"></div><div class="ln"><span class="n">25.</span><span class="nm">Смрити Джняна Чхенно</span></div><div class="ln"><span class="n">26.</span><span class="nm">Кава Палцек Чхенно</span></div><div class="ln"><span class="n">27.</span><span class="nm">Чокро Луи Гьялцен Чхенно</span></div><div class="ln"><span class="n">28.</span><span class="nm">Бенде Еше Де Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">29.</span><span class="nm">Ло Ден Шераб Чхенно</span></div><div class="ln"><span class="n">30.</span><span class="nm">Це Понгпа Чхенно</span></div><div class="ln"><span class="n">31.</span><span class="nm">Ча Ва Чосенг Чхенно</span></div><div class="ln"><span class="n">32.</span><span class="nm">Ден Пак Масенг Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">33.</span><span class="nm">Дарма Таши Чхенно</span></div><div class="ln"><span class="n">34.</span><span class="nm">Шераб Лодро Чхенно</span></div><div class="ln"><span class="n">35.</span><span class="nm">Шераб Вангчуг Чхенно</span></div><div class="ln"><span class="n">36.</span><span class="nm">Санге Цондру Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">37.</span><span class="nm">Эн Гева Чхенно</span></div><div class="ln"><span class="n">38.</span><span class="nm">Чопал Гьялцен Чхенно</span></div><div class="ln"><span class="n">39.</span><span class="nm">Кункхен Тринлей Озер Чхенно</span></div><div class="ln"><span class="n">40.</span><span class="nm">Кхей Друб Кьябдел Лхундруб Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">41.</span><span class="nm">Джамъянг Дракпа Озер Чхенно</span></div><div class="ln"><span class="n">42.</span><span class="nm">Трулщик Санге Онпо Чхенно</span></div><div class="ln"><span class="n">43.</span><span class="nm">Кункхен Дава Дракпа Чхенно</span></div><div class="ln"><span class="n">44.</span><span class="nm">Друбчен Кунзанг Дордже Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">45.</span><span class="nm">Гьялцен Пелзанг Чхенно</span></div><div class="ln"><span class="n">46.</span><span class="nm">Кхейдруб Нацок Рандрол Чхенно</span></div><div class="ln"><span class="n">47.</span><span class="nm">Тензин Драгпа Чхенно</span></div><div class="ln"><span class="n">48.</span><span class="nm">Кункхен Донгак Тензин Чхенно</span></div><div class="ln"><span class="n">49.</span><span class="nm">Ригдзин Тринлей Лхундруб Чхенно</span></div><div class="ln"><span class="n">50.</span><span class="nm">Ургьен Дедак Лингпа Чхенно</span></div><div class="ln"><span class="n">51.</span><span class="nm">Дзогчен Пема Ригдзин Чхенно</span></div><div class="ln"><span class="n">52.</span><span class="nm">Понлоп Намкха Осэл Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">53.</span><span class="nm">Тегчок Тензин Чхенно</span></div><div class="ln"><span class="n">54.</span><span class="nm">Таши Гьяцо Чхенно</span></div><div class="ln"><span class="n">55.</span><span class="nm">Ригдзин Зангпо Чхенно</span></div><div class="ln"><span class="n">56.</span><span class="nm">Кхенчен Пема Таши Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">57.</span><span class="nm">Гьялсе Шенпен Тае Чхенно</span></div><div class="ln"><span class="n">58.</span><span class="nm">Джигме Нготсар Чхенно</span></div><div class="ln"><span class="n">59.</span><span class="nm">Джигме Чокьи Онпо Чхенно</span></div><div class="ln"><span class="n">60.</span><span class="nm">Кхенпо Пема Дордже Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">61.</span><span class="nm">Ургьен Тензин Норбу Чхенно</span></div><div class="ln"><span class="n">62.</span><span class="nm">Тхубтен Чокьи Дракпа Чхенно</span></div><div class="ln"><span class="n">63.</span><span class="nm">Кхенпо Йонтен Гьятсо Чхенно</span></div><div class="ln"><span class="n">64.</span><span class="nm">Кхенпо Кунзанг Палден Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">65.</span><span class="nm">Гьякйонг Кхенпо Шенга Чхенно</span></div><div class="ln"><span class="n">66.</span><span class="nm">Чадрел Кунга Палден Чхенно</span></div><div class="ln"><span class="n">67.</span><span class="nm">Батур Кхенпо Тубга Чхенно</span></div><div class="ln"><span class="n">68.</span><span class="nm">Кхенчен Пема Лосал Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">69.</span><span class="nm">Кхенпо Абу Лхагунг Чхенно</span></div><div class="ln"><span class="n">70.</span><span class="nm">Кхенпо Йонтен Гонпо Чхенно</span></div><div class="ln"><span class="n">71.</span><span class="nm">Кхенпо Тхубтен Ньендрак Чхенно</span></div><div class="ln"><span class="n">72.</span><span class="nm">Кхенчен Пема Цеванг Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">73.</span><span class="nm">Куну Пендзин Гьялцен Чхенно</span></div><div class="ln"><span class="n">74.</span><span class="nm">Гьялва Тендзин Гьяцо Чхенно</span></div><div class="ln"><span class="n">75.</span><span class="nm">Дзогчен Тулку Тогден Чхенно</span></div><div class="ln"><span class="n">76.</span><span class="nm">Кхенпо Церинг Ньима Чхенно</span></div><div class="lgap"></div><div class="ln"><span class="n">77.</span><span class="nm">Кхенпо Конуб Озер Чхенно</span></div><div class="ln"><span class="n">78.</span><span class="nm">Кхенпо Тубтен Намгьял Чхенно</span></div><div class="ln"><span class="n">79.</span><span class="nm">Дзогчен Кхенпо Чога Чхенно</span></div><div class="lgap"></div><div class="ln lnfull"><span class="nm">Дринчен Цавей Лама Чхенно</span></div></div>
 <div class="d-gap" style="height:0.55em"></div>
@@ -3642,14 +3641,14 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>Продолжайте в уединении осознавания.</b></p>
 <p style="text-align:center"><b>Завершайте самопроверкой.</b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая</b></p>
-<p style="text-align:center"><i><b>Всегда следуйте наставлениям квалифицированного Мастера.</b></i></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая</p>
+<p style="text-align:center"><b><i>Всегда следуйте наставлениям квалифицированного Мастера.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду предано практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Упражняйтесь, следуя сущностным наставлениям Дхармы.</b></i></p>
+<p style="text-align:center"><b><i>Упражняйтесь, следуя сущностным наставлениям Дхармы.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду усердно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Сначала подчините сильные беспокоящие эмоции.</b></i></p>
+<p style="text-align:center"><b><i>Сначала подчините сильные беспокоящие эмоции.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду глубоко практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Упражняйтесь, следуя наставлениям Бардо об умирании.</b></i></p>
+<p style="text-align:center"><b><i>Упражняйтесь, следуя наставлениям Бардо об умирании.</i></b></p>
 <p style="text-align:center">Я буду умиротворённо практиковать Путь Будды.</p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center">Предварительные практики</p>
@@ -3658,14 +3657,14 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>Поддерживайте чистую мотивацию.</b></p>
 <p style="text-align:center"><b>Заботьтесь об основных жизненных потребностях.</b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая</b></p>
-<p style="text-align:center"><i><b>Очистите постыдные проступки.</b></i></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая</p>
+<p style="text-align:center"><b><i>Очистите постыдные проступки.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду доблестно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Всегда накапливайте заслуги.</b></i></p>
+<p style="text-align:center"><b><i>Всегда накапливайте заслуги.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду добродетельно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Ежедневно совершайте подношения божествам-защитникам.</b></i></p>
+<p style="text-align:center"><b><i>Ежедневно совершайте подношения божествам-защитникам.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду с верностью практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Будьте щедрыми к местным духам.</b></i></p>
+<p style="text-align:center"><b><i>Будьте щедрыми к местным духам.</i></b></p>
 <p style="text-align:center">Я буду благожелательно практиковать Путь Будды.</p>
 <div class="d-gap" style="height:1.15em"></div>
 <p style="text-align:center">Медитация</p>
@@ -3674,20 +3673,20 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>Нет слабому вдохновению в практике.</b></p>
 <p style="text-align:center"><b>Нет слабому соблюдению дисциплины.</b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая</b></p>
-<p style="text-align:center"><i><b>Обширно практикуйте согласно основным принципам Дхармы.</b></i></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая</p>
+<p style="text-align:center"><b><i>Обширно практикуйте согласно основным принципам Дхармы.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду искренне практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Упражняйтесь, следуя наставлениям о непостоянстве.</b></i></p>
+<p style="text-align:center"><b><i>Упражняйтесь, следуя наставлениям о непостоянстве.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду мудро практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Обвиняйте лишь своё цепляние за “я”.</b></i></p>
+<p style="text-align:center"><b><i>Обвиняйте лишь своё цепляние за “я”.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду бессамостно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>С радостью сохраняйте терпение в любых ситуациях.</b></i></p>
+<p style="text-align:center"><b><i>С радостью сохраняйте терпение в любых ситуациях.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду невозмутимо практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Отдавайте счастье всем существам.</b></i></p>
+<p style="text-align:center"><b><i>Отдавайте счастье всем существам.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду щедро практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Принимайте на себя страдание всех существ.</b></i></p>
+<p style="text-align:center"><b><i>Принимайте на себя страдание всех существ.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду героически практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Всегда сохраняйте радостный ум.</b></i></p>
+<p style="text-align:center"><b><i>Всегда сохраняйте радостный ум.</i></b></p>
 <p style="text-align:center">Я буду счастливо практиковать Путь Будды.</p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center">Защита</p>
@@ -3695,12 +3694,12 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>Сначала распознайте пагубные эмоции.</b></p>
 <p style="text-align:center"><b>Затем покорите пагубные эмоции.</b></p>
 <p style="text-align:center;margin-bottom:12px"><b>В итоге устраните пагубные эмоции.</b></p>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая</b></p>
-<p style="text-align:center"><i><b>Когда возникают отвлечения, надёжно сохраняйте ум в спокойствии.</b></i></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая</p>
+<p style="text-align:center"><b><i>Когда возникают отвлечения, надёжно сохраняйте ум в спокойствии.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду непрерывно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Даже если зло овладеет миром и умами существ,</b></i></p>
+<p style="text-align:center"><b><i>Даже если зло овладеет миром и умами существ,</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду превращать враждебные условия в Путь Будды.</p>
-<p style="text-align:center"><i><b>Какие бы ни возникли непредвиденные условия,</b></i></p>
+<p style="text-align:center"><b><i>Какие бы ни возникли непредвиденные условия,</i></b></p>
 <p style="text-align:center">Я буду обращать все эти условия в Путь Будды.</p>
 <div class="d-gap" style="height:1.15em"></div>
 <p style="text-align:center">Действие</p>
@@ -3709,12 +3708,12 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>Нераздельны речь и благозвучие.</b></p>
 <p style="text-align:center"><b>Нераздельны ум и любовь.</b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая</b></p>
-<p style="text-align:center"><i><b>Измените пагубное отношение, оставаясь при этом естественными.</b></i></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая</p>
+<p style="text-align:center"><b><i>Измените пагубное отношение, оставаясь при этом естественными.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду сосредоточенно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Не критикуйте и не жалуйтесь эгоистично в повседневной жизни.</b></i></p>
+<p style="text-align:center"><b><i>Не критикуйте и не жалуйтесь эгоистично в повседневной жизни.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду благостно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Говорите благотворное, что бы вы ни делали.</b></i></p>
+<p style="text-align:center"><b><i>Говорите благотворное, что бы вы ни делали.</i></b></p>
 <p style="text-align:center">Я буду оптимистично практиковать Путь Будды.</p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center">Поведение</p>
@@ -3730,7 +3729,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Не потакай тщеславию.</p>
 <p style="text-align:center">Не будь импульсивным.</p>
 <p style="text-align:center;margin-bottom:8px">Не упивайся жалостью к себе.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p style="text-align:center">Я не буду злопамятным.</p>
 <p style="text-align:center">Я не буду завистливым.</p>
 <p style="text-align:center">Я не буду вносить раздор.</p>
@@ -3750,7 +3749,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Не терзай себя.</p>
 <p style="text-align:center">Не употребляй то, что вредно и ядовито.</p>
 <p style="text-align:center;margin-bottom:8px">Не будь зависим от чужого пристрастного мнения.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p style="text-align:center">Я не буду пользоваться чужой слабостью.</p>
 <p style="text-align:center">Я не буду злоупотреблять практикой.</p>
 <p style="text-align:center">Я не буду стремиться к ложным победам.</p>
@@ -3762,234 +3761,234 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:12px"><i>Реализация</i></p>
 <p style="text-align:center"><b>Без религиозной предвзятости, с верой практикуйте Дхарму Будды.</b></p>
 <p style="text-align:center;margin-bottom:12px"><b>Обретите глубокое и всеобъемлющее мастерство в практике.</b></p>
-<p style="text-align:center"><i><b>Вся практика имеет единственную цель.</b></i></p>
+<p style="text-align:center"><b><i>Вся практика имеет единственную цель.</i></b></p>
 <p style="text-align:center;margin-bottom:5px">Я буду однонаправленно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Отдыхайте в природе нерождённого осознавания.</b></i></p>
-<p style="text-align:center;margin-bottom:5px"><b>Я буду естественно практиковать Путь Будды.</b></p>
-<p style="text-align:center"><i><b>Распознайте заблуждение как мудрость.</b></i></p>
+<p style="text-align:center"><b><i>Отдыхайте в природе нерождённого осознавания.</i></b></p>
+<p style="text-align:center;margin-bottom:5px">Я буду естественно практиковать Путь Будды.</p>
+<p style="text-align:center"><b><i>Распознайте заблуждение как мудрость.</i></b></p>
 <p style="text-align:center;margin-bottom:5px">Я буду внимательно практиковать Путь Будды.</p>
 <p style="text-align:center"><b>Растворитесь в первооснове всего.</b></p>
 <p style="text-align:center;margin-bottom:5px">Я буду отдохновенно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Воспринимайте все феномены как сон.</b></i></p>
+<p style="text-align:center"><b><i>Воспринимайте все феномены как сон.</i></b></p>
 <p style="text-align:center;margin-bottom:5px">Я буду мудро практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>В пост-медитации будьте дитём майи.</b></i></p>
+<p style="text-align:center"><b><i>В пост-медитации будьте дитём майи.</i></b></p>
 <p style="text-align:center;margin-bottom:8px">Я буду практиковать путь Будды с лёгким сердцем.</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:12px">Результат</p>
 <p style="text-align:center"><b>Вся действительная медитация совершена внимательно.</b></p>
 <p style="text-align:center;margin-bottom:12px"><b>Все исправления сделаны с милосердием.</b></p>
-<p style="text-align:center"><i><b>Не беспокойтесь о чужих делах.</b></i></p>
+<p style="text-align:center"><b><i>Не беспокойтесь о чужих делах.</i></b></p>
 <p style="text-align:center;margin-bottom:5px">Я буду независимо практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Будьте благодарны всем существам.</b></i></p>
+<p style="text-align:center"><b><i>Будьте благодарны всем существам.</i></b></p>
 <p style="text-align:center;margin-bottom:5px">Я буду с добротой практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Мерой всей практики сделайте разрушение цепляния за самость.</b></i></p>
+<p style="text-align:center"><b><i>Мерой всей практики сделайте разрушение цепляния за самость.</i></b></p>
 <p style="text-align:center;margin-bottom:5px">Я буду разумно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Отбросьте все завышенные надежды на результаты.</b></i></p>
+<p style="text-align:center"><b><i>Отбросьте все завышенные надежды на результаты.</i></b></p>
 <p style="text-align:center;margin-bottom:5px">Я буду практиковать Путь Будды без хватания.</p>
-<p style="text-align:center"><i><b>Даже практика естественно исчерпывается.</b></i></p>
+<p style="text-align:center"><b><i>Даже практика естественно исчерпывается.</i></b></p>
 <p style="text-align:center;margin-bottom:5px">Я буду бессамостно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>Реализация пустоты — непревзойдённая защита.</b></i></p>
+<p style="text-align:center"><b><i>Реализация пустоты — непревзойдённая защита.</i></b></p>
 <p style="text-align:center;margin-bottom:5px">Я буду спонтанно практиковать Путь Будды.</p>
-<p style="text-align:center"><i><b>В этой жизни я сосредоточусь только на Пути Будды.</b></i></p>
+<p style="text-align:center"><b><i>В этой жизни я сосредоточусь только на Пути Будды.</i></b></p>
 <p style="text-align:center">Я буду восхищённо практиковать Путь Будды.</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>НАМО БУДДАЯ</b></p>
 <p style="text-align:center" class="lit-sub"><i><b>III. Упражнение в практике бодхисаттв</b></i></p>
 <div class="d-gap" style="height:0.95em"></div>
 <p class="lit-vnum">~ 1 ~</p>
-<p style="text-align:center"><i><b>Чтобы освободить себя и других,</b></i></p>
-<p style="text-align:center"><i><b>изучайте, размышляйте и медитируйте о Дхарме.</b></i></p>
+<p style="text-align:center"><b><i>Чтобы освободить себя и других,</i></b></p>
+<p style="text-align:center"><b><i>изучайте, размышляйте и медитируйте о Дхарме.</i></b></p>
 <p style="text-align:center">Я буду непрерывно изучать и практиковать Дхарму Будды.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p class="lit-vnum">~ 2 ~</p>
-<p style="text-align:center"><i><b>Покиньте места, вызывающие порочные эмоции,</b></i></p>
-<p style="text-align:center"><i><b>и пребывайте в священных местах.</b></i></p>
+<p style="text-align:center"><b><i>Покиньте места, вызывающие порочные эмоции,</i></b></p>
+<p style="text-align:center"><b><i>и пребывайте в священных местах.</i></b></p>
 <p style="text-align:center">Я обязательно покину пагубную среду.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p class="lit-vnum">~ 3 ~</p>
-<p style="text-align:center"><i><b>Выполняйте одиночные ритриты,</b></i></p>
-<p style="text-align:center"><i><b>и благие устремления естественно возрастут.</b></i></p>
+<p style="text-align:center"><b><i>Выполняйте одиночные ритриты,</i></b></p>
+<p style="text-align:center"><b><i>и благие устремления естественно возрастут.</i></b></p>
 <p style="text-align:center">Я буду умиротворённо практиковать в одиночных ритритах.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p class="lit-vnum">~ 4 ~</p>
-<p style="text-align:center"><i><b>Отпустите заботу только лишь о нынешней жизни.</b></i></p>
-<p style="text-align:center"><i><b>Рано или поздно сознание покинет ваше тело.</b></i></p>
+<p style="text-align:center"><b><i>Отпустите заботу только лишь о нынешней жизни.</i></b></p>
+<p style="text-align:center"><b><i>Рано или поздно сознание покинет ваше тело.</i></b></p>
 <p style="text-align:center">Я решительно отвергну бессмысленную мирскую деятельность.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p class="lit-vnum">~ 5 ~</p>
-<p style="text-align:center"><i><b>Избегайте тлетворного окружения,</b></i></p>
-<p style="text-align:center"><i><b>под влиянием которого угасают ваши любовь и милосердие.</b></i></p>
+<p style="text-align:center"><b><i>Избегайте тлетворного окружения,</i></b></p>
+<p style="text-align:center"><b><i>под влиянием которого угасают ваши любовь и милосердие.</i></b></p>
 <p style="text-align:center">Я буду с милосердием избегать недоброжелательного окружения.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p class="lit-vnum">~ 6 ~</p>
-<p style="text-align:center"><i><b>Цените своего Учителя, ведущего вас к осознаванию и счастью.</b></i></p>
+<p style="text-align:center"><b><i>Цените своего Учителя, ведущего вас к осознаванию и счастью.</i></b></p>
 <p style="text-align:center">Я с преданностью вверюсь квалифицированным Мастерам.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p class="lit-vnum">~ 7 ~</p>
-<p style="text-align:center"><i><b>Примите прибежище в бессамостной мудрости,</b></i></p>
-<p style="text-align:center"><i><b>цепляние за самость — это рабство.</b></i></p>
+<p style="text-align:center"><b><i>Примите прибежище в бессамостной мудрости,</i></b></p>
+<p style="text-align:center"><b><i>цепляние за самость — это рабство.</i></b></p>
 <p style="text-align:center">Я буду решительно принимать прибежище в Будде, Дхарме и Сангхе.</p>
-<p style="text-align:center;margin-bottom:8px"><b>Намо Буддая</b></p>
+<p style="text-align:center;margin-bottom:8px">Намо Буддая</p>
 <p class="lit-vnum">~ 8 ~</p>
-<p style="text-align:center"><i><b>Откажитесь ото всей пагубной деятельности;</b></i></p>
-<p style="text-align:center"><i><b>все ваши страдания – результат вредоносных намерений.</b></i></p>
+<p style="text-align:center"><b><i>Откажитесь ото всей пагубной деятельности;</i></b></p>
+<p style="text-align:center"><b><i>все ваши страдания – результат вредоносных намерений.</i></b></p>
 <p style="text-align:center">Я буду проницательно отказываться от вредоносных действий.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p class="lit-vnum">~ 9 ~</p>
-<p style="text-align:center"><i><b>Направьте все усилия на достижение просветления;</b></i></p>
-<p style="text-align:center"><i><b>мирские наслаждения непостоянны.</b></i></p>
+<p style="text-align:center"><b><i>Направьте все усилия на достижение просветления;</i></b></p>
+<p style="text-align:center"><b><i>мирские наслаждения непостоянны.</i></b></p>
 <p style="text-align:center">Я намеренно сосредоточу всю деятельность на достижении просветления.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 10 ~</b></p>
-<p style="text-align:center"><i><b>Развивайте бескорыстное намерение освободить всех существ.</b></i></p>
+<p style="text-align:center"><b><i>Развивайте бескорыстное намерение освободить всех существ.</i></b></p>
 <p style="text-align:center">Я буду с удовольствием практиковать для освобождения</p>
 <p style="text-align:center">всех существ от страдания.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 11 ~</b></p>
-<p style="text-align:center"><i><b>Все Мары и страдание возникают из жажды счастья для себя;</b></i></p>
-<p style="text-align:center"><i><b>Все Будды и счастье возникают из желания счастья другим.</b></i></p>
+<p style="text-align:center"><b><i>Все Мары и страдание возникают из жажды счастья для себя;</i></b></p>
+<p style="text-align:center"><b><i>Все Будды и счастье возникают из желания счастья другим.</i></b></p>
 <p style="text-align:center">Я буду с радостью обменивать своё счастье на страдание других существ.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 12 ~</b></p>
 <p style="text-align:center"><b>Даже тем алчным существам, которые использовали в своих целях или украли моё имущество, я буду терпеливо подносить свои добродетели.</b></p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 13 ~</b></p>
 <p style="text-align:center"><b>Даже тем озлобленным существам, которые вредят мне без причины,</b></p>
 <p style="text-align:center"><b>я буду с милосердием посвящать свои заслуги.</b></p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><b>~ 14 ~</b></p>
 <p style="text-align:center"><b>Даже тех клеветников, которые распространяют обо мне</b></p>
 <p style="text-align:center"><b>неприятные слухи, я буду восхвалять с любовью.</b></p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 15 ~</b></p>
 <p style="text-align:center"><b>Даже тех презирающих меня существ, которые высмеивают</b></p>
 <p style="text-align:center"><b>и оскорбляют меня, я буду с уважением воспринимать как учителей.</b></p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 16 ~</b></p>
 <p style="text-align:center"><b>Даже если тот, кого я лелеял, как своё дитя, увидит во мне врага,</b></p>
 <p style="text-align:center"><b>я буду неутомимо заботиться о неблагодарном.</b></p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 17 ~</b></p>
 <p style="text-align:center"><b>Даже если люди, равные или уступающие мне в качествах,</b></p>
 <p style="text-align:center"><b>унижают меня, я буду высоко почитать таких жестоких существ</b></p>
 <p style="text-align:center"><b>как своих учителей.</b></p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 18 ~</b></p>
 <p style="text-align:center"><b>Даже если я унижен, поражён болезнью или духами, </b><b>
 </b><b>я отважно приму страдания всех существ.</b></p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 19 ~</b></p>
 <p style="text-align:center"><b>Даже став богатым и знаменитым, я с мудростью отвергну тщеславие.</b><b> </b><b>Мирская удача лишена сути.</b></p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 20 ~</b></p>
-<p style="text-align:center"><i><b>Пока собственная агрессия не побеждена,</b></i></p>
-<p style="text-align:center"><i><b>внешние враги будут возникать снова и снова.</b></i></p>
+<p style="text-align:center"><b><i>Пока собственная агрессия не побеждена,</i></b></p>
+<p style="text-align:center"><b><i>внешние враги будут возникать снова и снова.</i></b></p>
 <p style="text-align:center">Я героически покорю внутреннего врага — гнев.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 21 ~</b></p>
-<p style="text-align:center"><i><b>Чем больше потакаешь жажде чувственных наслаждений,</b></i></p>
-<p style="text-align:center"><i><b>тем больше возрастают жадность и агрессия.</b></i></p>
+<p style="text-align:center"><b><i>Чем больше потакаешь жажде чувственных наслаждений,</i></b></p>
+<p style="text-align:center"><b><i>тем больше возрастают жадность и агрессия.</i></b></p>
 <p style="text-align:center">Я буду с удовлетворенностью отвергать цепляние за чувственные желания.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 22 ~</b></p>
-<p style="text-align:center"><i><b>Все феномены — это мой собственный ум.</b></i></p>
-<p style="text-align:center"><i><b>Природа ума изначально свободна от всех крайностей.</b></i></p>
+<p style="text-align:center"><b><i>Все феномены — это мой собственный ум.</i></b></p>
+<p style="text-align:center"><b><i>Природа ума изначально свободна от всех крайностей.</i></b></p>
 <p style="text-align:center">Я без усилий рассею хватание за присущее существование.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 23 ~</b></p>
-<p style="text-align:center"><i><b>Хотя притягательные объекты и кажутся реальными,</b></i></p>
-<p style="text-align:center"><i><b>они лишены сущности, подобно радуге.</b></i></p>
+<p style="text-align:center"><b><i>Хотя притягательные объекты и кажутся реальными,</i></b></p>
+<p style="text-align:center"><b><i>они лишены сущности, подобно радуге.</i></b></p>
 <p style="text-align:center">Я с радостью отпущу одержимость погоней за прекрасными иллюзиями.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 24 ~</b></p>
-<p style="text-align:center"><i><b>Все страдания — иллюзия, подобно сну о смерти ребёнка.</b></i></p>
+<p style="text-align:center"><b><i>Все страдания — иллюзия, подобно сну о смерти ребёнка.</i></b></p>
 <p style="text-align:center">Я буду бесстрашно принимать все неприятные иллюзорные обстоятельства.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p class="lit-vnum">~25 ~</p>
-<p style="text-align:center"><i><b>Щедрость чиста без надежды на вознаграждение.</b></i></p>
+<p style="text-align:center"><b><i>Щедрость чиста без надежды на вознаграждение.</i></b></p>
 <p style="text-align:center">Я буду бескорыстно оказывать помощь и материальную поддержку существам.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>~ 26 ~</b></p>
-<p style="text-align:center"><i><b>Нравственная дисциплина – основа для принесения пользы себе и другим.</b></i></p>
+<p style="text-align:center"><b><i>Нравственная дисциплина – основа для принесения пользы себе и другим.</i></b></p>
 <p style="text-align:center">Я буду неустанно практиковать чистое поведение день за днём,</p>
 <p style="text-align:center">не выставляя дхармические действия напоказ.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><b>~ 27 ~</b></p>
-<p style="text-align:center"><i><b>Для терпеливого практикующего</b></i></p>
-<p style="text-align:center"><i><b>вредящие существа подобны драгоценным сокровищам.</b></i></p>
+<p style="text-align:center"><b><i>Для терпеливого практикующего</i></b></p>
+<p style="text-align:center"><b><i>вредящие существа подобны драгоценным сокровищам.</i></b></p>
 <p style="text-align:center">Я буду спокойно развивать в себе терпимость без враждебности.</p>
-<p style="text-align:center;margin-bottom:12px"><b>Намо Буддая</b></p>
+<p style="text-align:center;margin-bottom:12px">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><b>~ 28 ~</b></p>
-<p style="text-align:center"><i><b>Усердие в Дхарме – источник всех драгоценных качеств.</b></i></p>
+<p style="text-align:center"><b><i>Усердие в Дхарме – источник всех драгоценных качеств.</i></b></p>
 <p style="text-align:center">Я буду с воодушевлением практиковать настойчивость без соперничества.</p>
-<p style="text-align:center;margin-bottom:12px"><b>Намо Буддая</b></p>
+<p style="text-align:center;margin-bottom:12px">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><b>~ 29 ~</b></p>
-<p style="text-align:center"><i><b>Медитация пребывания в покое и медитация прозрения</b></i></p>
-<p style="text-align:center"><i><b>нейтрализуют и устранят беспокоящие эмоции.</b></i></p>
+<p style="text-align:center"><b><i>Медитация пребывания в покое и медитация прозрения</i></b></p>
+<p style="text-align:center"><b><i>нейтрализуют и устранят беспокоящие эмоции.</i></b></p>
 <p style="text-align:center">Я буду однонаправленно сосредотачивать ум на объекте медитации</p>
 <p style="text-align:center">без возбуждения, увязания и безволия.</p>
-<p style="text-align:center;margin-bottom:12px"><b>Намо Буддая</b></p>
+<p style="text-align:center;margin-bottom:12px">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><b>~ 30 ~</b></p>
-<p style="text-align:center"><i><b>Без совершенства мудрости невозможно стать просветлённым.</b></i></p>
+<p style="text-align:center"><b><i>Без совершенства мудрости невозможно стать просветлённым.</i></b></p>
 <p style="text-align:center">Я буду без усилий медитировать неконцептуальное осознавание,</p>
 <p style="text-align:center">применяя искусные средства.</p>
-<p style="text-align:center;margin-bottom:12px"><b>Намо Буддая</b></p>
+<p style="text-align:center;margin-bottom:12px">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><b>~ 31 ~</b></p>
-<p style="text-align:center"><i><b>Без исследования собственных ошибок</b></i></p>
-<p style="text-align:center"><i><b>становишься фальшивым практикующим.</b></i></p>
+<p style="text-align:center"><b><i>Без исследования собственных ошибок</i></b></p>
+<p style="text-align:center"><b><i>становишься фальшивым практикующим.</i></b></p>
 <p style="text-align:center">Я буду строго проверять свои повседневные занятия</p>
 <p style="text-align:center">и полностью избавлюсь от недостатков.</p>
-<p style="text-align:center;margin-bottom:12px"><b>Намо Буддая</b></p>
+<p style="text-align:center;margin-bottom:12px">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><b>~ 32 ~</b></p>
-<p style="text-align:center"><i><b>Эгоистичное осуждение других станет препятствием на Пути Дхармы.</b></i></p>
+<p style="text-align:center"><b><i>Эгоистичное осуждение других станет препятствием на Пути Дхармы.</i></b></p>
 <p style="text-align:center">Я буду благоразумно проверять свои намерения прежде чем действовать.</p>
-<p style="text-align:center;margin-bottom:12px"><b>Намо Буддая</b></p>
+<p style="text-align:center;margin-bottom:12px">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><b>~ 33 ~</b></p>
-<p style="text-align:center"><i><b>Жажда вознаграждения и признания приводит практику в упадок.</b></i></p>
+<p style="text-align:center"><b><i>Жажда вознаграждения и признания приводит практику в упадок.</i></b></p>
 <p style="text-align:center">Я с радостью отброшу привязанность к материальным благам</p>
 <p style="text-align:center">и уважению со стороны других.</p>
-<p style="text-align:center;margin-bottom:12px"><b>Намо Буддая</b></p>
+<p style="text-align:center;margin-bottom:12px">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><b>~ 34 ~</b></p>
-<p style="text-align:center"><i><b>Грубые слова тревожат умы других существ.</b></i></p>
+<p style="text-align:center"><b><i>Грубые слова тревожат умы других существ.</i></b></p>
 <p style="text-align:center">Я откажусь от провокационных слов, причиняющих вред другим.</p>
-<p style="text-align:center;margin-bottom:12px"><b>Намо Буддая</b></p>
+<p style="text-align:center;margin-bottom:12px">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><b>~ 35 ~</b></p>
-<p style="text-align:center"><i><b>Как только пагубные эмоции возникают в уме,</b></i></p>
-<p style="text-align:center"><i><b>необходимо сразу использовать противоядие.</b></i></p>
+<p style="text-align:center"><b><i>Как только пагубные эмоции возникают в уме,</i></b></p>
+<p style="text-align:center"><b><i>необходимо сразу использовать противоядие.</i></b></p>
 <p style="text-align:center">Я немедленно применю внимательность и ясное памятование.</p>
-<p style="text-align:center;margin-bottom:15px"><b>Намо Буддая</b></p>
+<p style="text-align:center;margin-bottom:15px">Намо Буддая</p>
 <p style="text-align:center;margin-bottom:4px"><i><b>~ 36 ~</b></i></p>
 <p style="text-align:center">В любых обстоятельствах</p>
-<p style="text-align:center"><i><b>будьте максимально бдительны в отношении тела, речи и ума.</b></i></p>
+<p style="text-align:center"><b><i>будьте максимально бдительны в отношении тела, речи и ума.</i></b></p>
 <p style="text-align:center">Я буду постоянно пребывать в осознавании Великого Пробуждения.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px"><b>~ 37 ~</b></p>
-<p style="text-align:center"><i><b>Посвящайте все заслуги просветлению бесчисленных существ.</b></i></p>
+<p style="text-align:center"><b><i>Посвящайте все заслуги просветлению бесчисленных существ.</i></b></p>
 <p style="text-align:center">Я буду чисто посвящать все заслуги Великому Пробуждению всех существ.</p>
-<p style="text-align:center"><b>Намо Буддая</b></p>
+<p style="text-align:center">Намо Буддая</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(В повседневной жизни особенно важно постоянно помнить о базовом наставлении нашего доброго учителя Будды Шакьямуни избегать крайностей самоуничижения и потакания чувственным желаниям. Радостно живите в умеренности, здраво оценивая необходимость в пище, одежде, жилище, удовольствиях, деятельности и средствах к существованию.)</i></p>
 
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>IV. Упражнение в Бодхичитте:</b></i></p>
-<p style="text-align:center;margin-bottom:8px"><i><b>Преобразование страдания в счастье</b></i></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>Преобразование страдания в счастье</i></b></p>
 <p style="text-align:center"><i>(Практика Тонглен)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>НАМО АВАЛОКИТЕШВАРА</b></p>
@@ -4068,7 +4067,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Так как в соответствии с буддийской наукой причины нашего счастья и страдания находятся в наших собственных умах, то в действительности невозможно ни взять страдание, ни отдать счастье другим.   Вместо этого, благодаря нашим добродетельным намерениям и действиям, мы можем создать условия, которые принесут пользу другим существам. Тем не менее, степень получаемой пользы зависит от тех причин, которые находятся в умах этих существ. Для глубокого осмысления этой темы вам необходимо исследовать значение таких понятий, как «ум», «причина» и «условия» в соответствии с учениями Будды.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Бодхичитты</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
+<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Бодхичитты</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img20.png" alt="Эмблема"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -4078,20 +4077,20 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i><b>I</b> <b>.</b></i><b> </b><i><b>Высшее благословение </b> <b>
 </b> <b>облаков великой сокровищницы</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Молитва к линии передачи Дзогчен Лонгчен Ньинтиг</b></i></p>
+<p style="text-align:center"><b><i>Молитва к линии передачи Дзогчен Лонгчен Ньинтиг</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Выражаю почтение и принимаю прибежище</p>
 <p style="text-align:center">в трёх линиях передачи Дзогчен.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Линия передачи от мудрости к мудрости Будд</b></i></p>
+<p style="text-align:center"><b><i>Линия передачи от мудрости к мудрости Будд</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">1.</span><span class="nm">Намо Дхармакая Будда Самантабхадра</span></div><div class="ln"><span class="n">2.</span><span class="nm">Намо Самбхогакая Будда Ваджрасаттва</span></div><div class="ln"><span class="n">3.</span><span class="nm">Намо Нирманакая Будда Шакьямуни</span></div></div>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Линия символической передачи Держателей Ведения</b></i></p>
+<p style="text-align:center"><b><i>Линия символической передачи Держателей Ведения</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">4.</span><span class="nm">Намо Гуру Падмасамбхава</span></div><div class="ln"><span class="n">5.</span><span class="nm">Намо Видьядхара Прахеваджра</span></div><div class="ln"><span class="n">6.</span><span class="nm">Намо Бодхисаттва Шантаракшита</span></div><div class="ln"><span class="n">7.</span><span class="nm">Намо Ачарья Манджушримитра</span></div><div class="ln"><span class="n">8.</span><span class="nm">Намо Махасиддха Шри Сингха</span></div><div class="ln"><span class="n">9.</span><span class="nm">Намо Махайоги Джнянасутра</span></div><div class="ln"><span class="n">10.</span><span class="nm">Намо Махапандита Вималамитра</span></div><div class="ln"><span class="n">11.</span><span class="nm">Чогьял Трисон Децен Чхенно</span></div><div class="ln"><span class="n">12.</span><span class="nm">Лочен Вайрочана Чхенно</span></div><div class="ln"><span class="n">13.</span><span class="nm">Кхандро Еше Цогъял Чхенно</span></div><div class="ln"><span class="n">14.</span><span class="nm">Нянгвен Тинзин Зангпо Чхенно</span></div></div>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Линия слуховой передачи Ваджрных Мастеров</b></i></p>
+<p style="text-align:center"><b><i>Линия слуховой передачи Ваджрных Мастеров</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <div class="lineage"><div class="ln"><span class="n">15.</span><span class="nm">Бетон Лодро Ванчук Чхенно</span></div><div class="ln"><span class="n">16.</span><span class="nm">Дромтон Ринчен Барва Чхенно</span></div><div class="ln"><span class="n">17.</span><span class="nm">Нетен Данма Лунгьял Чхенно</span></div><div class="ln"><span class="n">18.</span><span class="nm">Чецун Сенге Ванчук Чхенно</span></div><div class="ln"><span class="n">19.</span><span class="nm">Тулку Гьялва Щантон Чхенно</span></div><div class="ln"><span class="n">20.</span><span class="nm">Сэчок Кепа Нибум Чхенно</span></div><div class="ln"><span class="n">21.</span><span class="nm">Чодаг Гуру Джобер Чхенно</span></div><div class="ln"><span class="n">22.</span><span class="nm">Тулщик Сэнге Гьялва Чхенно</span></div><div class="ln"><span class="n">23.</span><span class="nm">Друбчен Мелон Дордже Чхенно</span></div><div class="ln"><span class="n">24.</span><span class="nm">Ригдзин Кума Радза Чхенно</span></div><div class="ln"><span class="n">25.</span><span class="nm">Кункен Лончен Рабджам Чхенно</span></div><div class="ln"><span class="n">26.</span><span class="nm">Ранжун Ригпей Дордже Чхенно</span></div><div class="ln"><span class="n">27.</span><span class="nm">Кедруб Кьяпдел Лондруб Чхенно</span></div><div class="ln"><span class="n">28.</span><span class="nm">Тулку Драгпа Озер Чхенно</span></div><div class="ln"><span class="n">29.</span><span class="nm">Тулщик Сангье Онпо Чхенно</span></div><div class="ln"><span class="n">30.</span><span class="nm">Кункен Дава Драгпа Чхенно</span></div><div class="ln"><span class="n">31.</span><span class="nm">Друбчен Кунсан Дордже Чхенно</span></div><div class="ln"><span class="n">32.</span><span class="nm">Кедруб Гьялцен Палзанг Чхенно</span></div><div class="ln"><span class="n">33.</span><span class="nm">Тулку Нацог Рандрол Чхенно</span></div><div class="ln"><span class="n">34.</span><span class="nm">Гьялван Тендзин Драгпа Чхенно</span></div><div class="ln"><span class="n">35.</span><span class="nm">Кедруб Донаг Тендзин Чхенно</span></div><div class="ln"><span class="n">36.</span><span class="nm">Ригдзин Тинлей Лундруб Чхенно</span></div><div class="ln"><span class="n">37.</span><span class="nm">Чогьял Тердаг Лигпа Чхенно</span></div><div class="ln"><span class="n">38.</span><span class="nm">Лончен Дхарма Шри Чхенно</span></div><div class="ln"><span class="n">39.</span><span class="nm">Наванг Лобсанг Гьяцо Чхенно</span></div><div class="ln"><span class="n">40.</span><span class="nm">Гьялсэ Ринчен Намгьял Чхенно</span></div><div class="ln"><span class="n">41.</span><span class="nm">Рабджам Оргьен Чодраг Чхенно</span></div><div class="ln"><span class="n">42.</span><span class="nm">Друбван Шри Натха Чхенно</span></div><div class="ln"><span class="n">43.</span><span class="nm">Ригдзин  Джигме Лингпа Чхенно</span></div><div class="ln"><span class="n">44.</span><span class="nm">Джигме Тинлей Озер Чхенно</span></div><div class="ln"><span class="n">45.</span><span class="nm">Джигме Гьялвей Нюгу Чхенно</span></div><div class="ln"><span class="n">46.</span><span class="nm">Кенце Еше Дордже Чхенно</span></div><div class="ln"><span class="n">47.</span><span class="nm">Мингъюр Намкхей Дордже Чхенно</span></div><div class="ln"><span class="n">48.</span><span class="nm">Гьялсэ Щенпен Тае Чхенно</span></div><div class="ln"><span class="n">49.</span><span class="nm">Джанъян Кенце Ванпо Чхенно</span></div><div class="ln"><span class="n">50.</span><span class="nm">Патрул Джигме Чованг Чхенно</span></div><div class="ln"><span class="n">51.</span><span class="nm">Кенчен Пема Дордже Чхенно</span></div><div class="ln"><span class="n">52.</span><span class="nm">Оргьен Тендзин Норбу Чхенно</span></div><div class="ln"><span class="n">53.</span><span class="nm">Мипам Соглей Намгьял  Чхенно</span></div><div class="ln"><span class="n">54.</span><span class="nm">Лунгток Тенпей Нима Чхенно</span></div><div class="ln"><span class="n">55.</span><span class="nm">Адзом Нацог Рандрол Чхенно</span></div><div class="ln"><span class="n">56.</span><span class="nm">Тубтен Чоки Дордже Чхенно</span></div><div class="ln"><span class="n">57.</span><span class="nm">Гьякунг Кенчен Щенга Чхенно</span></div><div class="ln"><span class="n">58.</span><span class="nm">Кенчен Ёнтэн Гьяцо Чхенно</span></div><div class="ln"><span class="n">59.</span><span class="nm">Кенпо Кунсан Палден Чхенно</span></div><div class="ln"><span class="n">60.</span><span class="nm">Кенчен Нгаки Ванпо Чхенно</span></div><div class="ln"><span class="n">66.</span><span class="nm">Чадрел Кунга Палден Чхенно</span></div><div class="ln"><span class="n">62.</span><span class="nm">Юкок Чойин Рандрол Чхенно</span></div><div class="ln"><span class="n">63.</span><span class="nm">Тупга Ищин Норбу Чхенно</span></div><div class="ln"><span class="n">64.</span><span class="nm">Гьялсе Гюрме Дордже Чхенно</span></div><div class="ln"><span class="n">65.</span><span class="nm">Кенчен Тубтен Ньяндрук Чхенно</span></div><div class="ln"><span class="n">66.</span><span class="nm">Бётрул Тамче Кенпа Чхенно</span></div><div class="ln"><span class="n">67.</span><span class="nm">Лочен Чони Зангмо Чхенно</span></div><div class="ln"><span class="n">68.</span><span class="nm">Кенце Чоки Лодро Чхенно</span></div><div class="ln"><span class="n">69.</span><span class="nm">Джигтрал Чанчуб Дордже Чхенно</span></div><div class="ln"><span class="n">70.</span><span class="nm">Додруб Тинлей Пэлбар Чхенно</span></div><div class="ln"><span class="n">71.</span><span class="nm">Кенчен Джигме Пунцок Чхенно</span></div><div class="ln"><span class="n">72.</span><span class="nm">Джамьян Кенпо Ригло Чхенно</span></div><div class="ln"><span class="n">73.</span><span class="nm">Ариг Кенпо Соце Чхенно</span></div><div class="ln"><span class="n">74.</span><span class="nm">Дренчок Джамьянг Дордже Чхенно</span></div><div class="ln"><span class="n">75.</span><span class="nm">Оргьен Цеванг Чокдуп Чхенно</span></div><div class="ln"><span class="n">76.</span><span class="nm">Кенчен Мева Тубтен Чхенно</span></div><div class="ln"><span class="n">77.</span><span class="nm">Кьябдже Дильго Кенце Чхенно</span></div><div class="ln"><span class="n">78.</span><span class="nm">Кенчен Пема Цеванг Чхенно</span></div><div class="ln"><span class="n">79.</span><span class="nm">Друбчен Чадрел Чокьяб Чхенно</span></div><div class="ln"><span class="n">80.</span><span class="nm">Дзогчен Чойинг Рабджам Чхенно</span></div><div class="ln lnfull"><span class="nm">Дринчен Цавей Лама Чхенно</span></div></div>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4104,7 +4103,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:1.15em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>II. Глубокая молитва тантр Ваджраяны</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Медитация Ваджрасаттвы</b></i></p>
+<p style="text-align:center"><b><i>1. Медитация Ваджрасаттвы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">А! Над макушкой моей головы,</p>
 <p style="text-align:center">в центре белого распустившегося лотоса,</p>
@@ -4125,7 +4124,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-img"><img src="sb/img21.png"></div>
 <p style="text-align:center">Пожалуйста, раствори очищающий свет в моём сердце.</p>
 <div class="d-gap" style="height:1.35em"></div>
-<p style="text-align:center"><i><b>Стослоговая мантра Ваджрасаттвы</b></i></p>
+<p style="text-align:center"><b><i>Стослоговая мантра Ваджрасаттвы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center" lang="bo">ཨོཾ་བཛྲ་སཏྭ་ས་མ་ཡ། མ་ནུ་པཱ་ལ་ཡ། བཛྲ་སཏྭ་ཏྭེ་ནོ་པ། ཏིཥྛ་དྲྀ་ཌྷོ་མེ་བྷ་ཝ།</p>
 <p style="text-align:center" lang="bo">སུ་ཏོཥྱོ་མེ་བྷ་ཝ། སུ་པོཥྱོ་མེ་བྷ་ཝ། ཨ་ནུ་རཀྟོ་མེ་བྷ་ཝ། སརྦ་སིདྡྷི་མྨེཔྲ་ཡཙྪ།</p>
@@ -4186,7 +4185,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px" lang="bo">ཨོཾ ཨཱཿ ཧཱུྃཿ</p>
 <p style="text-align:center"><b><span style="white-space:nowrap">ОМ</span>  <span style="white-space:nowrap">А</span>  <span style="white-space:nowrap">ХУНГ</span></b></p>
-<p style="text-align:center"><i><b>2. Ваджра Тантра Йога</b></i></p>
+<p style="text-align:center"><b><i>2. Ваджра Тантра Йога</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>О, Нирманакая Лама, пожалуйста, даруй мне свои благословения.</b></p>
 <p style="text-align:center;margin-bottom:8px">Да развяжутся спонтанно все узлы каналов моего тонкого тела.</p>
@@ -4225,9 +4224,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i></i></p><p class="lit-count">(Это можно также сопровождать различными движениями йоги. Для занятия полной практикой Ваджра Тантра Йоги необходимо выполнять упражнения подлинной линии передачи Тантры, такие как: упражнения с тремя нади,</i></p>
 <p style="text-align:center"><i>пятью чакрами, десятью пранами, тремя бинду, сотней слогов</i></p>
 <p style="text-align:center"><i>и сотней божеств, чандали в Ваджра Теле, ваджрные танцы,</i></p>
-<p style="text-align:center"><i>песни Дхармы и так далее.)</p>
+<p style="text-align:center"><i><i>песни Дхармы и так далее.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>3. Мудрость ваджрного неба</b></i></p>
+<p style="text-align:center"><b><i>3. Мудрость ваджрного неба</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px">Да постигну я, что все феномены — моё восприятие.</p>
 <p style="text-align:center;margin-bottom:4px">Да постигну я, что всё восприятие — порождение моего ума.</p>
@@ -4270,24 +4269,24 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:8px"><b>ОМ А ХУНГ</b></p>
 <p style="text-align:center">(трижды, вместе с ваджра мудрой)</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>4. Устремление трёх самадхи</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>4. Устремление трёх самадхи</i></b></p>
 <p style="text-align:center">Да буду я медитировать в самадхи великой пустоты.</p>
 <p style="text-align:center">Да буду я медитировать в самадхи светоносного проявления.</p>
 <p style="text-align:center">Да буду я медитировать в самадхи сущностного возникновения.</p>
-<p style="text-align:center;margin-bottom:12px"><i><b>5. Устремление четырёх гвоздей стадии зарождения</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>5. Устремление четырёх гвоздей стадии зарождения</i></b></p>
 <p style="text-align:center">Да овладею я гвоздём визуализации божества.</p>
 <p style="text-align:center">Да овладею я гвоздём повторения мантры.</p>
 <p style="text-align:center">Да овладею я гвоздём устойчивой реализации.</p>
 <p style="text-align:center;margin-bottom:12px">Да овладею я гвоздём просветлённой деятельности.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>6. Устремление пяти памятований</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>6. Устремление пяти памятований</i></b></p>
 <p style="text-align:center">Я всегда буду помнить Мастера — корень благословений.</p>
 <p style="text-align:center">Я всегда буду помнить Йидама — корень достижения.</p>
 <p style="text-align:center">Я всегда буду помнить воззрение — корень практики.</p>
 <p style="text-align:center">Я всегда буду помнить медитацию — корень реализации.</p>
 <p style="text-align:center;margin-bottom:12px">Я всегда буду помнить наставления о бардо — корень освобождения.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>7. Устремление шести чудесных знаний</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>7. Устремление шести чудесных знаний</i></b></p>
 <p style="text-align:center">Да доведу я до совершенства чудесное знание прошлого.</p>
 <p style="text-align:center">Да доведу я до совершенства чудесное знание смерти.</p>
 <p style="text-align:center">Да доведу я до совершенства чудесное знание рождения.</p>
@@ -4295,7 +4294,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да доведу я до совершенства чудесное знание неизвестного.</p>
 <p style="text-align:center;margin-bottom:12px">Да доведу я до совершенства чудесное знание шести миров.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>8. Устремление шести сил мудрости</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>8. Устремление шести сил мудрости</i></b></p>
 <p style="text-align:center">Да достигну я мудростной силы чудотворства.</p>
 <p style="text-align:center">Да достигну я мудростной силы божественного ока.</p>
 <p style="text-align:center">Да достигну я мудростной силы божественного уха.</p>
@@ -4303,7 +4302,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да достигну я мудростной силы ясновидения.</p>
 <p style="text-align:center;margin-bottom:12px">Да достигну я мудростной силы бессамостности.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>Устремление пяти глаз мудрости</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>Устремление пяти глаз мудрости</i></b></p>
 <p style="text-align:center">Да обрету я сенсорное око просветления.</p>
 <p style="text-align:center">Да обрету я божественное око просветления.</p>
 <p style="text-align:center">Да обрету я знающее око просветления.</p>
@@ -4312,7 +4311,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Для того, чтобы сохранить силу мудрости и целостность своей личной практики, а также для того, чтобы уберечь её от препятствий, особенно важно с достоинством сохранять в тайне свои личные сердечные наставления, тантрические практики, переживания в медитации, внутренние постижения, чудотворную деятельность и священные объекты. Это одна из главных коренных самай всех подлинных тантр.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Тантры</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
+<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Тантры</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -4321,7 +4320,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>I. Священное благословение великого океана сокровищ</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Молитва к линии передачи Дзогчен Кхандро Ньинтиг</b></i></p>
+<p style="text-align:center"><b><i>Молитва к линии передачи Дзогчен Кхандро Ньинтиг</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Выражаю почтение и принимаю прибежище</p>
 <p style="text-align:center">в линии передачи Дзогчен Кхандро Ньинтиг.</p>
@@ -4337,7 +4336,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>II. Дзогчен Гуру Йога</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Краткая молитва к линии передачи Дзогчен</b></i></p>
+<p style="text-align:center"><b><i>1. Краткая молитва к линии передачи Дзогчен</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px">Эмахо!</p>
 <p style="text-align:center">Мастера Дзогчен линии передачи от ума к уму,</p>
@@ -4357,7 +4356,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Коренной Мастер линии передачи Дзогчен,</p>
 <p style="text-align:center">пожалуйста, благословите меня достичь просветления Будды.</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>2. Бессамостная визуализация</b></i></p>
+<p style="text-align:center"><b><i>2. Бессамостная визуализация</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">В радужной светоносности бесконечного пространства,</p>
 <p style="text-align:center">в блаженной чистой земле моего восприятия,</p>
@@ -4365,7 +4364,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>я — бесстрашная Ваджрайогини,</b></p>
 <p style="text-align:center">танцую на трупе иллюзорного цепляния за самость.</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>3. Призывание просветлённого Мастера</b></i></p>
+<p style="text-align:center"><b><i>3. Призывание просветлённого Мастера</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">О ЛАМА ЧХЕН</span>   <span style="white-space:nowrap">ЛАМА ЧХЕН</span>   <span style="white-space:nowrap">ЛАМА ЧХЕННО</span></b></p>
 <p style="text-align:center">Единственное прибежище, благодатный Ваджрный Мастер,</p>
@@ -4375,7 +4374,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">и пребывай украшением моей венечной чакры.</p>
 <p style="text-align:center">Пожалуйста, пробуди в моём уме внимательность и бдительность!</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>4. Семистрочная молитва</b></i></p>
+<p style="text-align:center"><b><i>4. Семистрочная молитва</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>ХУНГ ОР ГЬЕН ЮЛ ГЬИ НУБ ЧЖАНГ ЦАМ</b></p>
 <p style="text-align:center"><b>ПЕД МА ГЕ САР ДОНГ ПО ЛА</b></p>
@@ -4397,7 +4396,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
  Её можно  петь, играя в колокольчик,  на  дамару и иных  музыкальных инструментах.)</i></p>
 <div class="d-img"><img src="sb/img22.png"></div>
 <div class="d-gap" style="height:1.15em"></div>
-<p style="text-align:center"><i><b>5. Призывание и благословение</b></i></p>
+<p style="text-align:center"><b><i>5. Призывание и благословение</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px"><b>БЕДЗРА САМАЯ ДЗА ДЗА</b></p>
 <p style="text-align:center"><b>ОМ А ХУНГ БЕДЗРА МАХА ГУРУ</b></p>
@@ -4406,12 +4405,12 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>ХУНГ ХУНГ ХУНГ</b></p>
 <p style="text-align:center"><b>ХУНГ ХУНГ ХУНГ</b></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>6. Просьба располагаться и простирание</b></i></p>
+<p style="text-align:center"><b><i>6. Просьба располагаться и простирание</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px"><b>БЕДЗРА САМАЯ ТИШТРА ЛХЕН</b></p>
 <p style="text-align:center"><b>А ТИ ПУ ХО ПРА ТИ ЦХА ХО</b></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>7. Внешние, внутренние и тайные подношения</b></i></p>
+<p style="text-align:center"><b><i>7. Внешние, внутренние и тайные подношения</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>ОМ БЕДЗРА АРГАМ ПАДЬЯМ ПУПЕ ДУПЕ</b></p>
 <p style="text-align:center"><b>АЛОКЕ ГАНДХЕ НЕВИДЬЯ ШАПТА</b></p>
@@ -4419,7 +4418,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>САРВА ПЕНЦА АМРИТА БАЛИНГТА РАКТА МАКА СУКХА</b></p>
 <p style="text-align:center"><b>ДХАРМА ДХАТУ А ХУНГ</b></p>
 <div class="d-gap" style="height:1.15em"></div>
-<p style="text-align:center"><i><b>8. Высшее восхваление</b></i></p>
+<p style="text-align:center"><b><i>8. Высшее восхваление</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Падмасамбхава!</p>
 <p style="text-align:center">Твоя мудрость — источник всех Будд.</p>
@@ -4436,7 +4435,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Ты — Самбхогакая Будда, безмерное милосердие, условие всего счастья.</p>
 <p style="text-align:center">Ты — Нирманакая Будда, безграничная сила, живущая в сердцах всех существ.</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>9. Мантра Гуру Падмасамбхавы</b></i></p>
+<p style="text-align:center"><b><i>9. Мантра Гуру Падмасамбхавы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Намо Гуру Будда Падмасамбхава!</p>
 <p style="text-align:center">Пожалуйста, даруй мне четыре глубоких посвящения.</p>
@@ -4455,9 +4454,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>Эта мантра устраняет все препятствия и спонтанно исполняет все благие пожелания. Благодаря практике этой мантры вас благословят бескрайние океаны Будд, а Дакини Мудрости даруют вам великое блаженство и пророческие посвящения. Постоянно удерживайте Ваджрного Мастера в глубине своего сердца, и вы услышите голос мудрости из своего сердца, который будет направлять вас в этой и будущих жизнях. Несомненно, преданно практикуя</i></p>
 <p style="text-align:center"><i>Гуру Йогу, вы обретёте рождение в славной чистой земле Медноцветной горы — непревзойдённом чистом мире устремлений мудрости.</i></p>
-<p style="text-align:center"><i>Это конечная цель пути практикующего.)</p>
+<p style="text-align:center"><i><i>Это конечная цель пути практикующего.)</i></p>
 <div class="d-gap" style="height:1.15em"></div>
-<p style="text-align:center"><i><b>10. Молитва о посвящении</b></i></p>
+<p style="text-align:center"><b><i>10. Молитва о посвящении</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Намо Гуру Будда Падмасамбхава!</p>
 <p style="text-align:center">Я принимаю прибежище в твоём неизменном 
@@ -4474,7 +4473,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>ОМ А ХУНГ МАХА ГУРУ КАЯ ВАККА ЦИТТА</b></p>
 <p style="text-align:center"><b>А ЛА ЛА СИДДХИ ПХА ЛА ХУНГ</b></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>11. Стадия растворения</b></i></p>
+<p style="text-align:center"><b><i>11. Стадия растворения</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Намо Гуру Будда Падмасамбхава!</p>
 <p style="text-align:center">Пожалуйста, растворись в моём сердце.</p>
@@ -4544,17 +4543,17 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center" lang="bo">ཨ</p>
 <p style="text-align:center" class="lit-sub"><i><b>V. Превосходные молитвы Дзогчен</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>1. Трое врат просветления</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>1. Трое врат просветления</i></b></p>
 <p style="text-align:center;margin-bottom:8px"><b>ЛАМА ЧХЕННО</b></p>
 <p style="text-align:center">Да постигну я, что этот ум никогда не рождался —</p>
 <p style="text-align:center;margin-bottom:4px">это Врата Просветления вне причины и условия.</p>
 <p style="text-align:center">Да постигну я, что этот ум никогда не умирает —</p>
 <p style="text-align:center;margin-bottom:4px">это Врата Просветления вне страха и надежды.</p>
 <p style="text-align:center">Да постигну я, что этот ум никогда не пребывает —</p>
-<p style="text-align:center;margin-bottom:8px"><b>это Врата Просветления вне субъекта и объекта.</b></p>
+<p style="text-align:center;margin-bottom:8px">это Врата Просветления вне субъекта и объекта.</p>
 <p style="text-align:center"><b>А!</b></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>2. Воззрение Дзогчен</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>2. Воззрение Дзогчен</i></b></p>
 <p style="text-align:center;margin-bottom:8px"><b>ЛАМА ЧХЕННО</b></p>
 <p style="text-align:center;margin-bottom:4px">Пожалуйста, пробуди мудрость Великого Совершенства в моём уме!</p>
 <p style="text-align:center;margin-bottom:4px">Да постигну я разницу между Алаей и Дхармакаей!</p>
@@ -4565,7 +4564,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i></i></p><p class="lit-count">( Практикуйте это упражнение  Дзогчен  
  по различению самсары  и  н ирваны . )</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>3. Медитация Дзогчен</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>3. Медитация Дзогчен</i></b></p>
 <p style="text-align:center;margin-bottom:8px"><b>ЛАМА ЧХЕННО</b></p>
 <p style="text-align:center;margin-bottom:8px">Пожалуйста, пробуди мудрость Великого Совершенства в моём уме!</p>
 <p style="text-align:center;margin-bottom:8px">Да постигну я, что все мысли освобождаются сами по себе!</p>
@@ -4580,7 +4579,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>(Пребывайте в неконцептуальном осознавании  
  изначального Будды Самантабхадры.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>4. Четыре невозмутимых пребывания Дзогчен</b></i></p>
+<p style="text-align:center"><b><i>4. Четыре невозмутимых пребывания Дзогчен</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Да буду я невозмутимо пребывать в неизменном воззрении.</p>
 <p style="text-align:center">Да буду я невозмутимо пребывать в медитации без усилий.</p>
@@ -4609,7 +4608,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">само сердце в вашей ладони.</p>
 <p style="text-align:center;margin-bottom:8px">Да будут являться эти слова до конца времён!</p>
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span>   <span style="white-space:nowrap">А</span></b></p>
-<p style="text-align:center;margin-bottom:8px">(Распевайте протяжно)</p>
+<p style="text-align:center;margin-bottom:8px"><i>(Распевайте протяжно)</i></p>
 <p style="text-align:center"><i>(Это спел великий Мастер Дзогчен Сенге Вангчуг за мгновение до того, как обрёл Радужное Тело.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>VII. Великое устремление шести бардо</b></i></p>
@@ -4667,7 +4666,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>(Молитва Бардо несёт особое благо в двух случаях. Во-первых, когда вы чувствуете особенно сильную привязанность к этой жизни, необходимо глубоко задуматься об умирании, смерти и бардо, и читать эту молитву. Во-вторых,  
  эту молитву можно читать в случае чьей-либо смерти. Читая эту молитву для других, нужно заменить «да … я» на «да … имя».)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Дзогчен</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
+<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Дзогчен</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:1.25em"></div>
 <p style="text-align:center" class="lit-section" id="sec-7" data-screen-label="Деятельность"><b>ПРАКТИКА </b><b>
 </b><b>ДХАРМИЧЕСКОЙ ДЕЯТЕЛЬНОСТИ</b></p>
@@ -4685,7 +4684,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:8px"><b>ТАРЕ</b></p>
 <p style="text-align:center" class="lit-count"><i>(365 раз)</i></p>
 <p style="text-align:center" class="lit-sub"><i><b>II. Ваджрные исцеляющие мантры</b></i></p>
-<p style="text-align:center"><i><b>для благотворного действия</b></i></p>
+<p style="text-align:center"><b><i>для благотворного действия</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px" class="lit-count"><i>(Как сказано Буддой в различных сутрах и тантрах, всякий, кто получил подлинную слуховую передачу этих мантр и читает эти мантры с благим намерением, обретёт и впитает величайшее благословение и безмерные заслуги.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4697,10 +4696,10 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Пожалуйста, открой мой ум к постижению истины</p>
 <p style="text-align:center;margin-bottom:4px">внешнего, внутреннего и тайного времени!</p>
 <p style="text-align:center;margin-bottom:24px"><b>ХА ЧА МА ЛА ВА РА ЯНГ</b></p>
-<p style="text-align:center"><b>Намо Манджушри!</b></p>
+<p style="text-align:center">Намо Манджушри!</p>
 <p style="text-align:center;margin-bottom:4px">Пожалуйста, пробуди естественную мудрость в моём уме!</p>
 <p style="text-align:center;margin-bottom:24px"><b>ОМ А РА ПА ЦА НА ДХИ</b></p>
-<p style="text-align:center"><b>Намо Авалокитешвара!</b></p>
+<p style="text-align:center">Намо Авалокитешвара!</p>
 <p style="text-align:center;margin-bottom:4px">Пожалуйста, пробуди в моём уме безграничное милосердие!</p>
 <p style="text-align:center;margin-bottom:24px"><b>ОМ МАНИ ПЕДМЕ ХУНГ ШРИ</b></p>
 <p style="text-align:center">Намо Ваджрапани!</p>
@@ -4750,9 +4749,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i></i></p><p class="lit-count">(Полезно повторять любую из этих мантр столько раз, сколько возможно.</i></p>
 <p style="text-align:center"><i>Чем больше вы начитываете эти мантры с непоколебимой верой и бесстрашным милосердием, тем больше вы обретаете благословения, заслуги и способности распространять эти исцеляющие благословения на других существ и на основополагающие элементы. Повторяя эти мантры с особым посвящением для пользы других, необходимо заменить местоимение</i></p>
-<p style="text-align:center"><i>«я» на имя этого человека в русской части посвящения.)</p>
+<p style="text-align:center"><i><i>«я» на имя этого человека в русской части посвящения.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Дополнительные молитвы</b></i></p>
+<p style="text-align:center"><b><i>Дополнительные молитвы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>1. Будда Медицины</b></p>
 <p style="text-align:center">Намо Будда Высший Целитель!</p>
@@ -4832,11 +4831,11 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>V. Ежедневные молитвы подношения</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Подношение защитникам Дхармы</b></i></p>
+<p style="text-align:center"><b><i>1. Подношение защитникам Дхармы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <p style="text-align:center">Хо, ваджрные защитники, пожалуйста, внемлите мне!</p>
-<p style="text-align:center;margin-bottom:8px">(Произнесите это призывание 3 раза медленно и величественно, голосом, подобным львиному рыку)</p>
+<p style="text-align:center;margin-bottom:8px"><i>(Произнесите это призывание 3 раза медленно и величественно, голосом, подобным львиному рыку)</i></p>
 <p style="text-align:center">Я искренне призываю всех Будд — источник всей Дхармы;</p>
 <p style="text-align:center">Бодхисаттв — защитников существ;</p>
 <p style="text-align:center">Гуру — корень благословения, Дэва — корень достижения,</p>
@@ -4865,7 +4864,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Выполняя подношение Защитникам Дхармы, необходимо поднести им, по крайней мере, первую часть лучшего вина или чая.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center;margin-bottom:8px"><i><b>2. Расширенное подношение защитникам Дхармы</b></i></p>
+<p style="text-align:center;margin-bottom:8px"><b><i>2. Расширенное подношение защитникам Дхармы</i></b></p>
 <p style="text-align:center;margin-bottom:8px"><i><b>Великое чествование подношением славных </b> <b>
 </b> <b>победоносных Защитников Дхармы</b></i></p>
 <p style="text-align:center"><i>(Дышите свободно и произносите могуче,  
@@ -4881,8 +4880,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center" class="lit-count"><i>(3 раза)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:4px">Хо, победоносные ваджрные защитники, пожалуйста, внемлите нам!</p>
-<p style="text-align:center">(Произнесите это призывание 3 раза медленно и величественно 
-голосом, подобным львиному рыку)</p>
+<p style="text-align:center"><i>(Произнесите это призывание 3 раза медленно и величественно 
+голосом, подобным львиному рыку)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Я искренне призываю всех Будд — источник всей Дхармы; 
 Бодхисаттв — защитников существ; Гуру — корень благословения, 
@@ -4951,7 +4950,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i>(Тем, кто курил, а также тем, кто употряблял вещества и наркотики, изменяющие сознание, в период прошедших до этого мгновения двенадцати месяцев, воспрещается прикасаться к чаше Дхармапал и подношениям для них.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>4. Краткая молитва пиршественного подношения</b></i></p>
+<p style="text-align:center"><b><i>4. Краткая молитва пиршественного подношения</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <div class="d-gap" style="height:0.55em"></div>
@@ -4974,7 +4973,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Всегда верим в Будду.</p>
 <p style="text-align:center">Всегда практикуем Дхарму.</p>
 <p style="text-align:center">Всегда пребываем в Сангхе.</p>
-<p style="text-align:center"><b>Всегда вверяемся Мастеру Ваджрному.</b></p>
+<p style="text-align:center">Всегда вверяемся Мастеру Ваджрному.</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(В этом месте наслаждайтесь пиршественными подношениями</i></p>
 <p style="text-align:center"><i>По окончании прочтите следующую молитву.)</i></p>
@@ -4988,13 +4987,13 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">ведущим к просветлению.</p>
 <p style="text-align:center">О, Мастера просветлённые!</p>
 <p style="text-align:center">Я всегда буду помнить благословения вашей доброты.</p>
-<p style="text-align:center"><b>Я всегда буду ценить эту жизнь и заботиться о благе всех существ.</b></p>
+<p style="text-align:center">Я всегда буду ценить эту жизнь и заботиться о благе всех существ.</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i></i></p><p class="lit-count">(Вы можете произносить эту молитву всякий раз,</i></p>
-<p style="text-align:center"><i>когда делаете какое-либо подношение пищи.)</p>
+<p style="text-align:center"><i><i>когда делаете какое-либо подношение пищи.)</i></p>
 <div class="d-img"><img src="sb/img26.png"></div>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center;margin-bottom:12px"><i><b>5. Молитва подношения света Дхармы</b></i></p>
+<p style="text-align:center;margin-bottom:12px"><b><i>5. Молитва подношения света Дхармы</i></b></p>
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">РАМ ЯМ КХАМ</span>   <span style="white-space:nowrap">ОМ А ХУНГ</span></b></p>
 <p style="text-align:center">Высшим Буддам, добрым Бодхисаттвам,</p>
 <p style="text-align:center">просветлённым Мастерам и могущественным Дакиням</p>
@@ -5039,7 +5038,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b>ТЭЯТА ПЭНЦА ДРИЯ АВАБОДХАНАЕ СОХА</b></p>
 <p style="text-align:center" class="lit-sub"><i><b>VII. Песни Дхармы ваджрного танца</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Песня распространяющая покой</b></i></p>
+<p style="text-align:center"><b><i>1. Песня распространяющая покой</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>О! Чудесные, дорогие, добросердечные друзья.</b></p>
 <p style="text-align:center">Я восхваляю вашу любящую отзывчивость!</p>
@@ -5062,7 +5061,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Всегда Сангха. Всегда Дхарма. Всегда Будда.</p>
 <p style="text-align:center;margin-bottom:12px">Всегда — абсолютный мир в сердце каждого существа.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>2. Ваджрная песня Дзогчен</b></i></p>
+<p style="text-align:center"><b><i>2. Ваджрная песня Дзогчен</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b><span style="white-space:nowrap">Э Ма Ки Ри Ки Ри</span>   <span style="white-space:nowrap">Мас Та Вали Вали</span></b></p>
 <p style="text-align:center"><b>Са Ми Та Су Ру Су Ру Ку Та Ли Ма Су Ма Су</b></p>
@@ -5081,12 +5080,12 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><b><span style="white-space:nowrap">Бхун Дха Бхун Дха Цхи Кха Са</span>  <span style="white-space:nowrap">Ке Лам</span></b></p>
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">Са Саа Ри Рии Ли Лии</span>  <span style="white-space:nowrap">И Ии</span>  <span style="white-space:nowrap">Ми Мии</span>  <span style="white-space:nowrap">Ра Ра Раа</span></b></p>
 <p style="text-align:center"><i>(Пребывая в состоянии осознавания Дзогчен, пойте эту песню на мелодии Дакинь, играя в колокольчик и дамару.)</i></p>
-<p style="text-align:center"><i><b>3. Победная песнь Дхармы</b></i></p>
+<p style="text-align:center"><b><i>3. Победная песнь Дхармы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Чудесна Маха Бодхичитта! Чудесен Будда Шакьямуни!</p>
 <p style="text-align:center">Милосердие! Мудрость! Умиротворение! Победа Дхармы!</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>4. Танец барабана Дхармы</b></i></p>
+<p style="text-align:center"><b><i>4. Танец барабана Дхармы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b><span style="white-space:nowrap">Эма Эмахо</span>   <span style="white-space:nowrap">Эма Эмахо</span>   <span style="white-space:nowrap">Эма Эмахо…</span></b></p>
 <p style="text-align:center"><b><span style="white-space:nowrap">Манджушри</span>   <span style="white-space:nowrap">Авалокитешвара</span>   <span style="white-space:nowrap">Ваджрапани…</span></b></p>
@@ -5107,7 +5106,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">Алала Алалахо</span>   <span style="white-space:nowrap">Алала Алалахо</span>   <span style="white-space:nowrap">Алала Алалахо…</span></b></p>
 <p style="text-align:center"><i>(Радостно пойте, играйте в барабан и танцуйте с радостной непринуждённостью в спонтанной мудрости.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>5. Благостная песнь дитя мудрости</b></i></p>
+<p style="text-align:center"><b><i>5. Благостная песнь дитя мудрости</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><b>О!</b></p>
 <p style="text-align:center">Благостное дитя мудрости, послушай меня!</p>
@@ -5173,7 +5172,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">Хее Хее Хее Хее Хее!</span>      <span style="white-space:nowrap">Ха Ха Ха Ха Ха!</span></b></p>
 <p style="text-align:center"><i>(Свободно рассмейся необусловленным ваджрным смехом в высшем счастье Безумной Мудрости.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Практику Дхармической Деятельности</i> <svg class="wheel-mk"><use href="#dw"/></svg></p>
+<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Практику Дхармической Деятельности</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:2.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -5182,7 +5181,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>I. Тайная сверхъестественная сила</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Необусловленное сорадование</b></i></p>
+<p style="text-align:center"><b><i>1. Необусловленное сорадование</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Я глубоко сорадуюсь всем своим хорошим намерениям,</p>
 <p style="text-align:center">хорошим поступкам и хорошей практике.</p>
@@ -5193,7 +5192,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Я никогда не завидую, я всегда сорадуюсь всем заслугам.</p>
 <p style="text-align:center">Я искренне сорадуюсь. Я действительно сорадуюсь. Я всегда сорадуюсь.</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>2. Чистое посвящение заслуг</b></i></p>
+<p style="text-align:center"><b><i>2. Чистое посвящение заслуг</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Да освобожусь я благодаря этим заслугам от страданий</p>
 <p style="text-align:center">рождения, старости, болезней, смерти и всех бардо.</p>
@@ -5211,7 +5210,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да будут все мои посвящения исполнены, как устремление Самантабхадры.</p>
 <p style="text-align:center" class="lit-sub"><i><b>II. Самопроверка</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Шесть результатов практики Дхармы</b></i></p>
+<p style="text-align:center"><b><i>1. Шесть результатов практики Дхармы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px">Да освобожусь я от гнева, порождающего ады.
 Да освобожусь я от зависти, порождающей мир войн.
@@ -5224,13 +5223,13 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Я никогда не гневаюсь, я всегда распознаю истинную природу гнева.</p>
 <p style="text-align:center">Я никогда не гневаюсь, я всегда пребываю в совершенном осознавании.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>2. Мантра для освобождения шести миров</b></i></p>
+<p style="text-align:center"><b><i>2. Мантра для освобождения шести миров</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center" lang="bo">འ ཨ ཤ ས མ ཧ །</p>
 <p style="text-align:center;margin-bottom:8px"><b>АА А ША СА МА ХА</b></p>
 <p style="text-align:center"><i></p><p class="lit-count">(Для того, чтобы спонтанно освобождать всех существ шести миров, повторяйте эту мантру не менее шести раз.</i>)</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>3. Тринадцать признаков подлинного практикующего Дхарму</b></i></p>
+<p style="text-align:center"><b><i>3. Тринадцать признаков подлинного практикующего Дхарму</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Я буду неизменно верить в Будду.</p>
 <p style="text-align:center">Я буду усердно практиковать Дхарму.</p>
@@ -5246,19 +5245,19 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Я буду без суеты помогать другим.</p>
 <p style="text-align:center">Я буду заботиться о других с милосердием.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>4. Четыре превосходных качества практикующего</b></i></p>
+<p style="text-align:center"><b><i>4. Четыре превосходных качества практикующего</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Даже с теми, кто гневается на меня, я всегда буду любящим.</p>
 <p style="text-align:center">Даже к тем, кто груб со мной, я всегда буду добр.</p>
 <p style="text-align:center">Даже к тем, кто оскорбляет меня, я всегда буду доброжелателен.</p>
 <p style="text-align:center">Даже к тем, кто бьёт меня, я всегда буду милосерден.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>5. Отречение от восьми бессмысленных мирских целей</b></i></p>
+<p style="text-align:center"><b><i>5. Отречение от восьми бессмысленных мирских целей</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Да освобожусь я от жажды обретения, удовольствия, известности и похвалы.</p>
 <p style="text-align:center">Да освобожусь я от страха потери, страдания, позора и осуждения.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>6. Мировоззрение практикующего Дхарму</b></i></p>
+<p style="text-align:center"><b><i>6. Мировоззрение практикующего Дхарму</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Когда я взволнован, я счастлив практиковать бесстрашный покой.</p>
 <p style="text-align:center">Когда я болен, я счастлив очищать пагубное мышление.</p>
@@ -5287,7 +5286,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>III. Великие устремления Дхармы</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Устремление пяти коренных самай</b></i></p>
+<p style="text-align:center"><b><i>1. Устремление пяти коренных самай</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Да не отброшу я никогда Дхарму Будды!</p>
 <p style="text-align:center">Да буду я всегда обладать верой в своего Ваджрного Мастера!</p>
@@ -5296,7 +5295,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да буду я всегда придерживаться воззрения, медитации</p>
 <p style="text-align:center">и поведения тайных ваджрных тантр!</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>2. Устремление шести запредельных совершенств</b></i></p>
+<p style="text-align:center"><b><i>2. Устремление шести запредельных совершенств</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">-1-</p>
 <p style="text-align:center;margin-bottom:8px">Да буду я щедро даровать существам материальные вещи.
@@ -5323,7 +5322,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да увеличу я мудрость, рождённую из размышления.</p>
 <p style="text-align:center">Да увеличу я мудрость, рождённую из медитации.</p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>3. Устремление истинного пути</b></i></p>
+<p style="text-align:center"><b><i>3. Устремление истинного пути</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Да постигну я, что моё пагубное мышление — причина моего страдания.</p>
 <p style="text-align:center">Да постигну я, что моё пагубное мышление — 
@@ -5340,7 +5339,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да будет благое мышление всегда возникать в моём уме.</p>
 <p style="text-align:center">Да преобразится благое мышление в абсолютное блаженство.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>4. Устремление восьми основ Дхармы</b></i></p>
+<p style="text-align:center"><b><i>4. Устремление восьми основ Дхармы</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Да зародят все существа драгоценную бодхичитту,</p>
 <p style="text-align:center">намерение просветлённой мудрости!</p>
@@ -5362,10 +5361,10 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:1.15em"></div>
 <p style="text-align:center" class="lit-sub"><i><b>IV. Ваджрные молитвы благоприятности</b></i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>1. Молитвы о долголетии добрых Мастеров</b></i></p>
+<p style="text-align:center"><b><i>1. Молитвы о долголетии добрых Мастеров</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Молитва о долголетии</b></i></p>
-<p style="text-align:center"><i><b>Его Святейшества XIV Далай Ламы Тензина Гьяцо</b></i></p>
+<p style="text-align:center"><b><i>Молитва о долголетии</i></b></p>
+<p style="text-align:center"><b><i>Его Святейшества XIV Далай Ламы Тензина Гьяцо</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">С вершины мира, небесной обители Тибета,</p>
 <p style="text-align:center">воплощение милосердия и мудрости Будды,</p>
@@ -5374,7 +5373,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Пусть твоя драгоценная жизнь и любящая улыбка</p>
 <p style="text-align:center;margin-bottom:8px">всегда пребывает в этом мире!</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Молитва о долголетии Дзогчен Кхенпо Чога Ринпоче</b></i></p>
+<p style="text-align:center"><b><i>Молитва о долголетии Дзогчен Кхенпо Чога Ринпоче</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center">Славный высший Мастер, молимся о твоём долголетии.</p>
 <p style="text-align:center">Ты полностью завершил путь Ваджраяны естественной светоносности.</p>
@@ -5386,8 +5385,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:8px">Буддийские учения Сутр и Тантр.</p>
 <p style="text-align:center"><i>Написано Его Святейшеством Пенором Ринпоче (главой школы Ньингма),  
  в Южной Индии, в монастыре Палъюл, 31 мая, 2001 года.</i></p>
-<p style="text-align:center"><i><b>2. Молитва сердечной связи</b></i></p>
-<p style="text-align:center"><i><b>к доброму Коренному Мастеру</b></i></p>
+<p style="text-align:center"><b><i>2. Молитва сердечной связи</i></b></p>
+<p style="text-align:center"><b><i>к доброму Коренному Мастеру</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center" lang="bo">དཔལ་ལྡན་རྩ་བའི་བླ་མ་རིན་པོ་ཆེ།</p>
 <p style="text-align:center">ПАЛ ДЕН ЦА ВЕЙ ЛА МА РИН ПО ЧЕ</p>
@@ -5428,9 +5427,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">ДОР ДЖЕ ЧАНГ ГИ ГО ПАНГ НЬЮР ТХОБ ШОК</p>
 <p style="text-align:center">Да достигну я быстро пробуждённого состояния всеведущего Ваджрадхары.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>3. Молитвы о распространении Дхармы Будды</b></i></p>
+<p style="text-align:center"><b><i>3. Молитвы о распространении Дхармы Будды</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><b>Молитва о сохранении и распространении традиций Дзогчен</b></i></p>
+<p style="text-align:center"><b><i>Молитва о сохранении и распространении традиций Дзогчен</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center" lang="bo">ཐུབ་བསྟན་མཛེས་པའི་རྒྱན་གཅིག་ཀློང་ཆེན་པ།</p>
 <p style="text-align:center">ТХУП ТЕН ДЗЕ ПЕЙ ГЬЕН ЧИК ЛОНГ ЧЕН ПА</p>
@@ -5447,7 +5446,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">посредством практик изучения, размышления,</p>
 <p style="text-align:center">медитации и преподавания до самого конца самсары.</p>
 <div class="d-gap" style="height:1.8em"></div>
-<p style="text-align:center"><i><b>Молитва о деятельности Дхармы Дзогчен Кхенпо Чога Ринпоче</b></i></p>
+<p style="text-align:center"><b><i>Молитва о деятельности Дхармы Дзогчен Кхенпо Чога Ринпоче</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px"><b>НАМО ГУРУ БЭ</b></p>
 <p style="text-align:center">Гуру, Йидамы и Дакини,</p>
@@ -5465,7 +5464,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>Я, Будда-Ваджра (Чатрал Ринпоче), написал эту молитву в это мгновение  
  в Годавари, в Непале, в благой семнадцатый день шестого месяца года железа-змеи семнадцатого шестидесятилетнего цикла (6 августа 2001 года).</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><b>Молитва о пребывании в Дзогчен</b></i></p>
+<p style="text-align:center"><b><i>Молитва о пребывании в Дзогчен</i></b></p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center" lang="bo">སྣང་གྲགས་རིག་གསུམ་ལྷ་སྔགས་ཆོས་སྐུའི་ངང་།</p>
 <p style="text-align:center">НАНГ ДРАК РИГ СУМ ЛХА НГАК ЧО КУ НГАНГ</p>
@@ -5481,7 +5480,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">сфера сердечной сущности нераздельно сольётся в единовкусие.</p>
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center;margin-bottom:8px"><i>(С мудрой Ваджрадхары пребывайте настоящим в мудрости чистого видения.)</i></p>
-<p style="text-align:center;margin-bottom:8px"><b>А   А   А</b></p>
+<p style="text-align:center;margin-bottom:8px"><b><span style="font-size:1.60em;line-height:1">А</span>   <span style="font-size:1.05em;line-height:1">А</span>   <span style="font-size:0.50em;line-height:1">А</span></b></p>
 <p style="text-align:center"><i>(Покойтесь в осознавании Дзогчен, используя мудру отдохновения ума.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i>Теперь, находясь в периоде после медитации,</i></p>
@@ -5494,7 +5493,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>«Да освобожу я моих матерей — всех существ — от страданий  
  и приведу их к Совершенному Просветлению».</i></p>
 <div class="d-gap" style="height:1.15em"></div>
-<p style="text-align:center"><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Заключительную Практику</i> <svg class="wheel-mk"><use href="#dw"/></svg></p></div>
+<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Заключительную Практику</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p></div>
 <nav class="nav" id="nav">
   <div class="nav-menu" id="navMenu"></div>
   <div class="nav-bar" id="navBar">
