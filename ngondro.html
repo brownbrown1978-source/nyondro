@@ -2185,9 +2185,9 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 #main-sadhana .page p{font-size:18px;line-height:1.6;}
 @media(min-width:860px){#main-sadhana .page p{font-size:20px;}#main-sadhana .page p.lit-sub{font-size:24px;}#main-sadhana .page p.lit-section{font-size:28px;}
  #main-sadhana main{margin-left:0;}
- #main-sadhana .nav{position:fixed;left:50%;right:auto;top:auto;bottom:24px;transform:translateX(-50%);width:min(460px,86vw);height:auto;z-index:40;}
+ #main-sadhana .nav{position:fixed;right:16px;bottom:16px;left:auto;top:auto;transform:none;width:auto;max-width:min(82vw,340px);height:auto;z-index:40;}
  #main-sadhana .nav-bar{display:flex;}
- #main-sadhana .nav-menu{position:absolute;left:0;right:0;top:auto;bottom:calc(100% + 10px);width:auto;max-height:62vh;overflow:auto;border-radius:16px;opacity:0;visibility:hidden;transform:translateY(8px);padding:8px;}
+ #main-sadhana .nav-menu{position:absolute;right:0;left:auto;top:auto;bottom:calc(100% + 10px);width:min(82vw,320px);max-height:62vh;overflow:auto;border-radius:16px;opacity:0;visibility:hidden;transform:translateY(8px);padding:8px;}
  #main-sadhana .nav.open .nav-menu{opacity:1;visibility:visible;transform:none;}
  #main-sadhana .nav-menu::before{display:none;}
  #main-sadhana .page{margin-left:auto;margin-right:auto;}}
@@ -2217,14 +2217,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 #main-sadhana .sb-timer .sbt-row{display:flex;gap:1.4em;justify-content:center;margin-top:.55em;}
 #main-sadhana .sb-timer .sbt-row button{font:inherit;font-size:14px;background:none;border:none;color:var(--ink-soft,#6B5B45);cursor:pointer;}
 #main-sadhana .sb-timer .sbt-row button:hover{color:var(--cinnabar,#B23A22);}
-.page p.lit-section.sec-open::before{display:none;}.page p.lit-section.sec-open{margin-top:.1em;padding-top:0;}#main-sadhana .page p:has(> i):not(:has(b)):not(.lit-count){font-size:16px;line-height:1.28;color:var(--ink-soft);}#main-sadhana .build-stamp{display:block;text-align:center;font-family:Inter,sans-serif;font-size:11px;color:var(--ink-faint,#9A8A6C);letter-spacing:.04em;margin:24px auto 8px;opacity:.7;}.page .sec-rule{height:1px;width:min(62%,24em);margin:0 auto;background:linear-gradient(90deg,transparent,var(--rule,#DDCDA6) 18%,var(--rule,#DDCDA6) 82%,transparent);}@media (min-width:1180px){
- #main-sadhana .nav{position:fixed;left:0;top:0;bottom:0;right:auto;transform:none;width:320px;height:auto;z-index:30;background:var(--paper-2);border-right:1px solid var(--rule);border-radius:0;display:flex;flex-direction:column;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;}
- #main-sadhana .nav-bar{display:none!important;}
- #main-sadhana .nav-menu{position:static;opacity:1!important;visibility:visible!important;transform:none!important;width:auto;height:100%;max-height:none;overflow:auto;border:none;border-radius:0;box-shadow:none;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;padding:64px 12px 40px;bottom:auto;}
- #main-sadhana .nav-menu::before{display:block;content:"Содержание";font-family:var(--sans,Inter);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint,#9A8A6C);padding:6px 14px 12px;}
- #main-sadhana main{margin-left:320px;}
-}
-</style>
+.page p.lit-section.sec-open::before{display:none;}.page p.lit-section.sec-open{margin-top:.1em;padding-top:0;}#main-sadhana .page p:has(> i):not(:has(b)):not(.lit-count){font-size:16px;line-height:1.28;color:var(--ink-soft);}#main-sadhana .build-stamp{display:block;text-align:center;font-family:Inter,sans-serif;font-size:11px;color:var(--ink-faint,#9A8A6C);letter-spacing:.04em;margin:24px auto 8px;opacity:.7;}.page .sec-rule{height:1px;width:min(62%,24em);margin:0 auto;background:linear-gradient(90deg,transparent,var(--rule,#DDCDA6) 18%,var(--rule,#DDCDA6) 82%,transparent);}#main-sadhana main{margin-left:0!important;margin-right:0!important;}</style>
 </head>
 <body>
 
@@ -5573,7 +5566,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 })();
 </script>
 
-<div class="build-stamp">сборник · версия 2026-06-23·b22</div>
+<div class="build-stamp">сборник · версия 2026-06-23·b23</div>
 </main>
 </section>
 
