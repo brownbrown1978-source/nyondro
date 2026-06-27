@@ -2006,7 +2006,7 @@ html,#main-sadhana{margin:0;}
 .alph-grid .ru{text-align:left;font-weight:700;font-size:16px;color:var(--ink);letter-spacing:.01em;white-space:nowrap;}
 .page p.alph-ru > b{color:var(--ink)!important;}
 /* линии передачи: фиксированная ширина — все группы выровнены в один столбец, блок по центру */
-.lineage{display:grid;grid-template-columns:1.9em 1fr;column-gap:.6em;row-gap:.3em;margin:.6em auto .3em;width:min(26em,100%);text-align:left;font-size:18px;}
+.lineage{display:grid;grid-template-columns:1.9em auto;column-gap:.6em;row-gap:.3em;margin:.6em auto .3em;width:fit-content;max-width:100%;text-align:left;font-size:18px;}
 .lineage .ln{display:contents;}
 .lineage .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap;font-style:normal;}
 .lineage .nm{text-align:left;color:var(--ink);min-width:0;font-style:normal;}
@@ -2852,7 +2852,6 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Предварительная Практика</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img02.png" alt="Эмблема"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -3091,7 +3090,6 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i>Этим завершается Практика Изучения</i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -3589,7 +3587,6 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Сутры</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-img d-tall"><img src="sb/img18.png"></div>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -4071,7 +4068,6 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Бодхичитты</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img20.png" alt="Эмблема"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -4313,7 +4309,6 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Тантры</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -5156,7 +5151,6 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Практику Дхармической Деятельности</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -5567,7 +5561,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 })();
 </script>
 
-<div class="build-stamp">сборник · версия 2026-06-27·b24</div>
+<div class="build-stamp">сборник · версия 2026-06-27·b25</div>
 </main>
 </section>
 
@@ -8879,88 +8873,6 @@ $("#bell-banner-ok").addEventListener("click", () => {
       btn.textContent = on ? "Цвет" : "Ч–б";
     });
   })();
-</script>
-<script>
-
-(function(){
-  // Печатные «разрывы страниц» из PDF → в скролл-приложении ограничиваем,
-  // чтобы не было пустых провалов. Текст и порядок не меняются.
-  (function clampGaps(){
-    var MAX=4; // em
-    document.querySelectorAll('.d-gap[style]').forEach(function(g){
-      var mm=/height\s*:\s*([\d.]+)em/.exec(g.getAttribute('style')||'');
-      if(mm && parseFloat(mm[1])>MAX){ g.style.height=MAX+'em'; }
-    });
-  })();
-  // (fixHeadingGaps отключён — интервалы задаются явно в разметке/CSS)
-  var SEC=[
-    ['sec-0','Обложка','top'],['sec-fm','Сердечная молитва','sub'],
-    ['sec-1','Предварительная практика','sec'],
-    ['sec-vtj','Предварительные упражнения ваджра тантра йоги','sub'],
-    ['sec-self','Самоисцеление силой мудрости','sub'],
-    ['sec-2','Практика изучения','sec'],['sec-3','Практика сутры','sec'],
-    ['sec-4','Практика Бодхичитты','sec'],['sec-5','Практика тантры','sec'],
-    ['sec-6','Практика Дзогчен','sec'],['sec-7','Практика дхармической деятельности','sec'],
-    ['sec-8','Заключительная практика','sec']
-  ];
-  // mode toggle
-  var savedPal=localStorage.getItem('pb-pal');
-  if(savedPal) document.body.setAttribute('data-pal', savedPal);
-  var saved=localStorage.getItem('pb-mode');
-  if(saved==='bw') document.body.classList.add('bw');
-  document.querySelectorAll('.mode button').forEach(function(b){
-    if((saved||'color')===b.dataset.m) setOn(b);
-    b.addEventListener('click',function(){
-      document.body.classList.toggle('bw', b.dataset.m==='bw');
-      localStorage.setItem('pb-mode', b.dataset.m); setOn(b);
-    });
-  });
-  function setOn(b){document.querySelectorAll('.mode button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');}
-
-  // build nav menu
-  var menu=document.getElementById('navMenu'), cur=document.getElementById('navCur');
-  var nav=document.getElementById('nav'), bar=document.getElementById('navBar');
-  var els=[];
-  SEC.forEach(function(s,i){
-    var el=document.getElementById(s[0]); if(!el) return;
-    els.push({id:s[0],label:s[1],el:el});
-    var a=document.createElement('a'); a.href='#'+s[0]; a.className='tier-'+(s[2]||'sub');
-    a.innerHTML='<span class="ix">'+(i===0?'·':String(i))+'</span><span class="lb">'+s[1]+'</span>';
-    a.addEventListener('click',function(ev){
-      ev.preventDefault(); nav.classList.remove('open');
-      var y=el.getBoundingClientRect().top+window.pageYOffset-64;
-      window.scrollTo({top:Math.max(0,y)});
-    });
-    menu.appendChild(a);
-  });
-  var links=menu.querySelectorAll('a');
-  bar.addEventListener('click',function(){nav.classList.toggle('open');});
-  document.addEventListener('click',function(e){ if(!nav.contains(e.target)) nav.classList.remove('open'); });
-
-  // scroll spy + progress + persist
-  var prog=document.getElementById('navProg');
-  var ticking=false;
-  function update(){
-    ticking=false;
-    var sc=window.pageYOffset, h=document.documentElement.scrollHeight-window.innerHeight;
-    prog.style.width=Math.max(0,Math.min(1,sc/(h||1)))* (bar.offsetWidth-32) + 'px';
-    var idx=0;
-    for(var i=0;i<els.length;i++){ if(els[i].el.getBoundingClientRect().top<=120) idx=i; }
-    cur.textContent=els[idx].label;
-    links.forEach(function(l,j){ l.classList.toggle('on', j===idx); });
-    localStorage.setItem('pb-scroll', sc);
-  }
-  window.addEventListener('scroll',function(){ if(!ticking){requestAnimationFrame(update);ticking=true;} },{passive:true});
-  window.addEventListener('resize',update);
-  // restore scroll
-  window.addEventListener('load',function(){
-    var s=parseFloat(localStorage.getItem('pb-scroll'));
-    if(s>0) window.scrollTo(0,s);
-    update();
-  });
-  update();
-})();
-
 </script>
 <script>
 if ('serviceWorker' in navigator) {
