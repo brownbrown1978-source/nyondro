@@ -5534,7 +5534,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
     a.addEventListener('click',function(ev){
       ev.preventDefault(); nav.classList.remove('open');
       var y=el.getBoundingClientRect().top+window.pageYOffset-64;
-      window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+      window.scrollTo({top:Math.max(0,y)});
     });
     menu.appendChild(a);
   });
@@ -5566,7 +5566,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 })();
 </script>
 
-<div class="build-stamp">сборник · версия 2026-06-23·b20</div>
+<div class="build-stamp">сборник · версия 2026-06-23·b21</div>
 </main>
 </section>
 
@@ -8928,7 +8928,7 @@ $("#bell-banner-ok").addEventListener("click", () => {
     a.addEventListener('click',function(ev){
       ev.preventDefault(); nav.classList.remove('open');
       var y=el.getBoundingClientRect().top+window.pageYOffset-64;
-      window.scrollTo({top:Math.max(0,y),behavior:'smooth'});
+      window.scrollTo({top:Math.max(0,y)});
     });
     menu.appendChild(a);
   });
