@@ -2201,8 +2201,8 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 #main-sadhana #navBar .chev{font-size:15px;line-height:1;color:#FBEEDD;opacity:.95;transform:none;}
 #main-sadhana #navBackdrop{position:fixed;inset:0;background:rgba(30,20,12,.42);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;pointer-events:none;}
 #main-sadhana #nav.open #navBackdrop{opacity:1;visibility:visible;pointer-events:auto;}
-#main-sadhana #navMenu{pointer-events:auto;position:fixed;top:0;right:0;bottom:0;left:auto;width:min(87vw,360px);height:100%;max-height:none;margin:0;padding:calc(env(safe-area-inset-top) + 26px) 0 28px;border:none;border-radius:0;background:var(--paper);box-shadow:-18px 0 50px -18px rgba(60,21,18,.5);overflow-y:auto;opacity:1;visibility:visible;transform:translateX(103%);transition:transform .32s cubic-bezier(.22,.61,.36,1);}
-#main-sadhana #nav.open #navMenu{transform:none;}
+#main-sadhana #navMenu{pointer-events:auto;position:fixed;top:0;right:0;bottom:0;left:auto;width:min(87vw,360px);height:100%;max-height:none;margin:0;padding:calc(env(safe-area-inset-top) + 26px) 0 28px;border:none;border-radius:0;background:var(--paper);box-shadow:-18px 0 50px -18px rgba(60,21,18,.5);overflow-y:auto;opacity:1;visibility:visible;transform:translateX(103%)!important;transition:transform .32s cubic-bezier(.22,.61,.36,1);}
+#main-sadhana #nav.open #navMenu{transform:none!important;}
 #main-sadhana #navMenu::before{content:"Содержание";display:block;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);padding:0 26px 16px;}
 #main-sadhana #navMenu a{display:flex;align-items:baseline;gap:14px;padding:13px 26px;border:none;text-decoration:none;color:var(--ink);font-family:var(--serif);}
 #main-sadhana #navMenu a .ix{flex:none;width:26px;text-align:right;font-family:var(--sans);font-size:12px;color:var(--ink-faint);}
@@ -5595,7 +5595,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 })();
 </script>
 
-<div class="build-stamp">сборник · версия 2026-06-28·b30</div>
+<div class="build-stamp">сборник · версия 2026-06-29·b31</div>
 </main>
 </section>
 

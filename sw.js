@@ -2,7 +2,7 @@
    HTML — network-first (онлайн всегда свежий, офлайн — из кэша).
    Свои ресурсы — cache-first с дозакачкой. Чужой домен (шрифты, esm.sh) — только сеть,
    не кэшируем: opaque-ответ ломает импорт модулей. */
-const CACHE = 'ngondro-2026-06-28-b30';
+const CACHE = 'ngondro-2026-06-29-b31';
 const CORE = ['ngondro.html', 'manifest.webmanifest', 'sadhana.json'];
 
 self.addEventListener('install', (e) => {
