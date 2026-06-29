@@ -2006,11 +2006,11 @@ html,#main-sadhana{margin:0;}
 .alph-grid .ru{text-align:left;font-weight:700;font-size:16px;color:var(--ink);letter-spacing:.01em;white-space:nowrap;}
 .page p.alph-ru > b{color:var(--ink)!important;}
 /* линии передачи: фиксированная ширина — все группы выровнены в один столбец, блок по центру */
-.lineage{display:grid;grid-template-columns:1.9em auto;column-gap:.6em;row-gap:.3em;margin:.6em auto .3em;width:fit-content;max-width:100%;text-align:left;font-size:18px;}
+.lineage{display:grid;grid-template-columns:1.9em minmax(0,1fr);column-gap:.6em;row-gap:.3em;margin:.6em auto .3em;width:min(22em,94%);text-align:left;font-size:18px;}
 .lineage .ln{display:contents;}
 .lineage .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap;font-style:normal;}
 .lineage .nm{text-align:left;color:var(--ink);min-width:0;font-style:normal;}
-.lineage .lnfull .nm{text-align:left;font-style:normal;color:var(--ink);}
+.lineage .lnfull .nm{grid-column:1 / -1;text-align:center;font-style:normal;color:var(--ink);}
 .lineage .lgap{grid-column:1 / -1;height:.45em;}
 @media (max-width:430px){
   .lineage{font-size:17px;column-gap:.5em;}
@@ -2047,7 +2047,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 .page p.lit-section.sec-open{margin-top:.1em;}
 /* номер стиха ~N~: по центру, прижат к СВОЕМУ стиху снизу, отделён сверху */
 .page p.lit-vnum{text-align:center;font-size:14px;color:var(--ink-faint);
-  letter-spacing:.12em;margin-top:1.7em;margin-bottom:.55em;}
+  letter-spacing:.12em;margin-top:1.9em;margin-bottom:.12em;color:var(--cinnabar);}
 
 /* ── cover ── */
 .cover-emblem{text-align:center;margin:10px 0 6px;position:relative;}
@@ -2193,6 +2193,29 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
  #main-sadhana .page{margin-left:auto;margin-right:auto;}}
 #main-sadhana .nav-bar{background:rgba(42,32,24,.55);-webkit-backdrop-filter:blur(12px) saturate(1.2);backdrop-filter:blur(12px) saturate(1.2);border:1px solid rgba(255,240,210,.28);box-shadow:0 8px 26px -10px rgba(0,0,0,.5);}
 #main-sadhana .nav-menu{background:rgba(251,244,226,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}
+/* === Навигатор v2 — выезжающая панель справа === */
+#main-sadhana #nav{position:fixed;inset:0;left:auto;width:auto;height:auto;transform:none;z-index:60;pointer-events:none;background:none;border:none;display:block;}
+#main-sadhana #navBar{pointer-events:auto;position:fixed;right:16px;bottom:max(18px,env(safe-area-inset-bottom));left:auto;top:auto;display:inline-flex;align-items:center;gap:10px;width:auto;height:46px;padding:0 16px 0 18px;border-radius:999px;background:var(--cinnabar);border:none;box-shadow:0 10px 26px -8px rgba(60,21,18,.55);cursor:pointer;}
+#main-sadhana #navBar .pb-dot,#main-sadhana #navBar .nav-prog{display:none;}
+#main-sadhana #navBar .cur{flex:none;max-width:44vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--serif);font-size:14px;font-weight:600;color:#FBEEDD;letter-spacing:.01em;}
+#main-sadhana #navBar .chev{font-size:15px;line-height:1;color:#FBEEDD;opacity:.95;transform:none;}
+#main-sadhana #navBackdrop{position:fixed;inset:0;background:rgba(30,20,12,.42);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s;pointer-events:none;}
+#main-sadhana #nav.open #navBackdrop{opacity:1;visibility:visible;pointer-events:auto;}
+#main-sadhana #navMenu{pointer-events:auto;position:fixed;top:0;right:0;bottom:0;left:auto;width:min(87vw,360px);height:100%;max-height:none;margin:0;padding:calc(env(safe-area-inset-top) + 26px) 0 28px;border:none;border-radius:0;background:var(--paper);box-shadow:-18px 0 50px -18px rgba(60,21,18,.5);overflow-y:auto;opacity:1;visibility:visible;transform:translateX(103%);transition:transform .32s cubic-bezier(.22,.61,.36,1);}
+#main-sadhana #nav.open #navMenu{transform:none;}
+#main-sadhana #navMenu::before{content:"Содержание";display:block;font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);padding:0 26px 16px;}
+#main-sadhana #navMenu a{display:flex;align-items:baseline;gap:14px;padding:13px 26px;border:none;text-decoration:none;color:var(--ink);font-family:var(--serif);}
+#main-sadhana #navMenu a .ix{flex:none;width:26px;text-align:right;font-family:var(--sans);font-size:12px;color:var(--ink-faint);}
+#main-sadhana #navMenu a .lb{font-size:16px;line-height:1.3;}
+#main-sadhana #navMenu a.tier-sec .lb{font-weight:700;}
+#main-sadhana #navMenu a.tier-sub .lb,#main-sadhana #navMenu a.tier-top .lb{color:var(--ink-soft);}
+#main-sadhana #navMenu a:hover{background:var(--paper-2);}
+#main-sadhana #navMenu a.pb-on{background:rgba(178,58,34,.10);}
+#main-sadhana #navMenu a.pb-on .lb,#main-sadhana #navMenu a.pb-on .ix{color:var(--cinnabar);}
+/* лотос открывает практику — убираем линию из-под него */
+#main-sadhana .page p.lit-section.sec-open{border-top:none;padding-top:0;}
+/* черта, закрывающая практику (перед лотосом следующей) */
+#main-sadhana .page p.lit-close::after{content:"";display:block;height:2px;width:80px;margin:.85em auto .1em;background:linear-gradient(90deg,transparent,var(--gold),transparent);}
 #main-sadhana .page p.lit-count{text-align:center;}
 #main-sadhana .page [data-screen-label]{margin-top:2.8em;padding-top:1.1em;border-top:1px solid var(--rule);}
 #main-sadhana .page [data-screen-label][id="sec-0"],#main-sadhana .page .cover [data-screen-label]{border-top:0;padding-top:0;margin-top:0;}
@@ -2217,7 +2240,7 @@ details.lin[open]>summary{margin-bottom:.6em;color:var(--ink);}
 #main-sadhana .sb-timer .sbt-row{display:flex;gap:1.4em;justify-content:center;margin-top:.55em;}
 #main-sadhana .sb-timer .sbt-row button{font:inherit;font-size:14px;background:none;border:none;color:var(--ink-soft,#6B5B45);cursor:pointer;}
 #main-sadhana .sb-timer .sbt-row button:hover{color:var(--cinnabar,#B23A22);}
-.page p.lit-section.sec-open::before{display:none;}#main-sadhana .page p.lit-section.sec-open{margin-top:.1em;padding-top:0;border-top:0!important;}#main-sadhana .page p:has(> i):not(:has(b)):not(.lit-count){font-size:16px;line-height:1.28;color:var(--ink-soft);}#main-sadhana .build-stamp{display:block;text-align:center;font-family:Inter,sans-serif;font-size:11px;color:var(--ink-faint,#9A8A6C);letter-spacing:.04em;margin:24px auto 8px;opacity:.7;}.page .sec-rule{height:1px;width:min(62%,24em);margin:0 auto;background:linear-gradient(90deg,transparent,var(--rule,#DDCDA6) 18%,var(--rule,#DDCDA6) 82%,transparent);}#main-sadhana main{margin-left:0!important;margin-right:0!important;}</style>
+.page p.lit-section.sec-open::before{display:none;}.page p.lit-section.sec-open{margin-top:.1em;padding-top:0;}#main-sadhana .page p:has(> i):not(:has(b)):not(.lit-count){font-size:16px;line-height:1.28;color:var(--ink-soft);}#main-sadhana .build-stamp{display:block;text-align:center;font-family:Inter,sans-serif;font-size:11px;color:var(--ink-faint,#9A8A6C);letter-spacing:.04em;margin:24px auto 8px;opacity:.7;}.page .sec-rule{height:1px;width:min(62%,24em);margin:0 auto;background:linear-gradient(90deg,transparent,var(--rule,#DDCDA6) 18%,var(--rule,#DDCDA6) 82%,transparent);}#main-sadhana main{margin-left:0!important;margin-right:0!important;}</style>
 </head>
 <body>
 
@@ -2850,9 +2873,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center">Да будут все мои посвящения чистыми как мудрость Манджушри.</p>
 <p style="text-align:center">Да будут все мои посвящения исполнены как устремление Самантабхадры.</p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Предварительная Практика</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
+<p style="text-align:center" class="lit-close"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Предварительная Практика</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img02.png" alt="Эмблема"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -3089,9 +3111,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:4px"><b><span style="white-space:nowrap">Собраны целиком</span>      <span style="white-space:nowrap">Раскрыты совершенно</span>      <span style="white-space:nowrap">Преподаны полностью</span></b></p>
 <p style="text-align:center" class="lit-count"><i>(Произнесите один раз, сопровождая мудрой)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i>Этим завершается Практика Изучения</i></p>
+<p style="text-align:center" class="lit-close"><i>Этим завершается Практика Изучения</i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -3586,10 +3607,9 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.95em"></div>
 <p style="text-align:center"><i>(Мантра «Намо Буддая» — это сущность всех мантр. Она чрезвычайно важна в практике «Пути Будды». Необходимо повторять эту мантру ежедневно, когда вы сидите, стоите, ходите или работаете, как можно чаще, в любых жизненных обстоятельствах. Практикующему рекомендуется вести счёт повторениям мантры, и со временем произнести мантру «Намо Буддая» как минимум один миллион раз.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Сутры</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
+<p style="text-align:center" class="lit-close"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Сутры</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-img d-tall"><img src="sb/img18.png"></div>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -4069,9 +4089,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Так как в соответствии с буддийской наукой причины нашего счастья и страдания находятся в наших собственных умах, то в действительности невозможно ни взять страдание, ни отдать счастье другим.   Вместо этого, благодаря нашим добродетельным намерениям и действиям, мы можем создать условия, которые принесут пользу другим существам. Тем не менее, степень получаемой пользы зависит от тех причин, которые находятся в умах этих существ. Для глубокого осмысления этой темы вам необходимо исследовать значение таких понятий, как «ум», «причина» и «условия» в соответствии с учениями Будды.)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Бодхичитты</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
+<p style="text-align:center" class="lit-close"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Бодхичитты</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img20.png" alt="Эмблема"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -4311,9 +4330,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <div class="d-gap" style="height:0.55em"></div>
 <p style="text-align:center"><i>(Для того, чтобы сохранить силу мудрости и целостность своей личной практики, а также для того, чтобы уберечь её от препятствий, особенно важно с достоинством сохранять в тайне свои личные сердечные наставления, тантрические практики, переживания в медитации, внутренние постижения, чудотворную деятельность и священные объекты. Это одна из главных коренных самай всех подлинных тантр.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Тантры</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
+<p style="text-align:center" class="lit-close"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Тантры</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -4651,9 +4669,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>(Молитва Бардо несёт особое благо в двух случаях. Во-первых, когда вы чувствуете особенно сильную привязанность к этой жизни, необходимо глубоко задуматься об умирании, смерти и бардо, и читать эту молитву. Во-вторых,  
  эту молитву можно читать в случае чьей-либо смерти. Читая эту молитву для других, нужно заменить «да … я» на «да … имя».)</i></p>
 <div class="d-gap" style="height:0.95em"></div>
-<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Дзогчен</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
+<p style="text-align:center" class="lit-close"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Этим завершается Практика Дзогчен</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -5157,9 +5174,8 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center;margin-bottom:8px"><b><span style="white-space:nowrap">Хее Хее Хее Хее Хее!</span>      <span style="white-space:nowrap">Ха Ха Ха Ха Ха!</span></b></p>
 <p style="text-align:center"><i>(Свободно рассмейся необусловленным ваджрным смехом в высшем счастье Безумной Мудрости.)</i></p>
 <div class="d-gap" style="height:0.55em"></div>
-<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Практику Дхармической Деятельности</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
+<p style="text-align:center" class="lit-close"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Практику Дхармической Деятельности</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p>
 <div class="d-gap" style="height:1.5em"></div>
-<div class="sec-rule"></div>
 <div class="d-gap" style="height:1.4em"></div>
 <div class="d-img d-emblem"><img src="sb/img07.png"></div>
 <div class="d-gap" style="height:0.35em"></div>
@@ -5480,15 +5496,16 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 <p style="text-align:center"><i>«Да освобожу я моих матерей — всех существ — от страданий  
  и приведу их к Совершенному Просветлению».</i></p>
 <div class="d-gap" style="height:1.15em"></div>
-<p style="text-align:center"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Заключительную Практику</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p></div>
+<p style="text-align:center" class="lit-close"><i><svg class="wheel-mk"><use href="#dw"/></svg> <i>Это завершает Заключительную Практику</i> <svg class="wheel-mk"><use href="#dw"/></svg></i></p></div>
 <nav class="nav" id="nav">
+  <div class="nav-backdrop" id="navBackdrop"></div>
   <div class="nav-menu" id="navMenu"></div>
-  <div class="nav-bar" id="navBar">
+  <button class="nav-bar" id="navBar" type="button" aria-label="Содержание">
+    <span class="cur" id="navCur">Содержание</span>
+    <span class="chev">☰</span>
     <span class="pb-dot"></span>
-    <span class="cur" id="navCur">Обложка</span>
-    <span class="chev">▴</span>
     <span class="nav-prog" id="navProg"></span>
-  </div>
+  </button>
 </nav>
 <script>
 (function(){
@@ -5545,6 +5562,14 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
   var links=menu.querySelectorAll('a');
   bar.addEventListener('click',function(){nav.classList.toggle('open');});
   document.addEventListener('click',function(e){ if(!nav.contains(e.target)) nav.classList.remove('open'); });
+  var __bd=document.getElementById('navBackdrop'); if(__bd) __bd.addEventListener('click',function(){nav.classList.remove('open');});
+  // номера стихов «~ N ~» — привязать вплотную к своему стиху
+  document.querySelectorAll('#main-sadhana .page p').forEach(function(p){
+    if(/^~\s*\d+\s*~$/.test((p.textContent||'').trim())){
+      p.classList.add('lit-vnum');
+      var nx=p.nextElementSibling; if(nx && nx.tagName==='P') nx.style.marginTop='0';
+    }
+  });
 
   // scroll spy + progress + persist
   var prog=document.getElementById('navProg');
@@ -5570,7 +5595,7 @@ document.addEventListener('visibilitychange',function(){if(document.visibilitySt
 })();
 </script>
 
-<div class="build-stamp">сборник · версия 2026-06-28·b28</div>
+<div class="build-stamp">сборник · версия 2026-06-28·b30</div>
 </main>
 </section>
 
